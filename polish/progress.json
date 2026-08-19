@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "updated": "2026-08-18",
+  "last_session": "全量审校完成：15/15 chunk",
+  "plan": "docs/POLISH_PLAN.md",
+  "chunks": {
+    "chunk_001": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 0,
+      "last_id": "TAN-221794F228AD",
+      "status": "done"
+    },
+    "chunk_002": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 0,
+      "last_id": "TAN-430E0E5E8C1F",
+      "status": "done"
+    },
+    "chunk_003": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 5,
+      "last_id": "TAN-65D76A0F2176",
+      "status": "done"
+    },
+    "chunk_004": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 7,
+      "last_id": "TAN-85BE0CE91A18",
+      "status": "done"
+    },
+    "chunk_005": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 9,
+      "last_id": "TAN-A9B678853F04",
+      "status": "done"
+    },
+    "chunk_006": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 5,
+      "last_id": "TAN-CA5D42406CAD",
+      "status": "done"
+    },
+    "chunk_007": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 7,
+      "last_id": "TAN-EB8723F0E42D",
+      "status": "done"
+    },
+    "chunk_008": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 8,
+      "last_id": "TAN-6B1A80D3A407",
+      "status": "done"
+    },
+    "chunk_009": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 0,
+      "last_id": "TAN-610BECD51255",
+      "status": "done"
+    },
+    "chunk_010": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 1,
+      "last_id": "TAN-00769B69D69C",
+      "status": "done"
+    },
+    "chunk_011": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 4,
+      "last_id": "TAN-64D1A5B43797",
+      "status": "done"
+    },
+    "chunk_012": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 0,
+      "last_id": "TAN-C7662EA3F6FF",
+      "status": "done"
+    },
+    "chunk_013": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 8,
+      "last_id": "TAN-3A39B169FF64",
+      "status": "done"
+    },
+    "chunk_014": {
+      "total": 450,
+      "reviewed": 450,
+      "changed": 0,
+      "last_id": "TAN-D677EB12D47D",
+      "status": "done"
+    },
+    "chunk_015": {
+      "total": 352,
+      "reviewed": 352,
+      "changed": 0,
+      "last_id": "TAN-FE6AA8A944B7",
+      "status": "done"
+    }
+  },
+  "pass1_archive": {
+    "chunk_001": {
+      "reviewed": 450,
+      "changed": 21
+    },
+    "chunk_002": {
+      "reviewed": 450,
+      "changed": 14
+    },
+    "chunk_003": {
+      "reviewed": 450,
+      "changed": 5
+    },
+    "chunk_004": {
+      "reviewed": 450,
+      "changed": 3
+    },
+    "chunk_005": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_006": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_007": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_008": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_009": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_010": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_011": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_012": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_013": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_014": {
+      "reviewed": 0,
+      "changed": 0
+    },
+    "chunk_015": {
+      "reviewed": 0,
+      "changed": 0
+    }
+  },
+  "pass": 2
+}

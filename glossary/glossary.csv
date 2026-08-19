@@ -1,0 +1,366 @@
+source_en,target_zh,type,case_sensitive,confidence,notes
+Abbey of St Brandan,圣布伦丹修道院,地点,true,high,沿用《司辰之书》既有译名
+Agonies,苦痛,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Allies,盟军,势力,true,high,
+Ambition,野心,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Anger,愤怒,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Appetite,欲求,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Arlequin's Affliction,阿勒坎之患,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Arts Unconsidered,未拾技艺,技艺,true,medium,新作文本异体
+Arts Unregarded,未拾技艺,技艺,true,high,
+Arun Peel,阿伦·褪皮,人物,true,high,沿用秘史社区既有译名“阿伦·褪皮博士”
+Aspect,性相,系统,true,high,不可与 Principle 混用
+Aubière,奥比耶,人物,true,high,跨批统一
+Authority,权威,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Aviform,鸟形,分类,true,high,沿用《司辰之书》鸟形司辰既有译名
+Aviforms,鸟形司辰,分类,true,high,复数依语境译鸟形司辰或鸟形者
+Beachcrow,拾滩鸦,司辰,true,high,
+Bewitch,惑心,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Birdsong,鸟鸣学,技艺,true,high,作伟大之术时
+bisclavret,比斯克拉夫雷,异文称谓,true,high,与“比斯克拉夫雷之结”统一
+BOOK OF HOURS,《司辰之书》,作品名,true,high,
+Book of Suns,《骄阳之书》,作品名,true,high,沿用前作既有译名
+Bosk,丛林学,技艺,true,high,
+Bounds,边境,地点,true,high,
+Brancrug,布兰库格,地点,true,high,
+Bright Art,光之技艺,技艺,true,high,
+Bright Arts,光之技艺,技艺,true,high,沿用《司辰之书》体系
+Canovaccio,幕表,性相,true,high,j.46 并列机制标签；全族覆盖检查
+capocomica,女班主,职衔,true,high,意大利语；兼任主演与经营者的女性剧团班主
+Carapace,介壳种,分类,true,high,依语法也可作“介壳”
+Carapace Cross,介壳种,分类,true,high,
+Career,职涯,机制,true,high,同作 Steam 官方简中定名；普通 career 仍依语境
+Cassandro's Woe,卡桑德罗之厄,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Chaima,柴玛,人物,true,high,沿用《司辰之书》拉拉·柴玛既有译名
+Challenging,富有挑战,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Charm,魅力,技艺,true,high,j.46 并列机制标签；全族覆盖检查
+chef,头儿,人物称呼,false,high,文森特对主角的军旅口语称呼；保留斜体但不保留拉丁字母
+Chez Felix,菲利克斯之家,地点,true,high,昂蒂布酒馆名；与 house of tolerance 的双关按上下文保留
+Chilly,寒冷,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Christopher Illopoly,克里斯托弗·伊利奥波里,人物,true,high,沿用《司辰之书》《夜游漫记》既有译名
+Chrysolagnia,嗜金症,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Chrysolepsis,金痫,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Chrysophoria,金荷症,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Church,教会,机构,true,high,大写时通常简称无敌太阳教会；仅在需消歧时展开全称
+Church of the Unconquerable Sun,无敌太阳教会,机构,true,high,源文形容词异体；同一机构
+Church of the Unconquered Sun,无敌太阳教会,机构,true,high,沿用《密教模拟器》《司辰之书》既有译名
+Church Solar,无敌太阳教会,机构,true,high,与前作 Church of the Unconquered Sun 为同一太阳教会体系
+City Unbuilt,未建之城,地点,true,high,沿用《司辰之书》既有译名
+Clerical,神职,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Colonel,上校,司辰,true,high,
+Compassion,同情,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Corona,冕,准则,true,medium,复合词须结合新作语境
+Coseley,科赛利,人物,true,high,沿用前作朱利安·科赛利
+Cross,介壳种,分类,true,high,Carapace Cross 的简称；普通 cross 依语境
+Cultist Simulator,《密教模拟器》,作品名,true,high,
+Curio,奇物,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Curiosity,好奇心,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Currency,货币,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Cynicism,犬儒,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Death From Dread,死于恐惧,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Death From Fascination,死于入迷,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Death From Pains,死于剧痛,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Departments,有关部门,机构,true,high,
+Despair,绝望,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Despondency,消沉,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Devotion,虔敬,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Diamantina's Dismay,迪亚曼蒂娜之惶,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Difficult,困难,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Difficulty,难度,检定难度,true,high,本作玩家可见机制总称
+Dignity,尊严,技艺,true,high,j.46 并列机制标签；全族覆盖检查
+diocese,教区,教会辖区,false,high,由主教治理；不要与 parish 混用
+Door-in-the-Eye,瞳中之扉,司辰,true,high,沿用秘史 Wiki 词条标题“瞳中之扉”
+Dread,恐惧,麻烦,true,high,前作 Wiki 既有译名；见 USER_GLOSSARY 考据
+Dripping,汗流浃背,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Drowsiness,困倦,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Easy,简单,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Eccentric,古怪,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Ecdysis Club,蜕衣俱乐部,地点,true,high,沿用《密教模拟器》舞者 DLC 既有简中译名
+Edge,刃,准则,true,high,
+Edge Experiences,刃之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Egg Unhatching,逆孵之卵,司辰,true,high,
+Elegiast,悼歌诗人,司辰,true,high,
+Eloquence,口才,技艺,true,high,j.46 并列机制标签；全族覆盖检查
+encausta terminalia,终刻墨,物品类别,true,high,沿用《司辰之书》既有译名
+Enemy,敌人,势力,true,high,大写本体词；普通 enemy 依语境
+Entwine,缠结,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Ephemeral,易逝,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Exhaustion,精疲力竭,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Exorcist,驱灵师,职业,true,high,j.46 并列机制标签；全族覆盖检查
+Expel,驱逐,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Experience,经历,经历,true,high,本作玩家可见机制总称
+Experiences,经历,经历,true,high,本作玩家可见机制总称；单复数同译
+Failure,失败,检定结果,true,high,j.46 并列机制标签；全族覆盖检查
+Fascination,入迷,麻烦,true,high,前作 Wiki 既有译名；见 USER_GLOSSARY 考据
+Flight,逃亡,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Flint,燧石,司辰,true,high,
+Flowermaker,制花人,司辰,true,high,
+Forge,铸,准则,true,high,
+Forge Experiences,铸之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Forge of Days,白日铸炉,司辰,true,high,
+Formal,正式,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Fracasse's Frailty,弗拉卡斯之弱,征象,true,high,j.46 并列机制标签；全族覆盖检查
+francisque,弗朗西斯克,货币,false,high,法兰西邦国货币与同名斧徽；不得漂移为“法兰西斯克”
+Fraser Strathcoyne,弗雷泽·斯特拉思科因,人物,true,high,沿用《司辰之书》既有译名
+Fresh,清爽,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Fucine,富奇诺语,语言,true,high,沿用前作既有译名
+Gleam,烁,准则,true,medium,复合词须结合新作语境
+Glory,辉光,地点,true,high,仅本体词
+Gods-from-Blood,血源诸神,分类,true,high,
+Gods-from-Flesh,肉源诸神,分类,true,high,
+Gods-from-Light,光源诸神,分类,true,high,
+Gods-from-Nowhere,虚源诸神,分类,true,high,
+Gods-from-Stone,石源诸神,分类,true,high,
+Grail,杯,准则,true,high,
+Grail Experiences,杯之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Great Arts,伟大之术,系统,true,medium,
+Great Inks,伟大墨水,物品类别,true,high,沿用《司辰之书》既有译名；encausta terminalia 为终刻墨
+Guinefort,吉内福尔,圣人,true,high,St Guinefort 的简称
+Hallow,圣化,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Heart,心,准则,true,high,
+Heart Experiences,心之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Heart Relentless,不息之心,司辰称号,true,high,沿用前作既有译名
+Hearth,炉边,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Henad,一者,神学,true,high,普罗克洛斯新柏拉图主义术语 henad/unity；与复数“诸一者”统一
+Henades,诸一者,神学,true,medium,Henad 复数的设定化译名
+Hokobald,霍科博尔德,人物,true,high,沿用《司辰之书》既有译名
+Hollow,空心,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Holy Place,圣地,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Honneur et Humanité,荣誉与人道,格言与服装名,true,high,门槛军团正式格言；脚注首次出现保留法文并附中文
+Honour,荣誉,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Horned Axe,双角斧,司辰,true,medium,旧文本亦见“双角利斧”
+Horomachistry,司辰学,技艺,true,high,
+Hour,司辰,位阶,true,high,仅本体词；普通 hour 另译
+House of the Sun,太阳的居屋,地点,true,high,
+Hush House,噤声居屋,地点,true,high,
+Hushery,静默术,技艺,true,high,
+Icarian,伊加利亚派,思想,true,medium,依语法也可作“伊加利亚主义者”
+Icarianism,伊加利亚主义,思想,true,high,
+Icarians,伊加利亚派,思想,true,medium,依语法也可作“伊加利亚主义者”
+Illopoly,伊利奥波里,人物,true,high,人物姓氏简称
+Illumination,照明术,技艺,true,high,作伟大之术时
+Implausible,难以置信,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Incorporate,集团,势力,true,high,同作 Steam 官方以 Incorporates=集团；需要强调单个神秘法律人格时可作“集团法人”
+Incorporates,集团,势力,true,high,同作 Steam 官方简中定名
+Influence,影响,性相,true,high,前作 Wiki 既有译名；见 USER_GLOSSARY 考据
+Injuries,伤势,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Intercalate,置闰,事件,true,high,
+Invisible Arts,无形之术,系统,true,high,
+Invisible Serapeum,隐形的塞拉皮雍,地点,true,high,沿用《司辰之书》既有译名
+Ithastry,盗火术,技艺,true,high,
+Janvier,让维耶,人物,true,high,老裁缝及其家族姓氏；Janviers 作“让维耶一家”
+Jaume,豪梅,人物,true,high,加泰罗尼亚语／奥克语人名；按 [ˈd͡ʒaw.me] 及中文常见音译，不与西班牙语 Jaime“海梅”混同
+Julian Coseley,朱利安·科赛利,人物,true,high,
+Knock,启,准则,true,high,
+Knock Experiences,启之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Know,通晓者,位阶,true,high,仅本体词
+Languor,倦怠,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Lantern,灯,准则,true,high,
+Lantern Experiences,灯之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Light,轻薄,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Linou,莉努,人物,true,high,跨批统一
+Lionsmith,狮子匠,司辰,true,high,
+Long,长生者,位阶,true,high,不可与 immortal 混同
+Lore,密传,系统,true,high,
+Louche,放荡,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Luxury,奢侈品,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Légion,军团,组织,true,high,Légion du Seuil 的简称；不可误作现实中的法国外籍军团
+Légion du Seuil,门槛军团,组织,true,high,斯宾塞与文森特服役过的秘史组织
+Madrugad,昕旦,司辰,true,high,
+Mandate,敕令,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Mansus,漫宿,地点,true,high,
+Martial,军旅,性相,true,high,j.46 并列机制标签；全族覆盖检查
+mascs,巫师,异文称谓,true,high,奥克语 masc 的复数
+Memories,记忆,机制,true,high,同作 Steam 官方简中定名
+Memory,记忆,机制,true,high,前作 Wiki 既有译名；见 USER_GLOSSARY 考据
+Meninger,梅宁格,专名,true,high,源文单 n 异写
+Meninger Foundation,梅宁格基金会,机构,true,high,按 Menninger Foundation 同译
+Meniscate,弧月,司辰,true,high,
+Menninger,梅宁格,专名,true,high,与梅宁格基金会一致
+Menninger Foundation,梅宁格基金会,机构,true,high,现实中的精神医学基金会；源文偶见 Meninger 拼写
+Metaphraste's Malady,梅塔弗拉斯特之疾,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Mezzetin's Misery,梅泽坦之苦,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Moderate,中等,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Modern,现代,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Moon,月,准则,true,high,
+Moth,蛾,准则,true,high,
+Moth Experiences,蛾之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Mother of Ants,蚁母,司辰,true,high,
+My Past,我的过往,界面标题,true,high,回忆条目统一标题；不可与“我的过去”混用
+Mythic,神话级,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Name,具名者,位阶,true,high,仅本体词；普通 name 另译
+Necessity,必然,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Nectar,蜜,准则,true,high,
+Night Art,夜之技艺,技艺,true,high,
+Night Arts,夜之技艺,技艺,true,high,
+Nina Lagasse,宁娜·拉格斯,人物,true,high,沿用《司辰之书》中文维基及秘史维基通行译名；别称宁娜伽勒、女巫宁、拉格什女巫
+Nowhere,虚界,地点,true,high,仅本体词
+Nyctodromy,夜游术,系统,true,high,
+Obliviates,忘却会,组织,true,high,沿用《司辰之书》既有译名
+Obscure,晦涩,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Observation,观察力,技艺,true,high,j.46 并列机制标签；全族覆盖检查
+Oddment,零碎物件,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Office of Onteiric Coordination,本体梦理协调办公室,机构,true,medium,简称 OOC
+onteiric,本体梦理,神学,true,medium,依语法可作“本体梦理的”或“本体梦理层面的”
+Onteiric Coordination,本体梦理协调,机构,true,medium,美国秘密机关的职能名
+onteiriologically,本体梦理,神学,true,medium,副词
+onteiristically,本体梦理,神学,true,medium,源文异体副词
+onteirological,本体梦理,神学,true,medium,依语法作形容词
+Onteirology,本体梦理学,神学,true,medium,本体论 ontology 与梦理学 oneirology 的设定混成词；保留双重词根
+Ordination,领受圣职,神学行为,true,high,不是机构名；依句法可译“授予圣职”
+Ordo Limiae,利米亚教团,组织,true,high,沿用《司辰之书》既有译名
+Pain,痛苦,麻烦,true,high,本作玩家可见机制总称
+parish,堂区,教会辖区,false,high,与 diocese“教区”区分
+parish priest,本堂神父,教会职分,false,high,主持具体堂区的神父
+Passion,心念,机制,true,high,同作 Steam 官方简中定名；普通 passion 仍依语境
+Passions,心念,机制,true,high,同作 Steam 官方简中定名
+Perishable,易腐,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Perspiring,微微冒汗,状态,true,high,j.46 并列机制标签；全族覆盖检查
+phost,明识,魂质,false,high,沿用《司辰之书》九大魂质的既有译名
+Physician,医师,职业,true,high,前作 Wiki 既有译名；见 USER_GLOSSARY 考据
+Pierrot's Pang,皮埃罗之痛,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Polchinelle's Misfortune,波尔希内尔之厄,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Possibilities,可能性,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Practicality,务实,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Preservation,保存术,技艺,true,high,作伟大之术时
+Principle,准则,系统,true,high,不可与 Aspect 混用
+Pursuit,追捕,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Quell,平息,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Quicken,催活,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Quiet Place,静谧之地,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Raffish,不羁,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Raveline,拉维林,专名,true,high,沿用《密教模拟器》Exile DLC 既有译名；地点、血脉与家族词根一致
+Ravelines,拉维林一族,专名,true,high,明确复数族称时
+Received Version,通行版,版本名,true,high,沿用《司辰之书》“通行版《骄阳之书》”
+Red Grail,赤杯,司辰,true,high,
+Refinement,精致,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Remedy,疗法,性相,true,high,j.46 并列机制标签；全族覆盖检查
+remortal,返凡者,位阶,false,medium,新作词；逐条结合语境
+Respectable,体面,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Rose,引,准则,true,high,
+Rose Experiences,引之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Rumour,传闻,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Salve,药膏,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Sanctioned Version,核准版,版本名,true,high,沿用《司辰之书》“核准版《骄阳之书》”
+Savagely Difficult,难如登天,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Scale,鳞,准则,true,high,
+Scapin's Sickness,斯卡潘之疾,征象,true,high,j.46 并列机制标签；全族覆盖检查
+Scarred,伤痕累累,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Secret Histories,秘史,世界观,true,high,依语法也可作“秘史世界”
+Seira,序链,神学,true,high,希腊语 σειρά（序列／链）；普罗克洛斯新柏拉图主义中贯穿一者与各层存在
+seirai,诸序链,神学,true,high,Seira 复数；与同作中文 Wiki“序链”一致
+Serena,瑟雷娜,人物,true,high,人物名简称
+Serena Blackwood,瑟雷娜·布莱克伍德,人物,true,high,沿用《司辰之书》既有译名
+Sereno Blackwood,瑟雷诺·布莱克伍德,人物,true,high,与 Serena 保持同一音译词根
+Shadow,阴影,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Shadowed Place,暗影之地,场所,true,high,j.46 并列机制标签；全族覆盖检查
+shapt,铭晓,魂质,false,high,沿用《司辰之书》九大魂质的既有译名
+Sharp,锐利,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Shepherd Illuminate,沐光明的牧羊人,称号,true,high,无连字符异体
+Shepherd-Illuminate,沐光明的牧羊人,称号,true,high,沿用《司辰之书》置闰相关文本既有译名
+Shivering,瑟瑟发抖,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Sign,征象,机制,true,high,同作 Steam 官方简中定名；普通 sign 仍依语境
+signaire,西涅尔,设定称谓,false,high,泽莉娅支线借用法语 signaire 的施术者称谓；按 /si.ɲɛʁ/ 统一音译
+Signs,征象,机制,true,high,同作 Steam 官方简中定名
+Sinombre,西农布尔,人物,true,high,Dr J. N. Sinombre；跨批统一
+Sister-and-Witch,双生巫女,司辰,true,high,不可与 Witch-and-Sister 合并
+Sisterhood of the Triple Knot,三重绳结姐妹会,组织,true,high,沿用《司辰之书》既有译名
+Skill,技艺,机制,true,high,项目编辑裁决；Steam 简介作“技能”，游戏内为延续前作语体统一作“技艺”
+Skills,技艺,机制,true,high,项目编辑裁决；不得由官方术语批处理改回“技能”
+Skolekosophy,蠕虫学,技艺,true,high,
+Sky,穹,准则,true,high,
+Snug,暖适,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Sophistication,修养,技艺,true,high,同作 Steam 官方简中定名
+Sorrow,哀伤,心念,true,high,j.46 并列机制标签；全族覆盖检查
+Spivvery,钻营,技艺,true,high,同作 Steam 官方简中定名
+St Agnes,圣亚割妮,圣人,true,high,沿用《密教模拟器》既有译名
+St Guinefort,圣吉内福尔,圣人,true,high,法国民间圣犬；同一故事内 Guinefort 统一作“吉内福尔”
+St Melancthe,圣梅兰瑟,圣人,true,high,沿用《司辰之书》既有译名
+St Reparata,圣雷帕拉塔,圣人,true,high,昂蒂布圣迹线的女性圣者；通称 the saint 统一作“圣人”
+Stag Door,牡鹿之门,地点,true,high,
+Stage Magician,魔术师,职业,true,high,j.46 并列机制标签；全族覆盖检查
+Stagecraft,舞台技艺,技艺,true,high,j.46 并列机制标签；全族覆盖检查
+State,邦国,势力,true,medium,脚注专指法兰西邦国；普通 state 依语境
+Strathcoyne,斯特拉思科因,人物,true,high,人物姓氏简称
+Success,成功,检定结果,true,high,j.46 并列机制标签；全族覆盖检查
+Sun-in-Rags,残阳,司辰,true,high,
+Sun-in-Splendour,骄阳,司辰,true,high,
+Suppression Bureau,防剿局,机构,true,high,
+Surveillance,监视,状态,true,high,j.46 并列机制标签；全族覆盖检查
+The Chandler,制烛人,司辰称号,true,high,沿用《司辰之书》《制烛人之愿》既有译名
+the Group,集团,势力,true,medium,旧候选称谓；本地 Demo 未见，勿替代英文原文中的 Incorporates
+the Ministries,部委,势力,true,high,同作 Steam 官方简中定名；苏联阵营整体仍用“部委”
+The Pilgrim Rose,《朝圣者玫瑰》,作品,true,high,书名
+the Union,联盟,势力,true,low,旧候选称谓；本地 Demo 未见，勿替代英文原文中的 Ministries
+The Watchman,守夜人,司辰,true,high,
+Threshold,门槛,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Thunderskin,轰雷之皮,司辰,true,high,
+Tide,浪潮,司辰,true,high,
+trabai,特拉拜,设定称谓,false,high,泽莉娅支线借用奥克语/利穆赞方言 trabai（活儿、差事）的称谓；保留异语感并统一音译
+Trace,痕迹,麻烦,true,high,前作 Wiki 既有译名；见 USER_GLOSSARY 考据
+Traces,痕迹,麻烦,true,high,前作 Wiki 既有译名；单复数同译
+Travelling at Night,《夜游漫记》,作品名,true,high,沿用《司辰之书》既有书名
+Trespass,擅闯,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Trinket,小饰物,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Trivial,微不足道,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Trouble,麻烦,机制,true,medium,可累积的负面状态
+Troubles,麻烦,机制,true,medium,复数不另造词
+Trygikon,三角灵,物品,false,high,沿同作中文维基《三角灵和诳语缠结》既有译名；大小写同译
+Twinges,刺痛,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Uncounted,失数者,位阶,true,high,本作新词：大战后不再被计入正典的司辰；名词形失数者，谓语形失数；释义页全称"失去在册之数"
+Underplace,下层,地点,true,medium,
+Unease,不安,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Unfair,不公平,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Unveil,揭幕,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Uzult,珀金,物品,true,high,沿用《司辰之书》终刻墨既有译名
+uzult,珀金,物品,true,high,小写异体
+Vagabond,浪游旅人,司辰,true,high,
+Velvet,丝毧,司辰,true,high,
+Venue,场所,场所,true,high,本作玩家可见机制总称
+Venues,场所,场所,true,high,本作玩家可见机制总称；单复数同译
+Verdant Place,葱郁之地,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Very Difficult,非常困难,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+Very Easy,非常简单,检定难度,true,high,j.46 并列机制标签；全族覆盖检查
+viaticum,临终圣体,礼仪,false,high,临终者领受的圣体；避免裸留拉丁文
+Wake,醒时,地点,true,high,仅本体词
+War in the Sun,太阳之战,事件,true,high,同作 Steam 官方简中定名；前作旧称或异名不覆盖本作明确称谓
+War in the World,世界之战,事件,true,high,同作 Steam 官方简中定名
+Warm,温暖,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Wars,诸战,事件,true,high,本作大写复数历史时期；pre-Wars/post-Wars 依句法作“诸战前/诸战之后”
+Weariness,疲惫,麻烦,true,high,本作玩家可见机制总称
+Weariness Collapse,疲惫崩溃,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Well-Groomed,仪容整洁,状态,true,high,j.46 并列机制标签；全族覆盖检查
+Wheel,转轮,司辰,true,high,
+Whimsy,奇想,心念,true,high,j.46 并列机制标签；全族覆盖检查
+White Door,纯白之门,地点,true,high,
+Winter,冬,准则,true,high,
+Winter Experiences,冬之经历,经历,true,high,j.46 并列机制标签；全族覆盖检查
+Witch-and-Sister,双生女巫,司辰,true,high,不可与 Sister-and-Witch 合并
+Wither,凋萎,性相,true,high,j.46 并列机制标签；全族覆盖检查
+Wolf Divided,裂分之狼,司辰,true,high,
+Wood,林地,地点,true,high,仅本体词
+Worldly Skill,世俗技艺,机制,true,high,本作技艺分支；不设三字硬指标
+Wounded Place,受创之地,场所,true,high,j.46 并列机制标签；全族覆盖检查
+Writer,作家,职业,true,high,j.46 并列机制标签；全族覆盖检查
+
+Carcass Spark,尸骸火花,物品,true,high,前作《密教模拟器》本机 loc_zh-hans 定名
+Kerisham,凯尔伊苏姆,地点,true,high,前作《司辰之书》本机 loc_zh-hans 定名
+Leathy,遗忘之水,物品,true,high,前作《司辰之书》本机 loc_zh-hans 定名；不可译作“革质”
+Numa,闰时,时节,true,high,前作《司辰之书》本机 loc_zh-hans 定名
+Season,时节,系统,true,high,前作《司辰之书》本机 loc_zh-hans 定名
+The Chandler's Tale,制烛人的传说,作品名,true,high,前作《司辰之书》本机 loc_zh-hans 定名
+The Roost,栖木,地点,true,high,前作《司辰之书》本机 loc_zh-hans 定名
+Zachary,扎迦利,人物,true,high,前作《密教模拟器》《司辰之书》本机 loc_zh-hans 定名
+
+Reinhardt,莱因哈特,人物,true,high,爵士吉他手 Django Reinhardt；通译莱因哈特
+Roulotte,鲁洛特,地点,true,high,巴黎俱乐部；统一音译鲁洛特
+Adept,修习者,人物,true,medium,润色期统一（语料 22:1 事实标准）；泛指秘术修行者，与 Know/Long 等具体位阶区分
+Adepts,修习者,人物,true,medium,复数同译
+petitioner,祈告者,称谓,true,medium,西农布尔对玩家的固定称呼；统一求告者/请愿者异译
+scrine,龛壳,设定物,false,high,灵体寄居显现的媒介；英语 scrine 为 shrine 异体（圣物龛），译“龛壳”兼取龛位与寄壳二义
+scrineway,龛路,设定物,false,high,与 scrine 同源的通道概念；“龛壳/龛路”构词一致
+Labrikon,拉布里孔,物品,false,high,本作虚构的入梦制剂，无设定词源，音译
+spintria,春宫币,物品,false,high,古罗马春宫代币 spintriae 的通用解说性译名；本作沿用为秘术货币
+dolya,多利亚券,货币,false,high,部委阵营准奇迹汇票，以生产劳动计价；音译多利亚+“券”明其票据物类（原拼写异体 doli 同译）
+retenebration,复晦礼,设定程序,false,medium,教会虚构程序：re-+tenebrae（黑暗），神父还俗归于幽暗；以“复晦”对译并加“礼”明其仪式性
+fulgent,辉耀者,位阶,false,medium,本作对灯之长生者一类存在的称呼；fulgent=光辉的，译“辉耀者”与位阶体系并列

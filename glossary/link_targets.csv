@@ -1,0 +1,94 @@
+source_en,target_zh,confidence,notes
+Allies,盟军,high,大写阵营词
+Amiral,海军上将,medium,Darlan 的法语别称
+Arts Unconsidered,未拾技艺,high,新作技艺分类
+Aspect,性相,high,机制术语
+Aspects,性相,high,机制术语复数不另造词
+Aspect Pool,性相池,high,机制术语
+Bright Art,光之技艺,high,别名
+Bright Arts,光之技艺,high,技艺分类
+Carapace Cross,介壳种,high,前作既有术语
+Cross,介壳种,high,Carapace Cross 的简称
+currency,货币,high,机制通用词
+Corona,冕,high,新作准则
+Ecdysis Club,蜕衣俱乐部,high,前作舞者 DLC 既有译名
+Enemy,敌人,high,大写阵营词
+Forge,铸,high,准则
+Forge of Days,白日铸炉,high,司辰
+francisque,弗朗西斯克,medium,法兰西邦国货币名
+Gladwyn Lake,格拉德温湖,medium,地点
+Gleam,烁,high,新作准则
+Glory,辉光,high,设定术语
+Henad,一者,high,普罗克洛斯新柏拉图主义术语 henad/unity
+Henades,诸一者,medium,Henad 复数的设定化译名
+Histories,诸史,high,大写设定词
+histories,诸史,high,本链接仍指多重诸史
+History,历史,high,依此脚注的单数标签
+Horae,司辰,high,Hour 的拉丁语别名并保留双关
+Hour,司辰,high,位阶
+Hours,司辰,high,位阶复数
+Hush House,噤声居屋,high,地点
+Illopoly,伊利奥波里,high,前作既有人物姓氏简称
+Icarian,伊加利亚派,high,阵营与思想
+Icarians,伊加利亚派,high,阵营与思想
+Icarianism,伊加利亚主义,high,思想
+Incorporate,集团,high,同作 Steam 官方用语；单体语境可解释为集团法人
+Incorporates,集团,high,同作 Steam 官方简中定名
+Influences,影响,high,机制分类
+invisible bag,隐形袋,medium,随机机制的冷幽默脚注
+Ivory Dove,象牙鸽,medium,悼歌诗人的别称
+Know,通晓者,high,位阶
+Lantern,灯,high,准则
+lark,云雀,medium,Lark 脚注的小写链接
+Lark,云雀,medium,禽形者名号
+little joys of night,夜中微小的欢愉,medium,Worm 的诗性别称
+long,长生者,high,Long 的小写链接
+Long,长生者,high,位阶
+Légion,军团,high,Légion du Seuil 的简称
+Légion du Seuil,门槛军团,high,组织
+Mansus,漫宿,high,地点
+Ministries,部委,high,同作 Steam 官方简中定名
+Name,具名者,high,位阶
+Names,具名者,high,位阶复数
+Night Art,夜之技艺,high,别名
+Night Arts,夜之技艺,high,技艺分类
+Nowhere,虚界,high,地点
+Nyctodromy,夜游术,high,伟大之术
+OOC,本体梦理协调办公室,medium,Office of Onteiric Coordination 的缩写链接
+Passion,心念,high,同作 Steam 官方简中定名
+Passions,心念,high,同作 Steam 官方简中定名
+pilgrim,朝圣者,high,Pilgrim 的小写链接
+Pilgrims,朝圣者,high,浪游旅人相关位阶
+Principle,准则,high,设定术语
+Principles,准则,high,设定术语复数
+remortals,返凡者,high,位阶
+Republic,共和国,high,French Republic 的简称
+seirai,诸序链,high,Seira 复数；沿同作中文 Wiki“序链”
+Sign,征象,high,同作 Steam 官方简中定名
+Signs,征象,high,同作 Steam 官方简中定名
+Sister-and-Witch,双生巫女,high,司辰
+Skill,技艺,high,项目编辑裁决；与前作中文语体一致
+Skills,技艺,high,项目编辑裁决；与前作中文语体一致
+Skolekosophy,蠕虫学,high,伟大之术
+Stag Door,牡鹿之门,high,地点
+State,邦国,high,French State 的简称
+Suppression Bureau,防剿局,high,机构
+the Barber's Tower,理发师之塔,medium,噤声居屋旧塔名
+Trace,痕迹,high,机制术语
+Traces,痕迹,high,机制术语复数
+travelling,旅行,high,Travelling 脚注的小写链接
+Trouble,麻烦,medium,机制术语
+Troubles,麻烦,medium,机制术语复数
+Uncounted,失数者,high,位阶与状态
+Vagabond,浪游旅人,high,司辰
+Wake,醒时,high,世界层级
+Watchman,守夜人,high,司辰
+Watchman's Tree,守夜人之树,high,机构与地点
+Witch-and-Sister,双生女巫,high,司辰
+Wolf Divided,裂分之狼,high,司辰
+Wood,林地,high,地点
+Worldly Skill,世俗技艺,high,机制分类
+Worm,蠕虫,high,设定实体
+Worms,蠕虫,high,设定实体复数
+Outfit,装束,high,footnote label；与装束栏 UI 译名一致
+Outfits,装束,high,覆盖默认映射：链接 [[Outfits]] 必须解析到 footnote 装束，默认被 tips 标签“套装”污染

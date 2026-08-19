@@ -1,0 +1,77 @@
+source_en,target_zh,confidence,notes
+Nina in Antibes?,宁娜在昂蒂布？,high,AxisQuality friendlyText；选项前提示标签，未被翻译批次覆盖
+Isnard,伊斯纳尔,high,alias francoisIsnard._lastName；与 François Isnard 既有译名一致
+François,弗朗索瓦,high,alias francoisIsnard._firstName
+Mr Isnard,伊斯纳尔先生,high,alias francoisIsnard._formal
+Monsieur Isnard,伊斯纳尔先生,high,alias francoisIsnard._formalFr
+Herr Isnard,伊斯纳尔先生,high,alias francoisIsnard._formalDe
+Comrade Isnard,伊斯纳尔同志,high,alias francoisIsnard._formalSov
+Jean,让,high,alias jeanDupont._firstName；与 Jean Dupont 既有译名一致
+Dupont,杜邦,high,alias jeanDupont._lastName
+Mr Dupont,杜邦先生,high,alias jeanDupont._formal
+Monsieur Dupont,杜邦先生,high,alias jeanDupont._formalFr
+Herr Dupont,杜邦先生,high,alias jeanDupont._formalDe
+Comrade Dupont,杜邦同志,high,alias jeanDupont._formalSov
+Midnight,午夜,high,alias midnightJoe._lastName；与 Midnight Joe 既有译名一致
+Joe,乔,high,alias midnightJoe._firstName
+Midsy,小午夜,medium,alias midnightJoe._familiar；Midnight 的昵称，无既有用例
+Mr Midnight,午夜先生,high,alias midnightJoe._formal
+Monsieur Minuit,午夜先生,high,alias midnightJoe._formalFr；Minuit 即法语“午夜”
+Herr Mitternacht,午夜先生,high,alias midnightJoe._formalDe；Mitternacht 即德语“午夜”
+Comrade Polnutch,午夜同志,medium,alias midnightJoe._formalSov；Polnutch 为仿俄语“午夜”
+Spencer,斯宾塞,high,alias spencerHobson._firstName；既有大量用例
+Spence,斯宾塞,high,alias spencerHobson._familiar
+Hobson,霍布森,high,alias spencerHobson._lastName；既有“霍布森先生”用例
+Mr Hobson,霍布森先生,high,alias spencerHobson._formal
+Monsieur Hobson,霍布森先生,high,alias spencerHobson._formalFr
+Herr Hobson,霍布森先生,high,alias spencerHobson._formalDe
+Comrade Hobson,霍布森同志,high,alias spencerHobson._formalSov
+Sylvain,西尔万,high,alias sylvainHuissier._firstName；既有用例
+Sil,西尔,medium,alias sylvainHuissier._familiar；Sylvain 的昵称
+Mr Huissier,于西耶先生,high,alias sylvainHuissier._formal
+Monsieur Huissier,于西耶先生,high,alias sylvainHuissier._formalFr
+Herr Huissier,于西耶先生,high,alias sylvainHuissier._formalDe
+Comrade Huissier,于西耶同志,high,alias sylvainHuissier._formalSov
+sir,先生,high,alias notIntroduced 各字段
+my friend,朋友,high,alias notIntroduced._familiar
+Mr,先生,high,alias._title
+Monsieur,先生,high,alias._titleFr / notIntroduced._formalFr
+Herr,先生,high,alias._titleDe
+Mein Herr,先生,high,alias notIntroduced._formalDe
+Comrade,同志,high,alias._titleSov / notIntroduced._formalSov
+a conjurer,一名魔术师,high,Career._introLabel；与角色创建既有译名一致
+an exorcist,一名驱灵师,high,Career._introLabel；与既有 m_text 译名一致
+a physician,一名医生,high,Career._introLabel；与角色创建按钮译名一致
+a writer,一名作家,high,Career._introLabel；与角色创建按钮译名一致
+"Above All, a Conjurer",首先是一名魔术师,medium,AxisQuality friendlyText；对应角色创建“我首先仍是……”
+"Above All, a Priest",首先是一名神父,medium,AxisQuality friendlyText
+"Above All, a Physician",首先是一名医生,medium,AxisQuality friendlyText；按角色创建按钮用“医生”
+"Above All, a Writer",首先是一名作家,medium,AxisQuality friendlyText
+No Alarm Set,未设闹钟,high,AxisQuality friendlyText；闹钟机制与对话译名一致
+Alarm Set,已设闹钟,high,AxisQuality friendlyText
+Will Wake,将会醒来,high,AxisQuality friendlyText；闹钟半夜唤醒机制
+Brancrug,布兰库格,high,Destination._mapLabel；与 footnote 既有译名一致
+Emptiness,空虚,high,ScriptablesCurator.emptinessPassionsLabel；与心念描述“空虚原就是用来填满的”一致
+"If Nina has an opinion, she keeps it to herself.",宁娜若有想法，也只藏在心里。,high,RelationshipQuality._overrideJournalDescription
+Patience defeats strength; winter waits.,耐心胜过力量；冬自会等待。,high,Recipe._advice；冬=准则
+"What is shaped, may be shattered, especially where battle has branded the skin of the world.",被塑造之物，也可能被粉碎——尤其在战火给世界之肤烙下印记之处。,high,Recipe._advice；铸相关仪式
+"If Grail is oldest, Moth is older.",若说杯最古老，蛾还要更古老。,high,Recipe._advice；杯/蛾=准则
+"What moves, hungers.",会动之物，皆感饥饿。,high,Recipe._advice
+Pragmatism collapses abstraction.,务实使抽象崩塌。,high,Recipe._advice
+"The Glory is a question, and the Moth always answers, Yes.",辉光是一个问题，而蛾总是回答：是。,high,Recipe._advice；辉光=设定术语
+The compass rose faces every direction from the circle's edge. Rose goes anywhere.,罗盘玫瑰自圆缘指向每一方。引，无往不至。,high,Recipe._advice；Rose=引准则，罗盘玫瑰双关
+"First winter, then spring.",先历冬，后有春。,high,Recipe._advice
+"When we open a thing, then we learn its nature. but its nature changes. Knock is the wound at the centre",当我们打开一物，便知晓其本性。但其本性已然改变。启，是正中的伤口。,high,Recipe._advice；启=准则；原文 but 小写照旧
+Hidden things might be revealed by the Eye. Dark things might be discouraged.,隐藏之物或可借眼揭示；黑暗之物或可令其退散。,high,Recipe._advice
+"Use to reduce a Menace, and usually receive a small random additional benefit.",用于降低一项威胁，通常还会获得一份随机的小额额外收益。,high,Recipe._advice；Menace=威胁
+"Use to reduce a Menace, and usually receive a small random additional benefit. Riskier rites like this one also increase a different Menace.",用于降低一项威胁，通常还会获得一份随机的小额额外收益。此类更危险的仪式还会提升另一项威胁。,high,Recipe._advice；含尾随空格变体由烘焙器 trim 匹配
+Spencer's slept overnight. Safe as long as he moves on the next day.,斯宾塞睡了一晚。只要第二天动身离开，便无大碍。,high,VariableQuality ChangeMessage；Trace=痕迹
+Spencer's spent his second night in one place. He's gained a Trace.,斯宾塞在同一处过了第二晚。他获得了一条痕迹。,high,VariableQuality ChangeMessage
+Spencer's spent his third night in one place. He's gained two Traces. Time to go.,斯宾塞在同一处过了第三晚。他获得了两条痕迹。该走了。,high,VariableQuality ChangeMessage
+Spencer's spent his fourth night in one place. Three Traces. Better move on.,斯宾塞在同一处过了第四晚。三条痕迹。最好动身了。,high,VariableQuality ChangeMessage
+Spencer's spent his fifth night in one place. Four Traces. Not good.,斯宾塞在同一处过了第五晚。四条痕迹。情况不妙。,high,VariableQuality ChangeMessage
+Spencer's spent his sixth night in one place. Five Traces. Perhaps he's given up.,斯宾塞在同一处过了第六晚。五条痕迹。也许他已经放弃了。,high,VariableQuality ChangeMessage
+Spencer's spent a whole week in one place. Seven Traces. Asking for trouble.,斯宾塞在同一处待了整整一周。七条痕迹。这是在自找麻烦。,high,VariableQuality ChangeMessage
+Spencer's spent more than a week in one place. This had better be part of a terribly clever plan.,斯宾塞已经在同一处待了一周有余。这最好是某项绝妙计划的一环。,high,VariableQuality ChangeMessage；与目录 TAN-F67630D4BFC0 既有译法保持一致
+"I could use some time with a comb and a razor, if I want to look my best.",要想仪表体面，我得花点时间用梳子和剃刀收拾一下。,high,VariableQuality ChangeMessage；梳洗机制
+"I've smartened up, and I'm ready for the day.",我收拾整齐了，准备好迎接新的一天。,high,VariableQuality ChangeMessage

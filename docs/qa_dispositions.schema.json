@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/travelling-at-night/qa-dispositions.schema.json",
+  "title": "Travelling at Night QA dispositions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "dispositions"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "dispositions": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/disposition"}
+    }
+  },
+  "$defs": {
+    "disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_key",
+        "observation_sha256",
+        "decision",
+        "category",
+        "reason",
+        "evidence",
+        "reviewer",
+        "reviewed_at",
+        "game_build"
+      ],
+      "properties": {
+        "finding_key": {"type": "string", "minLength": 1},
+        "observation_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "decision": {
+          "enum": [
+            "accepted_expected",
+            "false_positive",
+            "covered_elsewhere",
+            "pending_fix",
+            "block"
+          ]
+        },
+        "category": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": ["string", "object"], "minLength": 1}
+        },
+        "reviewer": {"type": "string", "minLength": 1},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "game_build": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

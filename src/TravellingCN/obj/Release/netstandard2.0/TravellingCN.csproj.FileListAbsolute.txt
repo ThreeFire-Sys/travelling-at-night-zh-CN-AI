@@ -1,0 +1,5 @@
+D:\traveling_at_night\src\TravellingCN\obj\Release\netstandard2.0\TravellingCN.csproj.AssemblyReference.cache
+D:\traveling_at_night\src\TravellingCN\obj\Release\netstandard2.0\TravellingCN.GeneratedMSBuildEditorConfig.editorconfig
+D:\traveling_at_night\src\TravellingCN\obj\Release\netstandard2.0\TravellingCN.AssemblyInfoInputs.cache
+D:\traveling_at_night\src\TravellingCN\obj\Release\netstandard2.0\TravellingCN.AssemblyInfo.cs
+D:\traveling_at_night\src\TravellingCN\obj\Release\netstandard2.0\TravellingCN.csproj.CoreCompileInputs.cache

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+build/
+dist/
+tools/bin/
+tools/obj/
