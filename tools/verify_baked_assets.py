@@ -46,6 +46,7 @@ def main() -> int:
     data_dir = find_data_dir(game_root)
 
     sites: dict[tuple[str, int, str], str] = {}
+    object_scripts: dict[tuple[str, int], str] = {}
     label_sites: list[tuple[str, int, str, str]] = []
     with args.catalog.open(encoding="utf-8") as handle:
         for line in handle:
@@ -58,6 +59,8 @@ def main() -> int:
             for context in entry.get("contexts") or []:
                 site = (context["asset_file"], context["path_id"], context["field_path"])
                 sites[site] = translation
+                object_scripts.setdefault(
+                    (context["asset_file"], context["path_id"]), context.get("script", ""))
                 if context["field_path"].endswith(("label", "Label")):
                     label_sites.append((*site, context.get("source", entry["source"])))
 
@@ -92,6 +95,23 @@ def main() -> int:
     failures: list[str] = []
     checked = 0
     alt_checked = 0
+
+    # 与烘焙一致的路由：TypeTreeGenerator 对这四类布局建模有误且不抛异常，
+    # 按目录登记的脚本类名直接走原始布局读取。
+    RAW_CLASSES = ("Footnote", "Aspect", "RelationshipQuality", "MusicTrackLibrary")
+
+    def read_object(obj, asset_file, path_id):
+        script_class = object_scripts.get((asset_file, path_id), "")
+        short_class = script_class.split(",", 1)[0].rsplit(".", 1)[-1]
+        if short_class in RAW_CLASSES:
+            tree, _, _ = read_raw_with_offset(obj)
+            return tree
+        try:
+            return obj.read_typetree()
+        except Exception:
+            tree, _, _ = read_raw_with_offset(obj)
+            return tree
+
     for (asset_file, path_id), fields in sorted(by_object.items()):
         serialized = file_by_name.get(asset_file)
         obj = serialized.objects.get(path_id) if serialized is not None else None
@@ -99,13 +119,10 @@ def main() -> int:
             failures.append(f"{asset_file}:{path_id} object missing")
             continue
         try:
-            tree = obj.read_typetree()
-        except Exception:
-            try:
-                tree, _, _ = read_raw_with_offset(obj)
-            except Exception as exc:
-                failures.append(f"{asset_file}:{path_id} unreadable: {exc}")
-                continue
+            tree = read_object(obj, asset_file, path_id)
+        except Exception as exc:
+            failures.append(f"{asset_file}:{path_id} unreadable: {exc}")
+            continue
         for field_path, translation in fields:
             try:
                 current = navigate(tree, field_path)
@@ -124,12 +141,9 @@ def main() -> int:
         if obj is None:
             continue
         try:
-            tree = obj.read_typetree()
+            tree = read_object(obj, asset_file, path_id)
         except Exception:
-            try:
-                tree, _, _ = read_raw_with_offset(obj)
-            except Exception:
-                continue
+            continue
         alternatives = tree.get("alternativeLabels") or tree.get("_alternativeLabels")
         if isinstance(alternatives, list):
             current = None

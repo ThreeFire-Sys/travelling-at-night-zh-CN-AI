@@ -579,3 +579,12 @@
 - 修复：交换前按文本所在表面解析剥除行为（父链反射找 _respectFootnoteSubtlety；TravellingSubtitlePanel 直接读配置；其余表面不剥），经 _hideVisitedForCurrentSwap 传给 SettleLinks；浮签组合路径显式 false。配置关闭时一律不剥。
 - 链路：build 0/0 → slim 119 → 打包 → 装卸 → 46/46 → zip 校验 ok。dist/Release 更新为 v2.2.14。
 - 待用户验收：弹窗里已读词条（淡色）F9 来回后仍淡色可点；对话历史在"含蓄"下已读链接仍剥除（与原版一致）。
+
+## 68. 2026-08-19 v2.2.15：脚注 alternativeLabels 静默失效根治（青色失效链接 + 悬空空 tooltip 同根因）
+
+- 用户实测：日志/背包界面"太阳的居屋"显示为青色（失效链接色），悬停 tooltip 正文为空；英文模式正常。根因：该条文本的链接是作者手写死的 `<link="Mansus">太阳的居屋</link>`（id 为英文标签），解析依赖 alternativeLabels 里的英文别名（MatchFromAlternate），而漫宿/通晓者/失数者等脚注的 alternativeLabels 全空。
+- 根因（烘焙器）：TypeTreeGenerator 对 Footnote 布局建模有误但 **read_typetree 不抛异常**——alternativeLabels 被读成字符串，于是烘焙走 typetree 路径、别名推送因"不是 list"静默跳过，回写丢列表；verify 的 alternativeLabels 校验同样静默跳过，故历代 verify 全绿。v2.0 时代注释声称"typetree 读会失败才走 raw"的假设在 1.25 已不成立。
+- 修复：烘焙与 verify 都改为按目录登记的脚本类名直接路由原始布局（Footnote/Aspect/RelationshipQuality/MusicTrackLibrary），不再依赖异常。烘焙后 alternative_labels_added 373（此前 78），链接别名 70；verify 9038/9038 且 alternativeLabels 校验真正生效。字节实证：漫宿 alt=['Above','Below','Beyond','Mansus','漫宿']，通晓者/失数者同理。
+- 附加收益：这同时修复所有作者手写 <link="英文"> 文本的悬停（之前会弹空窗口）；日志中"字典键冲突跳过 N 条"值得关注是否因此减少。
+- 链路：卸载 → 烘焙 0 漂移 → verify → 打包 2.2.15 → 安装 46/46 → zip 校验 ok。
+- 待用户验收：日志/背包界面"太阳的居屋"应为正常链接色、悬停有内容；中英模式一致。

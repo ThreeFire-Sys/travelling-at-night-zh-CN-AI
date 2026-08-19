@@ -410,6 +410,7 @@ def main() -> int:
     # site -> desired translation, and the expected current (English) value.
     site_translation: dict[tuple[str, int, str], str] = {}
     site_source: dict[tuple[str, int, str], str] = {}
+    object_scripts: dict[tuple[str, int], str] = {}  # 对象 -> 脚本类全名（原始布局路由用）
     skill_label_map: dict[str, str] = {}  # 中文技能标签 -> 英文原标签（RawLabel 用）
     conflicts: list[str] = []
     with args.catalog.open(encoding="utf-8") as handle:
@@ -427,6 +428,9 @@ def main() -> int:
                     continue
                 site_translation[site] = translation
                 site_source[site] = context.get("source", entry["source"])
+                object_scripts.setdefault(
+                    (context["asset_file"], context["path_id"]),
+                    context.get("script", ""))
                 if (context["field_path"] == "_label" and
                         context.get("script", "").startswith("Travelling.PCQualities.Skill")):
                     source_text = context.get("source", entry["source"])
@@ -487,6 +491,8 @@ def main() -> int:
                     continue  # 目录条目已覆盖该字段
                 site_translation[site] = target
                 site_source[site] = row["source"]
+                object_scripts.setdefault(
+                    (row["asset_file"], row["path_id"]), row.get("script", ""))
                 needed_files.add(row["asset_file"])
                 supplement_sites += 1
 
@@ -534,16 +540,30 @@ def main() -> int:
             continue
         raw_kind: str | None = None
         raw_tail = b""
-        try:
-            tree = obj.read_typetree()
-        except Exception:
-            # TypeTreeGenerator 1.25 对 Footnote/Aspect/RelationshipQuality/
-            # MusicTrackLibrary 的布局建模有误，走提取器同款的原始布局读写。
+        # TypeTreeGenerator 1.25 对 Footnote/Aspect/RelationshipQuality/
+        # MusicTrackLibrary 的布局建模有误——且 read_typetree 不抛异常（如
+        # Footnote 的 alternativeLabels 被读成字符串），别名推送静默失效、
+        # 回写丢列表（v2.2.15 实测：漫宿/通晓者等脚注 alternativeLabels 全空，
+        # 英文 <link="Mansus"> 悬停显示失效青色）。按目录登记的脚本类名直接
+        # 路由原始布局，不再依赖异常。
+        script_class = object_scripts.get((asset_file, path_id), "")
+        short_class = script_class.split(",", 1)[0].rsplit(".", 1)[-1]
+        if short_class in ("Footnote", "Aspect", "RelationshipQuality", "MusicTrackLibrary"):
             try:
                 tree, raw_kind, raw_tail = read_raw_with_offset(obj)
             except Exception as raw_exc:
                 mismatches.append(f"{asset_file}:{path_id} read failed: {raw_exc}")
                 continue
+        else:
+            try:
+                tree = obj.read_typetree()
+            except Exception:
+                # 提取快照未登记脚本的对象：保持异常回退的原始布局兜底。
+                try:
+                    tree, raw_kind, raw_tail = read_raw_with_offset(obj)
+                except Exception as raw_exc:
+                    mismatches.append(f"{asset_file}:{path_id} read failed: {raw_exc}")
+                    continue
         changed = False
         alt_candidates: list[str] = []
         for field_path, translation in sites:
