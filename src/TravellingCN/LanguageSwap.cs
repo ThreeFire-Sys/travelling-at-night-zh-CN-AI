@@ -1677,8 +1677,12 @@ namespace TravellingCN
 
         private static string SettleLinks(string value, string sourceText, bool? hideVisitedOverride = null)
         {
+            // 需要装饰的两种形态：[[X]] 折叠链接，以及作者手写死的 <link="X">
+            // （后者如"太阳的居屋"——v2.2.16 实测：交换后只剩 <link> 没有颜色
+            // 包装，显示为无样式文本）。原生 ColourizeLinks 两者都处理。
             if (string.IsNullOrEmpty(value) ||
-                value.IndexOf("[[", StringComparison.Ordinal) < 0)
+                (value.IndexOf("[[", StringComparison.Ordinal) < 0 &&
+                 value.IndexOf("<link=", StringComparison.Ordinal) < 0))
             {
                 return value;
             }
