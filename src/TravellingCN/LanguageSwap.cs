@@ -652,12 +652,12 @@ namespace TravellingCN
             }
             if (_zh2en.Exact.TryGetValue(segment, out var exact))
             {
-                return SettleLinks(exact, segment);
+                return SettleLinks(exact, segment, hideVisitedOverride: false);
             }
             if (_zh2en.Squashed.Count > 0 && HasWhitespace(segment) &&
                 _zh2en.Squashed.TryGetValue(SquashWhitespace(segment), out var squashed))
             {
-                return SettleLinks(squashed, segment);
+                return SettleLinks(squashed, segment, hideVisitedOverride: false);
             }
             return segment;
         }
@@ -836,6 +836,9 @@ namespace TravellingCN
                     }
                     if (obj is TMP_Text tmpText)
                     {
+                        // 逐表面对齐"已读链接剥除"（字幕面板读配置；DetailableDisplay
+                        // 系看各自 _respectFootnoteSubtlety；其余表面不剥除）。
+                        _hideVisitedForCurrentSwap = ResolveHideVisitedForSurface(tmpText);
                         SwapDisplayText(map, tmpText.text, value =>
                         {
                             tmpText.text = value;
@@ -854,6 +857,7 @@ namespace TravellingCN
                     else if (obj is UnityEngine.UI.Text uiText)
                     {
                         // 旧式 UI，本游戏可能没有；防御性处理。
+                        _hideVisitedForCurrentSwap = false;
                         SwapDisplayText(map, uiText.text, value => uiText.text = value, counters);
                     }
                 }
@@ -1591,7 +1595,69 @@ namespace TravellingCN
             }
         }
 
-        private static string SettleLinks(string value, string sourceText)
+        // v2.2.13：逐表面对齐"已读链接剥除"。阶段二交换每个显示组件前写入
+        // （交换全在主线程单趟进行，静态字段安全）。默认 false=保持可见。
+        private static bool _hideVisitedForCurrentSwap;
+
+        // 判定一个 TMP 文本所在表面的剥除行为：
+        // - 父链上有 DetailableDisplay 系组件（带 _respectFootnoteSubtlety 字段）
+        //   时，剥除 = 配置开 && 该标志真（脚注弹窗等标志为假，已读链接保持淡色）；
+        // - 字幕面板（TravellingSubtitlePanel）直接读配置；
+        // - 其余表面（浮签、toast 等）不剥除。
+        private static bool ResolveHideVisitedForSurface(TMP_Text tmpText)
+        {
+            try
+            {
+                var subtletyOn = HideVisitedLinksForCurrentConfig();
+                if (!subtletyOn)
+                {
+                    return false;
+                }
+                for (var t = tmpText.transform; t != null; t = t.parent)
+                {
+                    Component[] components;
+                    try
+                    {
+                        components = t.GetComponents<Component>();
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                    foreach (var component in components)
+                    {
+                        if (component == null)
+                        {
+                            continue;
+                        }
+                        var type = component.GetType();
+                        var fullName = type.FullName;
+                        if (!fullName.StartsWith("Travelling", StringComparison.Ordinal))
+                        {
+                            continue;
+                        }
+                        var field = type.GetField(
+                            "_respectFootnoteSubtlety",
+                            BindingFlags.Instance | BindingFlags.NonPublic);
+                        if (field != null && field.FieldType == typeof(bool))
+                        {
+                            return field.GetValue(component) is bool respect && respect;
+                        }
+                        if (type.Name == "TravellingSubtitlePanel")
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // 探测失败按不剥除处理（保持链接可见）。
+            }
+            return false;
+        }
+
+        private static string SettleLinks(string value, string sourceText, bool? hideVisitedOverride = null)
         {
             if (string.IsNullOrEmpty(value) ||
                 value.IndexOf("[[", StringComparison.Ordinal) < 0)
@@ -1600,7 +1666,14 @@ namespace TravellingCN
             }
             try
             {
-                var hideVisited = HideVisitedLinksForCurrentConfig();
+                // "已读链接剥成裸文本"在游戏里是逐表面行为：字幕面板直接读
+                // FootnoteSubtlety 配置；DetailableDisplay 系表面另有各自的
+                // _respectFootnoteSubtlety 标志（脚注弹窗等为 false——已读链接
+                // 保持淡色而非剥除）。交换重装饰必须逐表面对齐：v2.2.9~2.2.12
+                // 全局套配置，把弹窗的淡色链接剥成了裸文本（用户实测）。
+                // 该值由阶段二交换前按表面写入（_hideVisitedForCurrentSwap），
+                // 浮签组合路径（SwapPopupSegment）显式传 false——浮签总显示链接。
+                var hideVisited = hideVisitedOverride ?? _hideVisitedForCurrentSwap;
                 // 不传 CharGenLinkContext.ActivePermit：角色创建的白名单谓词按
                 // 文本标签匹配、标签集按首次求值时的语言缓存，F9 换语言后失配
                 // 会把白名单内链接也剥掉（v2.2.11/2.2.12 实测）；而新鲜显示的
