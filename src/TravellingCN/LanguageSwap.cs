@@ -1601,12 +1601,10 @@ namespace TravellingCN
             try
             {
                 var hideVisited = HideVisitedLinksForCurrentConfig();
-                // 角色创建链接白名单要与原生显示一致地遵守（否则 F9 交换会绕过
-                // 创建界面的 lore 链接过滤）；但原谓词按文本标签匹配、标签集按
-                // 首次求值时的语言缓存——F9 换语言后全部失配，把白名单内的
-                // "准则"也剥成裸文本（v2.2.11 实测）。改用对象引用判定（语言
-                // 无关），详见 GetChargenAwarePermit。
-                var permit = GetChargenAwarePermit();
+                // 不传 CharGenLinkContext.ActivePermit：角色创建的白名单谓词按
+                // 文本标签匹配、标签集按首次求值时的语言缓存，F9 换语言后失配
+                // 会把白名单内链接也剥掉（v2.2.11/2.2.12 实测）；而新鲜显示的
+                // 原生过滤本就生效，交换层无需再叠一层。不干涉原版创建界面设计。
                 string decorated;
                 if (TryExtractLinkColor(sourceText, out var linkColor) &&
                     TryGetDefaultStyleColors(out var viewedColor, out var brokenColor))
@@ -1614,7 +1612,7 @@ namespace TravellingCN
                     decorated =
                         Travelling.Utility.TravellingUtility.ResolveQualityTokensAndColourizeLinks(
                             value, GetCustomLinkStyle(linkColor, viewedColor, brokenColor),
-                            hideVisited, permit);
+                            hideVisited);
                 }
                 else
                 {
@@ -1622,7 +1620,7 @@ namespace TravellingCN
                         Travelling.Utility.TravellingUtility.ResolveQualityTokensAndColourizeLinks(
                             value,
                             Travelling.UI.Info.LinkStyle.Default,
-                            hideVisited, permit);
+                            hideVisited);
                 }
                 if (!string.IsNullOrEmpty(decorated))
                 {
@@ -1639,77 +1637,6 @@ namespace TravellingCN
                 }
             }
             return BracketLinkPattern.Replace(value, match => match.Groups[1].Value);
-        }
-
-        // 角色创建链接白名单（双语兼容）：CharGenLinkWhitelist 持有词条对象
-        // 引用，游戏原生谓词却按"当前语言的标签文本"判定，换语言即失配。
-        // 这里把文本标签经 curator 解析成词条对象（语言无关），再查对象引用集。
-        private static HashSet<UnityEngine.Object> _chargenWhitelistObjects;
-        private static bool _chargenWhitelistSearched;
-
-        private static Predicate<string> GetChargenAwarePermit()
-        {
-            if (Travelling.App.CharGenLinkContext.ActivePermit == null)
-            {
-                return null;
-            }
-            EnsureChargenWhitelist();
-            if (_chargenWhitelistObjects == null)
-            {
-                return Travelling.App.CharGenLinkContext.ActivePermit; // 找不到白名单资产则沿用原生谓词
-            }
-            return label =>
-            {
-                try
-                {
-                    var curator = Travelling.PCQualities.QHelper.GetScriptablesCuratorSafe();
-                    var detailable = curator?.GetDetailedScriptableByLabel(label);
-                    return detailable is UnityEngine.Object obj &&
-                           _chargenWhitelistObjects.Contains(obj);
-                }
-                catch (Exception)
-                {
-                    return true; // 判定失败时不拦截，宁多勿滥
-                }
-            };
-        }
-
-        private static void EnsureChargenWhitelist()
-        {
-            if (_chargenWhitelistSearched)
-            {
-                return;
-            }
-            _chargenWhitelistSearched = true;
-            try
-            {
-                foreach (var asset in Resources.FindObjectsOfTypeAll<ScriptableObject>())
-                {
-                    if (asset == null || asset.GetType().FullName != "Travelling.App.CharGenLinkWhitelist")
-                    {
-                        continue;
-                    }
-                    var field = asset.GetType().GetField(
-                        "_permittedDetailables",
-                        BindingFlags.Instance | BindingFlags.NonPublic);
-                    if (field?.GetValue(asset) is not System.Collections.IList list)
-                    {
-                        continue;
-                    }
-                    _chargenWhitelistObjects = new HashSet<UnityEngine.Object>();
-                    foreach (var item in list)
-                    {
-                        if (item is UnityEngine.Object obj)
-                        {
-                            _chargenWhitelistObjects.Add(obj);
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                // 保持 null，回退原生谓词。
-            }
         }
 
         // 面板自带链接色时的样式实例（缓存复用，主线程逐次改色）。

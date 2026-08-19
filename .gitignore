@@ -4,3 +4,5 @@ build/
 dist/
 tools/bin/
 tools/obj/
+src/**/bin/
+src/**/obj/
