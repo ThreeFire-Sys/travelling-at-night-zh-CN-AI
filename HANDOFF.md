@@ -588,3 +588,11 @@
 - 附加收益：这同时修复所有作者手写 <link="英文"> 文本的悬停（之前会弹空窗口）；日志中"字典键冲突跳过 N 条"值得关注是否因此减少。
 - 链路：卸载 → 烘焙 0 漂移 → verify → 打包 2.2.15 → 安装 46/46 → zip 校验 ok。
 - 待用户验收：日志/背包界面"太阳的居屋"应为正常链接色、悬停有内容；中英模式一致。
+
+## 69. 2026-08-19 v2.2.16：v2.2.15 启动崩溃事故的回退与别名注入改道
+
+- **事故**：v2.2.15 把 Footnote/Aspect/RelationshipQuality/MusicTrackLibrary 强制按脚本类名走原始布局写回，Unity 启动即判定 resources.assets 损坏崩溃（"The file is corrupted"）。静态排查结论：文件头/类型表/未触及对象全部正常，raw 读写 round-trip 逐字节一致——但 raw 写出的内容布局与游戏真实读取器不兼容（typetree 模型把 alternativeLabels 读成字符串这一点本身就说明生成器与真实布局有出入）。**教训：不要为这四类资产写原始布局；该路径只在 v2.0 时代验证过，k6 时代已不适用。**
+- **回退**：烘焙恢复 typetree 优先（v2.2.14 的可启动行为）；已知限制（typetree 把 Footnote.alternativeLabels 读成字符串 → 别名推送静默失效）改由插件**运行时注入**解决：中文模式下为每个 Footnote 把英文原标签加入 alternativeLabels，然后 curator.ForceRefresh 刷新别名缓存；F9 交换后复注入（交换会改写列表内容）。verify 对这四类跳过 alternativeLabels 校验并注明原因。
+- 链路：回退后烘焙 0 漂移（alt 推送回到 78 的 typetree 正常子集）→ 安装 46/46。
+- 待用户验收：①游戏能正常启动（崩溃恢复）②日志/背包界面"太阳的居屋"为正常链接色、悬停有内容。
+- GitHub Release v2.2.15 是坏包（启动崩溃），需要在 GitHub 上删除或标注，避免玩家下载。

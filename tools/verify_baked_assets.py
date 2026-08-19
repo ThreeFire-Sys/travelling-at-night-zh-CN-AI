@@ -145,6 +145,13 @@ def main() -> int:
         except Exception:
             continue
         alternatives = tree.get("alternativeLabels") or tree.get("_alternativeLabels")
+        # Footnote/Aspect/RelationshipQuality/MusicTrackLibrary：typetree 模型把
+        # 别名列读成字符串导致烘焙推送静默失效，而强行原始布局写回会让 Unity
+        # 判定文件损坏（v2.2.15 崩溃事故）——这四类的英文别名改由插件运行时
+        # 注入（InjectAlternativeLabels），此处跳过校验。
+        script_class = object_scripts.get((asset_file, path_id), "")
+        if script_class.split(",", 1)[0].rsplit(".", 1)[-1] in RAW_CLASSES:
+            continue
         if isinstance(alternatives, list):
             current = None
             try:

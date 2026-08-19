@@ -38,7 +38,7 @@ namespace TravellingCN
     {
         public const string PluginGuid = "cn.nyctodromy.travelling.zhcn";
         public const string PluginName = "夜游漫记简体中文补丁";
-        public const string PluginVersion = "2.2.15";
+        public const string PluginVersion = "2.2.16";
 
         private static ManualLogSource Log;
         private static TMP_FontAsset ChineseFont;
@@ -120,6 +120,63 @@ namespace TravellingCN
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             RefreshFonts($"scene:{scene.name}");
+            InjectAlternativeLabels($"scene:{scene.name}");
+        }
+
+        // v2.2.16：作者手写 <link="英文标签"> 的文本（如 <link="Mansus">太阳的居屋</link>）
+        // 在中文界面依赖 alternativeLabels 备用通道解析（MatchFromAlternate）。烘焙器
+        // 对 Footnote 等类型的别名推送因 TypeTreeGenerator 建模坑静默失效（其
+        // alternativeLabels 被读成字符串）；v2.2.15 曾改原始布局写回，Unity 判定
+        // resources.assets 损坏（启动崩溃），已回退。改为运行时注入：中文模式下为每个
+        // 脚注补上英文原标签，注入后刷新 curator 的别名缓存。英文模式标签即英文，
+        // 无需注入。
+        private static bool _altLabelsInjected;
+
+        // 交换后复注入：交换过程会按映射改写 alternativeLabels 列表内容，
+        // 可能把注入的英文别名换掉；每趟交换结束重置标记并在中文态复注入。
+        internal static void RequestAlternativeLabelsInjection()
+        {
+            _altLabelsInjected = false;
+            InjectAlternativeLabels("swap");
+        }
+
+        private static void InjectAlternativeLabels(string reason)
+        {
+            if (_altLabelsInjected || LanguageSwap.IsEnglishMode)
+            {
+                return;
+            }
+            try
+            {
+                var added = 0;
+                foreach (var footnote in Resources.FindObjectsOfTypeAll<Travelling.Infrastructure.Footnotes.Footnote>())
+                {
+                    if (footnote == null || string.IsNullOrEmpty(footnote.label))
+                    {
+                        continue;
+                    }
+                    if (!LanguageSwap.TryGetEnglishLabel(footnote.label, out var english) ||
+                        string.IsNullOrEmpty(english) || english == footnote.label)
+                    {
+                        continue;
+                    }
+                    if (!footnote.alternativeLabels.Contains(english))
+                    {
+                        footnote.alternativeLabels.Add(english);
+                        added++;
+                    }
+                }
+                if (added > 0)
+                {
+                    Travelling.PCQualities.QHelper.GetScriptablesCuratorSafe()?.ForceRefresh();
+                    Log.LogInfo($"已为 {added} 个脚注注入英文别名（{reason}）。");
+                }
+                _altLabelsInjected = true;
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"注入脚注英文别名失败（{reason}）：{exception.Message}");
+            }
         }
 
         private IEnumerator FontRefreshLoop()
@@ -130,6 +187,7 @@ namespace TravellingCN
             {
                 yield return new WaitForSecondsRealtime(attempt < 5 ? 1f : 3f);
                 RefreshFonts($"startup:{attempt + 1}");
+                InjectAlternativeLabels($"startup:{attempt + 1}");
             }
         }
 

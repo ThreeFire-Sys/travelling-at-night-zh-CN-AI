@@ -540,30 +540,20 @@ def main() -> int:
             continue
         raw_kind: str | None = None
         raw_tail = b""
-        # TypeTreeGenerator 1.25 对 Footnote/Aspect/RelationshipQuality/
-        # MusicTrackLibrary 的布局建模有误——且 read_typetree 不抛异常（如
-        # Footnote 的 alternativeLabels 被读成字符串），别名推送静默失效、
-        # 回写丢列表（v2.2.15 实测：漫宿/通晓者等脚注 alternativeLabels 全空，
-        # 英文 <link="Mansus"> 悬停显示失效青色）。按目录登记的脚本类名直接
-        # 路由原始布局，不再依赖异常。
-        script_class = object_scripts.get((asset_file, path_id), "")
-        short_class = script_class.split(",", 1)[0].rsplit(".", 1)[-1]
-        if short_class in ("Footnote", "Aspect", "RelationshipQuality", "MusicTrackLibrary"):
+        # 注意：v2.2.15 曾按脚本类名把 Footnote/Aspect/RelationshipQuality/
+        # MusicTrackLibrary 全部强制走原始布局写回，结果 Unity 启动判定
+        # resources.assets 损坏（崩溃）。回退为 typetree 优先。已知限制：
+        # typetree 模型把 Footnote.alternativeLabels 读成字符串 → 别名推送
+        # 对这四类静默失效；该需求改由插件运行时注入（Plugin.cs
+        # InjectAlternativeLabels），烘焙不再为此写原始布局。
+        try:
+            tree = obj.read_typetree()
+        except Exception:
             try:
                 tree, raw_kind, raw_tail = read_raw_with_offset(obj)
             except Exception as raw_exc:
                 mismatches.append(f"{asset_file}:{path_id} read failed: {raw_exc}")
                 continue
-        else:
-            try:
-                tree = obj.read_typetree()
-            except Exception:
-                # 提取快照未登记脚本的对象：保持异常回退的原始布局兜底。
-                try:
-                    tree, raw_kind, raw_tail = read_raw_with_offset(obj)
-                except Exception as raw_exc:
-                    mismatches.append(f"{asset_file}:{path_id} read failed: {raw_exc}")
-                    continue
         changed = False
         alt_candidates: list[str] = []
         for field_path, translation in sites:

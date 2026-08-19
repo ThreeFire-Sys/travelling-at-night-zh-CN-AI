@@ -627,8 +627,7 @@ namespace TravellingCN
             return 0f;
         }
 
-        // ---- WorldPopup（场景浮签）语言支持 ----
-        // 浮签显示流程：Display() → ComposeDisplayText() → ComposeWrapped(
+        // ---- WorldPopup（场景浮签）语言支持 ----        // 浮签显示流程：Display() → ComposeDisplayText() → ComposeWrapped(
         // segments, wrapAfterCharacters) 按字符数（默认 30）插 \n 断行，再由
         // ApplyPaperStripStyle → RebuildLineStrips 按 textInfo 逐行量宽重建米色
         // 纸条底。_authoredBaseText 在 Awake 捕获、是烘焙中文且永不更新，因此：
@@ -639,6 +638,22 @@ namespace TravellingCN
         //      重建纸条底（扫描链路只换了裸文本，纸条还是旧语言的行宽）。
         // 旧运行时架构（legacy/RuntimePatchPlugin.cs.txt）同款设计；烘焙时代
         // 漏带了它，导致 v2.2.4/2.2.5 浮签切英文后单行溢出纸条。
+
+        // 供插件在运行时给 Footnote 注入英文原标签：作者手写 <link="Mansus">
+        // 这类英文 id 的链接在中文界面依赖 alternativeLabels 备用通道解析；
+        // 烘焙器对 Footnote 等类型的别名推送因 typetree 建模坑静默失效，
+        // 改由运行时注入（v2.2.16）。
+        internal static bool TryGetEnglishLabel(string label, out string english)
+        {
+            english = null;
+            if (string.IsNullOrEmpty(label) || !_mapsLoaded)
+            {
+                return false;
+            }
+            return _zh2en.Exact.TryGetValue(label, out english);
+        }
+
+        internal static bool IsEnglishMode => _englishMode;
 
         // ComposeWrapped 补丁用：英文模式下把浮签组成段换回英文。只走精确与
         // 折叠空白两层——整段 authored 文本必定整串命中，子串级若只换出碎片
@@ -881,6 +896,9 @@ namespace TravellingCN
             // 可见场景浮签（WorldPopup）重排：纸条底按行重建，必须让游戏自己
             // 重 Compose + 断行，不能靠扫描链路换裸文本（v2.2.6 修复）。
             RefreshVisibleWorldPopups();
+            // 交换可能改写了脚注 alternativeLabels 的内容；中文态下复注入英文别名
+            // （手写 <link="英文"> 的解析通道，v2.2.16）。
+            Plugin.RequestAlternativeLabelsInjection();
             // 陈旧检测（仅 DebugLog）：交换结束后再跑一趟只读遍历，凡仍匹配
             // 本方向映射键（=本应被换掉却没换）的字符串值都报出来，用于定位
             // 运行态缓存的旧语言字段。
