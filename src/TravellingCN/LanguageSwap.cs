@@ -908,14 +908,22 @@ namespace TravellingCN
             }
         }
 
-        // 历史缓冲的"<sprite=N>名字 — 内容"行：逐行把名字段做整串精确交换。
-        // 仅在该字段（accumulatedText）路径使用，不动通用流水线。
+        // 历史缓冲逐行交换。缓冲每行的真实形态是带包装标签的：
+        // "<color=#..><sprite=N><b><i>名字 — 正文</i></b></color>"（建议/叙述同理，
+        // 颜色各异——v2.2.18 实测交换后颜色统一化）。逐行拆成 前导标签+名字前缀+
+        // 正文+结尾标签：名字整串精确交换（单字名"我"够不到子串两字阈值），
+        // 正文单独走完整流水线（折叠精确因此能命中整条目录译文，含 [[链接]]），
+        // 包装标签原样保留——行级颜色因此存活。仅在 accumulatedText 路径使用。
         private static readonly Regex SpeakerPrefixLinePattern = new Regex(
-            @"^((?:<sprite=\d+>)?)([^ —\n<>]{1,24})( — )", RegexOptions.Compiled);
+            @"^([^ —\n<>]{1,24})( — )", RegexOptions.Compiled);
+        private static readonly Regex LeadingTagsPattern = new Regex(
+            @"^((?:<color=[^>]+>|<b>|<i>|<sprite=\d+>)+)", RegexOptions.Compiled);
+        private static readonly Regex TrailingTagsPattern = new Regex(
+            @"((?:</color>|</b>|</i>|</u>|</link>)+)$", RegexOptions.Compiled);
 
-        private static string SwapSpeakerPrefixes(string value, DirectionMap map)
+        private static string SwapBufferByLines(string value, DirectionMap map, SwapCounters counters)
         {
-            if (string.IsNullOrEmpty(value) || !value.Contains(" — "))
+            if (string.IsNullOrEmpty(value))
             {
                 return value;
             }
@@ -923,16 +931,48 @@ namespace TravellingCN
             var changed = false;
             for (var i = 0; i < lines.Length; i++)
             {
-                var match = SpeakerPrefixLinePattern.Match(lines[i]);
-                if (!match.Success)
+                var line = lines[i];
+                if (string.IsNullOrEmpty(line))
                 {
                     continue;
                 }
-                var name = match.Groups[2].Value;
-                if (map.Exact.TryGetValue(name, out var swappedName))
+                // 拆包装标签：前导开标签与结尾闭标签原样保留，不参与交换。
+                var lead = LeadingTagsPattern.Match(line).Groups[1].Value;
+                var trail = TrailingTagsPattern.Match(line).Groups[1].Value;
+                var core = line.Substring(lead.Length, line.Length - lead.Length - trail.Length);
+
+                string swappedCore;
+                var match = SpeakerPrefixLinePattern.Match(core);
+                if (match.Success)
                 {
-                    lines[i] = match.Groups[1].Value + swappedName + match.Groups[3].Value +
-                               lines[i].Substring(match.Length);
+                    // "名字 — 正文"：名字段单独精确交换，避免它与正文纠缠进流水线。
+                    var name = match.Groups[1].Value;
+                    var namePart = name;
+                    if (map.Exact.TryGetValue(name, out var swappedName))
+                    {
+                        namePart = swappedName;
+                    }
+                    var rest = core.Substring(match.Length);
+                    var swappedRest = rest;
+                    if (!string.IsNullOrEmpty(rest) &&
+                        TrySwapDisplayText(map, rest, counters, 1, out var pipelineRest))
+                    {
+                        swappedRest = pipelineRest;
+                    }
+                    swappedCore = namePart + match.Groups[2].Value + swappedRest;
+                }
+                else
+                {
+                    swappedCore = core;
+                    if (TrySwapDisplayText(map, core, counters, 1, out var pipelineCore))
+                    {
+                        swappedCore = pipelineCore;
+                    }
+                }
+                var rebuilt = lead + swappedCore + trail;
+                if (rebuilt != line)
+                {
+                    lines[i] = rebuilt;
                     changed = true;
                 }
             }
@@ -2046,23 +2086,23 @@ namespace TravellingCN
                             // TMP 交换残留的任意值，导致已读链接在切回中文后
                             // 复活——对话里"心念"失色/复色不一致实测）。
                             _hideVisitedForCurrentSwap = HideVisitedLinksForCurrentConfig();
-                            // 先换"<sprite=N>名字 — "前缀里的说话人名：名字与内容
-                            // 在同一文本段时，单字名（我→Me）够不到子串安全键的
-                            // 两字阈值，会残留在另一种语言里（v2.2.17 实测）。
-                            stringValue = SwapSpeakerPrefixes(stringValue, map);
-                            if (TrySwapDisplayText(map, stringValue, counters, 0, out var swappedDisplay))
+                            // 逐行处理缓冲并直接写回：带"名字 — "前缀的行若整行
+                            // 进流水线，前缀会让折叠精确失配、掉到子串级把 [[链接]]
+                            // 压平（v2.2.18 实测"心念"失色）。拆成前缀+正文分别
+                            // 交换，正文因此能折叠精确命中整条目录译文（含链接）。
+                            // 缓冲每行以 \n 收尾（游戏按此行尾续接下一行）；交换
+                            // 各层不保证保留行尾空白，丢了会并线（v2.2.17 实测）。
+                            var swappedBuffer = SwapBufferByLines(stringValue, map, counters);
+                            if (swappedBuffer != stringValue)
                             {
-                                // 缓冲每行以 \n 收尾（游戏按此行尾续接下一行）；
-                                // 交换各层不保证保留行尾空白，丢了这个 \n 会让
-                                // 下一条字幕与历史并成一行（v2.2.17 实测）。
                                 var trailing = stringValue.Substring(stringValue.TrimEnd().Length);
-                                if (trailing.Length > 0 && !swappedDisplay.EndsWith(trailing, StringComparison.Ordinal))
+                                if (trailing.Length > 0 && !swappedBuffer.EndsWith(trailing, StringComparison.Ordinal))
                                 {
-                                    swappedDisplay += trailing;
+                                    swappedBuffer += trailing;
                                 }
                                 try
                                 {
-                                    field.SetValue(instance, swappedDisplay);
+                                    field.SetValue(instance, swappedBuffer);
                                 }
                                 catch (Exception)
                                 {

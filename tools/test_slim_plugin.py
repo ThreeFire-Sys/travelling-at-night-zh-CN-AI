@@ -133,7 +133,8 @@ def main() -> int:
     require("trailing placeholder greedy", '"(.+)"' in LANGUAGE_SWAP)
     require("accumulatedText display-tier routing", '"accumulatedText"' in LANGUAGE_SWAP)
     require("accumulatedText routed to display swap",
-            "TrySwapDisplayText(map, stringValue, counters, 0" in LANGUAGE_SWAP)
+            "SwapBufferByLines(stringValue, map, counters)" in LANGUAGE_SWAP and
+            "TrySwapDisplayText(map, rest, counters, 1" in LANGUAGE_SWAP)
 
     # v2.1.8: m_accumulatedText backing-field routing (subtitle panel history is
     # a property backed by m_accumulatedText) and string-keyed dictionary rebuild
