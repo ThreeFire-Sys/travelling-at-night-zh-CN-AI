@@ -619,3 +619,12 @@
 - 修复：SwapBufferByLines 升级为逐行拆 前导开标签（color/sprite/b/i）+ 名字前缀 + 正文 + 结尾闭标签（/color//b//i//u//link）：名字精确交换、正文单独过完整流水线、包装标签原位保留。行级颜色与链接标记都存活。
 - 未决：选项菜单前缀残留（[好奇心]/碎片"中的"）待运行时再定位——其文本是"序号颜色包装+缩进+前缀+正文"的即时拼装，需要先看下一次重现时日志里的部分替换记录。
 - 链路：build 0/0 → slim 119（ accumulatedText 路由断言更新为 SwapBufferByLines ）→ 打包 → 装卸 → 46/46 → zip 校验 ok。
+
+## 73. 2026-08-20 v2.3.0：游戏更新至 2026.8.k.52 的迁移
+
+- Steam 把游戏更到 k.52（k.51 大改心念 UI）。迁移管线：清除陈旧安装状态/备份 → 重反编译 5 个程序集（插件依赖的 13 处关键方法逐一 diff 全一致）→ extract_k52 → worklist_k52（6682 条；新增 53、退役 57）→ rebase 复用 6629 + 增补 53。
+- 增补 53 条的处理：fuzzy≥0.9 复用既有译文并随源文微调（typo 级 22 条原样；Menace→Trouble 改名 3 条同步为 [[Trouble]]/麻烦；疲惫换痛苦数值 3→4；列表 "- " 前缀 3 条；Gain 模板加 +；litany 空行随源文减一；Corona 补链接）；手工新译 18 条（新 UI 标签与对话短句）；补丁说明前置 k.51 与 k.6 两节新译（k6 时代的补丁说明从未含 k.6 节——k6 的源文本就是从 j.87 开始的）。
+- 撞坑记录：merge QA 拦下 Corona 链接数不一致（k.52 源文补链接）；一致性 QA 拦下补丁说明旧章节的禁用变体（妮娜/海梅/本体秘理，术语表定稿前残留）；Steam 不删 BepInEx 导致安装器走"已有 BepInEx 则跳过资产"路径只写 8 个插件文件——须先删残留（BepInEx 目录 + winhttp.dll + doorstop_config.ini + .doorstop_version + changelog.txt + 状态文件）再装。
+- tools/build_k52_supplement.py 为增补构建器（含逐条调整锚点断言）。localization/patch-notes.zh-CN.md 已含 k.51/k.6 新章节（并顺手修正 commedia dell'arte 拼写与禁用变体）。
+- 链路：merge 0 错 → 烘焙 0 漂移 → verify 9018/9018 → lang_swap 7413 对 0 冲突 → 打包 2.3.0（SupportedGameVersion=2026.8.k.52）→ 安装 46/46 → zip 校验 ok。
+- 待用户验收：k.52 上实机运行（含新心念界面、补丁说明页、F9）。

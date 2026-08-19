@@ -1,0 +1,450 @@
+{"id":"TAN-0007F996B427","source":"[Nod approvingly] \"This horrible tearing thirst demands that you fill yourselves with wine.\"","translation":"[赞许地点点头]“这股撕扯人的渴意，非得叫你们拿酒把自己灌满不可。”","status":"translated","notes":"润色2026-08-18：撕心裂肺专指悲痛，误植；tearing 是撕扯感，按原义改写并理顺“demands”的拟人句式"}
+{"id":"TAN-00080AC200DD","source":"Jaume gestures.","translation":"豪梅比了个手势。","status":"translated","notes":"v1.2.5 术语终审：依最新版术语证据统一。"}
+{"id":"TAN-0021204AB288","source":"[Rodia tilts her head.] This widow's heart, my pilgrim, is all stone. But still the gallantries are sweet.","translation":"[罗迪娅歪了歪头。]我这颗寡妇心啊，我的朝圣者，早已成了石头。不过，这些殷勤话听来依然甜得很。","status":"translated","notes":""}
+{"id":"TAN-00474E22D633","source":"No charge. And no promises. But I will do what I can.","translation":"不收钱，也不作保证。但我会尽我所能。","status":"translated","notes":""}
+{"id":"TAN-00518A3891EB","source":"[You are Compassionate, now. Although people change. Especially Spencer Hobson]","translation":"[现在，你心怀同情。尽管人总会变。斯宾塞·霍布森尤其如此。]","status":"translated","notes":""}
+{"id":"TAN-0054F96C96E6","source":"She stares at me.","translation":"她盯着我。","status":"translated","notes":""}
+{"id":"TAN-005CBEE8E4FA","source":"Philomèle, you should know, is a journalist. She writes articles in magazines for readers less intelligent than she. Horoscopes - tripe of that nature. Over the years, it has infected her with mysticism.","translation":"你得知道，菲洛梅勒是个记者。她给杂志写文章，读者都没她聪明。星座运势之类的——那种废话。年深日久，她也就染上了神秘主义。","status":"translated","notes":""}
+{"id":"TAN-007DC6411EBF","source":"Dark shapes move beneath the surface - more like spreading stains than fish.","translation":"水面下有暗影游移——与其说像鱼，不如说像正在洇开的污渍。","status":"translated","notes":""}
+{"id":"TAN-00A16A045073","source":"Yes, exactly, yes.","translation":"对，没错，对。","status":"translated","notes":""}
+{"id":"TAN-00D590AA10D8","source":"Why do you ask?","translation":"你为什么这么问？","status":"translated","notes":""}
+{"id":"TAN-00DB221CE13B","source":"Actually: it's not so bad. It's not <i>good</i>. But, coiled within the burnt taste and the radishy taste, there is a welcome lurking bitterness not unlike coffee. Perhaps she's secretly adulterating real black-market coffee?","translation":"说真的：没那么糟。算不上<i>好喝</i>。不过，在焦味和萝卜味盘踞的深处，藏着一丝颇为宜人的苦味，倒有几分像咖啡。莫非她偷偷掺了真正的黑市咖啡？","status":"translated","notes":""}
+{"id":"TAN-00F7C4D22EB9","source":"You are a decent man. I place my trust in your decency.","translation":"你是个正派人。我信的就是你这份正派。","status":"translated","notes":"润色2026-08-18：“相信你的正派”带翻译腔；口语化"}
+{"id":"TAN-0104E0692641","source":"I'm fine, Bessy, thank you.","translation":"我不饿，贝茜，谢谢。","status":"translated","notes":"结合下文 hungry 理解 fine 为婉拒食物。"}
+{"id":"TAN-010DBD1273B6","source":"The '<i>Office</i> of Onteiric Coordination' - the [[OOC]]? Who exactly is funding Aubière? Is the money really coming from Menninger?","translation":"“本体梦理协调<i>办公室</i>”——也就是 [[OOC]]？到底是谁在资助奥比耶？钱当真来自梅宁格吗？","status":"translated","notes":"Office of Onteiric Coordination 统一译“本体秘理协调办公室”；Menninger 统一译“梅宁格”；保留 Office 的斜体强调与 OOC 链接。 v1.2.5 术语终审：依最新版术语证据统一。"}
+{"id":"TAN-01251704CF18","source":"Spend [q=com:evolveCost] Heart Experiences.","translation":"花费 [q=com:evolveCost] 份心之经历。","status":"translated","notes":""}
+{"id":"TAN-0143E9CA9106","source":"Handsome place, this. How did you pay for it?","translation":"这地方真气派。钱从哪儿来的？","status":"translated","notes":""}
+{"id":"TAN-0156159B78A9","source":"I spent a decade outside the world. I'm not who I used to be. I don't know exactly who I am now. Not yet.","translation":"我在世界之外过了十年。我已经不是从前的那个人了。如今我究竟是谁，我自己也不清楚。至少现在还不清楚。","status":"translated","notes":""}
+{"id":"TAN-0168E00DE69A","source":"Forgive me, [q=alias.formal.fr], but there is something about you that recalls... the abandoned chocolate-box. The colours are bright, the corners square, the lid only a little askew. But one senses an absence.","translation":"请原谅，[q=alias.formal.fr]，但您身上有种东西，叫人想起……一只被弃置的巧克力盒。颜色鲜艳，四角方正，盒盖不过略略歪斜。可人总能感觉到，里面少了什么。","status":"translated","notes":""}
+{"id":"TAN-0179CF137F4F","source":"Amber: sacred in certain almost-orthodox rites. There are subtleties in the colour that suggest it might be Cornish amber. They had a little collection of that, at [[Hush House]]. No creatures trapped inside this lump.","translation":"琥珀：在某些近乎正统的仪式中奉为圣物。色泽间的微妙差异表明，它可能是康沃尔琥珀。[[Hush House]] 曾收藏过一些。这一块里头没有困住什么生灵。","status":"translated","notes":""}
+{"id":"TAN-018C8A2BD8A2","source":"Busy.","translation":"忙。","status":"translated","notes":"润色2026-08-18：固定链接译名：Hush House=噤声居屋（link_targets.csv）；英文链接在中文文本里不渲染且解析失败"}
+{"id":"TAN-01A84B674B81","source":"You're a doctor, and your patient records are confidential.... unless I crack open your puzzle-box. That's a little unusual, isn't it?","translation":"你是医生，病历理应保密……除非我撬开你的谜盒。这多少有点反常，不是吗？","status":"translated","notes":"润色2026-08-18：crack open 是撬开不是解开（解谜之解易误导）"}
+{"id":"TAN-01B4D6588CAC","source":"Faulkner: 'The past is never dead. It's not even past.'","translation":"福克纳：“过去从未死去。它甚至还没有过去。”","status":"translated","notes":"采用福克纳名句常见直译，保留本作语境中的双关。"}
+{"id":"TAN-01B6AE203C64","source":"Inside: a small quantity of viscous, yellow-golden fluid. The mouth of the jar is too narrow to admit much light, but the fluid within glitters like mica in sunlight.","translation":"里面装着少量黏稠的金黄色液体。罐口太窄，透不进多少光，但罐中的液体仍像阳光下的云母一样闪烁。","status":"translated","notes":""}
+{"id":"TAN-01C86D9E4FE8","source":"[Remain silent.]","translation":"[保持沉默。]","status":"translated","notes":""}
+{"id":"TAN-01E8F7B7F230","source":"Why not? the night asks. It's not as if you have anything important to do.","translation":"“为何不呢？”夜晚这样问。反正你也没什么要紧事可做。","status":"translated","notes":""}
+{"id":"TAN-01FC79819259","source":"Until the next time.","translation":"下次再见。","status":"translated","notes":""}
+{"id":"TAN-021B6AC318A0","source":"[Flip through.]","translation":"[翻阅。]","status":"translated","notes":""}
+{"id":"TAN-0251EAB4B830","source":"If I want in, I'll have to wait until the proprietress is distracted. Next time she bends below the bar, perhaps.","translation":"想进去，就得等老板娘分神。也许可以等她下次俯身到吧台后面时。","status":"translated","notes":""}
+{"id":"TAN-025579F8ABCC","source":"You're an Icarian?","translation":"你是伊加利亚派？","status":"translated","notes":"Icarian 按术语表译“伊加利亚派”。"}
+{"id":"TAN-0276FF1C7F29","source":"I'll come back later.","translation":"我晚点再来。","status":"translated","notes":""}
+{"id":"TAN-02866E306BC3","source":"[Flattery] I came here for a trivial reason. Now I've met you, I have a much better one.","translation":"[奉承] 我来这里只为一桩小事。如今遇见了你，我有了一个好得多的理由。","status":"translated","notes":""}
+{"id":"TAN-028A1E5160D1","source":"Is there something that distinguishes me from other people?","translation":"我有什么不同于常人的地方吗？","status":"translated","notes":""}
+{"id":"TAN-02A3295202D7","source":"[Bristle Englishly] Really? [Pause] Really!","translation":"[英式愠怒]当真？[停顿]当真！","status":"translated","notes":"保留 Bristle Englishly 的动作笑点。"}
+{"id":"TAN-02A6B411F7D0","source":"Something smells wonderful.","translation":"什么东西这么香。","status":"translated","notes":""}
+{"id":"TAN-02AEBFF196E4","source":"Course you can. Once a Legionnaire, always a Legionnaire. <i>'Honneur et Humanité'</i>, remember?","translation":"当然可以。一天是军团兵，一辈子都是军团兵。还记得<i>“荣誉与人道”</i>吗？","status":"translated","notes":"军团格言统一译“荣誉与人道”；完整法文在军团脚注首次出现处保留。"}
+{"id":"TAN-02B2BAE23BE5","source":"Heal, grow, change, I suppose. Those all seem like good options.","translation":"疗愈、生长、改变，我想。听起来都是不错的选择。","status":"translated","notes":""}
+{"id":"TAN-02C70D1954C4","source":"A single Ministries <i>dolya</i>.","translation":"一张部委的<i>多利亚券</i>。","status":"translated","notes":"dolya 为新作货币名，译“多利亚券”；Ministries 此处作部委定语。"}
+{"id":"TAN-02C9FA07CBCD","source":"Why don't you tell me some diverting thing?","translation":"你何不讲件有趣的事给我听？","status":"translated","notes":""}
+{"id":"TAN-02E43AB149B3","source":"A many-storeyed hospital populated by masked eccentrics. Any adept would recognise it as the [[Mansus]].","translation":"一所层层叠叠的医院，住满戴面具的怪人。任何修习者一眼都能认出，那就是[[Mansus]]。","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-030D252E5C37","source":"So... Nina?","translation":"那么……宁娜呢？","status":"translated","notes":""}
+{"id":"TAN-030DD25D22BF","source":"Sylvain is back.","translation":"西尔万回来了。","status":"translated","notes":""}
+{"id":"TAN-030EFA088E01","source":"I miss him, <i>signaire</i>. I loved him so. Even now I will forgive him.","translation":"我想念他，<i>西涅尔</i>。我那么爱他。即便如今，我也愿意原谅他。","status":"translated","notes":"signaire 为本作借用的法语称谓，按 /si.ɲɛʁ/ 定译“西涅尔”，保留斜体。"}
+{"id":"TAN-0322CB02CD15","source":"I'm looking for someone.","translation":"我在找一个人。","status":"translated","notes":""}
+{"id":"TAN-0348C461761C","source":"And so! We shot them! On the spot!","translation":"于是！我们枪毙了他们！就在当场！","status":"translated","notes":""}
+{"id":"TAN-03499FCF08CB","source":"Retreat from the chill behind the white rope.","translation":"退回白绳后方，躲开寒意。","status":"translated","notes":""}
+{"id":"TAN-0357771253E2","source":"Mm. Mademoiselle Lagasse, I'm afraid, has left us.","translation":"唔。恐怕，拉格斯小姐已经离开了。","status":"translated","notes":"保留 left us 在语境中可能造成的短暂歧义，不译成“去世”。；润色2026-08-18：“离开我们这里了”冗赘；left us 在此处是离店语境，从简"}
+{"id":"TAN-03685BD96BBC","source":"Inspect my reflection.","translation":"端详镜中的自己。","status":"translated","notes":""}
+{"id":"TAN-038DE66E74B3","source":"Stop! Help! Traitors! Stop!","translation":"站住！救命！叛徒！站住！","status":"translated","notes":""}
+{"id":"TAN-03A6205FD328","source":"[The charm falters on my lips, and I find I've taken a step closer.]","translation":"[咒语在我唇边磕绊；回过神来，我已经往前迈了一步。]","status":"translated","notes":"charm 结合超自然场景暂译“咒语”。"}
+{"id":"TAN-03B475C42F5C","source":"Oh, my friend, I only wish monsieur le docteur would pay me enough to spy on you.","translation":"哦，我的朋友，我只盼着医生先生肯出个好价钱，雇我来监视你。","status":"translated","notes":"润色2026-08-18：原译“多付些钱，好叫我来监视你”逻辑反了；笑点是“希望监视你能值回价钱”"}
+{"id":"TAN-03EE9629351F","source":"Whatever you say, Mister Hobson.","translation":"随你怎么说，霍布森先生。","status":"translated","notes":""}
+{"id":"TAN-040A768FFBBE","source":"[The most Gallic of shrugs]","translation":"[一个再法兰西不过的耸肩]","status":"translated","notes":""}
+{"id":"TAN-042B762DE54F","source":"No. I mean that there's a formal process - retenebration - that returns me to the secular state. That has to come from Rome. I don't think it ever went through. As long as I don't present myself as a priest, they probably won't bother.","translation":"不。我的意思是，有一道正式程序——复晦礼——能让我重归世俗身份。那得由罗马批准。我想手续从未真正办妥。只要我不以神父自居，他们大概也懒得追究。","status":"translated","notes":"retenebration 为虚构教会程序，按“重新归于幽暗”暂译“复晦礼”，待设定统稿。"}
+{"id":"TAN-0466DB7D826A","source":"Did Picasso ever paint a woman he didn't want?","translation":"毕加索画过他不想要的女人吗？","status":"translated","notes":"want 保留“欲望/想占有”的尖刻含义。"}
+{"id":"TAN-0483E4564C76","source":"Wait. Please! I need your help. Something else.","translation":"等等。求你！我需要你帮忙。还有一件事。","status":"translated","notes":""}
+{"id":"TAN-049C04ABD4B0","source":"It reminds me of the [[Horned-Axe]]. But no-one puts a secret god on their flag. And double-bladed axe symbols are nothing unique. A coincidence, no more.","translation":"它让我想起[[Horned-Axe]]。可没人会把秘密之神画在自己的旗上。何况双刃斧也不是什么独有的标志。只是巧合，仅此而已。","status":"translated","notes":""}
+{"id":"TAN-049D853FFF5F","source":"[A fleeting smile] She sings better than she cooks.","translation":"[一闪而逝的笑意]她唱歌比做饭强。","status":"translated","notes":""}
+{"id":"TAN-04A795A236D0","source":"I was in London, reviewing books and trying to get my plays staged. I could have been rubbing shoulders with Cocteau and Bischoff and Stravinsky. Writing film scripts and librettos...","translation":"我那时在伦敦，写写书评，还想方设法让自己的剧本登台。我本可以同科克托、比肖夫和斯特拉文斯基为伍。写电影剧本，写歌剧脚本……","status":"translated","notes":"Bischoff 姓名暂译“比肖夫”，待人物/文化指涉核查。"}
+{"id":"TAN-04BE55A0A3B2","source":"Bessy.","translation":"贝茜。","status":"translated","notes":""}
+{"id":"TAN-04DC9A65BAF7","source":"Actually - I'll talk to you later.","translation":"其实——晚点再聊。","status":"translated","notes":""}
+{"id":"TAN-04E4C5FC4ADC","source":"Yes. Especially since the War.","translation":"是。战争以后尤其如此。","status":"translated","notes":""}
+{"id":"TAN-04E7DD3E5316","source":"Oh! No. Felix was Free French. The Americans equipped his whole division, when they came out of Africa. ","translation":"哦！不是。费利克斯参加过自由法国。他们从非洲出来时，美军给他所在的整个师都配了装备。 ","status":"translated","notes":""}
+{"id":"TAN-04F49027852B","source":"Yes, I knew Nina. What was she to you?","translation":"对，我认识宁娜。她和你是什么关系？","status":"translated","notes":""}
+{"id":"TAN-04F557A4305C","source":"Reason. The uppermost components of the soul - the capacity for daylight understanding.","translation":"理性。灵魂至高处的组成部分——在日光下理解事物的能力。","status":"translated","notes":"Reason 疑为灵魂要素/专名，暂译“理性”，待术语统稿。"}
+{"id":"TAN-04FB80E7CDB6","source":"There's always a reason... but often, I'm playing the long game.","translation":"凡事总有缘由……不过，我往往放眼长远。","status":"translated","notes":"playing the long game 译为“放眼长远”，避免误与 Long 位阶混淆。"}
+{"id":"TAN-050270E32DBC","source":"This way... the climb is a little steep, I'm afraid.","translation":"这边走……恐怕这段坡有点陡。","status":"translated","notes":""}
+{"id":"TAN-0510EC7C7098","source":"Here: an unremarkable door with the Knock-glyph scratched into the black paint. The handle is cold. The corridor beyond is wintry.","translation":"这里：一扇平平无奇的门，黑漆上刻着启之符文。门把手冰冷。门后的走廊寒如凛冬。","status":"translated","notes":"Knock-glyph 按准则名译“启之符文”。"}
+{"id":"TAN-051901C48514","source":"Listen to the music warbling from the radio.","translation":"听听收音机里婉转传来的音乐。","status":"translated","notes":""}
+{"id":"TAN-0548572C1A85","source":"Which is the worst?","translation":"哪一个最糟？","status":"translated","notes":""}
+{"id":"TAN-055B9BFE9CA4","source":"Fresh eggs, peppers, ham: rare treasures combined by a woman of real talent.","translation":"新鲜鸡蛋、甜椒、火腿：难得的珍品，交由一位真正有手艺的女人融为一炉。","status":"translated","notes":"保留对煎蛋卷一本正经的夸张口吻。；润色2026-08-18：“交由……合为一体”生硬；食物语境用“融为一体”，句式理顺；润色2026-08-18：采纳外部意见改“融为一炉”"}
+{"id":"TAN-057CB48DD686","source":"(Ididn'twanttoseeyourpapersanyway.)","translation":"（我本来也不想看你的证件。）","status":"translated","notes":"源文故意取消词间空格表现小声急促；中文天然不分词，以括号保留嘟囔感。"}
+{"id":"TAN-058FFEF885FA","source":"So what was?","translation":"那到底是什么？","status":"translated","notes":"结合前文 What was the rest? 理解为继续追问。"}
+{"id":"TAN-05A1FE627486","source":"It was like when you raise your voice in a chorus, and then you begin to realise it's silence - you're singing alone.","translation":"就像你在合唱中放声歌唱，随后才渐渐意识到四下其实一片寂静——只有你独自在唱。","status":"translated","notes":""}
+{"id":"TAN-05B3D0302197","source":"[Follow Léon as far as the edge of the square... then feint sideways and make a dash for it.]","translation":"[跟着莱昂一直走到广场边缘……随即虚晃一步，侧身冲出去。]","status":"translated","notes":""}
+{"id":"TAN-05C6FB7237F9","source":"A complicated lesson. The [[Wolf Divided]] - the Hour of rage and pain - incarnate in a wounded dog. A great kindness turned to horror. Over the years, the story has sown a whole crop of heretics.","translation":"这堂课颇为复杂：暴怒与痛苦之司辰 [[Wolf Divided]]，化身为一条受伤的狗。无上的善意转成了恐怖。经年累月，这个故事已结出满满一茬异端。","status":"translated","notes":""}
+{"id":"TAN-05CC6C76511B","source":"Ah, the sweetest of Spencers! How welcome you are; for that promise is all that I need.","translation":"啊，最甜美的斯宾塞！你来得正好；有你这一诺，我便别无所求。","status":"translated","notes":"保留 sweetest of Spencers 的亲昵夸张。"}
+{"id":"TAN-05FA85F0EA05","source":"All right. Linou's name is good here.","translation":"好吧。莉努这名字在这儿管用。","status":"translated","notes":"name is good here 指其名望/担保有效；人物名统一为“莉努”。"}
+{"id":"TAN-06291B224A14","source":"Ugh...","translation":"呃……","status":"translated","notes":""}
+{"id":"TAN-064A6423CB32","source":"It's up in the Cap - past the park - outside the town.","translation":"在昂蒂布角那边——过了公园——城外。","status":"translated","notes":"Cap 指 Cap d'Antibes，译“昂蒂布角”。"}
+{"id":"TAN-0661BA09EDE8","source":"At night, when Aubière is gone from his office, I might be able to locate his records.","translation":"到了夜里，等奥比耶离开办公室，我或许能找到他的档案。","status":"translated","notes":""}
+{"id":"TAN-0668F3A603F4","source":"Hmmf. ","translation":"哼。 ","status":"translated","notes":""}
+{"id":"TAN-06A1EE61A3F2","source":"How much?","translation":"多少？","status":"translated","notes":""}
+{"id":"TAN-06A4D4511C32","source":"So it could be a lot worse. But I never know what's going on behind his eyes. You know what I mean.","translation":"所以，眼下还远没到最糟。可我永远猜不出他那双眼睛后面究竟藏着什么。你懂吧。","status":"translated","notes":"could be a lot worse 在此评价当前处境，并非过去的反事实。"}
+{"id":"TAN-06A986747734","source":"He makes a note.","translation":"他记了一笔。","status":"translated","notes":""}
+{"id":"TAN-06BB8F09DBB3","source":"[Glance through the darkened windows.]","translation":"[隔着昏暗的车窗朝里瞥一眼。]","status":"translated","notes":"stationCar 场景中斯宾塞站在车外；through 指隔窗向车内看，不是从车内望向窗外。"}
+{"id":"TAN-06E893E9F07F","source":"[A wink of blue flame as the dark tobacco ignites.]","translation":"[幽暗的烟草燃起，一点蓝焰眨了眨眼。]","status":"translated","notes":"保留 flame wink 的拟人意象。"}
+{"id":"TAN-06ED06104566","source":"[We won't usually tell you explicitly which choices act with which Passions - we let you roleplay, or guess.]","translation":"[我们通常不会明确告诉你，哪些选择出自哪种心念——请自行扮演，或猜一猜。]","status":"translated","notes":"Passions 暂译“心念”，作为角色构筑系统术语待统稿。"}
+{"id":"TAN-06FFB3AD9D1F","source":"...the nihilist has a point.","translation":"……虚无主义者说得有道理。","status":"translated","notes":""}
+{"id":"TAN-0714DEC153BF","source":"Still, he was much diminished. A pity. Coseley had an extraordinary mind.","translation":"尽管如此，他还是衰弱了许多。可惜。科赛利有一颗非凡的头脑。","status":"translated","notes":"润色2026-08-18：“有一颗非凡的头脑”是英文句式；中文惯说“头脑非凡”；润色2026-08-18：回退学究式规整：“有一颗非凡的头脑”节奏更合原文"}
+{"id":"TAN-07168140CFCF","source":"I liked it, though.","translation":"不过，我倒挺喜欢的。","status":"translated","notes":""}
+{"id":"TAN-071F76FB6FDE","source":"Teeth. [Bare my own like a merry chimpanzee.]","translation":"牙齿。[咧嘴露出自己的牙，像只快活的黑猩猩。]","status":"translated","notes":""}
+{"id":"TAN-071FECDFD1B0","source":"I'm sorry to tell you, Mr Strathcoyne, that I heard this 'Annabelle' nonsense directly from Dr Aubière. I had no idea it would offend you so. I'm very disappointed in him.","translation":"斯特拉思科因先生，很抱歉得告诉你，这套所谓“安娜贝尔”的胡话，是我亲耳从奥比耶医生那里听来的。我没想到这会让你如此不快。我对他非常失望。","status":"translated","notes":""}
+{"id":"TAN-07424B007E36","source":"This is the first night I've spent here. Unless I move on tomorrow, I might attract attention. [Spencer won't gain a [[Trace]] in his first night anywhere.]","translation":"这是我在这里过的第一夜。除非明天就动身，否则可能会引来注意。[斯宾塞在任何地方度过的第一夜都不会获得[[Trace]]。]","status":"translated","notes":""}
+{"id":"TAN-075677547615","source":"No no. The ears, apparently, are not for us to touch.","translation":"不，不。显然，这对耳朵不是给我们碰的。","status":"translated","notes":""}
+{"id":"TAN-0759A6A44FEB","source":"Whimsy - the reason that is no reason - the choice which is 'none of the above', except when it's not. Whimsical choices are unexpected, usually; useful, occasionally.\n\n[Evolve this Passion to Whimsy , which contributes Moth and Rose to your Aspect Pool.]\n\n","translation":"奇想——不成理由的理由——是“以上皆非”的选择；除非它偏偏不是。奇想之选往往出人意料，偶尔也派得上用场。\n\n[将这份心念演化为奇想，为你的性相池贡献蛾与引。]\n\n","status":"translated","notes":"Whimsy 暂译“奇想”；Passion/Aspect Pool 暂译“心念/性相池”，待系统术语统稿。"}
+{"id":"TAN-075EF2CB7438","source":"The victories are notable for being (a) numerous and (b) overwhelming.","translation":"这些胜利的显著之处在于：（一）数量众多；（二）压倒性。","status":"translated","notes":""}
+{"id":"TAN-07821A74C235","source":"The game continues...","translation":"牌局继续……","status":"translated","notes":""}
+{"id":"TAN-078A63EEEEC3","source":"[One eye widens to gleaming watchfulness.]","translation":"[一只眼睛霍然睁大，亮晶晶地警戒着。]","status":"translated","notes":""}
+{"id":"TAN-078E92FDBF03","source":"I don't think... wait, no, I remember the name. Here...","translation":"我想我不……等等，不对，我记得这个名字。给你……","status":"translated","notes":""}
+{"id":"TAN-0791B9FD09F7","source":"The words echo, circling the vaulted ceiling like carrion birds. The echoes intensify. The roof trembles beneath the rain. Is that thunder? It does thunder when it's raining. That's not unusual.","translation":"话音回荡，如食腐鸟般绕着穹顶盘旋。回声愈发响亮。屋顶在雨中颤动。那是雷声吗？下雨时确实会打雷。这没什么稀奇。","status":"translated","notes":""}
+{"id":"TAN-07B6B20278B6","source":"I understand. A little peculiar, it occurs to me, that one thinks aloud, but that one speaks to oneself. Not 'speaks silently'. No?","translation":"我明白了。我只是忽然想到，这话有点古怪：人会“想出声”，却只说“自言自语”，不说“默默出声”。不是吗？","status":"translated","notes":"原文是 think aloud / speak to oneself / speak silently 的语言笑话，按中文搭配重构。"}
+{"id":"TAN-07C1CD57AC08","source":"You seem surprised, Doctor.","translation":"你似乎很惊讶，医生。","status":"translated","notes":""}
+{"id":"TAN-07C942FF4040","source":"There's a painting of the Mansus on open display in your library.","translation":"你们的图书室里，竟公然挂着一幅描绘漫宿的画。","status":"translated","notes":"library 在此指疗养院的公共图书室。"}
+{"id":"TAN-07D8AA8F171D","source":"The authoriteeees!","translation":"当——局——啊！","status":"translated","notes":"以拖长音对应 authoriteeees。"}
+{"id":"TAN-07F0DC1A4910","source":"What was it you wanted?","translation":"你刚才想要什么？","status":"translated","notes":""}
+{"id":"TAN-07F2D8F9EEA6","source":"I knew one of the clubs he used to play. Chez Bricktop. I've been away a long time... but you don't forget Reinhardt. This must be new?","translation":"我知道他从前演出的一家俱乐部——布里克托普夜总会。我离开太久了……可莱因哈特是忘不了的。这首是新作？","status":"translated","notes":"Chez Bricktop 统一为本作既有译名“布里克托普夜总会”。"}
+{"id":"TAN-07FA30464163","source":"Sure. Only the good stuff here. I'll get you a cup.","translation":"当然。这里可只有好东西。我给你倒一杯。","status":"translated","notes":""}
+{"id":"TAN-080A875F511E","source":"[Toast] To Felix.","translation":"[祝酒]敬费利克斯。","status":"translated","notes":""}
+{"id":"TAN-0830561ABB2A","source":"Me neither, but","translation":"我也不，不过——","status":"translated","notes":"保留原文未完句。"}
+{"id":"TAN-0859988F0FDE","source":"[She looks me up, then down, then up, with careful interest.]","translation":"[她颇有兴致地把我从上看到下，又从下看到上。]","status":"translated","notes":""}
+{"id":"TAN-086A387724F4","source":"[Rack my brains for a clever aphorism.]","translation":"[绞尽脑汁想一句机敏的格言。]","status":"translated","notes":""}
+{"id":"TAN-087BBE6245FC","source":"Ready for all the little ceremonies of a gentleman's morning.","translation":"绅士清晨的那一套小仪式，样样都预备好了。","status":"translated","notes":""}
+{"id":"TAN-087E7083338F","source":"A man of culture. We play chess sometimes: I hope you might join our games.","translation":"一个有教养的人。我们有时会下棋：希望你也能加入棋局。","status":"translated","notes":""}
+{"id":"TAN-087E7B007F10","source":"A duchess, I hear. Or a marchioness?","translation":"听说是位公爵夫人。还是侯爵夫人？","status":"translated","notes":""}
+{"id":"TAN-088D49B12B27","source":"[Buy a copy.]","translation":"[买一份。]","status":"translated","notes":""}
+{"id":"TAN-08A367166B5C","source":"[Resolve not to have heard that.]","translation":"[决意当作没听见。]","status":"translated","notes":""}
+{"id":"TAN-08D5E9D80ED1","source":"For whatever reason, this is incomprehensible to me.","translation":"不知为何，我完全看不懂这个。","status":"translated","notes":""}
+{"id":"TAN-08DA7A910011","source":"No no, you're right. They make it worse. We were never meant to touch Heaven. Not like this. It will split us like old wineskins.","translation":"不，不，你说得对。群星让一切变得更糟。我们本就不该触碰苍天。不该以这种方式。它会把我们像旧酒囊一样撑裂。","status":"translated","notes":"保留圣经“旧酒囊”意象。"}
+{"id":"TAN-08DB5DAC7982","source":"Came out without my wallet! I'm so forgetful. I'll come back with it immediately.","translation":"出门忘带钱包了！我这记性真行。我马上就把它拿回来。","status":"translated","notes":"润色2026-08-18：“带钱回来”把 wallet 错成钱；他是回去取钱包。口语稍顺"}
+{"id":"TAN-08EBF44543C2","source":"[Nod; pass on by.]","translation":"[点头；径自走过。]","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-08FF8BED843F","source":"Rodia...","translation":"罗迪娅……","status":"translated","notes":""}
+{"id":"TAN-090B96065FEA","source":"Reveal what is hidden.","translation":"揭示隐匿之物。","status":"translated","notes":""}
+{"id":"TAN-0927F42204C8","source":"'In the name of the [[Ivory Dove]], who cannot be deceived, who calls each of the Dead by name...'","translation":"“以[[Ivory Dove]]之名；其不受欺瞒，逐一唤出每位死者之名……”","status":"translated","notes":""}
+{"id":"TAN-092D30089982","source":"I will share a secret. Andrée, at the Librairie des Heures, sells other things than books. ","translation":"我告诉你一个秘密。司辰书店的安德蕾卖的不只是书。 ","status":"translated","notes":"Librairie des Heures 暂译“司辰书店”，待地点术语统稿。"}
+{"id":"TAN-0947B3939F07","source":"What? No, I don't understand the joke at all. But I liked the accents. He does good accents, our [q=alias.familiar]!","translation":"什么？不，我完全没听懂那个笑话。不过那些口音我喜欢。咱们这位[q=alias.familiar]可真会模仿口音！","status":"translated","notes":""}
+{"id":"TAN-09746E5EAE79","source":"[Winter] Peaceful.","translation":"[冬] 安宁。","status":"translated","notes":""}
+{"id":"TAN-097978CF6ED5","source":"On the other side of this curtain... well, you know about that already. I'll stay here.","translation":"这道帘子另一边……好吧，那边的事你已经知道了。我就留在这儿。","status":"translated","notes":""}
+{"id":"TAN-097D174C9D35","source":"Adepts. Accursed wanderers. Remortals. Otherworldly entities...","translation":"修习者。受诅咒的浪游者。返凡者。异界实体……","status":"translated","notes":"Adepts 暂译“修习者”，避免与 Know/Long 等位阶混淆。"}
+{"id":"TAN-0981FEA673D9","source":"Cable-knit vest, cashmere-blend errols, and a pair of saddle-brown oxfords. Clothes of an unassuming cut.","translation":"绞花针织背心、羊绒混纺的埃罗尔长裤，还有一双鞍棕色牛津鞋。剪裁低调的一套衣服。","status":"translated","notes":"errols 疑为虚构或时代服装名，暂按长裤音译“埃罗尔长裤”。"}
+{"id":"TAN-09C3DBA45BFB","source":"Sea-glass, perhaps?","translation":"或许是海玻璃？","status":"translated","notes":""}
+{"id":"TAN-09F54EE53147","source":"[You've rejected this Passion. If you act similarly again, you'll have the opportunity to reconsider - as long as you still have a free Passion slot.]","translation":"[你拒绝了这份心念。如果你再次采取类似行动，只要还有空余的心念栏位，就会有机会重新考虑。]","status":"translated","notes":"Passion/Passion slot 暂译“心念/心念栏位”，本句被多个心念分支复用。"}
+{"id":"TAN-09F5E3E12E0D","source":"They were lovely. I'd like to hear more.","translation":"都很好听。我还想再听一些。","status":"translated","notes":""}
+{"id":"TAN-0A29453890CD","source":"This is a crafting venue. Crafting is one of the more complicated bits of the game, and you might want to come back once you've gathered a few Memories and Influences. But it's up to you.","translation":"这里是一处制作地点。制作是游戏中较为复杂的部分之一；你可以等收集到一些记忆与影响后再回来。不过，由你决定。","status":"translated","notes":"Crafting/Memories/Influences 暂译“制作/记忆/影响”，待系统术语统稿。"}
+{"id":"TAN-0A4EB477471C","source":"I came to Antibes for a reason. I can't leave yet.","translation":"我来昂蒂布自有缘由。我还不能走。","status":"translated","notes":""}
+{"id":"TAN-0A514DDDFA16","source":"[Grumbles inarticulately as he gathers up the cards.]","translation":"[他一边收拢纸牌，一边含混地嘟囔。]","status":"translated","notes":""}
+{"id":"TAN-0A58FC7B7EE2","source":"And now is my moment.","translation":"现在，终于轮到我了。","status":"translated","notes":""}
+{"id":"TAN-0A6AC60E685A","source":"Yes, yes, I know, of course. I'm not a fool. They're all the same anyway, these sluts.","translation":"是，是，我当然知道。我又不是傻子。这些婊子反正全都一样。","status":"translated","notes":"保留泽莉娅粗鲁而妒恨的用词。"}
+{"id":"TAN-0A6C5DF92238","source":"What is wrong with you, exactly? Can I catch it from you?","translation":"你到底出了什么毛病？我会被你传染吗？","status":"translated","notes":""}
+{"id":"TAN-0A8F821C79B3","source":"[Sniff.]","translation":"[嗅一嗅。]","status":"translated","notes":""}
+{"id":"TAN-0AAD6EE630C5","source":"I appreciate that. I will not always be frank with you, you know. But I will always try.","translation":"你能这么说，我很感激。我不见得事事都对你坦白，你知道。不过我总会尽力。","status":"translated","notes":""}
+{"id":"TAN-0AC7E01D107B","source":"For me, also. Goodbye.","translation":"我也一样。再会。","status":"translated","notes":""}
+{"id":"TAN-0ADFF01CCDF9","source":"[Truth] I still haven't really thought about it.","translation":"[实话]我其实还没认真想过。","status":"translated","notes":""}
+{"id":"TAN-0AE2813B17C2","source":"[Horomachistry] 'The Cross died not, but passed within.' They're gone, but some of them became us.","translation":"[司辰学]“介壳种未死，只是遁入内里。”它们已经离去，但其中一些成了我们。","status":"translated","notes":"Horomachistry 译“司辰学”；The Cross 按术语表译“介壳种”。"}
+{"id":"TAN-0B04F99ACB2F","source":"Lieutenant - Lieutenant [[Huissier]]! It's you, damn your eyes! [Vincent is grinning.]","translation":"中尉——[[Huissier]]中尉！是你，你这该死的家伙！[文森特咧嘴笑着。]","status":"translated","notes":""}
+{"id":"TAN-0B0544CD7055","source":"[But there are always ways to travel without a ticket.]","translation":"[不过，不买票也总有办法上路。]","status":"translated","notes":""}
+{"id":"TAN-0B05972AD68C","source":"Strathcoyne's eyes pop. He takes the coin, examines it for a second, and then - apparently to his own surprise - guffaws.","translation":"斯特拉思科因瞪圆了眼。他接过硬币，看了片刻，然后——似乎连他自己都很意外——放声大笑起来。","status":"translated","notes":"j.87 文本修订同步"}
+{"id":"TAN-0B1ABB12535F","source":"They are of course very welcome in this café.","translation":"他们在这家咖啡馆当然非常受欢迎。","status":"translated","notes":""}
+{"id":"TAN-0B214510D5B2","source":"This is the dream that sets its teeth in the neck's nape to drag what is left through the snow to the hollow place. It is too long. It ends.","translation":"这场梦一口咬住颈背，把余下的我拖过雪地，拖向那空洞之处。它太长了。终于结束。","status":"translated","notes":"保留梦境文本的残酷物质意象与骤停节奏。"}
+{"id":"TAN-0B44C922D1F2","source":"What you are, not what you do. It's about breeding.","translation":"这说的是你的出身，不是你的作为。关乎血统。","status":"translated","notes":""}
+{"id":"TAN-0B5ABDB30467","source":"Perhaps later. In my own time. [Keeps the evolution option open, for now.]","translation":"也许以后。等我愿意的时候。[暂时保留演化选项。]","status":"translated","notes":""}
+{"id":"TAN-0B7A8E3F1DD6","source":"The words of the charm echo in the vaulted ceiling. When I look up, something's different.","translation":"咒语的话音在穹顶回荡。我抬头望去，有什么不一样了。","status":"translated","notes":""}
+{"id":"TAN-0B8628E8F9DE","source":"A cloud of steam; and then nothing obvious has changed.","translation":"一蓬蒸汽；散去以后，看上去一切如旧。","status":"translated","notes":""}
+{"id":"TAN-0B8ACE79DD21","source":"Shoes gone :(","translation":"鞋没了 :(","status":"translated","notes":"保留调试式文案与表情。"}
+{"id":"TAN-0B8BC76C30C9","source":"Don't think you understand my motives, Sinombre.","translation":"别以为你看透了我的动机，西农布尔。","status":"translated","notes":""}
+{"id":"TAN-0B8C2D0EAADC","source":"You need to work on your accent, Midnight Joe.","translation":"你的口音还得练练，午夜乔。","status":"translated","notes":""}
+{"id":"TAN-0B9A4B03B57B","source":"Jean Dupont.","translation":"让·杜邦。","status":"translated","notes":""}
+{"id":"TAN-0BAC225FF968","source":"A distant memory stirs...","translation":"一段久远的记忆苏醒了……","status":"translated","notes":""}
+{"id":"TAN-0BAF4CAAA51F","source":"Write my name in the fog on the glass.","translation":"在玻璃的雾气上写下我的名字。","status":"translated","notes":""}
+{"id":"TAN-0BB4BAB207C9","source":"He did; yes.","translation":"是的；他的确如此。","status":"translated","notes":"保留 did 对上文动作的含混照应，不擅自补出宾语。"}
+{"id":"TAN-0BBE789ACB42","source":"What ghastly imaginations those bishops had.","translation":"那些主教的想象力真够瘆人的。","status":"translated","notes":""}
+{"id":"TAN-0BC5018026B6","source":"Something like fever...","translation":"某种近似发烧的感觉……","status":"translated","notes":""}
+{"id":"TAN-0BFBE318FCB6","source":"Your friend behind the curtain...","translation":"帘子后面那位朋友……","status":"translated","notes":""}
+{"id":"TAN-0C2105C9F271","source":"I am ready to guide you, as we have agreed. Place my name on your lips when you sleep.","translation":"我已准备好依约为你引路。入睡时，让我的名字停在你唇上。","status":"translated","notes":""}
+{"id":"TAN-0C49536140CB","source":"But I think that she is all right.","translation":"不过我觉得，她还好。","status":"translated","notes":"润色2026-08-18：“靠得住”擅自加了信任义；all right 此处取中性，避免过度诠释"}
+{"id":"TAN-0C49D63F63B4","source":"How are you on theology, Vincent?","translation":"你对神学懂多少，文森特？","status":"translated","notes":""}
+{"id":"TAN-0C50B1CB110C","source":"I'm looking for a woman. [[Nina Lagasse]].","translation":"我在找一位女士——[[Nina Lagasse]]。","status":"translated","notes":"合并英语碎句，使口语自然；保留链接目标。"}
+{"id":"TAN-0C60369DB10B","source":"Pff. Be quick.","translation":"啧。快点。","status":"translated","notes":""}
+{"id":"TAN-0C62C12C7D3D","source":"There are parts of the Mediterranean now where the sea is mud or blood. Here, still, it's the Bay of Angels. Blue as the remembered skies of childhood.","translation":"如今，地中海有些地方的海水已经化为泥浆或鲜血。可这里仍是天使湾。蓝得像记忆中孩提时代的天空。","status":"translated","notes":"Bay of Angels 采用尼斯地名常译“天使湾”。"}
+{"id":"TAN-0C84E01AE772","source":"Sit up again.","translation":"重新坐起身来。","status":"translated","notes":""}
+{"id":"TAN-0C90431C216E","source":"Not really.","translation":"也不算。","status":"translated","notes":""}
+{"id":"TAN-0CA29975D1D2","source":"Let's do this.","translation":"来吧。","status":"translated","notes":""}
+{"id":"TAN-0CB59EE1F3E2","source":"Spend [q=app:evolveCost] Edge Experiences.","translation":"花费 [q=app:evolveCost] 份刃之经历。","status":"translated","notes":""}
+{"id":"TAN-0CE08D5AEA4E","source":"'Spencer...'","translation":"“斯宾塞……”","status":"translated","notes":""}
+{"id":"TAN-0CEA1DA18162","source":"The Director is in his office. Over there, by the stairs.","translation":"院长在办公室里。那边，楼梯旁。","status":"translated","notes":"润色2026-08-18：疗养院 Director 统一为“院长”"}
+{"id":"TAN-0CEB40158326","source":"What of it?","translation":"那又怎样？","status":"translated","notes":""}
+{"id":"TAN-0D08A2D74F0B","source":"Leopold?","translation":"利奥波德？","status":"translated","notes":""}
+{"id":"TAN-0D0A03AC6DD3","source":"It reminds me of the [[Horned-Axe]]. But no-one puts a secret god on their flag. Double-bladed axe symbols are nothing unique. It must be a coincidence.","translation":"它让我想起[[Horned-Axe]]。可没人会把秘密之神画在自己的旗上。双刃斧也不是什么独有的标志。一定只是巧合。","status":"translated","notes":""}
+{"id":"TAN-0D49FB105E4C","source":"This is one of the privileges for which I pay my little surcharge to Dr Aubière. As I said, I hope the matter will remain between us. I wouldn't want to provoke unseemly jealousy.","translation":"这是我付给奥比耶医生那点附加费换来的特权之一。正如我所说，希望此事只限你我知晓。我可不想惹来有失体面的嫉妒。","status":"translated","notes":""}
+{"id":"TAN-0D4F3E37F719","source":"Poor old creature. The Badats used to be very grand, you know. But there were the confiscations, you know, and then they shot her husband... she never really recovered. I think her mind is going. Spiders in the attic, you know.","translation":"可怜的老东西。巴达家从前很显赫，你知道。可后来财产遭到没收，你知道，再后来他们又枪毙了她丈夫……她始终没真正缓过来。我觉得她脑子越来越不清醒了。阁楼里有蜘蛛，你知道。","status":"translated","notes":"保留 Spiders in the attic 介于疯癫俗语与可能实指之间的暧昧。 原文 \"you know\" 三处回环是说话人的长舌口癖（显赫/没收/蜘蛛各一）；中间一处漏译，补回\"你知道，\"。"}
+{"id":"TAN-0D561FA7AA35","source":"In the name of the State, I place you under arrest! Come with me, immediately.","translation":"以邦国之名，我宣布逮捕你！立刻跟我走。","status":"translated","notes":"润色2026-08-18：“我现在逮捕你”不合逮捕的宣布式语域；place under arrest 是施行宣告"}
+{"id":"TAN-0D5F97BA0FAB","source":"Oh, yes! Yes!","translation":"哦，是！是的！","status":"translated","notes":"润色2026-08-18：原译“哦，是！是的！”前后不一；润色2026-08-18：回退学究式规整：原译的“是！是的！”带兴奋的结巴，无需规整"}
+{"id":"TAN-0D6E560300FE","source":"[Spare a moment to think about that.]","translation":"[花一点时间想想这件事。]","status":"translated","notes":""}
+{"id":"TAN-0D76F639E979","source":"By their words shall ye know them, hm, Leopold?","translation":"听其言，便知其人，是不是，利奥波德？","status":"translated","notes":"仿写《马太福音》“凭果子认出他们”的句式，保留经文口吻。"}
+{"id":"TAN-0D934CECD8A0","source":"[Shrug silently.]","translation":"[默默耸肩。]","status":"translated","notes":""}
+{"id":"TAN-0D99C5A61088","source":"Farther than you think.","translation":"比你想的更远。","status":"translated","notes":""}
+{"id":"TAN-0DA568ECC05C","source":"Struggle.","translation":"挣扎。","status":"translated","notes":""}
+{"id":"TAN-0DAA7E0E9D9F","source":"Nina isn't mentioned by name. The current manageress is identified as 'Mme Medea Japaridze.'","translation":"文中没有提到宁娜的名字。现任女经理记作“梅代娅·贾帕里泽夫人”。","status":"translated","notes":""}
+{"id":"TAN-0DB2FD8D9B66","source":"This safe isn't safe. Close it and step back.","translation":"这保险柜可不保险。关上它，往后退。","status":"translated","notes":"保留 safe 名词/形容词双关。"}
+{"id":"TAN-0DB37E8F83F3","source":"It's not the worst. But it's not much fun.","translation":"算不上最糟。但也不怎么好受。","status":"translated","notes":""}
+{"id":"TAN-0DC296AD1DA0","source":"My heart urges me to find her soon. Since I came back to the World, I've learnt to listen to my heart.","translation":"我的心催我尽快找到她。自从回到世间，我已经学会倾听自己的心。","status":"translated","notes":"World 此处为与界外经历相对的世间，未作专名“醒时”。"}
+{"id":"TAN-0DC9FBBC7E44","source":"In three heartbeats he's at her side. Her eyes widen. In a moment they're locked in a passionate kiss.","translation":"三次心跳之间，他已来到她身旁。她睁大双眼。转瞬间，两人便紧紧相拥，热烈亲吻。","status":"translated","notes":"润色2026-08-18：“三次心跳之间”改惯用“的工夫”；末句原译“紧紧相拥，热烈亲吻”叠床架屋；润色2026-08-18：用户裁定：原译更好。“的工夫”口语化削弱文学性；“紧紧相拥，热烈亲吻”的叠合节奏贴合文气"}
+{"id":"TAN-0DD5C7166BC4","source":"It is too mystical for me. And the translation is I think quite poor. But the dreams linger, with this one.","translation":"这对我来说太过神秘。译文，我想，也很差。不过读这一本做的梦，久久不散。","status":"translated","notes":"保留安德蕾略带非母语感的断句。"}
+{"id":"TAN-0DD683AD9E78","source":"Aristide, examining the bowl of his pipe for informers. Leopold, fascinated by the moths which flutter in to sip from his glass. Jean-Bernard, doggedly carving a quatrain into the flank of a candle. Philomèle is laughing into Jean-Bernard's shoulder, her hair coming loose... but then she begins to cough. It takes a long time for the coughing to subside. She's grown pale. That might be a spot of blood on her collar, but the cloth is too dark for me to be certain.","translation":"阿里斯蒂德正检查烟斗钵里有没有告密者。利奥波德着迷地看着飞来啜饮他杯中酒的飞蛾。让-贝尔纳锲而不舍地把一首四行诗刻在蜡烛侧面。菲洛梅勒伏在让-贝尔纳肩头笑着，头发渐渐散开……可随后，她开始咳嗽。过了很久，咳嗽才平息。她脸色苍白。衣领上或许有一点血迹，但布色太深，我无法确定。","status":"translated","notes":"保留“烟斗钵里找告密者”的荒诞细节。"}
+{"id":"TAN-0DF220C4EA78","source":"[Legal Truth] I'm English.","translation":"[法理上的实话]我是英国人。","status":"translated","notes":"Legal Truth 指法律国籍与实际出身的区别。"}
+{"id":"TAN-0E02F15A2C4E","source":"[The necessary mental adjustments.]","translation":"[作好必要的心理调整。]","status":"translated","notes":""}
+{"id":"TAN-0E10541A3885","source":"[Use the alarm clock before you sleep, if you want to wake in the middle of the night and prowl round the Sanitarium unobserved.]","translation":"[如果你想半夜醒来，趁无人注意在疗养院里四处游荡，就在睡前使用闹钟。]","status":"translated","notes":""}
+{"id":"TAN-0E198E8B19CE","source":"[Perhaps not.]","translation":"[也许还是算了。]","status":"translated","notes":""}
+{"id":"TAN-0E1F3C94A8C8","source":"The door swings inwards - not only a little, before it jams against something in the crowded room beyond - but the opening is wide enough for me to step through.","translation":"门向内摆开——只开了一点，就被拥挤房间里的什么东西卡住——不过门缝已经够宽，容我侧身进去。","status":"translated","notes":"源文 not only a little 句法疑有笔误，依门被杂物卡住的场景翻译。"}
+{"id":"TAN-0E8CA7BEB89E","source":"The power of it! Once you taste godhood -even a drop of it - you can't be just a note in the song.","translation":"那种力量！一旦尝过神性——哪怕只有一滴——你就不甘再只作歌中的一个音符。","status":"translated","notes":""}
+{"id":"TAN-0E90822DB8AC","source":"I see. Never mind, then.","translation":"明白了。那就算了。","status":"translated","notes":""}
+{"id":"TAN-0EBFFAC2A81C","source":"Do you have...","translation":"你有没有……","status":"translated","notes":"保留未完句。"}
+{"id":"TAN-0ED10251720F","source":"About [[Nina Lagasse]]...","translation":"谈谈[[Nina Lagasse]]……","status":"translated","notes":""}
+{"id":"TAN-0ED3A39A130B","source":"Yeah. Audrey's cool.","translation":"是啊。奥德丽人不错。","status":"translated","notes":"cool 按人物口语译“人不错”。"}
+{"id":"TAN-0ED46763CDA8","source":"See that you do.","translation":"那你可要做到。","status":"translated","notes":"润色2026-08-18：“最好如此”像随口附和；See that you do 是带警告的叮嘱"}
+{"id":"TAN-0EEA9DC86891","source":"What else?","translation":"还有呢？","status":"translated","notes":""}
+{"id":"TAN-0EFC63D58F0C","source":"[Pay, and watch while Linou populates a wooden tray with wine, pastis, brandy.]","translation":"[付钱，看着莉努往木托盘里摆上葡萄酒、茴香酒和白兰地。]","status":"translated","notes":""}
+{"id":"TAN-0F00AE4FE94D","source":"Really.","translation":"哦，是吗。","status":"translated","notes":""}
+{"id":"TAN-0F3E4E580042","source":"Interesting. Most interesting. Yes. Bring me the names of malcontents, and I will bestow upon you a little gift. Five hundred francisques.","translation":"有意思。非常有意思。好。把不满分子的名字带给我，我就赐你一点小礼物。五百弗朗西斯克。","status":"translated","notes":"francisque 统一作“弗朗西斯克”。"}
+{"id":"TAN-0F58330D9FDF","source":"Beyond the gates, a sign reads SANITARIUM AUJOURD'HUI.","translation":"大门后有块招牌，上书“‘今日’疗养院”。","status":"translated","notes":"地点专名统一为“‘今日’疗养院”，保留 Aujourd'hui 作为院名的引号层级。"}
+{"id":"TAN-0F63BC41E633","source":"I appreciate your generosity. And your courage.","translation":"多谢你的慷慨。也多谢你的勇气。","status":"translated","notes":""}
+{"id":"TAN-0F847BD68B36","source":"That's my affair, and none of yours.","translation":"那是我的事，与你无关。","status":"translated","notes":""}
+{"id":"TAN-0F8982B4CF38","source":"[Riffle through.]","translation":"[哗啦啦翻阅。]","status":"translated","notes":""}
+{"id":"TAN-0F8E92EDB4DC","source":"How revolting. Why?","translation":"真恶心。为什么？","status":"translated","notes":""}
+{"id":"TAN-0FAC2AB0B630","source":"Nina's white shadow, again in my thoughts...","translation":"宁娜那道白影，又一次浮上心头……","status":"translated","notes":"保留 white shadow 意象，不解释其本体。"}
+{"id":"TAN-0FB4F20E1A0A","source":"Join in; perform friendship; solicitously demonstrate my concern for poor Philomèle.","translation":"加入他们；装出朋友的样子；殷勤表示我对可怜的菲洛梅勒有多关心。","status":"translated","notes":"perform friendship 带有刻意表演社交的意味。"}
+{"id":"TAN-0FBAD4785509","source":"Lagasse <i>is</i> her name now, the night reminds me. But there was a time when they called her the Witch of Lagash.","translation":"夜晚提醒我：如今，拉格斯<i>的确</i>是她的姓。但曾有一段岁月，人们称她为拉格什女巫。","status":"translated","notes":"Lagasse / Lagash 音近双关分别译“拉格斯/拉格什”。"}
+{"id":"TAN-0FD6FB076468","source":"I prepared Labrikon earlier. I'll use it to visit Aubière's dreams. [This won't be restful, and you won't lose Troubles.]","translation":"我先前准备好了拉布里孔。我要用它进入奥比耶的梦。[这样无法得到充分休息，你也不会消除麻烦。]","status":"translated","notes":"Labrikon 为物品专名，暂音译“拉布里孔”；Troubles 译“麻烦”。"}
+{"id":"TAN-0FE96A3D6A46","source":"My heart throbs urgently in response.","translation":"我的心顿时急促地跳起来，像是回应着什么。","status":"translated","notes":"润色2026-08-18：补上 in response 的呼应义；润色2026-08-18：替代我先前生硬的“与之相应”；保留 in response 的呼应义且读感自然"}
+{"id":"TAN-1003AE9F6B02","source":"\tHoromachistry test","translation":"\t司辰学测试","status":"translated","notes":"保留开头制表符。"}
+{"id":"TAN-100DBD07683A","source":"Over the clean notes of the wind from under the world, there's a pungency - carbide? bitumen? Not quite either. For a moment, a shape wavers at the edge of my vision: like a woman, if a woman could melt and smear.","translation":"自世界下方吹来的风，气息本来清冽，却混着一股刺鼻味——电石？沥青？都不大像。一瞬间，有个轮廓在视野边缘摇曳：像一个女人——假如女人也能熔化、洇散。","status":"translated","notes":""}
+{"id":"TAN-101813631702","source":"[[Nina Lagasse]]...","translation":"[[Nina Lagasse]]……","status":"translated","notes":""}
+{"id":"TAN-101F794369A1","source":"Later, perhaps. Let's savour the thought. [Keeps the evolution option open, for now.]","translation":"也许以后吧。且慢慢品味这个念头。[暂时保留演化选项。]","status":"translated","notes":""}
+{"id":"TAN-102681F86EC8","source":"[Click. Whirr. Click.]","translation":"[咔嗒。嗡转。咔嗒。]","status":"translated","notes":""}
+{"id":"TAN-1053C1337E0E","source":"Thank you, Madame. Come along, Vincent.","translation":"谢谢您，夫人。走吧，文森特。","status":"translated","notes":""}
+{"id":"TAN-10584AC68CCB","source":"Bah. Bah! Did you think to frighten the Milice?","translation":"呸。呸！你以为这样就能吓住民兵团？","status":"translated","notes":"Milice 指法国维希民兵组织，暂译“民兵团”。"}
+{"id":"TAN-10688A2CE390","source":"Rich, too.","translation":"也很有钱。","status":"translated","notes":""}
+{"id":"TAN-108232530558","source":"I've wanted a shave since I got off that damned train. No. Since Milan.","translation":"自从下了那趟该死的火车，我就一直想刮胡子。不。打从米兰开始。","status":"translated","notes":""}
+{"id":"TAN-10A1DBE0E804","source":"Quartz?","translation":"石英？","status":"translated","notes":""}
+{"id":"TAN-10C6A32F2D49","source":"Oh, I don't have <i>papers</i>.","translation":"哦，我没有<i>证件</i>。","status":"translated","notes":""}
+{"id":"TAN-10CBAD3968FB","source":"You've lost me.","translation":"我听糊涂了。","status":"translated","notes":""}
+{"id":"TAN-10D1A9D46691","source":"Does <i>everyone</i> here know who I am already?","translation":"这里<i>人人</i>都已经知道我是谁了吗？","status":"translated","notes":""}
+{"id":"TAN-10DE9293321C","source":"[She examines a half-empty cigarette packet.]","translation":"[她看了看半空的烟盒。]","status":"translated","notes":""}
+{"id":"TAN-111295DF6AB1","source":"Pluck a coin from her left ear.","translation":"从她左耳后变出一枚硬币。","status":"translated","notes":""}
+{"id":"TAN-111BE9A7433D","source":"It's true. Strathcoyne won't shut up about the [[Incorporate]] states. He's just waiting for his papers to come through. And I know Europe... well, Europe's on the way out. But when it goes, I'll be here to see it go.","translation":"是真的。斯特拉思科因一提那些 [[Incorporate]] 邦国，就说个没完。他只等证件批下来。我也知道欧洲……唉，欧洲快不行了。但它咽气的时候，我会留在这里亲眼看着。","status":"translated","notes":"保留 Incorporate 链接；state 按语境译“邦国”。"}
+{"id":"TAN-113035946B5C","source":"Is that a wig? The painter has faithfully rendered it slipping slightly. He's bald underneath. Forge-long are hairless... of course!","translation":"那是假发吗？画家如实画出了它微微滑落的样子。他底下是秃的。铸之长生者都没有毛发……当然！","status":"translated","notes":"Forge-long 按“准则+位阶”译“铸之长生者”。"}
+{"id":"TAN-114188AC7143","source":"That's her.","translation":"就是她。","status":"translated","notes":""}
+{"id":"TAN-1147CDA6FDC5","source":"Almost there... but not yet.","translation":"快到了……但还没到。","status":"translated","notes":""}
+{"id":"TAN-11578CDB0C20","source":"And something for monsieur. [Linou adds a drink to the tray, and turns away.]","translation":"也给先生来一杯。[莉努往托盘上又放了一杯酒，转过身去。]","status":"translated","notes":""}
+{"id":"TAN-115EF989A78A","source":"[Sombre interpretation] 'Mark well this foreboding of roses.'","translation":"[阴郁的解读]“谨记这玫瑰的凶兆。”","status":"translated","notes":"与下一条 neutral interpretation 的 presentiment 区分为“凶兆”。"}
+{"id":"TAN-115FBF5E08B1","source":"Hinges, almost flush with the wall. There still is a door here! Which means, if I tug at the other edge -","translation":"铰链，几乎同墙面齐平。这里果然还有一扇门！也就是说，只要我拉住另一侧——","status":"translated","notes":"保留未完句。"}
+{"id":"TAN-115FEDF8F274","source":"What on Earth is going on with your arm?","translation":"你的胳膊究竟是怎么回事？","status":"translated","notes":""}
+{"id":"TAN-1168A075A418","source":"When I was priest in [[Brancrug]], I sometimes saw Christopher Illopoly in his rooms in [[Hush House]] - to argue about theology and drink his horrible burdock tea. I saw it there, I think...","translation":"我在 [[Brancrug]] 当神父时，有时会去 [[Hush House]] 里克里斯托弗·伊利奥波里的房间找他——争论神学，喝他那难喝透顶的牛蒡茶。我想，我在那里见过它……","status":"translated","notes":""}
+{"id":"TAN-116BEBCC05C3","source":"Sunset is good?","translation":"日落很好？","status":"translated","notes":"承接 Bessy 用 cool 等含混俚语回答去向的对话。"}
+{"id":"TAN-11715CA515A5","source":"I'm not going to waste time worrying about that. Take each day as it comes.","translation":"我才不浪费时间操心那些。过一天算一天。","status":"translated","notes":""}
+{"id":"TAN-1173B98CF2B0","source":"But your Incorporate masters might take a dim view of your private operations.","translation":"不过，你那些集团的主子，对你私下里的营生恐怕要侧目而视。","status":"translated","notes":"润色2026-08-18：take a dim view 原译“不会喜欢”太弱"}
+{"id":"TAN-11910F21E30E","source":"But I wonder...","translation":"可我还是在想……","status":"translated","notes":""}
+{"id":"TAN-11A66FD42777","source":"Lambent brass, and black bakelite shiny as a beetle's carapace. A handsome bit of kit. And remarkably portable - less than two feet across. It's branded with a crown, and the words ZENITH TRANS-OCEANIC.","translation":"泛着柔光的黄铜，黑色胶木亮得像甲虫的甲壳。是件漂亮器材。而且便携得出奇——还不到两英尺宽。机身印着一顶王冠，以及 ZENITH TRANS-OCEANIC 字样。","status":"translated","notes":"保留收音机品牌字样原文。"}
+{"id":"TAN-11B9364330F8","source":"Sea-hued glass.","translation":"海色玻璃。","status":"translated","notes":""}
+{"id":"TAN-11BEA9DC1DF7","source":"White as chalk.","translation":"白如粉笔。","status":"translated","notes":""}
+{"id":"TAN-11C2F51C255E","source":"You are right to identify a certain risk to the fragile psyche - even when we have of course discarded the esoteric myths around the symbol. But fire also is perilous, no? And we keep fire in our library. Safely behind a grate.","translation":"你指出它会给脆弱心灵带来某种风险，这并没有错——哪怕我们当然已经摒弃了围绕这个符号的秘传迷信。但火不也很危险吗？而我们的图书室里照样生着火。安安全全关在炉栅后面。","status":"translated","notes":"library 与疗养院公共图书室的场景名统一。"}
+{"id":"TAN-11C3408B55C4","source":"\"Did you hear this one yet? A [[Crucian]] walks into a bar in Berlin...\"","translation":"“这个笑话你听过没有？一个[[Crucian]]走进柏林的一家酒吧……”","status":"translated","notes":"保留 Crucian 链接键，待其显示名统一。"}
+{"id":"TAN-11CC4249B3B9","source":"Now will you help me?","translation":"现在你肯帮我了吗？","status":"translated","notes":""}
+{"id":"TAN-11D82C859256","source":"And I should remember, first, that the Sister-and-Witch brings together what she can... and that she's the enemy of severance and disjunction.","translation":"我还该先记住：双生巫女会尽其所能，将万物聚合……她与一切割裂和分离为敌。","status":"translated","notes":"严格按术语表区分 Sister-and-Witch=双生巫女。"}
+{"id":"TAN-11D92108F245","source":"Someone with a heart, guts, and a code.","translation":"一个有良心、有胆量，也有自己信条的人。","status":"translated","notes":"此处 code 为个人行事准则，非大写系统词 Principle。"}
+{"id":"TAN-11E7158AC76C","source":"Put away the leaflet. [Leave.]","translation":"收起传单。[离开。]","status":"translated","notes":""}
+{"id":"TAN-11EDE2CB6294","source":"[Wipe my mouth and push the plate away.]","translation":"[擦擦嘴，把盘子推开。]","status":"translated","notes":""}
+{"id":"TAN-11F35866756C","source":"You are speaking of the [[Cross]]-change, I suppose, Mr Hobson? What an amusing fellow you are. Perhaps you should consider a career on the stage.","translation":"你说的是 [[Cross]] 之变吧，霍布森先生？你可真有意思。或许该考虑去舞台上谋份事业。","status":"translated","notes":"保留 Cross 链接；change 按设定语境译“之变”。"}
+{"id":"TAN-12108E1B8AD6","source":"What was Nina doing here?","translation":"宁娜来这里做什么？","status":"translated","notes":""}
+{"id":"TAN-121DAD42B98E","source":"<i>Spencer. Darling. We miss you. We're cold. We miss you - </i>","translation":"<i>斯宾塞。亲爱的。我们想你。我们好冷。我们想你—— </i>","status":"translated","notes":"保留斜体与标签前空格。"}
+{"id":"TAN-121FE5788C65","source":"We spoke earlier about a woman named [[Nina Lagasse]].","translation":"我们先前谈过一个名叫 [[Nina Lagasse]] 的女人。","status":"translated","notes":""}
+{"id":"TAN-122720FC8361","source":"The words of the saint dwell in your ears. Now your memories will dwell in our eyes. Come with me now.","translation":"圣人的话住在你耳中。如今，你的记忆也将住进我们眼里。跟我来。","status":"translated","notes":"保留 dwell 的重复与器官意象。"}
+{"id":"TAN-122CA0D08A60","source":"Where did he go?","translation":"他去哪儿了？","status":"translated","notes":""}
+{"id":"TAN-124780AE9CD9","source":"Your papers.","translation":"你的证件。","status":"translated","notes":""}
+{"id":"TAN-125332644EE9","source":"testTravelTag is applied on, and blocks, this - so it's invisible until we travel.","translation":"testTravelTag 已应用于此节点并将其阻断——因此在旅行之前，它不可见。","status":"translated","notes":"保留技术标识 testTravelTag。"}
+{"id":"TAN-12623A065AB4","source":"White as milk.","translation":"白如牛乳。","status":"translated","notes":""}
+{"id":"TAN-126504988547","source":"This gold-and-grey divided city has suffered - but it's not like anywhere else now. Poor dying Europe is going out in style.","translation":"这座金灰两分的城市饱经创伤——可如今再没有别处与它相像。可怜的、垂死的欧洲，连谢幕也谢得有派头。","status":"translated","notes":"going out in style 译为“谢幕也谢得有派头”，兼顾欧洲衰亡与冷幽默。"}
+{"id":"TAN-126601EB68DA","source":"[He's holding a circular box the size of a small cake-tin. A worn silver-gilt dove sits atop it.]","translation":"[他捧着一只圆盒，约有小蛋糕模那么大。盒顶卧着一只磨损的鎏银鸽子。]","status":"translated","notes":""}
+{"id":"TAN-128B78634E2B","source":"The headlights burn; the engine rumbles.","translation":"车头灯灼灼发亮；引擎低声轰鸣。","status":"translated","notes":""}
+{"id":"TAN-12966E2C4645","source":"[Sniff severely.]","translation":"[严厉地哼了一声。]","status":"translated","notes":"将 sniff severely 的滑稽动作译成自然可读的神态。"}
+{"id":"TAN-12984637383B","source":"So.","translation":"那么。","status":"translated","notes":""}
+{"id":"TAN-12A82610D7AA","source":"Sunset is <i>something</i>.","translation":"日落可<i>不一般</i>。","status":"translated","notes":"保留 something 对好坏含混其辞。"}
+{"id":"TAN-12AB4907354F","source":"Is anyone watching this place? I'm so used to being hunted. [The more nights you spend in the same place, the more Traces you'll get each night.]","translation":"有人监视这里吗？我太习惯被追猎了。[你在同一个地方度过的夜晚越多，每夜获得的痕迹就越多。]","status":"translated","notes":"Traces 暂译“痕迹”，待系统术语统稿。"}
+{"id":"TAN-12AD1508E0F1","source":"The light-bulb fizzes faintly. Léon is definitely gone.","translation":"灯泡微微嘶响。莱昂肯定已经走了。","status":"translated","notes":""}
+{"id":"TAN-12C4D23EAE35","source":"[[Nina Lagasse]]. Again.","translation":"[[Nina Lagasse]]。又是她。","status":"translated","notes":""}
+{"id":"TAN-130A73E2261D","source":"You can't touch me now...","translation":"你现在碰不到我了……","status":"translated","notes":""}
+{"id":"TAN-135FF913A359","source":"This is the road out of Antibes town, to the green and villa-studded heights of Cap d'Antibes.","translation":"这是出昂蒂布城的路，直通绿意葱茏、别墅星罗的昂蒂布角高地。","status":"translated","notes":""}
+{"id":"TAN-1369AEB95337","source":"Another vivid abstract, like the one at the door.","translation":"又一幅色彩鲜明的抽象画，和门边那幅相似。","status":"translated","notes":""}
+{"id":"TAN-136F3EE6643E","source":"[We'll both travel in third class. Pay two hundred and fifty francisques. Vincent will pay for his own ticket.]","translation":"[我们俩都坐三等车厢。支付二百五十弗朗西斯克。文森特会自己付票钱。]","status":"translated","notes":""}
+{"id":"TAN-137966DFCAC8","source":"A panel of sturdy wood, daubed with the symbol of a cross-charged heart. It resembles the door of the sanitarium dining room; but it isn't actually a door, or I would be able to open it.","translation":"一块结实的木板，涂着一颗饰有十字的心形符号。它很像疗养院餐厅的门；但它其实不是门，否则我应该能把它打开。","status":"translated","notes":"cross-charged 按纹章学结构译“饰有十字”，此处小写 cross 不作种族专名。"}
+{"id":"TAN-137AC6DC67A5","source":"But an adequate mechanic.","translation":"不过，做个修理工倒还合格。","status":"translated","notes":""}
+{"id":"TAN-137B397DA2B8","source":"\"...he lays up the deep in his house of lights.\"","translation":"“……他将深渊积藏于自己的光明之屋。”","status":"translated","notes":"保留仿经文句式；house of lights 不是专名 House of the Sun。"}
+{"id":"TAN-138F109AD08B","source":"...expecting light to change colour when it shines on something different.","translation":"……指望光照到不同东西上，就会改变颜色。","status":"translated","notes":""}
+{"id":"TAN-13904AF3AAB0","source":"[Pry at the lid of the box with a fingernail.]","translation":"[用指甲撬盒盖。]","status":"translated","notes":""}
+{"id":"TAN-1394F4CE2992","source":"[Possessed] Long lazy-angled days in the sun... but now the sun is bloodied.","translation":"[着魔]日光之下，一天天闲散悠长，斜斜流过……可如今太阳染了血。","status":"translated","notes":""}
+{"id":"TAN-13A8B120A3EC","source":"[Grail] It looks nothing like Nina. But somehow it reminds me of when I came here seeking her. Perhaps I just remembered the painting from that day...","translation":"[杯]它一点也不像宁娜。但不知为何，它让我想起自己来这里寻找她的那一天。也许我只是记起了那天见过这幅画……","status":"translated","notes":""}
+{"id":"TAN-13F478579E94","source":"General chatter","translation":"随便聊聊","status":"translated","notes":"疑为占位/调试节点，按对话选项口吻处理。"}
+{"id":"TAN-1432577A6043","source":"That's annoying.","translation":"真烦人。","status":"translated","notes":""}
+{"id":"TAN-1441EC287A68","source":"Jean-Bernard asked me to remember him to you. He thought I might be interested in your 'quieter business'.","translation":"让-贝尔纳托我向你问好。他觉得我或许会对你那门“清静生意”感兴趣。","status":"translated","notes":"quieter business 指不公开的私下生意，保留委婉说法。；润色2026-08-18：与 chunk_002 TAN-257450EDEF53 的 quieter business 统一译“清静生意”（ comparative 从略，取反讽固定说法）"}
+{"id":"TAN-14628F40D995","source":"Yes. An interesting woman.","translation":"是。一个有意思的女人。","status":"translated","notes":""}
+{"id":"TAN-14746018B364","source":"Time to go?","translation":"该走了吗？","status":"translated","notes":""}
+{"id":"TAN-147FA2EE54F7","source":"But his arm has a certain charm. Those eyes. Vincent and I, we call her 'Annabelle'.","translation":"不过他的胳膊倒别有魅力。尤其那双眼睛。文森特和我都叫她“安娜贝尔”。","status":"translated","notes":"arm 被拟人化并命名为女性，后句用“她”。"}
+{"id":"TAN-148DCD99F19D","source":"Antibes. Before War came to the World -","translation":"昂蒂布。战争降临世界之前——","status":"translated","notes":"保留未完句；War/World 在此为设定事件与人世。 与同源长句统一 World／世界。"}
+{"id":"TAN-14941092AB82","source":"Bessy looks briefly wary.","translation":"贝茜短暂地露出戒备之色。","status":"translated","notes":""}
+{"id":"TAN-14972824D896","source":"On the other side of this curtain... well, residents are allowed to talk to each other, so go in there if you're feeling brave.","translation":"帘子另一边……嗯，住客之间总可以互相说话；要是你胆子够大，就进去吧。","status":"translated","notes":"j.87 文本修订同步"}
+{"id":"TAN-14BEF4D0A4DD","source":"Jaume doesn't smile - but his eyes crinkle as if he might.","translation":"豪梅没有笑——但眼角微微皱起，仿佛就要笑了。","status":"translated","notes":"v1.2.5 术语终审：依最新版术语证据统一。"}
+{"id":"TAN-15138223A056","source":"You know my name?","translation":"你知道我的名字？","status":"translated","notes":""}
+{"id":"TAN-1515710A004D","source":"So let's go back","translation":"那么，回到前面吧","status":"translated","notes":"疑为测试/演示脚本指令，保留简短口吻。"}
+{"id":"TAN-15261B7F468D","source":"Sunset is bad?","translation":"日落很糟？","status":"translated","notes":""}
+{"id":"TAN-153859E3F4A8","source":"I'm not surprised at all. I think he may not even be a real doctor.","translation":"我一点也不惊讶。我觉得他甚至可能根本不是个真医生。","status":"translated","notes":""}
+{"id":"TAN-1547983C05C9","source":"Sit forward and watch the journey.","translation":"身体前倾，看着沿途景色。","status":"translated","notes":""}
+{"id":"TAN-154E981A76E9","source":"Switch off the alarm, to ensure a good night's sleep.","translation":"关掉闹钟，确保一夜好眠。","status":"translated","notes":""}
+{"id":"TAN-155AE9FD70DA","source":"[Leave.]","translation":"[离开。]","status":"translated","notes":""}
+{"id":"TAN-15627B2DB18C","source":"Plays, poetry.","translation":"戏剧，诗歌。","status":"translated","notes":""}
+{"id":"TAN-156B81CE9CE2","source":"None of us are ever really free... but I shouldn't need to tell you that, should I, Sinombre?","translation":"我们谁也从未真正自由……但这件事，应该用不着我来告诉你吧，西农布尔？","status":"translated","notes":""}
+{"id":"TAN-157CBD46D088","source":"Pff. You know I don't read that gibberish.","translation":"啧。你知道我不读那套胡言乱语。","status":"translated","notes":""}
+{"id":"TAN-1591FE7C7824","source":"We're talking to Edouarde here so rel_ed should show up as a modifier if the test is on Charm, not if it's on Bosk","translation":"我们正在和埃杜阿尔德交谈，所以若检定魅力，rel_ed 应作为修正值出现；若检定丛林学，则不应出现","status":"translated","notes":"保留 Edouarde、rel_ed、Charm、Bosk 技术标识。"}
+{"id":"TAN-15A89674019B","source":"[Maintain a safe distance.]","translation":"[保持安全距离。]","status":"translated","notes":""}
+{"id":"TAN-15BA6DC1F51A","source":"Now?","translation":"现在？","status":"translated","notes":""}
+{"id":"TAN-15C7F08CAF07","source":"[Sigh impatiently.]","translation":"[不耐烦地叹气。]","status":"translated","notes":""}
+{"id":"TAN-15D2D3AD3130","source":"It's like baccarat...?","translation":"像百家乐……？","status":"translated","notes":""}
+{"id":"TAN-15E47F798B45","source":"Oho!","translation":"嚯！","status":"translated","notes":""}
+{"id":"TAN-15ECB03F4154","source":"He wears it well.","translation":"他穿着很合身。","status":"translated","notes":"指美军配发的军装。"}
+{"id":"TAN-16092D78C5FF","source":"My heart urges me to find her soon. But I don't always listen to my heart.","translation":"我的心催我尽快找到她。但我并非总会听从自己的心。","status":"translated","notes":""}
+{"id":"TAN-1633F1D44196","source":"Slavery to freedom; labour to industry; Egypt to America.","translation":"从奴役到自由；从劳作到工业；从埃及到美国。","status":"translated","notes":"保留三组递进关系，不扩写解释。"}
+{"id":"TAN-163E6AAA3963","source":"Evidently the cat recognises me.","translation":"显然，这只猫认得我。","status":"translated","notes":""}
+{"id":"TAN-16493DB621C7","source":"How did it happen?","translation":"怎么发生的？","status":"translated","notes":""}
+{"id":"TAN-164B3D0D7864","source":"Don't be silly, Jaume.","translation":"别犯傻，豪梅。","status":"translated","notes":"v1.2.5 术语终审：依最新版术语证据统一。"}
+{"id":"TAN-1652AE25A7CD","source":"Over the clean notes of the wind from under the world, there's a faint but pungent pong - bitumen? Carbide? Not quite either. Then it's gone.","translation":"自世界下方吹来的风，气息本来清冽，却混着一丝淡淡的刺鼻臭味——沥青？电石？都不大像。转眼又消失了。","status":"translated","notes":""}
+{"id":"TAN-166836365342","source":"When the [[Enemy]] was in Paris, Reinhardt wrote this. They had little affection for swing, the Enemy. So Reinhardt was careful. So this isn't precisely swing...","translation":"[[Enemy]] 占领巴黎时，莱因哈特写了这首曲子。敌人不大喜欢摇摆乐。所以莱因哈特很谨慎。所以，这不完全算摇摆乐……","status":"translated","notes":""}
+{"id":"TAN-167BF5102131","source":"[Keep running.]","translation":"[继续跑。]","status":"translated","notes":""}
+{"id":"TAN-167E8BD4190A","source":"The big man reaches out for the passport.","translation":"大个子伸手来拿护照。","status":"translated","notes":""}
+{"id":"TAN-1684CDF0CC08","source":"I'm looking for someone too. A woman. [[Nina Lagasse]].","translation":"我也在找人。一位女士，[[Nina Lagasse]]。","status":"translated","notes":"避免逐句照搬英语碎句造成的“一个女人”直译腔；保留链接目标。"}
+{"id":"TAN-16884D2A1754","source":"Still, he was much diminished. A relief. Coseley was very dangerous.","translation":"尽管如此，他还是衰弱了许多。幸好。科赛利非常危险。","status":"translated","notes":"与“可惜/非凡头脑”的并列选项保持镜像节奏。"}
+{"id":"TAN-168A6DE0FF4F","source":"The bishop might not agree with everything I have said to you. But the bishop does not come often to Antibes, and the saint is here always.","translation":"主教未必赞同我说的每一句话。不过主教很少来昂蒂布，圣人却永远都在这里。","status":"translated","notes":""}
+{"id":"TAN-16AC0711D765","source":"It might.","translation":"也许会。","status":"translated","notes":""}
+{"id":"TAN-16E5C2CB28DE","source":"As payment?","translation":"作为报酬？","status":"translated","notes":""}
+{"id":"TAN-170185B4D751","source":"Never mind the salon nonsense. Shut up and draw.","translation":"别管沙龙那套废话了。闭嘴，摸牌。","status":"translated","notes":"draw 结合牌局译“摸牌”。"}
+{"id":"TAN-1727E736294A","source":"Let's discuss something else first...","translation":"我们先谈点别的……","status":"translated","notes":""}
+{"id":"TAN-17329EA2643B","source":"A panel of varnished wood, daubed with the symbol of an open eye. It resembles the door of the sanitarium library; but it isn't actually a door, or I would be able to open it.","translation":"一块上过漆的木板，涂着一只睁开的眼睛。它很像疗养院图书室的门；但它其实不是门，否则我应该能把它打开。","status":"translated","notes":"sanitarium library 统一译“疗养院图书室”。"}
+{"id":"TAN-174AB1FED399","source":"Give that to me!","translation":"把那个给我！","status":"translated","notes":""}
+{"id":"TAN-1756712E0060","source":"Then go. Go! And tell no-one. I am a woman of good reputation and your slanders will not touch me.","translation":"那就走。走！不许告诉任何人。我是个名声清白的女人，你的诽谤伤不了我。","status":"translated","notes":""}
+{"id":"TAN-1757B432CCC1","source":"Any time!","translation":"甭客气！","status":"translated","notes":""}
+{"id":"TAN-1776F9950ED2","source":"My memory is cobwebbed. But a war memorial inscription comes to mind.","translation":"我的记忆结满蛛网。不过，有一段战争纪念碑的铭文浮上心头。","status":"translated","notes":"保留 memory is cobwebbed 的蛛网意象。"}
+{"id":"TAN-177A940CB9E1","source":"Nina Lagasse is here somewhere. 'In the woods'...","translation":"宁娜·拉格斯就在这里的某处。“在林中”……","status":"translated","notes":"in the woods 可能是线索原话，保留引号与未确定性。"}
+{"id":"TAN-17A48C51CEA3","source":"Father Simeon told us that story in the seminary minor, in Paris. It must be forty years ago, now.","translation":"西缅神父在巴黎的小修院里给我们讲过这个故事。如今算来，该有四十年了。","status":"translated","notes":"seminary minor 译天主教“小修院”。"}
+{"id":"TAN-17B50934140C","source":"Nothing at all. This is none of my affair.","translation":"什么也没有。这事与我无关。","status":"translated","notes":""}
+{"id":"TAN-17BBA9F4C80C","source":"Will he recover?","translation":"他会康复吗？","status":"translated","notes":""}
+{"id":"TAN-17C94E4E453C","source":"So he did.","translation":"他的确这么说过。","status":"translated","notes":"承接上一句荣格引文。"}
+{"id":"TAN-17D82AE9C6A3","source":"I am glad you survived so intact. Without even, if I may say, the usual Légion desert tan.","translation":"很高兴你竟能毫发无伤地活下来。甚至，请容我说，连军团惯有的沙漠肤色都没染上。","status":"translated","notes":"Légion 指前述 Légion du Seuil，单句以“军团”承接。 破折号专项终审：改用更适合中文的逗号、括号或分号。"}
+{"id":"TAN-17E31975F235","source":"Hrmp.","translation":"哼。","status":"translated","notes":""}
+{"id":"TAN-17FB5EEE8F73","source":"[Frown.]","translation":"[皱眉。]","status":"translated","notes":""}
+{"id":"TAN-18083266D7D8","source":"Hello again.","translation":"又见面了。","status":"translated","notes":""}
+{"id":"TAN-1811A4D0D785","source":"The fridge compressor buzzes grumpily.","translation":"冰箱压缩机不耐烦地嗡鸣着。","status":"translated","notes":""}
+{"id":"TAN-18274714DC32","source":"I have no choice but to open my hand, revealing a palmed coin.","translation":"我别无选择，只得摊开手，露出藏在掌心的硬币。","status":"translated","notes":"palmed coin 为魔术藏币手法。"}
+{"id":"TAN-183859C0D00A","source":"The coffee is irreproachable - bitter enough to make an impression, gentle enough not to leave one.","translation":"这咖啡无可指摘——苦得足以留下印象，又柔和得不让那印象久留。","status":"translated","notes":"保留 make/leave an impression 的重复双关。；润色2026-08-18：保住 make/leave an impression 的双关：两个“印象”对应原文重复词，原译后半改说“余味”把双关丢了"}
+{"id":"TAN-18866467D971","source":"Headline: A NOOSE AROUND BERLIN! The Ministries shackle the free necks of West Berlin with a merciless BLOCKADE! Starving citizens implore heaven for help!","translation":"标题：柏林颈上套索！部委以残酷封锁，扼住西柏林自由的咽喉！饥饿市民恳求上天援助！","status":"translated","notes":"保留煽动性报刊语气。"}
+{"id":"TAN-1888AD9AC7DE","source":"I don't really want a bath just now. [Step away.]","translation":"我现在不太想洗澡。[走开。]","status":"translated","notes":""}
+{"id":"TAN-1890D6BF9B80","source":"In Fucine, 'the tongue of witches', that symbol means...","translation":"在被称作“女巫之舌”的富奇诺语中，这个符号意为……","status":"translated","notes":"以定语消化英文同位语，避免无必要的成对破折号。"}
+{"id":"TAN-189E25E6169F","source":"[A heavy sigh.] I have sometimes regretted engaging the services of Dr Sinombre. Despite her gifts.","translation":"[沉沉叹气。]我有时会后悔聘请西农布尔医生。尽管她确有异能。","status":"translated","notes":"按原文 her 确认西农布尔为女性；gifts 在此指超自然本领。"}
+{"id":"TAN-18A90628B424","source":"[She turns away.]","translation":"[她转过身去。]","status":"translated","notes":""}
+{"id":"TAN-18E53D6441CF","source":"[q=alias.last]? Excuse me - do I look like a [q=alias.last]?","translation":"[q=alias.last]？抱歉——我看起来像个[q=alias.last]吗？","status":"translated","notes":"保留两个变量。"}
+{"id":"TAN-18E999DC696F","source":"Not quite silent. Bird-song, leaf-rustle. And off from behind the post office, the faint strains of a melodeon.","translation":"并非全然寂静。鸟鸣，叶响。邮局后方还隐约飘来小风琴的乐声。","status":"translated","notes":"melodeon 暂译“小风琴”，具体乐器形制未明。"}
+{"id":"TAN-190F6070DF27","source":"You know, [q=alias.familiar], in this town we call them <i>cards</i>.","translation":"你知道吗，[q=alias.familiar]，在这座城里，我们管那叫<i>纸牌</i>。","status":"translated","notes":""}
+{"id":"TAN-191052E89530","source":"I've had a rough time of it, these last years. It could get rougher.","translation":"这些年，我过得很不好受。往后可能会更不好受。","status":"translated","notes":"为后续 I'll show them 'rough' 保留“不好受”的重复。"}
+{"id":"TAN-193FE4C07A94","source":"Yes? Then listen.","translation":"是吗？那就听着。","status":"translated","notes":""}
+{"id":"TAN-195B0349F554","source":"This is a crafting venue. Crafting is one of the more complicated parts of the game. You might want to come back once you've played more of the tutorial and gathered some Memories and Influences. But it's up to you.","translation":"这里是一处制作地点。制作是游戏中较为复杂的部分之一。你可以先多体验一些教程，收集到记忆与影响后再回来。不过，由你决定。","status":"translated","notes":"Crafting/Memories/Influences 暂译“制作/记忆/影响”，待系统术语统稿。；润色2026-08-18：恢复被“听——”误植的译文（ID 张冠李戴，已拦截）"}
+{"id":"TAN-196EFAED0227","source":"Listen -","translation":"听——","status":"translated","notes":"保留原文悬止语气。；润色2026-08-18：“倾听”是书面雅语，作对话祈使句语域不对；保留悬止"}
+{"id":"TAN-198CD43612AF","source":"If there's no other option... so be it.","translation":"若别无他法……那就这样吧。","status":"translated","notes":""}
+{"id":"TAN-19C0BD09FAC7","source":"Someone's left a cigarette lighter on a chair in the waiting room...","translation":"有人把一只打火机落在了候车室的椅子上……","status":"translated","notes":""}
+{"id":"TAN-19C25E2BEB8B","source":"[Smile politely.]","translation":"[礼貌地微笑。]","status":"translated","notes":""}
+{"id":"TAN-19C9FAE9B517","source":"Later, perhaps. Until then, M. Janvier: this has been a pleasant surprise.","translation":"以后或许还有机会。在那之前——让维耶先生，今天真是个愉快的意外。","status":"translated","notes":"M. 按 Monsieur 译“先生”；Janvier 沿其他批次译“让维耶”。"}
+{"id":"TAN-19D5E052C6AF","source":"Earlier, you wanted me to look into the scrine. So you could know me, wasn't it? I offer you that.","translation":"早先，你想让我窥看龛壳。是为了认识我，对吧？我愿意让你如愿。","status":"translated","notes":"scrine 暂沿其他批次译“龛壳”，指供灵体寄居、显现的媒介。"}
+{"id":"TAN-19FB25D3465B","source":"Like picnics, the Arts Unconsidered - Bosk, Birdsong, Preservation - do well out in the open air. Unlike picnics, they're safer as a solitary practice.","translation":"未拾技艺——丛林学、鸟鸣学、保存术——同野餐一样，最宜露天施展；但与野餐不同，独自修习才更安全。","status":"translated","notes":""}
+{"id":"TAN-1A01ED7B90AD","source":"Sorry, doctor. It's a therapeutical necessity.","translation":"抱歉，医生。这是治疗所必需的。","status":"translated","notes":""}
+{"id":"TAN-1A3BE67AC214","source":"I don't currently have the skills to create a Withering item. I could increase one of [[Hushery]], [[Nyctodromy]] or [[Skolekosophy]] to 5; I could try to trick Zèlia; or I could abandon the whole sorry business.","translation":"我目前还没有制作凋萎物品所需的技艺。我可以把 [[Hushery]]、[[Nyctodromy]] 或 [[Skolekosophy]] 之一提升至 5；也可以设法哄骗泽莉娅；又或者，干脆放弃这整桩糟心事。","status":"translated","notes":"保留三处双中括号链接；Withering 沿其他批次译“凋萎”。"}
+{"id":"TAN-1A85B1DAACC5","source":"[Step away, cautiously.]","translation":"[小心地退开。]","status":"translated","notes":""}
+{"id":"TAN-1A8BD7DCA381","source":"Recovery... [ [[Weariness]] fades.]","translation":"复原……[ [[Weariness]] 消退。]","status":"translated","notes":"保留 [[Weariness]] 链接及原文嵌套方括号结构。"}
+{"id":"TAN-1A9705B095E6","source":"Back to the world...","translation":"回到现世……","status":"translated","notes":""}
+{"id":"TAN-1AC779BBE9D5","source":"At least three of these objects have an Atlantic theme - perhaps a Cornish theme - perhaps specifically a [[Brancrug]] theme. Is there some connection between the Sanitarium Aujourd'hui, and [[Hush House]]?","translation":"这些物件中至少三件带有大西洋主题——也可能是康沃尔主题——或许确切地说，是 [[Brancrug]] 主题。“今日”疗养院与 [[Hush House]] 之间，莫非存在某种联系？","status":"translated","notes":"保留两处地点链接结构；Sanitarium Aujourd'hui 沿其他批次译“‘今日’疗养院”。"}
+{"id":"TAN-1ADEA59DC808","source":"You know, I think that would be therapeutically unhelpful for you.","translation":"要我说，那恐怕无助于您的治疗。","status":"translated","notes":""}
+{"id":"TAN-1B0B607B0A64","source":"[Her eyes glitter; her hands open and close.]","translation":"[她眼里闪着光；双手一张，又一合。]","status":"translated","notes":""}
+{"id":"TAN-1B14C1B07149","source":"[Buy 'THE BLOOD IN THE BELFRY'.]","translation":"[购买《钟楼中的血》。]","status":"translated","notes":"书名 The Blood in the Belfry 统一译《钟楼中的血》。"}
+{"id":"TAN-1B39F8F5113B","source":"Nothing further occurs. Except that Aubière, clearly alarmed, half-raises a hand in protest.","translation":"再无其他动静。只除了奥比耶显然吓了一跳，半举起一只手，似要阻止。","status":"translated","notes":""}
+{"id":"TAN-1B4A6D7E20C1","source":"Sometimes.","translation":"有时吧。","status":"translated","notes":""}
+{"id":"TAN-1B4B0FBC9D28","source":"Please hurry.","translation":"请快一点。","status":"translated","notes":""}
+{"id":"TAN-1B4E23C117AB","source":"Fifty francisques. It is difficult to find, this one.","translation":"五十弗朗西斯克。这一本，很难找。","status":"translated","notes":"francisque 统一作“弗朗西斯克”；保留安德蕾略带非母语感的语序。"}
+{"id":"TAN-1B596D119711","source":"Twinges of remembered pain. There was a cage, or a rack, or a thorned reef, in the city beneath the waves, and they drew the Worms from me like blood.","translation":"忆起的痛楚阵阵刺来。海浪下的城中，曾有一座牢笼，或一副刑架，或一道荆棘丛生的礁脊；他们把蠕虫从我体内引出，如同放血。","status":"translated","notes":"Worms 暂译“蠕虫”，是否为专名待设定统校。"}
+{"id":"TAN-1B626521CA26","source":"Do I need to worry about spidermist here? in Antibes?","translation":"在这儿也得提防蛛雾吗？我是说，在昂蒂布？","status":"translated","notes":"spidermist 沿其他批次译“蛛雾”；保留说话人的自我修正，不另加成对破折号。"}
+{"id":"TAN-1B628EF79524","source":"I cough halfway through my invocation. Damn it.","translation":"祷文念到一半，我咳了起来。该死。","status":"translated","notes":"invocation 结合施术语境译“祷文”。"}
+{"id":"TAN-1B7B5F3B00D4","source":"Some sort of jazz? Pretty.","translation":"某种爵士乐？真好听。","status":"translated","notes":""}
+{"id":"TAN-1B90158FA6BA","source":"They tell a story in Brancrug, where once I was priest, about twins who came across the sea, from the West. ","translation":"布兰库格流传着一个故事；我从前曾在那里做神父。故事说，一对双胞胎从西方渡海而来。 ","status":"translated","notes":"Brancrug 按术语表译“布兰库格”；保留原文句末空格。"}
+{"id":"TAN-1BA3EF51DC98","source":"Ahh...","translation":"啊……","status":"translated","notes":""}
+{"id":"TAN-1BAA4712E1A6","source":"Work. I guess you could say I came with the place? Audrey - Audrey Chadwick - Audrey owns the villa. I knew her pretty well, back home.","translation":"工作。我大概算是跟这房子一块来的？奥德丽——奥德丽·查德威克——这栋别墅是奥德丽的。在老家时，我跟她很熟。","status":"translated","notes":"延续贝茜随意、口语化的表达；Audrey 沿本批译“奥德丽”。"}
+{"id":"TAN-1BBEAF27B57E","source":"But can I? You are clearly a complicated man, M. Hobson.","translation":"可我真能吗？霍布森先生，您显然是个复杂的人。","status":"translated","notes":""}
+{"id":"TAN-1BC8776C319E","source":"Spend [q=hon:evolveCost] Heart Experiences.","translation":"花费 [q=hon:evolveCost] 份心之经历。","status":"translated","notes":"保留 [q=hon:evolveCost] 变量；沿本批既有系统句式。"}
+{"id":"TAN-1BD6DB9CDE78","source":"Strikingly modern clothing, made to measure.","translation":"格外现代的衣装，量身定制。","status":"translated","notes":""}
+{"id":"TAN-1C0620495406","source":"I am. I couldn't do without my Churchills. Although cigar smoke does not entirely agree with my other nature, so I may yet be forced to give up that little pleasure.","translation":"正是。我可少不了我的丘吉尔雪茄。不过，雪茄烟同我的另一重本性不大相合，所以这点小小的享受，或许终究也得割舍。","status":"translated","notes":"Churchills 指丘吉尔尺寸的古巴雪茄；other nature 保留设定歧义，译“另一重本性”。"}
+{"id":"TAN-1C194B30D043","source":"Certain privileges are afforded to me by our patrons. I would very much like to employ those privileges to your benefit.","translation":"我们的资助人赋予了我某些特权。我非常愿意动用这些特权，为您谋些益处。","status":"translated","notes":"patrons 暂译“资助人”，可能另有设定所指。"}
+{"id":"TAN-1C2BF2E120D6","source":"The door to the kitchen? A sign reads 'PRIVATE'.","translation":"通往厨房的门？牌子上写着“闲人免进”。","status":"translated","notes":"PRIVATE 按门牌功能译“闲人免进”。"}
+{"id":"TAN-1C31B1A1EF1C","source":"Are you sure? I had thought much better of him.","translation":"您确定？我原以为他远胜于此。","status":"translated","notes":"thought much better of him 译作对其品格评价更高。"}
+{"id":"TAN-1C489771D70A","source":"['Buried the heart'...where have I heard that before?]","translation":"[“埋下了心脏”……我在哪里听过这话？]","status":"translated","notes":"主角内心独白；承接鸣禽心脏仪式，并新增对前作记忆的迟疑。"}
+{"id":"TAN-1C5F9AC14A24","source":"The mirror has been placed here to catch and share the light that falls through the window.","translation":"镜子放在这里，是为了接住从窗中落下的光，再将它分散开来。","status":"translated","notes":"share the light 按镜面反射、分光的语境处理。"}
+{"id":"TAN-1C8136703DE9","source":"Yes! But she hath not only one nature. When we gift the Sun with blood, he takes only a little, but he takes from us all.","translation":"不错！但她并非只有一种本性。我们以鲜血馈赠太阳时，祂所取的只是一点，却从我们每一个人身上取。","status":"translated","notes":"保留 Sun 的神性指涉与“多重本性”设定；hath 的古雅感以较庄重句式呈现。"}
+{"id":"TAN-1C8D903E38C2","source":"Haven't you got anywhere else to go?","translation":"你就没别处可去吗？","status":"translated","notes":""}
+{"id":"TAN-1CAA506C2C7D","source":"Abysses.","translation":"深渊。","status":"translated","notes":"与前后 Holes/Wounds 构成递进意象，保留单词句。"}
+{"id":"TAN-1CB87B7953AE","source":"Remarkable!","translation":"了不得！","status":"translated","notes":""}
+{"id":"TAN-1CC508434050","source":"Holding the sequence for three seconds via Delay(3). If this entry waits the expected duration before allowing continue, the inline Delay handler is still wired correctly after the redundant standalone class was stripped.","translation":"调用 Delay(3)，让序列停留三秒。如果此条目果真等待预定时长后才允许继续，就说明删掉多余的独立类后，内联 Delay 处理器仍接线正常。","status":"translated","notes":"开发测试文本；严格保留 Delay(3)、Delay 技术标识。"}
+{"id":"TAN-1CCABC4A16B6","source":"[Fold my arms, remain impassive.]","translation":"[抱起双臂，不动声色。]","status":"translated","notes":""}
+{"id":"TAN-1CD43BDAC192","source":"Pardon?","translation":"您说什么？","status":"translated","notes":"Pardon? 结合询价语境译作请求重复。"}
+{"id":"TAN-1CDB2CD8E1CA","source":"Tuck and straighten the bottom sheet...","translation":"把下层床单掖好、抻平……","status":"translated","notes":"bottom sheet 指铺在褥子上的下层床单。"}
+{"id":"TAN-1D1258142003","source":"Bluster my way through.","translation":"靠虚张声势闯过去。","status":"translated","notes":""}
+{"id":"TAN-1D262DCD72F1","source":"[Reach out to touch the luxuriant fur.]","translation":"[伸手去摸那身丰厚的皮毛。]","status":"translated","notes":""}
+{"id":"TAN-1D4CDC68DD49","source":"[Gesture carelessly] \"Bronze is the mirror of the face; wine, the mirror of the mind.\"","translation":"[漫不经心地打个手势]“铜映照人的面容；酒映照人的心灵。”","status":"translated","notes":"保留格言的对仗结构。"}
+{"id":"TAN-1D5A944587BF","source":"<i>Please</i>, madame. I've come a very long way to find her. My utmost gratitude.","translation":"<i>求您了</i>，夫人。我远道而来，就是为了找她。您若肯帮忙，我会感激不尽。","status":"translated","notes":"保留 <i>...</i> 强调标签。"}
+{"id":"TAN-1D8167205F86","source":"A double scourge?","translation":"双重灾祸？","status":"translated","notes":"结合罗迪娅后文，指内战与树叶瘟疫先后降临伊庇鲁斯。"}
+{"id":"TAN-1D8A525EC4CB","source":"I didn't know. But I'm not surprised. So the exorcisms. They didn't work?","translation":"我不知道。但我并不意外。那么，那些驱魔仪式呢？没有奏效？","status":"translated","notes":""}
+{"id":"TAN-1DA44020214E","source":"[We'll rarely be explicit about how your earlier choices play into consequences. But we wanted to confirm that even tiny choices sometimes have some tiny relevance.]","translation":"[我们很少会明说你先前的选择如何影响后来的结果。不过，我们想让你知道：哪怕再微小的选择，有时也会产生一点微小的影响。]","status":"translated","notes":"教程提示，保留外层方括号。"}
+{"id":"TAN-1DCCD4B354C8","source":"I do what I can to raise the tone. But one cannot empty the sea with a spoon.","translation":"我尽力抬一抬这里的格调。可谁也不能用勺子舀空大海。","status":"translated","notes":"保留原文 spoon/sea 物质意象与不可能之事的比喻。"}
+{"id":"TAN-1DDF646A66E9","source":"You hungry? This omelette... I think I went too far. It's really two omelettes. Maybe three. I'm going to need some help.","translation":"饿不饿？这份煎蛋……我好像做过头了。其实够两份。也许三份。我得找个人帮忙吃。","status":"translated","notes":"保留贝茜轻松、随意的口语。"}
+{"id":"TAN-1DEEDDE42112","source":"Camomile.","translation":"甘菊茶。","status":"translated","notes":"Camomile 指甘菊茶/甘菊风味，按单词选项简译。"}
+{"id":"TAN-1DF01DE2C6A7","source":"Oh! I am sorry! I will guard my tongue hereafter.","translation":"噢！恕罪！往后我定会慎言。","status":"translated","notes":"以略庄重句式表现海梅神父的口吻。"}
+{"id":"TAN-1E125B802C0C","source":"[Dreams.]","translation":"[梦境。]","status":"translated","notes":""}
+{"id":"TAN-1E2F62A00D75","source":"Delight; pleasure; satisfaction; sensation; and more.","translation":"欢欣；快感；满足；刺激；还有更多。","status":"translated","notes":"保留原文名词列举与分号节奏；sensation 结合欲求语境译“刺激”。"}
+{"id":"TAN-1E4ECF852657","source":"I came to Antibes for a reason. I won't leave yet.","translation":"我来昂蒂布自有缘由。我还不能走。","status":"translated","notes":""}
+{"id":"TAN-1E85525AC0D9","source":"Use Bosk to brew something that will let me walk in his dreams? That's a good idea, actually.","translation":"用丛林学调制某种东西，让我得以行走在他的梦中？说来，这主意真不错。","status":"translated","notes":""}
+{"id":"TAN-1E8EACDB40D5","source":"Yes. To his memory.","translation":"对。敬他。","status":"translated","notes":"作为紧接“敬费利克斯”的祝酒回应，保留莉努简短而略带非母语感的表达。"}
+{"id":"TAN-1E8FC3C05E2E","source":"Tailor's needles crossed behind her head - not a recognised attribute of St Reparata.","translation":"脑后交叉的裁缝针——并不是圣雷帕拉塔公认的圣像标志。","status":"translated","notes":"St Reparata 沿其他批次译“圣雷帕拉塔”；attribute 按圣像学译“圣像标志”。"}
+{"id":"TAN-1E90BCE6C886","source":"[The Hobson-Cat detente is affirmed by both sides, and may continue.]","translation":"[霍布森与猫的停战协定得到双方确认，可以继续维持。]","status":"translated","notes":"保留 detente 的外交措辞与诙谐反差。"}
+{"id":"TAN-1E94A7776FB0","source":"This is why we can never forget.","translation":"所以我们永远不能遗忘。","status":"translated","notes":""}
+{"id":"TAN-1E9AB6E91B71","source":"The doctor bends over in his chair to poke around in a drawer at the base of his desk. For a few seconds, he bends low enough that his head is beneath the level of the desk-top.","translation":"医生在椅子里俯下身，翻找书桌底部的一只抽屉。有那么几秒，他伏得极低，脑袋低过了桌面。","status":"translated","notes":"润色2026-08-18：“没入了桌面以下”搭配不当（没入=沉入物中）"}
+{"id":"TAN-1EAA8EE64164","source":"Don't speak idly of things you don't understand, Jaume.","translation":"别妄谈你不懂的事，豪梅。","status":"translated","notes":"别妄谈你不懂的事，豪梅。 v1.2.5 术语终审：依最新版术语证据统一。润色2026-08-18：更正注记笔误——Jaume 按术语表定译“豪梅”，非西语“海梅”"}
+{"id":"TAN-1EE231D2A4EC","source":"I'm not making any more charitable donations to newcomers with... <i>unexpectedly</i> good luck.","translation":"我不会再给那些运气……<i>好得出奇</i>的新来者作慈善捐款了。","status":"translated","notes":"保留省略号与斜体共同形成的迟疑式讥讽。"}
+{"id":"TAN-1EF54BEB9DEA","source":"[Step forward to examine the window.]","translation":"[上前查看窗户。]","status":"translated","notes":""}
+{"id":"TAN-1F00FA78DDFB","source":"I miss it.","translation":"我想念它。","status":"translated","notes":"it 的指代依赖玩家分支，保持含混。"}
+{"id":"TAN-1F101867A0AA","source":"MISTer Hobson! Mr Hobson. Do not allow me to detain you further. Goodbye.","translation":"霍布森先——生！霍布森先生。请恕我不再耽搁您。再会。","status":"translated","notes":"2026.8.j.46 增量：对照真实对话图、旧译与版本差异人工复核。"}
+{"id":"TAN-1F17A421D65D","source":"No. No, don't say anything. I'm sorry.","translation":"不。不，什么也别说。对不起。","status":"translated","notes":"保留菲洛梅勒突然收住话头的节奏。"}
+{"id":"TAN-1F8A869E8E6C","source":"I find him churlish. And his arm revolts me. There; it's said.","translation":"我觉得他粗鲁无礼。而他那条手臂令我作呕。好了；我说出口了。","status":"translated","notes":"保留罗迪娅直率而克制的口吻。"}
+{"id":"TAN-1FA9B4983B5B","source":"[Discard the envelope.]","translation":"[丢掉信封。]","status":"translated","notes":""}
+{"id":"TAN-1FAF17B2A981","source":"...but the bank moves round the table. Yes.","translation":"……不过庄家会沿桌轮换。对。","status":"translated","notes":"bank 结合百家乐规则译“庄家”。"}
+{"id":"TAN-1FBD8C904AF2","source":"If I hear anything, I'll let you know.","translation":"如果听到什么，我会告诉你。","status":"translated","notes":""}
+{"id":"TAN-1FCEF7FD6681","source":"Vive l'Amiral!","translation":"海军上将万岁！","status":"translated","notes":"Amiral 在此无链接，按其他批次既有显示译法“海军上将”。"}
+{"id":"TAN-1FD20041A462","source":"[Winter] Hideous.","translation":"[冬] 可憎。","status":"translated","notes":"Winter 按准则术语译“冬”。"}
+{"id":"TAN-1FD916781CA5","source":"They remember, the night observes; they remember.","translation":"他们还记得，夜说；他们还记得。","status":"translated","notes":"保留重复、分号与 night 拟人化的神秘语气。"}
+{"id":"TAN-1FEA2D9E5EE2","source":"[Mathis does not seem excited by my return.]","translation":"[马蒂斯似乎并不因我的归来而兴奋。]","status":"translated","notes":""}
+{"id":"TAN-20031BBD2715","source":"We are privileged to have as our guest an artist of Mme Vlachou's stature.","translation":"能让弗拉胡夫人这样的艺术家成为我们的客人，实在荣幸。","status":"translated","notes":"j.87 文本修订同步"}
+{"id":"TAN-20303EB1483E","source":"The mirror is useless for any practical purpose. But it is difficult now to find a working mirror. And it will help me remember, when my wits finally fail me.","translation":"这面镜子没有任何实际用途。不过如今，要找到一面还能照出影像的镜子并不容易。等我终于失去神智，它还能帮我记得自己。","status":"translated","notes":"working mirror 结合太阳大战后的异常背景意译为“还能照出影像的镜子”。"}
+{"id":"TAN-204FB95F91FB","source":"[Invent a name.]","translation":"[编造一个名字。]","status":"translated","notes":""}
+{"id":"TAN-20BBD4EF1598","source":"And you, Dr Aubière. I hope we will meet again.","translation":"还有您，奥比耶医生。希望我们会再见。","status":"translated","notes":""}
+{"id":"TAN-20EA53896520","source":"A few minutes with blade, cream, and hot water, before I feel both cleaner and sharper.","translation":"用刀片、剃须膏和热水收拾几分钟，我便觉得自己既干净了些，也利落了些。","status":"translated","notes":"保留 sharper 同时指刮净外表与精神更锐利的双关。"}
+{"id":"TAN-20ECCBAE8794","source":"'The best-dressed man in the Bureau', they used to call me. I hardly dared look in the toilet mirror.","translation":"他们从前叫我“防剿局里衣着最讲究的男人”。我几乎不敢看洗手间里的镜子。","status":"translated","notes":"Bureau 按术语表译“防剿局”。"}
+{"id":"TAN-2131427B2B3E","source":"Picasso probably invented the story himself, and spread it once the Enemy was gone.","translation":"那故事多半是毕加索亲自编出来的；等敌人离开后，他又把它散播开来。","status":"translated","notes":"Enemy 在此无链接，按普通显示词译“敌人”；是否指设定阵营待统稿。"}
+{"id":"TAN-2132CC610E52","source":"[Losing hand] I have nothing here of any worth.","translation":"[败局] 我这手牌一文不值。","status":"translated","notes":"结合牌局语境补足“牌”。"}
+{"id":"TAN-2139CA383426","source":"[First class] I've had it with compromises. No more compromises.","translation":"[一等座] 我受够了将就。不会再将就了。","status":"translated","notes":"First class 结合车票分支译“一等座”。"}
+{"id":"TAN-21664100ACD1","source":"Cognac? No one said anything about cognac!","translation":"干邑？可没人跟我提过干邑！","status":"translated","notes":""}
+{"id":"TAN-2169D2588767","source":"[Raising the subject with Aubière may provide an opportunity to pressure him.]","translation":"[向奥比耶提起此事，也许会给我一个向他施压的机会。]","status":"translated","notes":"教程提示，保留外层方括号。"}
+{"id":"TAN-219921EAF0EF","source":"Disappointing. Return when you have found your courage.","translation":"真叫人失望。等你找回勇气，再来吧。","status":"translated","notes":""}
+{"id":"TAN-21C61D440A7A","source":"He makes another note.","translation":"他又记下一笔。","status":"translated","notes":""}
+{"id":"TAN-21CD863F896F","source":"Aubière's mouth is also open.","translation":"奥比耶也张着嘴。","status":"translated","notes":""}
+{"id":"TAN-21E5E0137BCF","source":"Sleep steals in.","translation":"睡意悄然而至。","status":"translated","notes":"保留 Sleep 拟人化而简洁的叙述。"}
+{"id":"TAN-21F357A7102C","source":"You have my promise that I'll help you, the next time that you'll need it.","translation":"我向你保证——下次轮到你需要帮助时，我会出手。","status":"translated","notes":""}
