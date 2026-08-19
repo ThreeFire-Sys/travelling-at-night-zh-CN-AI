@@ -558,3 +558,11 @@
 - 修复：GetChargenAwarePermit——标签先经 curator 解析成词条**对象**（语言无关），再查白名单的对象引用集（反射读 CharGenLinkWhitelist._permittedDetailables，一次性缓存；找不到白名单资产回退原生谓词；判定失败不拦截）。中英两态下 准则 都放行、失数者 都过滤，与原版逐语言行为一致。
 - 诊断补丁已于本版移除。链路：build 0/0 → slim 119 → 打包 → 装卸 → 46/46 → zip 校验 ok。
 - 待用户验收：角色创建界面内 准则 中英皆有链接、失数者 中英皆为普通文本（原版设计）；正常游戏内链接全部正常。
+
+## 65. 2026-08-19 项目整理与开源发布
+
+- **冗余清理**：build/ 2.1GB→243MB（删除 132 项历史快照/实验目录/QA 截图，保留 baked_assets、bepinex_runtime、current_test_install、decomp、extracted_current、licenses、merged_k6、worklist_k6、.tools 与字体/许可文件；reviews 清空为输出目录）；dist/ 440M→124M（只留 v0.1.0/v1.0.0/v1.2.5 标志性 zip 与当前 v2.2.12）；tools 的 __pycache__/bin/obj 删除。
+- **目录调整**：build/translations_k6_candidate → 顶层 translations_k6/（译文源纳入版本管理）；5 个活性 QA 工具默认路径更新为 k6；test_conversation_titles 重写为直接断言当前工作单（133 个对话标题位点）；test_decorated_splice_lookup 夹具同步"民兵团"与 merged_k6。
+- **开源**：git init 首个提交（206 文件；build/dist 不入库；release/*.bat 在 .gitattributes 标 binary 防行尾转换）。GitHub 公开仓库：wenmingyi393-sys/travelling-at-night-zh-CN-AI；Release v2.2.12 已发（zip 24.9MB + sha256）。README.md 重写为当前架构（烘焙式汉化、F9、管线图、权利说明）。
+- 注意：本机 git 配置了 http.proxy=127.0.0.1:11888；凭证助手的 GUI 弹窗曾导致 push 挂起（用一次性带凭据 URL 绕过；令牌未写入任何配置）。后续 push 若挂起，检查是否有凭证弹窗未应答。
+- README 权利节如实更新：烘焙发布包含修改过的游戏资产文件，公开分发的权利不确定性已在文档中声明。
