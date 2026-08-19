@@ -908,6 +908,37 @@ namespace TravellingCN
             }
         }
 
+        // 历史缓冲的"<sprite=N>名字 — 内容"行：逐行把名字段做整串精确交换。
+        // 仅在该字段（accumulatedText）路径使用，不动通用流水线。
+        private static readonly Regex SpeakerPrefixLinePattern = new Regex(
+            @"^((?:<sprite=\d+>)?)([^ —\n<>]{1,24})( — )", RegexOptions.Compiled);
+
+        private static string SwapSpeakerPrefixes(string value, DirectionMap map)
+        {
+            if (string.IsNullOrEmpty(value) || !value.Contains(" — "))
+            {
+                return value;
+            }
+            var lines = value.Split('\n');
+            var changed = false;
+            for (var i = 0; i < lines.Length; i++)
+            {
+                var match = SpeakerPrefixLinePattern.Match(lines[i]);
+                if (!match.Success)
+                {
+                    continue;
+                }
+                var name = match.Groups[2].Value;
+                if (map.Exact.TryGetValue(name, out var swappedName))
+                {
+                    lines[i] = match.Groups[1].Value + swappedName + match.Groups[3].Value +
+                               lines[i].Substring(match.Length);
+                    changed = true;
+                }
+            }
+            return changed ? string.Join("\n", lines) : value;
+        }
+
         // 陈旧字段检测：只读，不写。与交换同构的反射遍历（含 Field 白名单
         // 路径与 string 键字典），凡是仍匹配本方向精确表键的值记录：
         // 对象类型全名、字段路径（. 连接）、值前 80 字符。最多报 30 条。
@@ -2010,8 +2041,25 @@ namespace TravellingCN
                         if ((field.Name == "accumulatedText" || field.Name == "m_accumulatedText") &&
                             IsGameDataType(current))
                         {
+                            // 字幕历史缓冲属于字幕面板表面：按 FootnoteSubtlety
+                            // 配置剥除已读链接（v2.2.17 之前这里吃到的是上一次
+                            // TMP 交换残留的任意值，导致已读链接在切回中文后
+                            // 复活——对话里"心念"失色/复色不一致实测）。
+                            _hideVisitedForCurrentSwap = HideVisitedLinksForCurrentConfig();
+                            // 先换"<sprite=N>名字 — "前缀里的说话人名：名字与内容
+                            // 在同一文本段时，单字名（我→Me）够不到子串安全键的
+                            // 两字阈值，会残留在另一种语言里（v2.2.17 实测）。
+                            stringValue = SwapSpeakerPrefixes(stringValue, map);
                             if (TrySwapDisplayText(map, stringValue, counters, 0, out var swappedDisplay))
                             {
+                                // 缓冲每行以 \n 收尾（游戏按此行尾续接下一行）；
+                                // 交换各层不保证保留行尾空白，丢了这个 \n 会让
+                                // 下一条字幕与历史并成一行（v2.2.17 实测）。
+                                var trailing = stringValue.Substring(stringValue.TrimEnd().Length);
+                                if (trailing.Length > 0 && !swappedDisplay.EndsWith(trailing, StringComparison.Ordinal))
+                                {
+                                    swappedDisplay += trailing;
+                                }
                                 try
                                 {
                                     field.SetValue(instance, swappedDisplay);
