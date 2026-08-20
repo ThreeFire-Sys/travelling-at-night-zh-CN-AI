@@ -208,7 +208,7 @@
 {"id":"TAN-95A796E19D58","source":"Absolutely!","translation":"当然！","status":"translated","notes":""}
 {"id":"TAN-95AD6BED19DB","source":"Not the world entire. But what has occurred. Perhaps you have noticed, [q=alias.familiar], that the world is different since the war.","translation":"不是整个世界。而是发生过的事。也许你已经注意到，[q=alias.familiar]，战后的世界不一样了。","status":"translated","notes":"保留查询变量。"}
 {"id":"TAN-95AFC52A74D7","source":"[Leave the matter for now.]","translation":"[暂且放下此事。]","status":"translated","notes":""}
-{"id":"TAN-95B39D7DE776","source":"A sleek Swedish Electrolux model. Lux indeed. There can't be many of these in Antibes. It's out of place in the humble kitchen. How did the proprietress afford it?","translation":"一台线条流畅的瑞典伊莱克斯。名副其实的“Lux”。昂蒂布不可能有多少台。摆在这间朴素厨房里很不相称。女店主怎么置办得起？","status":"translated","notes":"保留 Electrolux 中 Lux 的英文双关。"}
+{"id": "TAN-95B39D7DE776", "source": "A sleek Swedish Electrolux model. Lux indeed. There can't be many of these in Antibes. It's out of place in the humble kitchen. How did the proprietress afford it?", "translation": "一台线条流畅的瑞典伊莱克斯。名副其实的“Lux”（拉丁语“光”）。昂蒂布不可能有多少台。摆在这间朴素厨房里很不相称。女店主怎么置办得起？", "status": "translated", "notes": "保留 Electrolux 中 Lux 的英文双关。；v2.3.2 Lux 双关补注"}
 {"id":"TAN-95C221FD24B7","source":"She wanted you to do <i>what</i>?","translation":"她要你做<i>什么</i>？","status":"translated","notes":""}
 {"id":"TAN-95F93A50ABFE","source":"Resident... for now.","translation":"住客……暂时是。","status":"translated","notes":""}
 {"id":"TAN-96438CB20557","source":"[Pay one thousand francisques, let Vincent go third class] I'll see you in Mimata.","translation":"[支付一千弗朗西斯克，让文森特乘三等座] 米马塔见。","status":"translated","notes":"francisque 暂译“弗朗西斯克”。"}

@@ -840,6 +840,14 @@ namespace TravellingCN
                     // 单个对象失败静默跳过；结果计数里已体现整体进展。
                 }
             }
+            // 中文态下先复注入脚注英文别名，再进入显示阶段（v2.3.1）：阶段一
+            // 的数据交换会把 alternativeLabels 里注入的英文别名一起换掉
+            // （"Mansus"→"漫宿"），若等阶段二之后才复注入，显示交换中
+            // SettleLinks 重算手写 <link="Mansus"> 的颜色时别名已不在，
+            // 链接被判失效、打成青色 BROKEN_LINK_COLOR（v2.3.0 实测：EN→CN
+            // 后牡鹿之门详情里的 受仪/太阳的居屋 变青）。英文模式下注入
+            // 内部早退，此处调用无副作用。
+            Plugin.RequestAlternativeLabelsInjection();
             // 阶段二：显示组件（TMP_Text / UI.Text）。
             foreach (var obj in all)
             {
@@ -1698,6 +1706,20 @@ namespace TravellingCN
             try
             {
                 var subtletyOn = HideVisitedLinksForCurrentConfig();
+                // 字幕面板的显示文本与打字机同住一个 GameObject（k.52 代码实证：
+                // TravellingSubtitlePanel.Awake 里 _typewriter = subtitleText
+                // .gameObject.GetComponent<TravellingTypewriter>()；对话历史与当前行
+                // 同属这一个 TMP）。先认这个代码可证的同住组件：v2.3.1 实测字幕 TMP
+                // 的父链检测失配（链上 _respectFootnoteSubtlety/TravellingSubtitlePanel
+                // 都没匹配上），已读链接在交换后复活成淡色链接；打字机组件是
+                // 对话字幕表面的专属标记（其余引用点全是对话 UI 辅助类）。
+                foreach (var own in tmpText.gameObject.GetComponents<Component>())
+                {
+                    if (own != null && own.GetType().Name == "TravellingTypewriter")
+                    {
+                        return subtletyOn;
+                    }
+                }
                 if (!subtletyOn)
                 {
                     return false;

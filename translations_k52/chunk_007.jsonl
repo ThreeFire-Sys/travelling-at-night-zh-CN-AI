@@ -239,11 +239,11 @@
 {"id":"TAN-DCB4FDF0F716","source":"M. Janvier. It's good to see you again.","translation":"让维耶先生。很高兴又见到你。","status":"translated","notes":""}
 {"id":"TAN-DCB8F57F2A3A","source":"We were speaking of Bricktop's, earlier. Of Django Reinhardt.","translation":"我们之前聊过布里克托普夜总会。还有姜戈·莱因哈特。","status":"translated","notes":"Bricktop's 指巴黎夜总会，暂译“布里克托普夜总会”。"}
 {"id":"TAN-DCBE2933E4C5","source":"[Something opens to me.]","translation":"[有什么向我敞开。]","status":"translated","notes":""}
-{"id":"TAN-DCD24600CC29","source":"I travelled third class from Alexandria. Never again.","translation":"我从亚历山大坐三等车来。再也不坐了。","status":"translated","notes":""}
+{"id": "TAN-DCD24600CC29", "source": "I travelled third class from Alexandria. Never again.", "translation": "我从亚历山大港坐三等车来。再也不坐了。", "status": "translated", "notes": "；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
 {"id":"TAN-DCE86246B1A6","source":"Rodia's smile becomes more sardonic. She raises her skirt a little.","translation":"罗迪娅笑得愈发讥诮。她把裙子稍稍提起。","status":"translated","notes":""}
 {"id":"TAN-DCFD2BAC010A","source":"With no valid ticket, our only realistic choice is third class, where inspections are more cursory and distractions are plentiful.","translation":"没有有效车票，唯一还算实际的选择就是三等车厢：查票马虎，乱子也多。","status":"translated","notes":""}
 {"id":"TAN-DD038C146E9F","source":"[Funny-looking doodah.]","translation":"[奇形怪状的玩意儿。]","status":"translated","notes":""}
-{"id":"TAN-DD08E3E1579A","source":"I have the sense that someone in Alexandria mentioned something like this...","translation":"我隐约记得，亚历山大有人提过类似的东西……","status":"translated","notes":""}
+{"id": "TAN-DD08E3E1579A", "source": "I have the sense that someone in Alexandria mentioned something like this...", "translation": "我隐约记得，亚历山大港有人提过类似的东西……", "status": "translated", "notes": "；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
 {"id":"TAN-DD0F3E88DD2D","source":"Sylvain!","translation":"西尔万！","status":"translated","notes":""}
 {"id":"TAN-DD1556CAA10C","source":"Perhaps, M. Hobson, we can discuss that later. For now - how may I assist you?","translation":"这个或许以后再谈，霍布森先生。眼下——我能为你做什么？","status":"translated","notes":""}
 {"id":"TAN-DD3315B51DC8","source":"The shadowless light of the sun-cross chandelier above, the perpetual fire of the Unconquered Sun, the underwater glow of the stained glass windows, all make the altar bright.","translation":"头顶太阳十字吊灯的无影之光、无敌太阳的永恒火焰、彩窗水底般的幽光，都落在祭坛上。","status":"translated","notes":"Unconquered Sun 与前作术语统一为“无敌太阳”。"}
@@ -347,7 +347,7 @@
 {"id":"TAN-E4A824C3F7C8","source":"The Stars.","translation":"群星。","status":"translated","notes":"Stars 大写且指俄国事件背后的异常存在，沿其他批次译“群星”。"}
 {"id":"TAN-E4B3B1DF4815","source":"This again...","translation":"又来了……","status":"translated","notes":""}
 {"id":"TAN-E4CC7B729281","source":"An elegant argument, monsieur.","translation":"论证得很漂亮，先生。","status":"translated","notes":""}
-{"id":"TAN-E4CEA68ABF65","source":"I travelled third class from Alexandria. Slatted wooden benches and students bawling drinking-songs. Sometimes, cages of chickens. Just once, a small but desperately plaintive goat. I didn't get much sleep.","translation":"我从亚历山大坐三等车来。条板木凳，学生们扯着嗓子唱酒歌。有时还有装鸡的笼子。有一次是一只小山羊，个头不大，叫声却哀怨得不得了。我几乎没睡。","status":"translated","notes":""}
+{"id": "TAN-E4CEA68ABF65", "source": "I travelled third class from Alexandria. Slatted wooden benches and students bawling drinking-songs. Sometimes, cages of chickens. Just once, a small but desperately plaintive goat. I didn't get much sleep.", "translation": "我从亚历山大港坐三等车来。条板木凳，学生们扯着嗓子唱酒歌。有时还有装鸡的笼子。有一次是一只小山羊，个头不大，叫声却哀怨得不得了。我几乎没睡。", "status": "translated", "notes": "；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
 {"id":"TAN-E4CFDCB64937","source":"She wishes only to see.","translation":"她只想看见。","status":"translated","notes":""}
 {"id":"TAN-E4F78C75D590","source":"Lie back, close eyes... whisper 'Sinombre' three times. [This won't be restful, and you won't lose Troubles.]","translation":"躺下，闭眼……低声念三遍“西农布尔”。[这不会让你休息好，也不会消除麻烦。]","status":"translated","notes":"Troubles 在睡眠机制中暂译“麻烦”；方括号结构完整保留。"}
 {"id":"TAN-E5079314B468","source":"'Antibes. Before War came to the World, this was the sweet blue eye of the Riviera. Yachts and parties and film-star villas. Picasso painted Pierrots, here by the sea...'","translation":"“昂蒂布。在战争降临世界之前，这里是蔚蓝海岸甜美的蓝眼睛。游艇、派对、影星别墅。毕加索曾在这里的海边画下皮埃罗……”","status":"translated","notes":""}

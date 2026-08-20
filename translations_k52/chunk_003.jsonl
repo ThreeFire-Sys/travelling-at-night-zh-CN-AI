@@ -119,7 +119,7 @@
 {"id":"TAN-4CFD51DD7C55","source":"Was 0, set to 1.","translation":"原为 0，设为 1。","status":"translated","notes":"开发测试文本。"}
 {"id":"TAN-4D0EAC6229C3","source":"What... what was I saying?","translation":"我……我刚才说到哪儿了？","status":"translated","notes":""}
 {"id":"TAN-4D25B4846133","source":"For now, my business is in Antibes town - looking for Nina.","translation":"眼下我要办的事还在昂蒂布城里——找宁娜。","status":"translated","notes":""}
-{"id":"TAN-4D26ABC4904B","source":"<i>Hélas</i>; my little sin is exposed.","translation":"<i>Hélas</i>；我这点小小罪过暴露了。","status":"translated","notes":"保留法语感叹词 Hélas。"}
+{"id": "TAN-4D26ABC4904B", "source": "<i>Hélas</i>; my little sin is exposed.", "translation": "<i>Hélas</i>（唉）；我这点小小罪过暴露了。", "status": "translated", "notes": "保留法语感叹词 Hélas。；v2.3.2 法语叹词补注"}
 {"id":"TAN-4D2E91A525DB","source":"Don't you want to know more about where I'm going, first?","translation":"你不想先多问问我要去哪儿吗？","status":"translated","notes":""}
 {"id":"TAN-4D3CC9515E3C","source":"Absolutely none.","translation":"一滴都没有。","status":"translated","notes":""}
 {"id":"TAN-4D3FB72A20B7","source":"Today, madame, you have made a greater friend than you know.","translation":"夫人，今天你为自己赢得的这位朋友，远比你想象中更有分量。","status":"translated","notes":"保留斯宾塞夸张而戏剧化的致谢口吻。"}
@@ -197,7 +197,7 @@
 {"id":"TAN-52A9CDE2C127","source":"Failure :(","translation":"失败 :(","status":"translated","notes":"保留原文表情符号。"}
 {"id":"TAN-52ABB40969F0","source":"[Potential] But Picasso - Picasso had an <i><u>owl</u></i>.","translation":"[潜在] 可毕加索——毕加索有一只<i><u>猫头鹰</u></i>。","status":"translated","notes":""}
 {"id":"TAN-52C710EE7D7D","source":"[Accept 500 Francisques]","translation":"[收下 500 弗朗西斯克]","status":"translated","notes":"francisque 为邦国货币单位，暂音译‘弗朗西斯克’。"}
-{"id":"TAN-52D1BF74BC41","source":"<i>Hélas</i>. My last match is spent.","translation":"<i>Hélas</i>。我最后一根火柴也用完了。","status":"translated","notes":"保留法语感叹词。"}
+{"id": "TAN-52D1BF74BC41", "source": "<i>Hélas</i>. My last match is spent.", "translation": "<i>Hélas</i>（唉）。我最后一根火柴也用完了。", "status": "translated", "notes": "保留法语感叹词。；v2.3.2 法语叹词补注"}
 {"id":"TAN-52E4613D1445","source":"Hm. I suppose I rather brought that on myself.","translation":"嗯。看来是我自找的。","status":"translated","notes":""}
 {"id":"TAN-52EAEF0B4713","source":"'And though his flesh was hollow, her eyes were opened!'","translation":"“尽管他的血肉空空如也，她的双眼却已睁开！”","status":"translated","notes":""}
 {"id":"TAN-52FC3EE58A77","source":"Their...","translation":"他们的……","status":"translated","notes":"与下一句‘牙齿。’承接。"}

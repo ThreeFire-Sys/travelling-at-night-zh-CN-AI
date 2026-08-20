@@ -628,3 +628,30 @@
 - tools/build_k52_supplement.py 为增补构建器（含逐条调整锚点断言）。localization/patch-notes.zh-CN.md 已含 k.51/k.6 新章节（并顺手修正 commedia dell'arte 拼写与禁用变体）。
 - 链路：merge 0 错 → 烘焙 0 漂移 → verify 9018/9018 → lang_swap 7413 对 0 冲突 → 打包 2.3.0（SupportedGameVersion=2026.8.k.52）→ 安装 46/46 → zip 校验 ok。
 - 待用户验收：k.52 上实机运行（含新心念界面、补丁说明页、F9）。
+
+## 74. 2026-08-20 v2.3.1：手写链接 EN→CN 变青根治（别名复注入时序）；"心念失色"定性为游戏原生机制
+
+- **Bug 1（真 bug，已修）**：牡鹿之门等详情面板里的手写链接（<link="Know">受仪</link>、<link="Mansus">太阳的居屋</link>）在 F9 切英文再切回中文后变成青色。青色 = ColourizeLinks 的 BROKEN_LINK_COLOR（失效链接）。根因是时序：RunSwapPass 阶段一（数据对象）把脚注 alternativeLabels 里运行时注入的英文别名一并换成中文（"Mansus"→"漫宿"），阶段二显示交换的 SettleLinks 重算手写链接颜色时别名已失 → GetDetailableLabelState 判 ShowAsAbsent → 青色直接烘进显示串；而别名复注入（v2.2.16 引入）排在阶段二之后，为时已晚。修复：复注入挪到阶段一/二之间（英文模式下注入内部早退，CN→EN 方向无副作用）。手写链接只出现在 footnotes/game_data 域（脚注描述，详情面板显示，走阶段二），从不在对话域——字幕历史缓冲（阶段一处理）不会涉及，故时序修复一处即全覆盖。
+- **Bug 2（非 bug，游戏原生机制）**："心念失色、性相池红"。证据：存档 loggedInteractions 含 FootnoteSeen.passion 与 FootnoteSeen.aspectpool（用户此前测试时已点开看过）；config FootnoteSubtlety=1（默认开启，字幕面板把已读链接剥成裸文本）。游戏原生判定（QualitiesCatalogue.GetDetailableLabelState）：已读+无 Choices（Passion 脚注无 Choices）→ ShowAsViewed → 剥成裸文本（心念失色）；已读+有未选 Choices（Aspect Pool 脚注 3 个 Choices 均未选，无 FootnoteChoiceMade.aspectpool）→ ShowAsViewedWithChoicesRemaining → 保持已读色链接（性相池仍显色）。英文原版同存档下同表现。k.6 时代"切英文再切回来颜色才出现"是 v2.2.18 之前缓冲路径 hideVisited 取值漂移所致（已修）。用户若想链接常显：游戏设置里把"脚注显隐程度"调低即可（已读链接改显淡色而非剥除）。
+- 链路：slim 119 → 打包 2.3.1 → 卸载 2.3.0 → 安装 46/46（patch_version=2.3.1）。
+- 待用户验收：①EN→CN 后牡鹿之门详情的 受仪/太阳的居屋 保持正常链接色（不再变青）；②"心念失色"经解释为原生机制（可开新档验证：未读过心念时它在对话里显色）。
+
+## 75. 2026-08-20 v2.3.2：交换后已读链接复活根治 + 一词多译/小语种全局清理 + Duties 定名"职司"
+
+- **Bug（交换层，已修）**：用户验收 v2.3.1 时发现：切英文后已读链接显示为淡色链接（应剥除），切回中文同样复活。根因：阶段二 TMP 显示交换的 `_hideVisitedForCurrentSwap` 由 ResolveHideVisitedForSurface 按父链组件探测——k.52 里字幕 TMP 的父链既没匹配到 TravellingSubtitlePanel 也没匹配到 _respectFootnoteSubtlety（k.51 UI 大改后层级变了），探测失败回落 false=不剥除。修复：先认与字幕 TMP **同住一个 GameObject 的 TravellingTypewriter**（代码实证：TravellingSubtitlePanel.Awake 里 `_typewriter = subtitleText.gameObject.GetComponent<TravellingTypewriter>()`；k.52 全引用点均为对话 UI 类），命中即按 FootnoteSubtlety 配置剥除；父链探测降为兜底。v2.3.1 的"心念失色是游戏原生机制"结论依然成立（存档已读+无 Choices+FootnoteSubtlety=1），本次修的是交换层与新鲜渲染的不一致。
+- **Duties 定名"职司"（用户裁定）**：考据结论——CS/BoH 官中英文语料本机全文检索均无 the Duties 专名，非前作既有词；本作脚注定义其为"凡人与不朽者组成的守卫机构（防剿局、门槛军团等）的合称"。弃"职责"（纯抽象名词，"教会与职责容许"类句子读不通），定名"职司"（古典成词，义务+机构双重含义，与司辰/司阍同族）。改 label 单元 TAN-387590666D20 与 TAN-CC397CE19B07（第一职司）即可——merge 的 link_mapping 由"已译独立 label"自动构建，[[Duties]]→[[职司]] 随之全量转换。glossary.csv 与 USER_GLOSSARY.md 已登记（含弃用理由）。
+- **一词多译全局排查**：以 glossary.csv 全部 ≥3 字术语做"词干变体扫描"（源文含该英文词、译文不含规范译名却含"词干+异字"），真阳性 2 处：塞拉皮翁→塞拉皮雍（TAN-5CC57ED5D79F，"Serapeum"简称此前未入 glossary 故审计漏网，已补登记）、尸骸火星→尸骸火花（TAN-6266F563BCDC）；另有 trabai 一处未按术语表音译（TAN-0A95E2C0A0F2 → 特拉拜）。"petitioner→祈告之物"系 petitioner-thing 的忠实译法，误报。
+- **小语种加注全局排查**：扫描译文残留拉丁字母片段（剥 [[ ]]/标签/URL/占位符，179 候选逐条过）。结论：7 处拉丁铭文引文（GRATIA CAELI 等）本就是"原文+中译"双行设计；签证章 6 枚中 2 枚已注（入境签证），补齐 4 枚（WIZA WJAZDOWA/VSTUPNÍ VÍZUM/VISADO DE ENTRADA/VIZĂ DE INTRARE）；ECCE PRAESENSUM ROSARUM 补注（看哪，玫瑰临在）；Hélas ×2 补（唉）；l'État français 补（法兰西国）；commedia dell'arte 补（意大利即兴喜剧）；Lux 双关补（拉丁语"光"）。调试/技术串（测试对话 29/120、FNORD、Lorem ipsum、QReqs 条件键、补丁说明里的 Vulkan/MSAA 等）一律保留原文属设计行为。
+- 链路：merge 0 错 → 烘焙 0 漂移（8764 写入+317 已在位）→ verify 9018/9018 → lang_swap 重建 → slim 119 → 打包 2.3.2 → 安装 46/46（patch_version=2.3.2）。
+- 待用户验收：①EN/CN 来回切换后已读链接保持剥除（心念不再复活成淡色链接；想常显可在设置调低"脚注显隐程度"）；②职责→职司全局生效（含链接与"第一职司"选项）；③塞拉皮雍/签证章/Mater Solvens 等译文修正实机可见。
+
+## 76. 2026-08-20 v2.3.3：术语全量审计（用户追问"为什么术语要你提出才考据"）+ 两处前作分歧裁定
+
+- **流程根因（用户指出"职司""失数者"都是用户先提出才考据）**：①登记靠被动触发——有前作 wiki 出处的大词早年登记，剩下的靠用户肉眼发现；②"暂译"无回收机制（职责的 notes 明写"暂译"却随版本发布）；③本作新词无前作 wiki 可查，不触发"需要考据"的直觉。本轮补齐制度：对术语做全量主动审计而非等问题暴露。
+- **全量审计**：136 个脚注 label + 22 个未登记链接目标逐条核对。绝大多数与前作惯例一致或属本作新词的合理定译；真问题两处——
+  - **Gods-who-were-flesh**：CS 官中本机语料实证定译"肉源神"（8 处），本作旧译"曾为血肉之神"系批量翻译期漏考据 → 用户裁定改"肉源神"。
+  - **Marches**：BoH 官中本机语料实证定译"边境"（44 处），本作旧译"边区" → 用户裁定改"边境"；连带把 TAN-333EF21E1E86 里普通名词 Bounds 改译"疆界"避复（"边境就是醒时与漫宿之间的疆界"）。注意：TAN-BC0F0CCCFA5C 的"朱利安边区"是现实地名 Julian March，**不随** Marches 改动。
+  - **The First Duty 回退**：v2.3.2 随职司改成"第一职司"是误改——它是伊加利亚主义脚注里"义务为先"的信念选项（抽象义务），已回退为"第一职责"。
+- **批量登记**：glossary.csv 新增 27 行（防剿局/十字派/伊斯/于西耶/肉源神/边境/圣域/脊索动物/格劳斯塔克等，含前作出处备注），术语表 366→393 行（Sleep 登记后撤下——普通词入表只给散文制造告警噪音）。登记即生效：新表首轮审计立刻抓到 6 处"亚历山大/亚历山大港"混用与 1 处"同伴/关系人"（Associates 机制名）——已全部统一。USER_GLOSSARY.md 增补肉源神/边境两条前作出处记录，并修正 Duties 条目对 The First Duty 的误关联。
+- 链路：merge 0 错 → 审计新术语 0 残留告警（fixed_term_missing 108→97，低于旧基线 99）→ 烘焙 0 漂移 → verify 9018/9018 → lang_swap 重建 → slim 119 → 打包 2.3.3 → 安装 46/46。
+- 待用户验收：肉源神/边境/第一职责/亚历山大港/关系人 实机可见。

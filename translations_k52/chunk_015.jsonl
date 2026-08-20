@@ -79,7 +79,7 @@
 {"id":"TAN-E5E641ED2202","source":"We'll collect pseudonymised data about story choices","translation":"我们会收集经过去标识化处理的剧情选择数据","status":"translated","notes":"数据收集说明；pseudonymised 依隐私语境译“去标识化处理”。"}
 {"id":"TAN-E65499496431","source":"rosamundi/monica","translation":"rosamundi/monica","status":"translated","notes":"疑似内部路径或测试标识，原样保留。"}
 {"id":"TAN-E7218B5E4A56","source":"Memories","translation":"记忆","status":"translated","notes":"物品分类标签。"}
-{"id":"TAN-E7A2A71ACAE7","source":"Alexandria, Istanbul, Sofia, Belgrade, Trieste, Milan, Antibes... not an easy journey. They'd dynamited the pass at Ras en-Naqura, and I had to slip across the border at night in a gun-runner's jeep. ","translation":"亚历山大、伊斯坦布尔、索非亚、贝尔格莱德、的里雅斯特、米兰、昂蒂布……一路并不轻松。他们炸毁了拉斯恩纳库拉的山口，我只好在夜里搭上军火贩子的吉普车，偷越边境。 ","status":"translated","notes":"城市名采用通行译法；Ras en-Naqura 音译“拉斯恩纳库拉”；保留末尾空格。"}
+{"id": "TAN-E7A2A71ACAE7", "source": "Alexandria, Istanbul, Sofia, Belgrade, Trieste, Milan, Antibes... not an easy journey. They'd dynamited the pass at Ras en-Naqura, and I had to slip across the border at night in a gun-runner's jeep. ", "translation": "亚历山大港、伊斯坦布尔、索非亚、贝尔格莱德、的里雅斯特、米兰、昂蒂布……一路并不轻松。他们炸毁了拉斯恩纳库拉的山口，我只好在夜里搭上军火贩子的吉普车，偷越边境。 ", "status": "translated", "notes": "城市名采用通行译法；Ras en-Naqura 音译“拉斯恩纳库拉”；保留末尾空格。；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
 {"id":"TAN-E7D224D81649","source":"<i>Find one of these to learn more.</i>","translation":"<i>找到其中一件，即可了解详情。</i>","status":"translated","notes":"2026.8.j.66 增量：对照新版资产、上下文与相邻旧译人工复核。"}
 {"id":"TAN-E89B30AA1DC3","source":"Resources","translation":"资源","status":"translated","notes":"UI 标签。"}
 {"id":"TAN-E952682AF6C8","source":"Incompatible legacy save","translation":"不兼容的旧版存档","status":"translated","notes":"存档兼容性提示。"}

@@ -47,6 +47,7 @@
 | `Forge of Days` → 白日铸炉 | 司辰 | [白日铸炉](https://mansus.huijiwiki.com/wiki/白日铸炉) | 司辰词条定名 Forge of Days“白日铸炉”。 沿用前作司辰名。 |
 | `Fraser Strathcoyne` → 弗雷泽·斯特拉思科因<br>`Strathcoyne` → 斯特拉思科因 | 人物 | [弗雷泽·斯特拉思科因先生](https://boh.huijiwiki.com/wiki/弗雷泽·斯特拉思科因先生) | 《司辰之书》中文 Wiki 的人物词条定名“弗雷泽·斯特拉思科因”。 全名与姓氏简称保持同一音译。 |
 | `Fucine` → 富奇诺语 | 语言 | [技艺列表：富奇诺语](https://boh.huijiwiki.com/wiki/列表/技艺) | 《司辰之书》技艺列表以“富奇诺语”收录 Fucine。 沿用前作语言名，不按现代地名另行音译。 |
+| `Gods-who-were-flesh` → 肉源神 | 位阶 | 本机《密教模拟器》官中语料（Content/loc_zh-hans，8 处实证） | CS 官中定译"肉源神"（"肉源神——原为凡人的司辰"）。沿用前作位阶名；本作旧译"曾为血肉之神"撤销（v2.3.3）。 |
 | `Glory` → 辉光 | 地点 | [辉光](https://mansus.huijiwiki.com/wiki/辉光) | Wiki 以“辉光”收录 Glory。 沿用系列宇宙论地点名。 |
 | `Gods-from-Blood` → 血源诸神 | 分类 | [司辰：血源诸神](https://mansus.huijiwiki.com/wiki/司辰) | 司辰专题按来源列出 Gods-from-Blood“血源诸神”。 沿用“X源诸神”的分类构词。 |
 | `Gods-from-Flesh` → 肉源诸神 | 分类 | [司辰：肉源诸神](https://mansus.huijiwiki.com/wiki/司辰) | 司辰专题按来源列出 Gods-from-Flesh“肉源诸神”。 沿用“X源诸神”的分类构词。 |
@@ -69,7 +70,7 @@
 | `Influence` → 影响 | 性相 | [《密教模拟器》Wiki：影响](https://cultist.huijiwiki.com/wiki/影响) | Wiki 以性相 id influence 对列“影响”，描述亦与本作的反响、共鸣、调和相承。 机制和措辞连续，沿用前作。 |
 | `Intercalate` → 置闰 | 事件 | [置闰](https://cultist.huijiwiki.com/wiki/置闰) | 前作 Wiki 以“置闰”收录 Intercalate。 沿用系列重大事件名。 |
 | `Invisible Arts` → 无形之术 | 系统 | [无形之术](https://cultist.huijiwiki.com/wiki/无形之术) | 前作专题以“无形之术”统称 Invisible Arts。 沿用系列秘术总称。 |
-| `Invisible Serapeum` → 隐形的塞拉皮雍 | 地点 | [司辰之书 Wiki：第二次虫鸟解密](https://boh.huijiwiki.com/wiki/第二次虫鸟解密) | 《司辰之书》中文 Wiki 的第二次虫鸟解密页明确使用“隐形的塞拉皮雍”。 沿用前作地点名与专名音译。 |
+| `Invisible Serapeum` → 隐形的塞拉皮雍 | 地点 | [司辰之书 Wiki：第二次虫鸟解密](https://boh.huijiwiki.com/wiki/第二次虫鸟解密) | 《司辰之书》中文 Wiki 的第二次虫鸟解密页明确使用“隐形的塞拉皮雍”。 沿用前作地点名与专名音译。本作中简称 Serapeum 同译"塞拉皮雍"（v2.3.2 纠正一处"塞拉皮翁"异译）。 |
 | `Ithastry` → 盗火术 | 技艺 | [盗火术](https://boh.huijiwiki.com/wiki/盗火术) | 《司辰之书》技艺词条定名 Ithastry“盗火术”。 沿用九大伟大之术的三字命名体系。 |
 | `Julian Coseley` → 朱利安·科赛利<br>`Coseley` → 科赛利 | 人物 | [朱利安·科赛利](https://cultist.huijiwiki.com/wiki/朱利安·科赛利) | 前作人物词条定名“朱利安·科赛利”。 全名与姓氏简称共用“科赛利”。 |
 | `Knock` → 启 | 准则 | [准则](https://mansus.huijiwiki.com/wiki/准则) | 准则词条列出 Knock“启”。 沿用单字准则体系。 |
@@ -80,6 +81,7 @@
 | `Lore` → 密传 | 系统 | [密教模拟器 Wiki：密传分类](https://cultist.huijiwiki.com/wiki/分类:性相：密传) | 《密教模拟器》中文 Wiki 的密传分类收录各准则知识卡，印证 Lore 的前作类别译名“密传”。 保留秘教知识类别义；普通 lore 仍按上下文处理。 |
 | `Madrugad` → 昕旦 | 司辰 | [昕旦](https://mansus.huijiwiki.com/wiki/昕旦) | 司辰词条定名 Madrugad“昕旦”。 沿用前作司辰名。 |
 | `Mansus` → 漫宿 | 地点 | [漫宿](https://cultist.huijiwiki.com/wiki/漫宿) | 前作地点词条定名“漫宿”。 沿用系列核心地点名。 |
+| `Marches` → 边境 | 地点 | 本机《司辰之书》官中语料（bhcontent/loc_zh-hans，44 处实证） | BoH 官中定译"边境"（"伊苏与边境"等）。沿用前作地名；本作旧译"边区"撤销（v2.3.3），Bounds 作普通名词时译"疆界"以避复。 |
 | `Memory` → 记忆<br>`Memories` → 记忆 | 机制 | [《司辰之书》Wiki：回忆分类](https://boh.huijiwiki.com/wiki/分类:性相：回忆) | Wiki 分类列出大量“回忆：X”卡牌，并将 Memory 作为既有资源类别；本作沿用“记忆”作为可结晶、可制作的总称。 不再误列为本作新词；单复数同译“记忆”。 |
 | `Meniscate` → 弧月 | 司辰 | [弧月](https://mansus.huijiwiki.com/wiki/弧月) | Wiki 独立词条定名 Meniscate“弧月”。 沿用前作司辰名。 |
 | `Moon` → 月 | 准则 | [准则](https://mansus.huijiwiki.com/wiki/准则) | 准则词条列出 Moon“月”。 沿用《司辰之书》新增准则名。 |
@@ -182,6 +184,7 @@
 | `dolya` → 多利亚券<br>`doli` → 多利亚券 | 货币 | 本作试玩版货币文本 | 部委阵营的准奇迹汇票，以生产劳动计价、由群星担保；拼写异体 doli 同译；词形呼应俄语 доля（份额）。 音译“多利亚”加“券”字标明票据物类。 | 裸音译“多利亚”不像货币；“工票”过度坐实制度细节。 | verified |
 | `Dripping` → 汗流浃背 | 状态 | [Weather Factory：Chrysophoria](https://weatherfactory.biz/chrysophoria/) | 官方开发日志确认装束与麻烦会施加状态，并点名 Agonies、Despair、Chrysolepsis；本作资产列出完整状态阶梯。 本作标签译作“汗流浃背”。同一冷热、痕迹和危险阶梯按强度递进命名，标签与进入／退出提示保持同词根。 | 不按孤立字面翻译而破坏强度序列；不把状态写成完整句子。 | verified |
 | `Drowsiness` → 困倦 | 状态 | [Weather Factory：Chrysophoria](https://weatherfactory.biz/chrysophoria/) | 官方开发日志确认装束与麻烦会施加状态，并点名 Agonies、Despair、Chrysolepsis；本作资产列出完整状态阶梯。 本作标签译作“困倦”。同一冷热、痕迹和危险阶梯按强度递进命名，标签与进入／退出提示保持同词根。 | 不按孤立字面翻译而破坏强度序列；不把状态写成完整句子。 | verified |
+| `Duties` → 职司<br>`The First Duty` → 第一职责 | 设定称谓 | 本作脚注语料（防剿局、门槛军团条目均以 the Duties 为上级统称） | 本作新词：凡人与不朽者组成的守卫机构（防剿局、门槛军团等"为履行职责而设"）的合称。2026-08-20 本机全文检索：《密教模拟器》与《司辰之书》官中英文语料均无此专名，确认非前作既有词、无官中旧译可继承。定名"职司"：古典成词（"设官分职，各有职司"），兼含义务本义与机构实体感，与司辰、司阍同属"司"族构词，并保住英文以干巴衙门词称呼神圣职守的冷幽默。注意：伊加利亚主义脚注的信念选项 "The First Duty" 是抽象义务（义务为先），仍译"第一职责"，不随本条。 | "职责"只有抽象义务义，"教会与职责容许禁忌知识"类句子读不通；"职方"（《周礼》职方氏）机构感最强但过僻且丢失本义。 | verified |
 | `Easy` → 简单 | 检定难度 | [Weather Factory：INCREASE WITH 40 HEART](https://weatherfactory.biz/increase-with-40-heart/) | 官方开发日志说明技艺检定、失败与性相池挽救；本作资产提供十一档正式难度标签。 本作标签译作“简单”。按实际阈值从“微不足道”到“难以置信”递进，兼顾 UI 长度和语气。 | 不强制每档都以“困难”结尾；不把内部测试项 Semi 纳入正式阶梯。 | verified |
 | `Eccentric` → 古怪 | 性相 | [Weather Factory：Who are you, Hollow Man?](https://weatherfactory.biz/who-are-you-hollow-man/) | 官方开发日志确认 Aspect Pool 及装束、技艺、心念对性相的共同使用；本作资产给出完整并列标签。 本作标签译作“古怪”。前作准则与既有性相沿用 Wiki 译名；本作新性相依据用途说明定名并保持短标签。 | 不把 Aspect 误作“准则”；不以脱离资产说明的字典首义覆盖机制义。 | verified |
 | `Edge Experiences` → 刃之经历 | 经历 | [Weather Factory：角色成长与心念](https://weatherfactory.biz/who-are-you-hollow-man/) | 本作将九种准则经历列为同一 ExperienceQuality 标签族；官方开发日志确认心念、技艺与性相池共同构成角色成长系统。 本作标签译作“刃之经历”。保留前作单字准则译名，以“X之经历”形成可扫读的九项并列结构。 前作比较：[秘史 Wiki：准则](https://mansus.huijiwiki.com/wiki/准则)。 | “经验”偏数值；“阅历”过于人生化；省略“之”会破坏与准则名的边界。 | verified |
@@ -321,6 +324,7 @@
 | `francisque` → 弗朗西斯克 | 货币 | [Dictionnaire de l’Académie française：francisque](https://www.dictionnaire-academie.fr/article/A9F1544) | 法兰西学院词典说明 francisque 原指法兰克战斧，延伸指维希政权的双刃斧徽章；Demo 又把该历史意象改写为法兰西邦国货币。 音译“弗朗西斯克”保留虚构货币的专名感，同时可与斧徽母题对应；不误作现实法郎 franc。 | verified |
 | `Henad` → 一者<br>`Henades` → 诸一者 | 神学 | [Stanford Encyclopedia of Philosophy：Proclus](https://plato.stanford.edu/entries/proclus/) | 斯坦福哲学百科将 divine henads 解释为 participated unities/gods，连接超越的 The One 与其后万有；哈佛资料又概括为 ones/one-gods。 单数译“一者”，复数译“诸一者”，既与 The One 的哲学词汇衔接，也保留悖论性的众多单一；据此纠正旧稿“一元体”。 | verified |
 | `mascs` → 巫师 | 异文称谓 | [Occitan dictionary：masc](https://fr.wiktionary.org/wiki/masc) | 奥克语 masc 指 magicien/sorcier/enchanteur，词源关联 magus；mascs 是本作采用的复数拼写。 按语境译“巫师”，不保留陌生复数词尾，也不误解为英语 masculine 的缩写。 | verified |
+| `Mater Solvens` → 解缚之母 | 拉丁语称谓 | 本作昕旦脚注（"尸身交付烈火或大地时，人们便祈请 Mater Solvens"） | 拉丁语 mater solvens 直解为"解开束缚的母亲"：solvens 是 solvere（松开、解除、消散）的现在分词，呼应丧葬语境中令尸身归火、归土的释放者。译文保留拉丁原文，并以括号注出"解缚之母"。 | verified |
 | `Menninger Foundation` → 梅宁格基金会<br>`Meninger Foundation` → 梅宁格基金会<br>`Menninger` → 梅宁格<br>`Meninger` → 梅宁格 | 机构 | [Kansas Historical Society：Menninger Clinic](https://www.kansashistory.gov/kansapedia/menninger-clinic/12147) | 堪萨斯州历史学会资料记载托皮卡的 Menninger Foundation 及其精神医学、培训和研究史；Demo 的单 n Meninger 是拼写异体。 按英语人名通行音译“梅宁格”，Foundation 译“基金会”；错误拼写不另造机构。 | verified |
 | `Ordination` → 领受圣职 | 神学行为 | [Vatican：Code of Canon Law](https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib2-cann232-293_en.html) | 天主教法中 ordination 是领受圣秩/进入圣职的礼仪行为，不是机构名称。 在人物经历中译“领受圣职”；施事句可作“授予圣职”，随语法变化而不误成“任命”。 | verified |
 | `parish` → 堂区 | 教会辖区 | [Vatican：Code of Canon Law, Can. 515](https://www.vatican.va/archive/cod-iuris-canonici/eng/documents/cic_lib2-cann460-572_en.html) | 教会法第 515 条定义 parish 为特定教会中稳定设立、由 pastor 牧养的信徒团体，隶属 diocesan bishop。 采用中文天主教语境的“堂区”，与上级 diocese“教区”严格区分。 | verified |

@@ -42,7 +42,7 @@
 {"id":"TAN-09E325FA300B","source":"Caen-Ouistreham","translation":"卡昂—乌伊斯特勒昂","status":"translated","notes":"法国地名通行译法。"}
 {"id":"TAN-09F870301A5A","source":"Materials, supplies, hardware.","translation":"材料、补给、器具。","status":"translated","notes":"物品分类描述。"}
 {"id":"TAN-09F9FD6D6897","source":"Opinion - Mme Zèlia","translation":"看法——泽莉娅夫人","status":"translated","notes":"UI 标签，人物名沿前批。"}
-{"id":"TAN-0A95E2C0A0F2","source":"There's no way, now, to complete Zèlia's <i>trabai</i>.","translation":"泽莉娅的<i>trabai</i>，现在是没法完成了。","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id": "TAN-0A95E2C0A0F2", "source": "There's no way, now, to complete Zèlia's <i>trabai</i>.", "translation": "泽莉娅的<i>特拉拜</i>，现在是没法完成了。", "status": "translated", "notes": "k.52 迁移：新增内容人工新译；v2.3.2 trabai→特拉拜，统一术语表音译"}
 {"id":"TAN-0AF2E6452B30","source":"Hemlock","translation":"毒芹","status":"translated","notes":"植物名。"}
 {"id":"TAN-0AF9F25C270F","source":"If the toast alerts start to pile up, you can right-click to dismiss ALL alerts immediately.","translation":"如果浮动通知开始堆积，你可以右键单击，立即关闭所有通知。","status":"translated","notes":"toast alerts 译“浮动通知”，ALL 的强调通过“所有”完整保留。"}
 {"id":"TAN-0B12D6ED4F1E","source":"Arun can help me get my papers in order to enter the Republic. Once that's done, I'll be ready to travel.","translation":"阿伦可以帮我把进入共和国所需的证件整理妥当。办完之后，我就可以出发。","status":"translated","notes":"papers 结合越境语境译“证件”。"}
@@ -241,7 +241,7 @@
 {"id":"TAN-33E29523BCB8","source":"I added something to cheer them up.","translation":"我加了点能让他们振奋起来的东西。","status":"translated","notes":"状态说明。"}
 {"id":"TAN-3495E757855A","source":"White","translation":"白色","status":"translated","notes":"状态显示名。"}
 {"id":"TAN-351C56D011C1","source":"The fascists are gone, the Biennale is back, and the Comedy of the Sun is welcome","translation":"法西斯走了，双年展回来了，太阳喜剧也迎来了掌声","status":"translated","notes":"Comedy of the Sun 沿前批译“太阳喜剧”；保留宣传标语节奏。"}
-{"id":"TAN-3590BB8DFF6B","source":"WIZA WJAZDOWA. The stamp is not aniline purple, but something vivid red, with the white eagle a pale shape at its core.","translation":"WIZA WJAZDOWA。印章不是苯胺紫色，而是某种鲜红；中央的白鹰只呈一片淡影。","status":"translated","notes":"波兰语签证标题原样保留。"}
+{"id": "TAN-3590BB8DFF6B", "source": "WIZA WJAZDOWA. The stamp is not aniline purple, but something vivid red, with the white eagle a pale shape at its core.", "translation": "WIZA WJAZDOWA（入境签证）。印章不是苯胺紫色，而是某种鲜红；中央的白鹰只呈一片淡影。", "status": "translated", "notes": "波兰语签证标题原样保留。；v2.3.2 签证章补（入境签证）注"}
 {"id":"TAN-3593388AD7AA","source":"Opinion - Jean-Bernard","translation":"看法——让-贝尔纳","status":"translated","notes":"关系 UI 标签；人名沿前批。"}
 {"id":"TAN-366BA00FAAD8","source":"Annabelle","translation":"安娜贝尔","status":"translated","notes":"专名。"}
 {"id":"TAN-36AFDE32D762","source":"[q=Pain] Pain: I'm no longer Injured.","translation":"[q=Pain] 点痛苦：我已经不再受伤。","status":"translated","notes":"保留查询变量；Injured 译“受伤”。"}
@@ -336,12 +336,12 @@
 {"id":"TAN-49FD01C86FAE","source":"Unease","translation":"不安","status":"translated","notes":"状态标签。"}
 {"id":"TAN-4A04AE200D22","source":"Heart Memory","translation":"心之记忆","status":"translated","notes":"Heart 依术语表译“心”。"}
 {"id":"TAN-4A64B9AEC2A2","source":"Unobtrusive Notepad","translation":"不显眼的记事本","status":"translated","notes":"物品名。"}
-{"id":"TAN-4AB37AD83138","source":"<i>O wad some Pow'r the giftie gie us\nTo see oursels as ithers see us!</i>\n- Burns\n\nDone. You're welcome. Review the opinions of your Associates - characters of some importance in your life - at any time on this Journal page.","translation":"<i>但愿上天赐我们本领\n能像旁人一样看清自己！</i>\n——彭斯\n\n好了。不必客气。你可以随时在本日志页查看同伴对你的看法——他们是你生命中颇为重要的人物。","status":"translated","notes":"保留斜体与全部换行；诗句为彭斯《致虱子》名句，采用凝练意译；Associates／Journal 按 UI 译“同伴／日志”。"}
+{"id": "TAN-4AB37AD83138", "source": "<i>O wad some Pow'r the giftie gie us\nTo see oursels as ithers see us!</i>\n- Burns\n\nDone. You're welcome. Review the opinions of your Associates - characters of some importance in your life - at any time on this Journal page.", "translation": "<i>但愿上天赐我们本领\n能像旁人一样看清自己！</i>\n——彭斯\n\n好了。不必客气。你可以随时在本日志页查看关系人对你的看法——他们是你生命中颇为重要的人物。", "status": "translated", "notes": "保留斜体与全部换行；诗句为彭斯《致虱子》名句，采用凝练意译；Associates／Journal 按 UI 译“同伴／日志”。；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
 {"id":"TAN-4B4CE163882E","source":"I haven't performed gentleman's rites this morning.","translation":"今早我还没有完成绅士的晨间仪式。","status":"translated","notes":"与同批肯定状态句统一。"}
 {"id":"TAN-4BEFB3ACBEAF","source":"Enliven, invigorate, awaken.","translation":"赋生，振奋，唤醒。","status":"translated","notes":"保留三项递进。"}
 {"id":"TAN-4C0AAC562F08","source":"When the feast of the Sun's Resurrection came to Brancrug, the rectory was still cold - those old stone walls, thick as a castle's - and with no housekeeper, I had to lay my own fire... \n\nRecall <link=\"mypastanastasis\">My Past: Anastasis, Brancrug, 1920</link>","translation":"太阳复活节来到布兰库格时，教区长宅仍旧寒冷——那些古老石墙厚得像城堡——而我又没有管家，只得亲自生火…… \n\n回忆<link=\"mypastanastasis\">我的过往：复生，布兰库格，1920年</link>","status":"translated","notes":"沿 chunk_009／010 的既有整段与回忆标题译法；保留省略号后的空格、段落及 link 标签。"}
 {"id":"TAN-4C30CF36ED0C","source":"Hanover","translation":"汉诺威","status":"translated","notes":"地名。"}
-{"id":"TAN-4C4F2142C2F7","source":"VSTUPNÍ VÍZUM. An official signature on an official stamp adorned by the two-tailed lion of Bohemia. Czechoslovakia is not yet, not quite, not quite yet, a People's Republic. ","translation":"VSTUPNÍ VÍZUM。正式签名落在正式印章上，印章饰以波希米亚双尾狮。捷克斯洛伐克尚不是人民共和国；还不算，还没完全算。  ","status":"translated","notes":"捷克语签证标题原样保留；保留反复措辞及源文尾随空格。 破折号专项终审：改用更适合中文的逗号、括号或分号。"}
+{"id": "TAN-4C4F2142C2F7", "source": "VSTUPNÍ VÍZUM. An official signature on an official stamp adorned by the two-tailed lion of Bohemia. Czechoslovakia is not yet, not quite, not quite yet, a People's Republic. ", "translation": "VSTUPNÍ VÍZUM（入境签证）。正式签名落在正式印章上，印章饰以波希米亚双尾狮。捷克斯洛伐克尚不是人民共和国；还不算，还没完全算。  ", "status": "translated", "notes": "捷克语签证标题原样保留；保留反复措辞及源文尾随空格。 破折号专项终审：改用更适合中文的逗号、括号或分号。；v2.3.2 签证章补（入境签证）注"}
 {"id":"TAN-4C764CB6248E","source":"Shadow","translation":"阴影","status":"translated","notes":"性相标签。"}
 {"id":"TAN-4CA80B8A3F96","source":"Limian Discipline","translation":"利米亚教律","status":"translated","notes":"Limian 与“利米亚教团”词根统一。"}
 {"id":"TAN-4CE80E7BFD80","source":"'The Sheaf'","translation":"《禾捆》","status":"translated","notes":"报刊名沿 chunk_005。"}
@@ -442,7 +442,7 @@
 {"id":"TAN-61F798CD930C","source":"A token of the old order of Heaven - or of [[Corona]], which claims to be its inheritor. An Incorporate dollar is the easiest option, but there are ways to craft a token in the absence of greenbacks.\n\n[Since the Wars, the currency of Corona is used for the Bright Arts - but you can create an Eye of Authority as a substitute.]","translation":"旧日高天秩序的一枚信物——或者说，是自称其继承者的[[Corona]]之信物。  集团美元是最容易取得的选择，但没有美钞时，也有办法制作这样的信物。\n\n[诸战以来，冕的货币被用于光之技艺——但你可以制作权威之眼作为替代。]","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
 {"id":"TAN-62283A73FC1E","source":"Perugia","translation":"佩鲁贾","status":"translated","notes":"意大利地名。"}
 {"id":"TAN-62481E6AD1D7","source":"A few minutes have passed.","translation":"几分钟过去了。","status":"translated","notes":"变量说明。"}
-{"id":"TAN-6266F563BCDC","source":"Carcass Spark","translation":"尸骸火星","status":"translated","notes":"秘术物品名；保留肉身与火星的物质意象。"}
+{"id": "TAN-6266F563BCDC", "source": "Carcass Spark", "translation": "尸骸火花", "status": "translated", "notes": "秘术物品名；保留肉身与火星的物质意象。；v2.3.2 尸骸火星→尸骸火花，统一术语表定译"}
 {"id":"TAN-626D4B72E966","source":"Nagelsburg","translation":"纳格尔斯堡","status":"translated","notes":"地名，暂按德语音译。"}
 {"id":"TAN-628CD9C63F63","source":"Crafting: Recipe Selected","translation":"制作：已选择配方","status":"translated","notes":"教程标题。"}
 {"id":"TAN-631428921E7C","source":"Quicken","translation":"催活","status":"translated","notes":"伟大之术相关机制标签；与 Enliven 的赋生语义呼应。"}
