@@ -1,0 +1,450 @@
+{"id":"TAN-EA3C13A0CC64","source":"Darkness and Light divide the Course of Time, and until that Course is Run, Eternity remains History's Bed-Fellow. Sorrow then is Sense's final Solvent, and even a Tear, should it fall enow, might destroy a Stone…","translation":"黑暗与光明分割时间的历程；在那历程走完之前，永恒仍是历史的同床者。因此，哀伤是感官最终的溶剂；甚至一滴泪，若落得够久，也能摧毁一块石头……","status":"translated","notes":"保留资本化概念的炼金术语气与 Bed-Fellow/Solvent/Stone 物质意象；enow 作古语“足够”处理。"}
+{"id":"TAN-ECC692BAB293","source":"The Land Across","translation":"《彼岸之地》","status":"translated","notes":"作品名暂译。"}
+{"id":"TAN-F337B5ACFD08","source":"The sea does not regret the tide, and after the tide withdraws, something always remains, which we call memory.","translation":"海不为潮汐而悔；潮水退去，总有东西留下，我们称之为记忆。","status":"translated","notes":"保留海/潮/记忆的平静对应。"}
+{"id":"TAN-F4C1C95FA65A","source":"The Orchid Transfigurations","translation":"《兰花变容》","status":"translated","notes":"虚构作品名。"}
+{"id":"TAN-F831EC9D1508","source":"My Deeds, My Powers, My Achievements and the Injustices Perpetrated Against Me","translation":"《我的事迹、我的力量、我的成就和我所面临的不公》","status":"translated","notes":"保留夸张、自负的长标题。"}
+{"id":"TAN-FE92FD7C1BF4","source":"The Quiet American","translation":"《沉静的美国人》","status":"translated","notes":"采用格雷厄姆·格林作品通行中译名。"}
+{"id":"TAN-FE979EAEA7A3","source":"Travelling at Night","translation":"《夜游漫记》","status":"translated","notes":"按术语表作本作标题。"}
+{"id":"TAN-FEC0210B2239","source":"\t\tThe war was lost\r\n\t\tThe treaty signed\r\n\t\tI was not caught\r\n\t\tI crossed the line\r\n\t\tI was not caught\r\n\t\tThough many tried\r\n\t\tI live among you, well-disguised","translation":"\t\t战事已败\r\n\t\t和约已签\r\n\t\t我未曾落网\r\n\t\t我越过界线\r\n\t\t我未曾落网\r\n\t\t任凭重重阻拦\r\n\t\t我隐于你们中间\r\n\t\t无人识辨","status":"translated","notes":"Leonard Cohen《Nevermind》歌词（quote_provenance path 9 已考证）：资产把末两行 \"I live among you / Well-disguised\" 合并为一行（7 行），译文按原歌恢复 8 行布局；并恢复押韵——签/线/拦/辨押 -an 对应原文 signed/line/tried/disguised 押 -ai，落网重复对应 caught 重复，首行不押对应 lost。"}
+{"id":"TAN-0013C01FE0D0","source":"Amsterdam","translation":"阿姆斯特丹","status":"translated","notes":"地名通行译法。"}
+{"id":"TAN-004FA6C5015B","source":"Conscience","translation":"良知","status":"translated","notes":"系统状态/人格标签。"}
+{"id":"TAN-00769B69D69C","source":"Alias — Familiar","translation":"化名——昵称","status":"translated","notes":"与其他 Alias 字段保持 UI 分隔结构；Familiar 指熟人使用的亲昵称呼。"}
+{"id":"TAN-0082181FD9B1","source":"Introduction: Philomèle","translation":"引见：菲洛梅勒","status":"translated","notes":"Introduction 作为人物关系/条目标题译“引见”。"}
+{"id":"TAN-00890F2D47B3","source":"A letter from Maître Argant to Madame Zelia, folded in quarters and labelled ZIELA MY LOVE in Juliusz' barely-readable scrawl. He has adorned it with hearts, kisses, and little pictures of friendly wasps.","translation":"一封阿尔冈律师写给泽莉娅夫人的信，折成四折；尤利乌什那几乎无法辨认的潦草字迹，在上面写着“ZIELA，我的爱人”。他还添上了爱心、亲吻，以及几幅和善小黄蜂的图画。","status":"translated","notes":"Maître 依人物语境统一译“律师”；保留信封上 ZIELA 的原拼写，friendly wasps 直译以保留可爱而古怪的细节。"}
+{"id":"TAN-00BF3E2E523D","source":"More than a Week","translation":"一周以上","status":"translated","notes":"时长条件标签。"}
+{"id":"TAN-00C72F8A20A7","source":"Only [q=Dread] Dread - I'm no longer Despairing, just Despondent.","translation":"只剩 [q=Dread] 点恐惧——我已不再绝望，只是意志消沉。","status":"translated","notes":"保留 [q=Dread] 变量；Despairing/Despondent 暂译“绝望/意志消沉”以体现状态降级。"}
+{"id":"TAN-00C79A30199F","source":"Opinion - Hokobald","translation":"看法——霍科博尔德","status":"translated","notes":"UI 标签，Hokobald 沿本批译名。"}
+{"id":"TAN-0172B2C5E1B8","source":"List of Repurposed Names","translation":"改作他用的姓名列表","status":"translated","notes":"Repurposed Names 暂译“改作他用的姓名”，保留工具性语气。"}
+{"id":"TAN-01AC848E116B","source":"Memory: St Melancthe's Eve, Brancrug, 1919","translation":"记忆：圣梅兰瑟前夜，布兰库格，1919 年","status":"translated","notes":"St Melancthe 沿用《司辰之书》既有译名“圣梅兰瑟”。"}
+{"id":"TAN-01B3490EEE4B","source":"Red Roses","translation":"红玫瑰","status":"translated","notes":"物品/条目名。"}
+{"id":"TAN-01EE789EABC3","source":"Something uncomfortable.\n","translation":"有些令人不适。\n","status":"translated","notes":"保留源文结尾换行与含混评价。"}
+{"id":"TAN-01F960DCCB42","source":"Something overheard in dreams? Or just something that shouldn't really be in the [[Wake]]?","translation":"梦中无意听见的东西？还是本就不该出现在[[Wake]]的东西？","status":"translated","notes":"k.6 新增/修订文本翻译"}
+{"id":"TAN-024D2D7E1BAB","source":"Third Republic Passport (Endorsed)","translation":"第三共和国护照（已签注）","status":"translated","notes":"Endorsed 采用护照术语“已签注”。"}
+{"id":"TAN-026039646FFB","source":"Stage Magician","translation":"魔术师","status":"translated","notes":"Steam 官方简中职涯名；此处为职涯标签。"}
+{"id":"TAN-02C6FB087225","source":"Awaken a Wakeful Eye","translation":"唤醒醒觉之眼","status":"translated","notes":"Wakeful Eye 沿其他批次译“醒觉之眼”。"}
+{"id":"TAN-02F3FB2D8DB7","source":"Passions: Evolution","translation":"心念：演化","status":"translated","notes":"系统教程标题；Passions 沿前批译“心念”。"}
+{"id":"TAN-02FA9EE805F2","source":"Essential markers of elegance or wealth.","translation":"优雅或财富不可或缺的标志。","status":"translated","notes":"保持物品性相描述的凝练。"}
+{"id":"TAN-0390713E90DB","source":"A hint of a reaction from Nina?","translation":"宁娜好像有了一丝反应？","status":"translated","notes":"关系变化提示；保留难以察觉的语气。"}
+{"id":"TAN-03A3D61B9241","source":"A tin medallion commemorating the wolf-headed patron of travelers, storms, and strength - an unfailingly popular and notoriously unsophisticated saint.","translation":"一枚锡制徽章，纪念那位守护旅人、风暴与力量的狼首圣人——他向来人气不衰，也出了名的土气。","status":"translated","notes":"保留 popular/unsophisticated 的轻微揶揄；不擅自将圣人等同具体司辰。"}
+{"id":"TAN-03BD523C4B0F","source":"Sanctified Lucifer Match","translation":"圣化路西法火柴","status":"translated","notes":"Lucifer match 为早期摩擦火柴名称；保留专名感。"}
+{"id":"TAN-03C1C5A207DB","source":"Opinion - Mathis","translation":"看法——马蒂斯","status":"translated","notes":"UI 标签。"}
+{"id":"TAN-03C87962428B","source":"Companions: Travelling Together","translation":"同伴：结伴旅行","status":"translated","notes":"系统教程标题。"}
+{"id":"TAN-04413CDFCAF4","source":"Agonies","translation":"苦痛","status":"translated","notes":"状态/分类名。"}
+{"id":"TAN-046581AC68C2","source":"Berlin: Touring Performance Permit","translation":"柏林：巡回演出许可证","status":"translated","notes":"2026.8.j.66 增量：对照新版资产、上下文与相邻旧译人工复核。"}
+{"id":"TAN-046A397EA620","source":"Easy come, easy go","translation":"来得快，去得也快","status":"translated","notes":"一次性物品教程标题；简短保留格言节奏。"}
+{"id":"TAN-04CF1B8513AD","source":"A clever practitioner might craft a [[Midnight Mark]] with Nyctodromy. A subtle one might use Hushery; a ruthless one, Skolekosophy.\n\nFor those different approaches, you'll work in different places. Nyctodromy can be used at a Wound or Threshold, but not at a Shadowed Place. Hushery can be used at a Shadowed or Quiet Place, but not at a Wound. And so on. This is why you find the most sinister adepts in graveyards, and the least fun ones in churches.\n","translation":"聪明的修习者或许会用夜游术制作[[Midnight Mark]]。心思隐微的会用静默术；狠得下心的，则用蠕虫学。\n\n不同方法要在不同地点施展。夜游术可用于伤口或门槛，却不能用于暗影之地。静默术可用于暗影之地或静谧之地，却不能用于伤口。诸如此类。因此，最邪门的修习者总出没于墓园，最无趣的则待在教堂里。\n","status":"translated","notes":"保留链接、两段空行和结尾换行；Nyctodromy/Hushery/Skolekosophy 按术语表译“夜游术/静默术/蠕虫学”；末句保留冷幽默。"}
+{"id":"TAN-04F42B6288C1","source":"Only [q=Weariness] Weariness - I'm no longer Exhausted, just Drowsy.","translation":"只剩 [q=Weariness] 点疲惫——我已不再精疲力竭，只是昏昏欲睡。","status":"translated","notes":"保留 [q=Weariness] 变量；Exhausted/Drowsy 体现状态降级。"}
+{"id":"TAN-05983F195F63","source":"Character: First Level-Up","translation":"角色：首次升级","status":"translated","notes":"系统教程标题。"}
+{"id":"TAN-05CCE0DDC1A0","source":"You can evolve an empty [[Passion]] into any Passion you've recently acted with, as long as you have enough of the right [[Experiences]]. You can evolve existing Passions, too, but only when appropriate - Anger can evolve to Honour or Ambition, but not Compassion or Whimsy.\n\n\nEvolving a Passion levels it up, and Passions can't go above 9. So you can't evolve any Passion once it's reached the max. But by the time all three Passions are at 9, you'll have a very clear idea who your Spencer is.","translation":"只要拥有足够的相应[[Experiences]]，你就能把一项空白[[Passion]]演化为近期曾依其行事的任一种心念。已有心念也能演化，但只能循着适当的方向——愤怒可以演化为荣誉或野心，却不能变成同情或奇想。\n\n\n心念每次演化都会升级，最高为 9 级；达到上限后便不能继续演化。不过，等三项心念全都升到 9 级时，你也该很清楚，自己的斯宾塞究竟是怎样的人了。","status":"translated","notes":"保留两处链接和原文三次换行；拆解教程长句；Passion 分支与显示标签统一为“愤怒/荣誉/野心/同情/奇想”。"}
+{"id":"TAN-062DDA15F883","source":"Barcelona","translation":"巴塞罗那","status":"translated","notes":"地名通行译法。"}
+{"id":"TAN-066D2014E248","source":"British manufacture. 'French' means it's cut with chicory - a reference to the coffee shortages of Napoleon's time. ","translation":"英国制造。“法国式”是说掺了菊苣——这个说法源于拿破仑时代的咖啡短缺。 ","status":"translated","notes":"保留源文句末空格；cut with 结合咖啡语境译“掺了”。"}
+{"id":"TAN-0675F809C04E","source":"Wounds, illness, the other miseries of the body.\n\n[As Pain increases, Spencer will suffer penalties. At Pain 10, he'll die.]","translation":"创伤、疾病，以及肉体的其他苦难。\n\n[痛苦越高，斯宾塞受到的不利影响就越重。痛苦达到 10 点时，他会死亡。]","status":"translated","notes":"保留段落与方括号；Pain 统一译“痛苦”。"}
+{"id":"TAN-067EEDB310BB","source":"I could use some time with a comb and a razor, if I want to look my best.","translation":"要想仪表体面，我得花点时间用梳子和剃刀收拾一下。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
+{"id":"TAN-06AC39311E2D","source":"VISTO D'INGRESSO. The consul's signature adorns a stamp of vivid violet ink: oak, olive, cogwheel, five-pointed star. Valid for multiple entries to the Republic of Italy.","translation":"VISTO D'INGRESSO（入境签证）。领事的签名装点着一枚鲜艳紫色墨水印章：橡树、橄榄、齿轮、五角星。可多次进入意大利共和国。","status":"translated","notes":"保留意大利语抬头并补中文释义；维持证件物象列表。"}
+{"id":"TAN-06C4792D8240","source":"More minutes have passed.","translation":"又过了几分钟。","status":"translated","notes":"时长条件描述。"}
+{"id":"TAN-070C93E105F3","source":"Vincent: Reacquainted","translation":"文森特：重新相识","status":"translated","notes":"关系进度标签。"}
+{"id":"TAN-071B4BD1314A","source":"1-3 Fascination: \"Gold SPILLS through the CRACKS.\"\n\nCurrent Fascination: [q=fascination]. Penalties at 4+...","translation":"1—3 点入迷：“黄金从裂缝中倾泻而出。”\n\n当前入迷：[q=fascination]。达到 4 点以上将受到惩罚……","status":"translated","notes":"保留 [q=fascination] 变量和段落；Fascination 与系统名统一为“入迷”。"}
+{"id":"TAN-0733FABC50E2","source":"The compass rose faces every direction from the circle's edge. Rose goes anywhere.","translation":"罗盘玫瑰自圆缘指向每一方。引，无往不至。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
+{"id":"TAN-08A0A31BC6B2","source":"Temples of ice, cobbles gleaming amber, knives of nerveless acuteness, a cage of coral...\n\nRecall <link=\"mypasteveofstdahutys1942\">My Past: Eve of St Dahut, Ys, 1940 (?)</link>","translation":"冰之神殿，琥珀闪耀的鹅卵石，锐利而无知觉的刀，珊瑚牢笼……\n\n回忆 <link=\"mypasteveofstdahutys1942\">我的过往：圣达于节前夕，伊斯，1940 年（？）</link>","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-08DF9A5443C5","source":"Works of the [[Bright Arts]], emblems of the [[Sun]].","translation":"[[Bright Arts]]的造物，[[Sun]]的徽记。","status":"translated","notes":"保留两处链接；Works 结合物品分类译“造物”。"}
+{"id":"TAN-093FD7B3437D","source":"Two...","translation":"二……","status":"translated","notes":"保留省略号。"}
+{"id":"TAN-096D49B718E7","source":"Heightened appetite; deepened sensation.","translation":"食欲增强；感受加深。","status":"translated","notes":"保留并列、简短性相描述。"}
+{"id":"TAN-099A5E7D1D57","source":"Traces [q=trace] - I fear I'm no longer just the subject of Rumour, but under active Surveillance.","translation":"痕迹 [q=trace]——恐怕我已不再只是传闻中的对象，而是正遭受严密监视。","status":"translated","notes":"保留 [q=trace] 变量；Rumour/Surveillance 暂译“传闻/严密监视”。"}
+{"id":"TAN-09E325FA300B","source":"Caen-Ouistreham","translation":"卡昂—乌伊斯特勒昂","status":"translated","notes":"法国地名通行译法。"}
+{"id":"TAN-09F870301A5A","source":"Materials, supplies, hardware.","translation":"材料、补给、器具。","status":"translated","notes":"物品分类描述。"}
+{"id":"TAN-09F9FD6D6897","source":"Opinion - Mme Zèlia","translation":"看法——泽莉娅夫人","status":"translated","notes":"UI 标签，人物名沿前批。"}
+{"id":"TAN-0A95E2C0A0F2","source":"There's no way, now, to complete Zèlia's <i>trabai</i>.","translation":"泽莉娅的<i>特拉拜</i>，现在是没法完成了。","status":"translated","notes":"k.52 迁移：新增内容人工新译；v2.3.2 trabai→特拉拜，统一术语表音译"}
+{"id":"TAN-0AF2E6452B30","source":"Hemlock","translation":"毒芹","status":"translated","notes":"植物名。"}
+{"id":"TAN-0AF9F25C270F","source":"If the toast alerts start to pile up, you can right-click to dismiss ALL alerts immediately.","translation":"如果浮动通知开始堆积，你可以右键单击，立即关闭所有通知。","status":"translated","notes":"toast alerts 译“浮动通知”，ALL 的强调通过“所有”完整保留。"}
+{"id":"TAN-0B12D6ED4F1E","source":"Arun can help me get my papers in order to enter the Republic. Once that's done, I'll be ready to travel.","translation":"阿伦可以帮我把进入共和国所需的证件整理妥当。办完之后，我就可以出发。","status":"translated","notes":"papers 结合越境语境译“证件”。"}
+{"id":"TAN-0B9887BD08EA","source":"Brains buzz; skins shift; passions part like leaves.","translation":"心智嗡鸣；皮肤移变；激情如叶片般分离。","status":"translated","notes":"保留三个分号短句与感官/肉体/情感递进。"}
+{"id":"TAN-0C16A98F5799","source":"Spencer's spent his fifth night in one place. Not good.","translation":"斯宾塞已经在同一个地方度过第五夜。不好。","status":"translated","notes":"保留末句简短的不祥判断。"}
+{"id":"TAN-0C2D56EF8159","source":"Use a Heart Influence to subvert two Winter Influences into a Heart Memory.","translation":"使用一项心之影响，将两项冬之影响转化为一项心之记忆。","status":"translated","notes":"Heart/Winter 按准则术语译“心/冬”；Influence/Memory 暂译“影响/记忆”。"}
+{"id":"TAN-0CF56DE6A703","source":"Aprowl","translation":"游猎","status":"translated","notes":"Aprowl 为 a-prowl 的合写状态，暂译“游猎”。"}
+{"id":"TAN-0CF57C63EB97","source":"Offer","translation":"提议","status":"translated","notes":"显示名；具体是提议还是供奉依上下文待实机确认。"}
+{"id":"TAN-0D1AB1F10D27","source":"Begin considering compulsion (unset only). No-op from any later or concluded state, so a dropped plan is never revived.","translation":"开始考虑强迫方案（仅限未设置状态）。若已进入后续阶段或已经结束，则不执行任何操作，以免被放弃的计划死灰复燃。","status":"translated","notes":"2026.8.j.66 增量：对照新版资产、上下文与相邻旧译人工复核。"}
+{"id":"TAN-0D265B4D96C4","source":"Perspiring","translation":"微微冒汗","status":"translated","notes":"状态标签。"}
+{"id":"TAN-0D3536FEF92E","source":"An order for a knitted vest, shirt and tie, practical and respectable, made to measure. [A package will replace this receipt in your inventory after you travel to another city.]","translation":"一份按身材订制的针织背心、衬衫与领带订单，实用而体面。[前往另一座城市后，包裹将替换这份收据。]","status":"translated","notes":"k.83 文本微调，沿用/对齐旧译。"}
+{"id":"TAN-0D451DD2669C","source":"Hungarian Visa","translation":"匈牙利签证","status":"translated","notes":"证件名。"}
+{"id":"TAN-0D53C43016AB","source":"A High Price","translation":"高额报酬","status":"translated","notes":"取代旧 TAN-4CA1212BF272 的 AcceptedHigh；由内部状态键改译为面向玩家的简洁状态名，对应十万弗朗西斯克的最高报价。"}
+{"id":"TAN-0D60BD29FD13","source":"War-scarred port-capital","translation":"饱经战火的港口首都","status":"translated","notes":"简短地点描述。"}
+{"id":"TAN-0D7450A9C436","source":"The sombre, the sinister, the suspicious. Works of the [[Night Arts]] and criminal instruments.","translation":"阴郁之物，邪异之物，形迹可疑之物。[[Night Arts]]的造物，以及犯罪工具。","status":"translated","notes":"保留链接；维持三项名词化排比。"}
+{"id":"TAN-0D87778691B0","source":"I told her I would find her husband... free of charge.","translation":"我答应过她，会替她找到丈夫……而且分文不取。","status":"translated","notes":"保留第一人称承诺与省略号。"}
+{"id":"TAN-0D94A8849677","source":"I found Nina! She'll help me... if I bring her the name of the nun at the Couvent Saint-Mamert de Raveline who is with child.","translation":"我找到宁娜了！她会帮助我……只要我带给她拉维林圣马梅尔修女院里那名怀孕修女的姓名。","status":"translated","notes":"Nina Lagasse 简称“宁娜”；Raveline 沿用前作译名“拉维林”；Couvent 按女性修会语境译“修女院”。"}
+{"id":"TAN-0D97397F8BFB","source":"AcceptedGratis","translation":"已无偿接受","status":"translated","notes":"内部状态显示名；与免费接受委托语境对应。"}
+{"id":"TAN-0DA5F9C48623","source":"Reneged","translation":"已经食言","status":"translated","notes":"内部状态显示名。"}
+{"id":"TAN-0DC4F124BF4D","source":"Merchants: Exchange Fee","translation":"商人：兑换手续费","status":"translated","notes":"系统教程/机制标签。"}
+{"id":"TAN-0E2BA3C9D88C","source":"Trieste","translation":"的里雅斯特","status":"translated","notes":"地名通行译法。"}
+{"id":"TAN-0E3C5FE00F66","source":"Writer","translation":"作家","status":"translated","notes":"职业名。"}
+{"id":"TAN-0E78E53D7D46","source":"Captain Torgue will tell me what I need to know.","translation":"托格上尉会告诉我需要知道的事。","status":"translated","notes":"Captain Torgue 沿其他批次译“托格上尉”。"}
+{"id":"TAN-0ECC8AE76317","source":"Purify, exalt, honour.","translation":"净化，擢升，尊崇。","status":"translated","notes":"保留三动词并列与仪式性。"}
+{"id":"TAN-0F089C53851C","source":"The Buried Heart","translation":"深埋之心","status":"translated","notes":"条目/物品名，保留 Buried 的情感与物质双义。"}
+{"id":"TAN-0F1FCBEF243A","source":"Chrysophoria","translation":"金荷症","status":"translated","notes":"沿 chunk_011 既有译法，指黄金相关谵妄的第一阶段。"}
+{"id":"TAN-0F3F82C592D7","source":"Spencer's spent a whole week in one place. Asking for trouble.","translation":"斯宾塞已经在同一个地方待满一周。这是在自找麻烦。","status":"translated","notes":"保留短促警告。"}
+{"id":"TAN-0F638CE83704","source":"Moth Experiences","translation":"蛾之经历","status":"translated","notes":"Moth 按准则术语译“蛾”；Experiences 沿系统术语译“经历”。"}
+{"id":"TAN-0F857AA78A85","source":"The possibility of sparks; a heat that alters.","translation":"火花迸发的可能；足以改变事物的热。","status":"translated","notes":"保留 sparks/heat 的潜能性与铸之物质意象。"}
+{"id":"TAN-104D9A70C30F","source":"A long list of carefully constructed names, each chosen for a face on the beach, with another dozen for latecomers. It'll literally n ever make any difference to anyone except me.","translation":"一长串精心编造的姓名，每张海滩上的面孔都分到一个，另有十二个留给迟到者。说真的，这份名单除了我，永远不会影响任何人。","status":"translated","notes":"源文 n ever 为排版错误；保留角色郑重准备无用细节的冷幽默。"}
+{"id":"TAN-105F8C892C6C","source":"An order for a light summer blazer and trousers, made to measure. [A package will replace this receipt in your inventory after you travel to another city.]","translation":"一份按身材订制的浅色夏季西装外套与长裤订单。[前往另一座城市后，包裹将替换这份收据。]","status":"translated","notes":"k.83 文本微调，沿用/对齐旧译。"}
+{"id":"TAN-107956B5060C","source":"Father Jaume prays to a many-named saint, who told him to expect a visitor who might open her eyes: me.","translation":"豪梅神父向一位拥有众多名号的圣人祈祷；那位圣人告诉他，会有一名访客前来，或许能睁开她的眼睛：那就是我。","status":"translated","notes":"Father Jaume 按总表译“海梅神父”；保留 her 指代圣人与开眼的歧义。 v1.2.5 术语终审：依最新版术语证据统一。"}
+{"id":"TAN-10C93B478C16","source":"I'm known as","translation":"人称我为","status":"translated","notes":"化名/称谓界面标签。"}
+{"id":"TAN-11170033F05A","source":"Used through centuries untold to bring lovers together, bless marriages, or make parties go with a swing.","translation":"无数世纪以来，人们用它撮合恋人、祝福婚姻，或让宴会热闹起来。","status":"translated","notes":"go with a swing 结合宴会语境译“热闹起来”，保留轻松语气。"}
+{"id":"TAN-114549871C23","source":"Khione's location","translation":"喀俄涅的位置","status":"translated","notes":"Khione 沿其他批次译“喀俄涅”。"}
+{"id":"TAN-1177A9DC6306","source":"Nina has left the Sanitarium Aujourd'hui. Someone here will know where she went.","translation":"宁娜已经离开“今日”疗养院。这里一定有人知道她去了哪里。","status":"translated","notes":"Nina 依新增术语译“宁娜”；Sanitarium Aujourd'hui 沿前批译“‘今日’疗养院”。"}
+{"id":"TAN-1246FA58B4D7","source":"To advance another Plan, I could use an item that has the [[Bewitch]] aspect. A Witch's Knot would be perfect.","translation":"要推进另一项计划，我可以使用一件带有[[Bewitch]]性相的物品。女巫之结再合适不过。","status":"translated","notes":"保留链接；Witch's Knot 沿其他批次译“女巫之结”。"}
+{"id":"TAN-12660815A9CB","source":"In the West, legitimate merchants accept local currency, Incorporate dollars, sometimes pounds sterling.\n\nIn the East, the only official medium of exchange is the dolya, the quasi-miraculous bill of exchange valued in productive labour and guaranteed by the Stars themselves. Using it in the West will get you arrested. \n\nOnly two currencies are widely accepted on both sides of the line by everyone - Swiss francs, and cigarettes.\n\nBlack market traders on both sides of the line will also accept payment in dollars and sterling - sometimes other currencies if you're lucky.","translation":"在西方，合法商人接受当地货币、集团美元，有时也接受英镑。\n\n在东方，唯一的官方交易媒介是多利亚币：一种近乎奇迹的汇票，以生产劳动计价，并由群星亲自担保。在西方使用它，会让你遭到逮捕。 \n\n只有两种货币在界线两侧都得到所有人广泛接受——瑞士法郎，以及香烟。\n\n界线两侧的黑市商人也接受美元和英镑——运气好时，有时还接受其他货币。","status":"translated","notes":"保留四段与第二段句末空格；Incorporate 按新增术语译“集团”；dolya 沿前批译“多利亚券”；Stars 暂译“群星”。；v2.3.5 多利亚券→多利亚币（用户裁定：物品图标为金属币形式）"}
+{"id":"TAN-12836799BA22","source":"Chez Felix: Bill","translation":"菲利克斯之家：账单","status":"translated","notes":"Chez Felix 沿其他批次译“菲利克斯之家”。"}
+{"id":"TAN-12A6A4D3478E","source":"RejectedByZelia","translation":"遭泽莉娅拒绝","status":"translated","notes":"内部状态显示名；拆分驼峰词。"}
+{"id":"TAN-12B561276C71","source":"To advance another Plan, I could use an item with the [[Unveil]] or [[Hallow]] aspect. A Wakeful Eye has both.","translation":"要推进另一项计划，我可以使用一件带有[[Unveil]]或[[Hallow]]性相的物品。醒觉之眼两者兼具。","status":"translated","notes":"保留两处链接；Wakeful Eye 沿其他批次译“醒觉之眼”。"}
+{"id":"TAN-12D38088961B","source":"Only [q=Fascination] Fascination - I'm no longer Chrysoleptic, just Chrysolagnic.","translation":"只剩 [q=Fascination] 点入迷——我已不再身患金痫，只是嗜金成癖。","status":"translated","notes":"保留变量；Chrysoleptic 沿 chunk_011 译“金痫”；Chrysolagnic 依词源暂译“恋金成癖”。；润色2026-08-18：嗜金统一"}
+{"id":"TAN-12F5AEDC5D39","source":"Four","translation":"四","status":"translated","notes":"计数条件标签。"}
+{"id":"TAN-12FFB0BC3ABE","source":"I've used my nyctodromist's skills to enter Dr A's dream.","translation":"我已运用夜游术士的技艺，进入 A 医生的梦境。","status":"translated","notes":"nyctodromist 由夜游术派生“夜游术士”；保留 Dr A 缩写。"}
+{"id":"TAN-131EAB0E49A0","source":"More Minutes","translation":"又过几分钟","status":"translated","notes":"计时条件标签。"}
+{"id":"TAN-1339177F9FA7","source":"Poire Belle Hélène","translation":"美人海伦梨","status":"translated","notes":"Poire Belle Hélène 采用法式甜品通行译名。"}
+{"id":"TAN-134FD5B013D2","source":"I agreed to Zèlia's request. I could fulfil it - or try to deceive her","translation":"我答应了泽莉娅的请求。可以照办——也可以试着骗她","status":"translated","notes":"2026.8.j.18 新增／改写字段；已按上下文人工终审。"}
+{"id":"TAN-13D2C8517070","source":"What was the destiny of Strathcoyne's cigars?","translation":"斯特拉思科因的雪茄最后怎么样了？","status":"translated","notes":"保留 destiny 略夸张的诙谐，同时使用自然内心口吻。"}
+{"id":"TAN-13E777326A25","source":"Vincent still remembers me as 'Sylvain Huissier' - the name I was using when we met in the Légion.","translation":"文森特仍把我记作“西尔万·于西耶”——我们在军团初识时，我用的正是这个名字。","status":"translated","notes":"继承旧 TAN-05D61542DC2B 的句意与化名结构；i.75 将 Honoré Robichon 改为 Sylvain Huissier，姓名沿既有译法，并按固定术语将 Légion 译为“军团”。"}
+{"id":"TAN-142F41284E55","source":"Budapest","translation":"布达佩斯","status":"translated","notes":"地名通行译法。"}
+{"id":"TAN-145B63E294CC","source":"Father Jaume has asked for my assistance in 'opening the eyes' of St Reparata.","translation":"豪梅神父请我帮忙“睁开”圣雷帕拉塔的眼睛。","status":"translated","notes":"人物名按总表；保留 opening 的仪式/字面双义。 v1.2.5 术语终审：依最新版术语证据统一。"}
+{"id":"TAN-1460CB152CE9","source":"Weariness Collapse","translation":"疲惫崩溃","status":"translated","notes":"状态/事件名。"}
+{"id":"TAN-146CC9E3BC22","source":"Skill Checks","translation":"技艺检定","status":"translated","notes":"系统机制名。"}
+{"id":"TAN-14927AF5BBE1","source":"Letter from Juliusz to Zèlia","translation":"尤利乌什写给泽莉娅的信","status":"translated","notes":"人物名统一。"}
+{"id":"TAN-14A979FD211E","source":"Day, Night","translation":"白昼，夜晚","status":"translated","notes":"对举标题。"}
+{"id":"TAN-15072F1CFCC1","source":"I gave Zèlia the letter from Max Mustermann. She seems convinced he is, indeed, her missing husband. A happy ending.","translation":"我把马克斯·穆斯特曼的信交给了泽莉娅。她似乎相信，他的确就是自己失踪的丈夫。皆大欢喜。","status":"translated","notes":"Max Mustermann 为德语示例姓名，暂音译；末句保留明知可疑的冷幽默。"}
+{"id":"TAN-16140704DBF1","source":"Memory: Regret","translation":"记忆：悔恨","status":"translated","notes":"系统记忆名。"}
+{"id":"TAN-1646EE6BFBD4","source":"onplatform","translation":"在站台上","status":"translated","notes":"内部位置状态显示名。"}
+{"id":"TAN-16508FE76160","source":"A warm red-purple tone on an open weave, like a smile across the lip of a raised wine glass.","translation":"开放织纹上的暖红紫色调，像举起的酒杯杯沿横着一抹微笑。","status":"translated","notes":"保留色彩、织物与酒杯微笑的视觉比喻。"}
+{"id":"TAN-1660CD524290","source":"You don't have enough of the currently selected currency to cover this purchase. Use the picker at the top to select a currency you have more of - or offer items in barter, if you have anything the merchant will accept.","translation":"当前选中的货币不足以支付这笔购买。请使用顶部的选择器，改选一种你拥有更多的货币——或者，如果有商人愿意接受的物品，也可以提出以物易物。","status":"translated","notes":"商店教程；picker/barter 译“选择器/以物易物”。"}
+{"id":"TAN-168A8D7A3ED4","source":"Opinion - Brother Cenacle","translation":"看法——塞纳克尔修士","status":"translated","notes":"人物名沿 chunk_008。"}
+{"id":"TAN-1695D09060D2","source":"Zèlia, in the park, performed a cruel little ritual, hoping to summon assistance for her revenge. She offered a substantial cash payment.","translation":"泽莉娅在公园里举行了一场残酷的小仪式，希望召来助力，完成她的复仇。她开出了一笔可观的现金报酬。","status":"translated","notes":"保留 little 与 cruel 的反差。"}
+{"id":"TAN-16B6FE148DCD","source":"I could use my Unworldly skills to enter Aubière's dream and learn his secret. [Use Nyctodromy, Ithastry or Bosk to craft Labrikon, and take it to bed.]","translation":"我可以用异世技艺进入奥比耶的梦，探出他的秘密。[使用夜游术、盗火术或丛林学制作拉布里孔，再带着它入睡。]","status":"translated","notes":"保留方括号；Aubière 按总表译“奥比耶”，三项技艺按术语表。"}
+{"id":"TAN-16C802CDD5E4","source":"Is the Hour named Velvet now Uncounted? Dead? How would we ever know?","translation":"名为丝毧的司辰如今是否已经失数？死了？我们又怎么可能知道？","status":"translated","notes":"Velvet 按术语表译“丝毧”；Uncounted 暂译“失数”，保留连续疑问。"}
+{"id":"TAN-177EE540E2FE","source":"After trouble, remember peace.","translation":"历经麻烦，记住安宁。","status":"translated","notes":"保留格言式对照。"}
+{"id":"TAN-188617BBB1DA","source":"Pale Oyster Foulard Silk Twill Handkerchief","translation":"淡牡蛎色富拉绸斜纹真丝手帕","status":"translated","notes":"Foulard silk twill 暂译“富拉绸斜纹真丝”，保留完整商品式名称。"}
+{"id":"TAN-189931B4EC10","source":"Tesserate Eye","translation":"方格之眼","status":"translated","notes":"Tesserate 意为格状/方格化，暂译“方格之眼”。"}
+{"id":"TAN-18E2510E5C85","source":"This is embarrassing: you've sold so many items that the merchant has run out of cash! Rare, but it happens. If you travel to another city and return, they'll have refilled their till.","translation":"真令人尴尬：你卖出的物品太多，商人的现金已经用光了！这种情况很少见，但确实会发生。前往另一座城市再返回，他们的钱箱就会重新装满。","status":"translated","notes":"商店教程，保留直接对玩家说话与轻松语气。"}
+{"id":"TAN-1907D25168D6","source":"Appropriate only for the most relaxed circumstances. Like bed.\n\nMost people will react disfavourably to a Louche outfit, though a few will enjoy it.","translation":"只适合最放松的场合。比如床上。\n\n大多数人会对放荡装束作出负面反应，不过少数人会喜欢。","status":"translated","notes":"保留段落；Louche 结合服装及床上语境译“浪荡”，需与其独立性相标签统校。"}
+{"id":"TAN-19609716950E","source":"At [q=Weariness] Weariness, my Languor has gone.","translation":"疲惫达到 [q=Weariness] 点时，我的倦怠已经消退。","status":"translated","notes":"保留 [q=Weariness] 变量；Languor 暂译“倦怠”。"}
+{"id":"TAN-198E6FD3617B","source":"Witch's Knot Crafted","translation":"女巫之结已制成","status":"translated","notes":"制作完成状态名。"}
+{"id":"TAN-19A0CE80DE3D","source":"[q=Dread] Dread: I'm feeling Despondent.","translation":"[q=Dread] 点恐惧：我感到意志消沉。","status":"translated","notes":"保留变量；Despondent 与前条统一。"}
+{"id":"TAN-19D3705FCF5A","source":"You've found a private place to change [[Outfits]]. You start with two: the one you stepped off the train wearing, and your dressing gown.\n\nYou're probably exhausted by now - consider resting to heal [[Troubles]]. Switch to your dressing gown in your Outfits grid, and you'll be able to sleep.\n\nYou might want to switch back to your daytime Outfit before leaving your room, although the other residents of this place are reasonably relaxed about that sort of thing.","translation":"你找到了一处可以私下更换[[Outfits]]的地方。开始时，你有两套装束：下火车时穿的那套，以及睡袍。\n\n你现在大概已经精疲力竭——可以考虑休息，以消除[[Troubles]]。在装束栏中换上睡袍，就可以入睡。\n\n离开房间前，你或许会想换回白天穿的装束；不过，这里的其他住客对这类事情还算宽容。","status":"translated","notes":"保留两处链接与三段结构；Outfits/Troubles 沿本批译“装束/麻烦”；末段保留轻微社交窘迫的幽默。"}
+{"id":"TAN-1A0A6A36CA0A","source":"alias","translation":"化名","status":"translated","notes":"UI 字段标签。"}
+{"id":"TAN-1A0E8ABB5649","source":"Somewhere, Dr Aubière must keep records of his previous patients. But there's no sign of anything like that in the office where he meets patients.","translation":"奥比耶医生一定把以前病人的记录藏在某处。但他会见病人的办公室里，完全看不到类似东西。","status":"translated","notes":"保留推断语气，不提前确认记录存在。"}
+{"id":"TAN-1A5BDD887224","source":"Memory: St Oulio's Eve, Cambray, 1919","translation":"记忆：圣乌利奥节前夕，康布雷，1919 年","status":"translated","notes":"k.6 新增/修订文本翻译"}
+{"id":"TAN-1AAB4CF131E4","source":"[q=Pain] Pain: I'm feeling Injured.","translation":"[q=Pain] 点痛苦：我受伤了。","status":"translated","notes":"保留变量；Pain 统一译“痛苦”。"}
+{"id":"TAN-1ACFD032B945","source":"Into the shade. I no longer feel Fresh.","translation":"走进阴凉处。我不再感到清爽。","status":"translated","notes":"Fresh 为环境状态，暂译“清爽”。"}
+{"id":"TAN-1B17869E03EC","source":"Winter","translation":"冬","status":"translated","notes":"按术语表作准则名。"}
+{"id":"TAN-1B24F50AA214","source":"JANVIER et Fils","translation":"让维耶父子","status":"translated","notes":"法语商号 JANVIER et Fils 译“让维耶父子”。"}
+{"id":"TAN-1B2FB0C2277F","source":"'There's no such thing as bad weather - only bad clothes'. In this outfit, I'm Snug.","translation":"“没有坏天气，只有坏衣服。”穿着这套装束，我感到暖适。","status":"translated","notes":"Snug 暂译状态“暖适”；保留谚语式引文。"}
+{"id":"TAN-1B548D29526B","source":"A clot of wood, leaves and feathers that sometimes used to draw the attention of minor Names like Knotwingknot.","translation":"一团凝结的木头、树叶与羽毛，过去有时能引来结翼结之类次要具名者的注意。","status":"translated","notes":"Names 按位阶译“具名者”；Knotwingknot 暂译“结翼结”，保留 knot 复沓。"}
+{"id":"TAN-1B59B06D5563","source":"Settled Account","translation":"账目已结清","status":"translated","notes":"状态标签。"}
+{"id":"TAN-1B76758FA35E","source":"Order: Trenchcoat Brigade","translation":"订单：风衣旅团","status":"translated","notes":"Trenchcoat Brigade 作为套装/订单名译“风衣旅团”，保留夸张戏称。"}
+{"id":"TAN-1B833CA1683E","source":"Journal: Relationships","translation":"日志：关系","status":"translated","notes":"界面标题。"}
+{"id":"TAN-1C07CDBED695","source":"An alchemical preparation used to quieten or madden. It refreshes Moth and Winter aspects, and is necessary for some higher-level crafting recipes.","translation":"一种可用于安抚或致狂的炼金制剂。它能恢复蛾与冬性相，也是某些高级制作配方的必需品。","status":"translated","notes":"Moth/Winter 按准则术语译；quieten/madden 保留药与毒的双面性。"}
+{"id":"TAN-1C1158B205AC","source":"Pharmakon","translation":"法尔马孔","status":"translated","notes":"希腊语 pharmakon 兼指药与毒，暂音译以保留双义。"}
+{"id":"TAN-1CC1E06BA4E6","source":"Alias — First name","translation":"化名——名","status":"translated","notes":"与 Alias—Title/Familiar 字段保持 UI 结构；First name 译“名”。"}
+{"id":"TAN-1CC1E9EB2053","source":"Spencer's spent his third night in one place. Time to go.","translation":"斯宾塞已经在同一个地方度过第三夜。该走了。","status":"translated","notes":"保留简短催促。"}
+{"id":"TAN-1CCF54F0A855","source":"Uncover the cigar evidence (unset or consideration only). No-op from any later or concluded state, so a dropped plan is never revived.","translation":"发现雪茄证据（仅限未设置或考虑阶段）。若已进入后续阶段或已经结束，则不执行任何操作，以免被放弃的计划死灰复燃。","status":"translated","notes":"2026.8.j.66 增量：对照新版资产、上下文与相邻旧译人工复核。"}
+{"id":"TAN-1D2600F2E660","source":"The [[currency]] of the French Republic, graced by the profile of Marianne, its personification. 'LIBERTY, EQUALITY, FRATERNITY.' Don't be caught with these in the French State. They're prickly about their currency down there.\n\nThe franc, like the francisque, trades at about two hundred to the dollar.","translation":"法兰西共和国的[[currency]]，其上饰有共和国化身玛丽安娜的侧面像。“自由、平等、博爱。”别让人在法国邦国境内发现你持有这种钱。南边那些人对自己的货币可有些敏感。\n\n法郎与弗朗西斯克一样，对美元的汇率约为二百比一。","status":"translated","notes":"保留链接与段落；State 译“邦国”；francisque 统一作“弗朗西斯克”。"}
+{"id":"TAN-1D3A894B9945","source":"RecentPreferenceBeverageChezFelix","translation":"菲利克斯之家近期偏好饮品","status":"translated","notes":"内部状态名，拆分驼峰词。"}
+{"id":"TAN-1D7939E1FED5","source":"Bewitch","translation":"惑心","status":"translated","notes":"与 Bewitching Tool 既有译法“惑心工具”统一。"}
+{"id":"TAN-1D79FA224923","source":"Retribution","translation":"报应","status":"translated","notes":"状态/概念名。"}
+{"id":"TAN-1D9C41B95889","source":"Down to [q=Weariness] Weariness. I've perked up a little. I'm no longer Drowsy, just Languorous.","translation":"疲惫降至 [q=Weariness] 点。我稍微振作了些。不再昏昏欲睡，只是有些倦怠。","status":"translated","notes":"保留变量；Drowsy/Languorous 体现状态逐级缓解。"}
+{"id":"TAN-1DC6FCDB0DD9","source":"'Fire,' I read once, 'is the winter that warms and the spring that consumes.`\n\nThe [[Hour]] we called the [[Forge of Days]] is [[Uncounted]] now, but Forge is still the [[Principle]] that transforms and destroys. There's been a lot of that, recently.","translation":"“火，”我曾读到，“是暖人的冬，是吞噬的春。”\n\n我们称作[[Forge of Days]]的[[Hour]]如今已是[[Uncounted]]，但铸仍是转化与毁灭的[[Principle]]。最近，这类事可发生了不少。","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-1DCFB3A9D660","source":"Vanilla, custard, and meringue, landscaped and caramelled: a Claridge's speciality.","translation":"香草、蛋奶酱与蛋白霜，堆叠成景，再覆上焦糖：克拉里奇酒店的特色。","status":"translated","notes":"landscaped/caranelled 译出造景与焦糖化的甜点工艺。"}
+{"id":"TAN-1DF6D11F7C9E","source":"BEUTAZÁSI VÍZUM. The aniline-ink stamp is still headed with St Stephen's Crown - no Stars yet.","translation":"BEUTAZÁSI VÍZUM（入境签证）。苯胺墨水印章顶端仍是圣斯蒂芬王冠——尚未出现群星。","status":"translated","notes":"保留匈牙利语抬头并补中文释义；Stars 作为政权标志译“群星”。"}
+{"id":"TAN-1E3C7690B503","source":"Nantes","translation":"南特","status":"translated","notes":"地名通行译法。"}
+{"id":"TAN-1E40496C5122","source":"Everyone got what they merited, probably.","translation":"大概每个人都得到了自己应得的。","status":"translated","notes":"保留 probably 对“公正结局”的怀疑与冷幽默。"}
+{"id":"TAN-1E434AF586A8","source":"Opinion - Nina","translation":"好感——宁娜","status":"translated","notes":"Opinion 作为关系机制统一译“好感”。"}
+{"id":"TAN-1E5B38BAABAD","source":"Crafting: Venues","translation":"制作：场所","status":"translated","notes":"系统教程标题。"}
+{"id":"TAN-1E6D6C97F3A5","source":"A cramped page of Cyrillic text and overlaid stamps, all in aniline purple of many shades from faded to fresh, and headed with a single silver Star. Most of the text is legible with careful attention to detail, but one layer artfully obscures the next, so that it's almost impossible to trace the detail back to the beginning.","translation":"一页写得密密麻麻的西里尔字母文本，上面层层叠着印章；全是苯胺紫，从褪色到新鲜，深浅不一，页首则是一颗孤零零的银色星辰。若仔细凝神，大部分文字仍可辨认；但每一层都巧妙地遮住下一层，几乎不可能沿着细节追溯到最初。","status":"translated","notes":"保留 faded/fresh 印色时间层次、Star 政权意象和文件迷宫感。"}
+{"id":"TAN-1F7987721D0A","source":"Death From Fascination","translation":"死于入迷","status":"translated","notes":"Fascination 沿相邻批次译“入迷”。"}
+{"id":"TAN-1FF7A25C3564","source":"Moving Around...","translation":"四处走动……","status":"translated","notes":"界面提示标题，保留省略号。"}
+{"id":"TAN-2085B62ADB30","source":"A Midnight Mark can [[Quell]] or [[Wither]] - unlocking conversation choices that require those Aspects. It'll also give a bonus to Skills when placed in an Active slot. Be careful - whatever you do with it, it's a one-use item.","translation":"午夜之印可以[[Quell]]或[[Wither]]——用来解锁需要这些性相的对话选项。放入活动槽位时，它还会为技艺提供加成。小心：无论如何使用，它都只能用一次。","status":"translated","notes":"保留两处链接；Midnight Mark 沿 chunk_011 译“午夜之印”；Active slot 与同系列统一译“活动槽位”。"}
+{"id":"TAN-209D9C981921","source":"Cash is King","translation":"现金为王","status":"translated","notes":"商店教程标题。"}
+{"id":"TAN-20B0FCF88FBB","source":"Barter is Queen","translation":"易货为后","status":"translated","notes":"与 Cash is King 构成 King/Queen 对句。"}
+{"id":"TAN-20B758CA6585","source":"Dove Pyx","translation":"鸽饰圣体盒","status":"translated","notes":"Pyx 按教会器物译“圣体盒”，结合装饰译“鸽饰”。"}
+{"id":"TAN-218D1B640B80","source":"The sign of the half-human hill-child called <i>bisclavret</i>. The sign trembles with aguey vitality.","translation":"名为<i>比斯克拉夫雷</i>的半人山童之印。印记带着疟疾般的生命力微微颤抖。","status":"translated","notes":"与本作“比斯克拉夫雷之结”统一；源词为中世纪布列塔尼狼人称谓，aguey 译“疟疾般”保留病态活力。"}
+{"id":"TAN-22331CCB80DB","source":"Prague","translation":"布拉格","status":"translated","notes":"地名通行译法。"}
+{"id":"TAN-225F9F9BF941","source":"A tiny cup of fierce black coffee beneath a whipped cream quiff.","translation":"一小杯浓烈的黑咖啡，上面顶着一撮蓬松奶油，像高耸的额发。","status":"translated","notes":"保留 tiny/fierce 与 whipped cream quiff 的幽默视觉。"}
+{"id":"TAN-22984F4B8BAD","source":"A recent likeness.","translation":"一幅近来的肖像。","status":"translated","notes":"likeness 暂按人物图像译“肖像”。"}
+{"id":"TAN-22C9F955E3DE","source":"Snug","translation":"暖适","status":"translated","notes":"服装/气候状态名，与进入提示统一。"}
+{"id":"TAN-22D67B496897","source":"The item you've just equipped is exhausted on use. it'll provide its bonus once, the first time a skill check in dialogue calls on it, and then disappear.\n\nYou can craft or buy replacements and you'll probably end up with more items than you can equip at one time. But we didn't want you to be surprised when it gets used up.","translation":"你刚装备的物品使用一次便会耗尽。对话中的技艺检定第一次调用它时，它会提供一次加成，随后消失。\n\n你可以制作或购买替代品；到头来，你手里的物品大概会多得一次装备不完。只是我们不希望它用掉时吓你一跳。","status":"translated","notes":"一次性物品教程；明确触发时机、消耗结果与补充来源，保留开发者最后一句的体贴口吻。"}
+{"id":"TAN-23121059C9B9","source":"Medallion of St Christopher Lycocephalus","translation":"狼首圣克里斯托弗·吕科刻法罗斯徽章","status":"translated","notes":"人物名与本批脚注统一。"}
+{"id":"TAN-2350AB848271","source":"A Reasonable Price","translation":"合理报酬","status":"translated","notes":"取代旧 TAN-DA90611F6824 的 AcceptedLow；由内部状态键改译为面向玩家的简洁状态名，对应一千弗朗西斯克的基础报价。"}
+{"id":"TAN-2355C284159B","source":"The Church's older traditions have their roots in the Persian fire-cults.","translation":"教会更古老的传统，根植于波斯的拜火教派。","status":"translated","notes":"fire-cults 结合历史宗教语境译“拜火教派”。"}
+{"id":"TAN-237467EA87BA","source":"'Whatever is ephemeral is only a metaphor' - Goethe\n\n[Whenever you travel, each stack of Ephemeral items will lose one item]","translation":"“一切无常者，不过是譬喻。”——歌德\n\n[每次旅行时，每叠易逝物品都会失去一件]","status":"translated","notes":"保留段落和方括号；Ephemeral 作为物品性相暂译“易逝”。"}
+{"id":"TAN-23D0E296FCF0","source":"Three...","translation":"三……","status":"translated","notes":"计数条件标签，保留省略号。"}
+{"id":"TAN-23DF02CEB0CD","source":"Memory: St Kalliste's Eve, London, 1923","translation":"记忆：圣卡利斯特前夜，伦敦，1923 年","status":"translated","notes":"St Kalliste 暂译“圣卡利斯特”。"}
+{"id":"TAN-252B88961BDB","source":"An elegant little mark used in graveyard arts.","translation":"一道用于墓园之术的精巧小印记。","status":"translated","notes":"保持物品描述简洁；不提前指明具体制作物。"}
+{"id":"TAN-2557FF27EC43","source":"The management situation at the Rosa Mundi circus.","translation":"罗莎·蒙迪马戏团的管理层状况。","status":"translated","notes":"Rosa Mundi 暂音译，保留含蓄任务描述。"}
+{"id":"TAN-257A6A2FCB7C","source":"I'll need time in front of the mirror tomorrow morning to renew my Well-Groomed condition.","translation":"明天早上，我得花些时间照镜子，才能恢复“仪容整洁”状态。","status":"translated","notes":"Well-Groomed 沿 chunk_012 译“仪容整洁”。"}
+{"id":"TAN-26079C75D19A","source":"Moving Around Quickly","translation":"快速走动","status":"translated","notes":"界面移动模式标题。"}
+{"id":"TAN-2620B6A37F1A","source":"Rewarded","translation":"已获报酬","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-2633690BE70F","source":"Crafting: Rite Selected","translation":"制作：已选仪式","status":"translated","notes":"系统教程标题。"}
+{"id":"TAN-2649E082D9A2","source":"Entry","translation":"进入","status":"translated","notes":"StateSO 状态名；暂按进入某状态的显示名处理。"}
+{"id":"TAN-2660022C74D5","source":"Pursuit","translation":"追捕","status":"translated","notes":"机制标签，采用简短名词。"}
+{"id":"TAN-26858AB1F530","source":"Perishable","translation":"易腐","status":"translated","notes":"物品性相标签。"}
+{"id":"TAN-26972CCCF5C0","source":"Pursuit: Ministries","translation":"追捕：部委","status":"translated","notes":"Ministries 按新增术语作“部委”。"}
+{"id":"TAN-26B46F129B86","source":"Opinion - ","translation":"看法—— ","status":"translated","notes":"保留源文尾随空格。"}
+{"id":"TAN-27366AF490A0","source":"Flushed Mommet","translation":"绯红人偶","status":"translated","notes":"mommet 指巫术用替身人偶；Flushed 暂取充血绯红之意。"}
+{"id":"TAN-2750AA726BFE","source":"Rosa Mundi: Welcome","translation":"罗莎·蒙迪：欢迎","status":"translated","notes":"马戏团名沿前批音译。"}
+{"id":"TAN-27841FB4E7BA","source":"An alchemical preparation with the double-edge power of the threshold. It refreshes Knock and Rose aspects, and is necessary for higher-level crafting recipes.\n\n[Labrikon can also be used in some actions to open the way to liminal spaces like the edge of dream. Don't consume it if you plan to use it for that.]","translation":"一种蕴含阈界双刃之力的炼金制剂。它能恢复启与引性相，也是高级制作配方的必需品。\n\n[拉布里孔还可用于某些行动，开启通往临界空间的道路，例如梦境边缘。若打算这样使用，就不要服用。]","status":"translated","notes":"Labrikon 沿前批译“拉布里孔”；Knock／Rose 依术语表译“启／引”；保留段落与方括号。"}
+{"id":"TAN-27B5CBB44096","source":"Sinombre hasn't yet asked for help.","translation":"西农布尔尚未开口求助。","status":"translated","notes":"Sinombre 按总表译“西农布尔”。"}
+{"id":"TAN-27BCA532C1E3","source":"This just isn't something most people would wear in public. Most people will be bemused, though a few odd bods will like it.","translation":"这实在不是大多数人会穿出门的东西。多数人会困惑不解，不过少数怪人会喜欢。","status":"translated","notes":"服装性相说明保持直接，并保留末句轻微调侃。"}
+{"id":"TAN-28255CE73DA1","source":"Unconventional Suture Kit","translation":"非常规缝合工具包","status":"translated","notes":"物品名。"}
+{"id":"TAN-285172C10E93","source":"Winged Mommet","translation":"有翼人偶","status":"translated","notes":"mommet 统一译“人偶”。"}
+{"id":"TAN-286D4B99281E","source":"Cluj","translation":"克卢日","status":"translated","notes":"罗马尼亚地名。"}
+{"id":"TAN-2892F9CBE950","source":"With a Rose Memory as a catalyst, convert any two other Influences to one random Memory.","translation":"以一段引之记忆为催化剂，将任意两道其他影响转化为一段随机记忆。","status":"translated","notes":"k.83 文本微调，沿用/对齐旧译。"}
+{"id":"TAN-28A1824C921B","source":"Empty ghetto, silver sky, rising Hives. Step away from the window.","translation":"空荡的隔都，银色的天空，拔地而起的蜂巢。离开窗边。","status":"translated","notes":"Hives 疑为设定实体，暂译“蜂巢”，保留命令式收束。"}
+{"id":"TAN-28EE6D0269C8","source":"Catalyst","translation":"催化剂","status":"translated","notes":"制作槽位标签。"}
+{"id":"TAN-29241A1BCDDA","source":"The soft and dusty grey-green of Highland hills. A fine accessory for an earl out to bag pheasants.","translation":"高地丘陵那柔和、蒙尘般的灰绿色。很适合准备出门猎雉的伯爵。","status":"translated","notes":"保留服装说明的阶级调侃。"}
+{"id":"TAN-296088A7CB15","source":"I liked the painted nights on the stage, for the gasps of the audience and the absence of uncertainty.\n\nRecall <link=\"mypaststbrazenseve\">My Past: St Brazen's Eve, 1924</link>","translation":"我喜欢舞台上绘成的夜色：观众会为之惊叹，而其中没有任何不确定。\n\n回忆<link=\"mypaststbrazenseve\">我的过往：圣布雷曾节前夕，1924年</link>","status":"translated","notes":"保留 link 标签与段落；回忆标题沿 chunk_009。"}
+{"id":"TAN-2A934433FA82","source":"But Seriously Now","translation":"现在说正经的","status":"translated","notes":"教程提示标题，保持口语。"}
+{"id":"TAN-2AF5FA620A64","source":"At 10 Weariness, Spencer collapses, losing 4 Weariness but gaining 4 Pain.\n\nCurrent Weariness: [q=weariness]\n\n","translation":"疲惫达到 10 点时，斯宾塞会倒下，失去 4 点疲惫，但获得 4 点痛苦。\n\n当前疲惫：[q=weariness]\n\n","status":"translated","notes":"保留查询变量、两处分段及末尾双换行；统一数值空格。"}
+{"id":"TAN-2B002C6671E9","source":"The Eyes of the Saint","translation":"圣人之眼","status":"translated","notes":"状态／目标名。"}
+{"id":"TAN-2B6BF141BEC3","source":"Come back to the Sanitarium after travelling, and there'll be another omelette. There's always another omelette.","translation":"旅行归来，疗养院里又会有一份煎蛋卷。煎蛋卷总会有的。","status":"translated","notes":"保留重复形成的冷幽默。"}
+{"id":"TAN-2B8D9D39F597","source":"French State Passport (Passable Counterfeit)","translation":"法兰西邦国护照（尚可乱真的伪造品）","status":"translated","notes":"State 作为架空政治实体暂译“邦国”；Passable 兼含勉强过关。"}
+{"id":"TAN-2BE8156FD73A","source":"I already have the information I need about Nina. There is no reason to coerce Dr A.","translation":"宁娜的情报已经到手，没必要再胁迫奥比耶医生。","status":"translated","notes":"Dr A 按上下文展开为奥比耶医生。"}
+{"id":"TAN-2C011A1D354E","source":"bkm_whitedoor","translation":"bkm_whitedoor","status":"translated","notes":"内部书签键，原样保留。"}
+{"id":"TAN-2C04D718E5FE","source":"Romanian Visa","translation":"罗马尼亚签证","status":"translated","notes":"物品名。"}
+{"id":"TAN-2C30A87EA62A","source":"\"The Moth, the Grail, and the Egg Unhatching all tell different stories of the world's beginning. One of those stories is the oldest, but it may not be the first.\" - Abbess Nonna, [[Abbey of St Brandan]]","translation":"“蛾、杯与逆孵之卵各自讲述了不同的创世故事。其中一个故事最为古老，却未必最先发生。”——诺娜女修院长，[[Abbey of St Brandan]]","status":"translated","notes":"k.6 新增/修订文本翻译"}
+{"id":"TAN-2C5977F6C6C8","source":"The first thing I saw, when I opened my new eyes in [[Alexandria]], was Stanislav's face.\n\nRecall <link=\"mypaststcatherineseve\">My Past: St Catherine's Eve, Alexandria, 1948</link>","translation":"我在[[Alexandria]]睁开新的双眼时，最先看见的是斯坦尼斯拉夫的脸。\n\n回忆<link=\"mypaststcatherineseve\">我的过往：圣凯瑟琳节前夕，亚历山大港，1948年</link>","status":"translated","notes":"保留双中括号链接、link 标签与段落。"}
+{"id":"TAN-2C5F370F569D","source":"Only [q=Weariness] Weariness: so much better. No longer Exhausted, just Languorous.","translation":"只剩[q=Weariness]点疲惫：好多了。不再精疲力竭，只是倦怠。","status":"translated","notes":"保留查询变量；Exhausted／Languorous 暂译“精疲力竭／倦怠”。"}
+{"id":"TAN-2C9063725ABD","source":"Use a Grail Influence to subvert two Heart Influences into a Grail Memory.","translation":"用一份杯之影响，将两份心之影响转化为一份杯之记忆。","status":"translated","notes":"Grail／Heart 依术语表译“杯／心”；机制句保持直接。"}
+{"id":"TAN-2CB59975F7B3","source":"A leaflet printed in dramatic white text on black background, showing the upcoming route of a travelling carnival.","translation":"一张黑底白字、排印得颇具戏剧性的传单，列出了巡回嘉年华接下来的路线。","status":"translated","notes":"物品说明。"}
+{"id":"TAN-2CB8CAC05362","source":"Operation of the Ascending Sun","translation":"升阳行动","status":"translated","notes":"行动代号，保留军事简洁感。"}
+{"id":"TAN-2CED144DD557","source":"The Ministries have not yet taken an interest in me.","translation":"部委尚未注意到我。","status":"translated","notes":"Ministries 按新增术语作“部委”。"}
+{"id":"TAN-2D067561E0FC","source":"I know where to find Nina Lagasse. I don't need to risk snooping around in Dr A's records.","translation":"我知道去哪里找宁娜·拉格斯。没必要冒险偷看奥比耶医生的档案。","status":"translated","notes":"Dr A 按上下文展开；Aubière 按总表译“奥比耶”。"}
+{"id":"TAN-2D479CF05A15","source":"Thanks to this triumph of tailoring, I can enjoy the summer heat.","translation":"拜这件裁缝杰作所赐，我能尽情领受夏日酷热。","status":"translated","notes":"服装效果说明，保留自得语气。"}
+{"id":"TAN-2D4BFEDFE431","source":"Another","translation":"另一项","status":"translated","notes":"孤立状态显示名，暂用中性 UI 译法。"}
+{"id":"TAN-2D59F8DD13AA","source":"Warsaw","translation":"华沙","status":"translated","notes":"地名。"}
+{"id":"TAN-2D9E28289FAC","source":"Requested","translation":"已请求","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-2DFF10F6A8B7","source":"Agreement","translation":"协议","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-2E16C24A653C","source":"Polish Visa","translation":"波兰签证","status":"translated","notes":"物品名。"}
+{"id":"TAN-2E1BD9BC91D5","source":"Eccentric","translation":"古怪","status":"translated","notes":"服装／物品性相。"}
+{"id":"TAN-2E53BAAA4053","source":"A Plan in the Journal has hints on how to do this.","translation":"日志里的一项计划提示了该怎么做。","status":"translated","notes":"2026.8.j.18 新增／改写字段；已按上下文人工终审。"}
+{"id":"TAN-2EA1842B445B","source":"Internal","translation":"内部","status":"translated","notes":"状态显示名；上下文不足，采用字面中性译法。"}
+{"id":"TAN-2EB7E06BAB43","source":"I set out to disinter the Signs of the dead Hours. Why?","translation":"我着手发掘亡故司辰的征象。为什么？","status":"translated","notes":"Signs 固定译“征象”；Hours 按本体词译“司辰”；disinter 保留掘墓意象。"}
+{"id":"TAN-2EC5A7A4DCB0","source":"A military uniform - or something that strongly suggests such a connection. Other soldiers and ex-soldiers will approve. In 1948, very few would object.","translation":"一身军装——至少，让人一眼便会往军旅上想。现役军人和退伍军人都会欣赏。1948年，鲜少有人反感。","status":"translated","notes":"服装性相说明保持直接。"}
+{"id":"TAN-2EC99A4F27D0","source":"I've finished everything I need tto do before I travel with Rosa Mundi.","translation":"随罗莎·蒙迪出发前该做的事，我都做完了。","status":"translated","notes":"源文 tto 为拼写误差；马戏团名沿前批音译。"}
+{"id":"TAN-2EE83514C08A","source":"Widow's Wound","translation":"寡妇之伤","status":"translated","notes":"地点／标题名。"}
+{"id":"TAN-2F5085FED89C","source":"Sun-Cross Pectoral","translation":"日十字胸佩","status":"translated","notes":"pectoral 指佩于胸前的宗教饰物。"}
+{"id":"TAN-2F5338A6F0E9","source":"The Witch-and-Sister are usually depicted on the sea-shore. In the gentler Limian tradition, the Salt-Skein is what the Sister has used to bind them together.","translation":"双生女巫通常被描绘在海岸。在较温和的利米亚传统中，盐绞正是姊妹用来将二者缚在一起之物。","status":"translated","notes":"Witch-and-Sister 依术语表译“双生女巫”，不可与双生巫女混用；Limian／Salt-Skein 暂译“利米安／盐绞”。"}
+{"id":"TAN-2F6682570285","source":"Alias — Title","translation":"化名——称谓","status":"translated","notes":"UI 标签；保留分隔结构。"}
+{"id":"TAN-301425124593","source":"Wakeful Eye Crafted","translation":"醒觉之眼已制成","status":"translated","notes":"制作完成状态名。"}
+{"id":"TAN-308B2860D124","source":"Notice your wallet at the bottom left - you've paid in the currency that you chose.","translation":"留意左下角的钱包——你已经用所选货币付款。","status":"translated","notes":"教程 UI 直译并保持简洁。"}
+{"id":"TAN-3138DCFE064A","source":"do:crafted","translation":"do:crafted","status":"translated","notes":"内部效果指令，原样保留。"}
+{"id":"TAN-31411F626636","source":"The inattentive will see a pale grey handkerchief - the attentive, a subtle pattern for a subtle colour on a weave that grants it subtle life. 'Nothing dearer than the song of grey, where Precision joins Imprecision.'","translation":"粗心人只见一方浅灰手帕；细看才会发现，幽微色彩上有幽微纹样，织法又赋予它幽微生命。‘精确与不精确相接之处，灰之歌最为珍贵。’","status":"translated","notes":"保留 subtle 的反复层次与末句格言体。"}
+{"id":"TAN-316F24288BE5","source":"Warm","translation":"温暖","status":"translated","notes":"性相标签。"}
+{"id":"TAN-3190E6373E66","source":"Rosa Mundi","translation":"罗莎·蒙迪","status":"translated","notes":"马戏团名沿前批音译。"}
+{"id":"TAN-31C38E48FF5D","source":"Kathartikon","translation":"卡塔提孔","status":"translated","notes":"希腊式炼金制剂名，暂音译。"}
+{"id":"TAN-31EB4C303B1F","source":"The letter confirms that its bearer, Père Laiton, has the diocese's authorisation to pursue matters concerning the medical records of his one-time parishioner, Liliane Huissier. It carries the stamp of the episcopal chancery. It's easily good enough to convince someone who doesn't spend much time looking at episcopal chancery stamps.","translation":"信中确认，持信人布拉斯神父已获教区授权，可追查其昔日堂区教友莉莉安·于西耶的医疗档案。信上盖有主教公署印章。要骗过不常查看主教公署印章的人，绝对绰绰有余。","status":"translated","notes":"区分 diocese“教区”与 parishioner“堂区教友”；保留末句干笑话。"}
+{"id":"TAN-31FB41158829","source":"The risen Smok, the seething Nest, the fallen Star","translation":"升起的斯莫克，沸腾的巢，坠落的星","status":"translated","notes":"Smok 暂按斯拉夫龙名音译；保留三段并列。"}
+{"id":"TAN-321A2B039831","source":"A token of the fundamental necessity that underlies the world. A Ministries <i>dolya</i> will work - but it's also possible to craft such a token.\n\n[Since the Wars, the currency of Gleam is used for the Night Arts - but you can create a Mark of Necessity as a substitute.]\n","translation":"一枚象征世界根本必然性的信物。部委的<i>多利亚币</i>即可——不过这种信物也能自行制作。\n\n[诸战以来，夜之技艺借烁之货币施展——但你可以制作必然之印作为替代。]\n","status":"translated","notes":"Ministries／Night Arts 按术语表作“部委／夜之技艺”；保留斜体、段落、方括号及末尾 LF。；v2.3.5 多利亚券→多利亚币（用户裁定：物品图标为金属币形式）"}
+{"id":"TAN-32216945D543","source":"Stuck?","translation":"卡住了？","status":"translated","notes":"2026.8.j.18 新增／改写字段；已按上下文人工终审。"}
+{"id":"TAN-325F4421D07A","source":"I've managed to enter Aubière's secret office.","translation":"我设法进了奥比耶的秘密办公室。","status":"translated","notes":"状态说明。"}
+{"id":"TAN-32E55A895E71","source":"Here are the forms and the roots and the sleight.","translation":"形制、根基与手法，尽在此处。","status":"translated","notes":"保留制作秘术的三项并列。"}
+{"id":"TAN-32F5D1D24BEF","source":"Opinion - Corso","translation":"看法——科尔索","status":"translated","notes":"关系 UI 标签。"}
+{"id":"TAN-32FE9BD3F3FB","source":"Crafting: Venues and Skills","translation":"制作：场所与技艺","status":"translated","notes":"教程标题；Skill 按术语表统一为“技艺”。"}
+{"id":"TAN-3341AF56F027","source":"can bewitch as well as wither!","translation":"既能施魅，也能凋萎！","status":"translated","notes":"Wither／Withering 沿前批译“凋萎”；保留感叹语气。"}
+{"id":"TAN-3354889B88C5","source":"Compel Dr A.","translation":"胁迫奥比耶医生","status":"translated","notes":"Dr A 按上下文展开；目标标签不加句号。"}
+{"id":"TAN-339E4AD8682F","source":"The sun has set...","translation":"太阳已经落山……","status":"translated","notes":"保留预示性省略。"}
+{"id":"TAN-33BAF7DCAD33","source":"Will Wake","translation":"将会醒来","status":"translated","notes":"k.6 新增/修订文本翻译"}
+{"id":"TAN-33E29523BCB8","source":"I added something to cheer them up.","translation":"我加了点能让他们振奋起来的东西。","status":"translated","notes":"状态说明。"}
+{"id":"TAN-3495E757855A","source":"White","translation":"白色","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-351C56D011C1","source":"The fascists are gone, the Biennale is back, and the Comedy of the Sun is welcome","translation":"法西斯走了，双年展回来了，太阳喜剧也迎来了掌声","status":"translated","notes":"Comedy of the Sun 沿前批译“太阳喜剧”；保留宣传标语节奏。"}
+{"id":"TAN-3590BB8DFF6B","source":"WIZA WJAZDOWA. The stamp is not aniline purple, but something vivid red, with the white eagle a pale shape at its core.","translation":"WIZA WJAZDOWA（入境签证）。印章不是苯胺紫色，而是某种鲜红；中央的白鹰只呈一片淡影。","status":"translated","notes":"波兰语签证标题原样保留。；v2.3.2 签证章补（入境签证）注"}
+{"id":"TAN-3593388AD7AA","source":"Opinion - Jean-Bernard","translation":"看法——让-贝尔纳","status":"translated","notes":"关系 UI 标签；人名沿前批。"}
+{"id":"TAN-366BA00FAAD8","source":"Annabelle","translation":"安娜贝尔","status":"translated","notes":"专名。"}
+{"id":"TAN-36AFDE32D762","source":"[q=Pain] Pain: I'm no longer Injured.","translation":"[q=Pain] 点痛苦：我已经不再受伤。","status":"translated","notes":"保留查询变量；Injured 译“受伤”。"}
+{"id":"TAN-3703D5B4C6D1","source":"Hallow","translation":"圣化","status":"translated","notes":"沿前批仪式机制译名。"}
+{"id":"TAN-375556B91CBD","source":"When we open a thing, then we learn its nature. but its nature changes. Knock is the wound at the centre.","translation":"当我们打开一物，便知晓其本性。但其本性已然改变。启，是正中的伤口。","status":"translated","notes":"k.83 文本微调，沿用/对齐旧译。"}
+{"id":"TAN-37D44EEC61D0","source":"Opinion - Argant","translation":"看法——阿尔冈","status":"translated","notes":"关系 UI 标签；Argant 暂按法语音译。"}
+{"id":"TAN-37F02C78F242","source":"Incurred","translation":"已招致","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-382B44B866B3","source":"Refinement","translation":"精致","status":"translated","notes":"性相标签。"}
+{"id":"TAN-386E53F86C60","source":"Dripping","translation":"汗流浃背","status":"translated","notes":"状态标签；具体指汗水或水分，暂保持中性。"}
+{"id":"TAN-3882783CB356","source":"Knock Memory","translation":"启之记忆","status":"translated","notes":"Knock 依术语表译“启”。"}
+{"id":"TAN-38834C15B555","source":"Management: Mme Medea Japaridze","translation":"管理人：梅代娅·贾帕里泽夫人","status":"translated","notes":"完整姓名沿 chunk_001。"}
+{"id":"TAN-38F4762D7C43","source":"'I knew a man who captured moths in a bell-jar. On nights like this, he would release them one by one to die in the candle.'\n\n Moth is the [[Principle]] of chaos and yearning. Are its [[Hours]] [[Uncounted]] now, or just different? Moth's hard to expect.","translation":"“我认识一个把飞蛾捕进钟形玻璃罩的人。每逢这样的夜晚，他会将它们逐只放出，让它们死在烛火里。”\n\n蛾是混沌与渴望的[[Principle]]。它的[[Hours]]如今已是[[Uncounted]]，还是只是变得不同了？蛾总教人捉摸不定。","status":"translated","notes":"2026.8.j.46 增量：对照真实对话图、旧译与版本差异人工复核。"}
+{"id":"TAN-39024B3D0654","source":"I've performed a gentleman's rites this morning.","translation":"今早我完成了绅士的晨间仪式。","status":"translated","notes":"指梳洗修面等日常程序，保留诙谐的庄重措辞。"}
+{"id":"TAN-3908201797F6","source":"I gave Zèlia the letter from Topsy Juliusz. She seems convinced he is, indeed, her missing husband. A happy ending.","translation":"我把托普西·尤利乌什的信交给了泽莉娅。她似乎确信，他的确就是自己失踪的丈夫。皆大欢喜。","status":"translated","notes":"Topsy Juliusz 暂按姓名音译；末句保留可能不可靠的轻快收束。"}
+{"id":"TAN-393406C557C4","source":"Almost","translation":"几乎","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-395678BEA612","source":"Choose the [[Experience]] you'll find most useful; or the one which best expresses your attitude to these events; or the prettiest colour.","translation":"选择你认为最有用的[[Experience]]；或最能表达你对这些事件态度的那项；又或颜色最好看的那项。","status":"translated","notes":"保留链接；末项保留教程的俏皮降调。"}
+{"id":"TAN-3989664644FB","source":"My Dread has increased to [q=Dread]. I'm falling into Despair...","translation":"我的恐惧已增至[q=Dread]点。我正陷入绝望……","status":"translated","notes":"保留查询变量；Dread／Despair 暂译“恐惧／绝望”。"}
+{"id":"TAN-39CEC0AFB1BB","source":"Opinion - Khione","translation":"看法——喀俄涅","status":"translated","notes":"Khione 沿 chunk_008 译名。"}
+{"id":"TAN-39DCAB3DE4F2","source":"Cradle-Weft","translation":"摇篮之纬","status":"translated","notes":"制作配方名；weft 译“纬”，保留纺织意象。"}
+{"id":"TAN-39EF9A5E77DF","source":"1-3 Dread: \"This may not end well.\"\n\nCurrent Dread: [q=dread]. Penalties at 4+...","translation":"1—3 点恐惧：“这事恐怕不会有好结果。”\n\n当前恐惧：[q=dread]。4 点起会有不利影响……","status":"translated","notes":"保留变量与段落；机制说明直接化。"}
+{"id":"TAN-3A4F1B2E9D1E","source":"Leopold declared that his name will open the door to the bookseller Andrée's 'quieter business'.","translation":"利奥波德宣称，只要报上他的名字，书商安德蕾那桩“清静生意”便会开门。","status":"translated","notes":"保留 open the door 的字面与引介双义。；润色2026-08-18：清静生意统一"}
+{"id":"TAN-3AB8685C7326","source":"Louche","translation":"放荡","status":"translated","notes":"按总表统一为“浪荡”。"}
+{"id":"TAN-3ABCE8619AD4","source":"My Fascination has increased to [q=Fascination]. I'm Chrysoleptic now.","translation":"我的入迷已增至[q=Fascination]点。我如今已患上金痫。","status":"translated","notes":"保留查询变量；Chrysoleptic 为 chrysos（金）构成的设定病名，暂译“金痫”。"}
+{"id":"TAN-3AC1A9EC4FA7","source":"Currency","translation":"货币","status":"translated","notes":"性相标签。"}
+{"id":"TAN-3B2609C755F0","source":"The heat strikes me like a friendly fist. I'm now Perspiring.","translation":"热浪像友善的拳头一样击中我。我开始微微冒汗。","status":"translated","notes":"保留 friendly fist 的诙谐比喻；Perspiring 译为自然状态。"}
+{"id":"TAN-3B2EF471D9AA","source":"Third Republic Passport (Invalid)","translation":"第三共和国护照（已失效）","status":"translated","notes":"物品名。"}
+{"id":"TAN-3B61EA72EFA1","source":"Memory: Satisfaction","translation":"记忆：满足","status":"translated","notes":"物品名。"}
+{"id":"TAN-3B87E27ECF66","source":"Invokes the kindest of the Elegiast's Names.","translation":"祈请悼歌诗人最仁慈的一位具名者。","status":"translated","notes":"Elegiast／Name 依术语表译“悼歌诗人／具名者”。"}
+{"id":"TAN-3BEE7E937131","source":"An ingredient needs to have all the [[Aspects]] specified below the slot. The picker shows everything from your Inventory that will fit.","translation":"原料必须具备槽位下方列出的全部[[Aspects]]。选择器会显示物品栏中所有符合要求的物品。","status":"translated","notes":"2026.8.j.46 增量：对照真实对话图、旧译与版本差异人工复核。"}
+{"id":"TAN-3C8F3728105E","source":"Cracow","translation":"克拉科夫","status":"translated","notes":"地名，沿前批。"}
+{"id":"TAN-3CB6EA545E16","source":"Cash in Hand","translation":"手头现金","status":"translated","notes":"教程提示标题。"}
+{"id":"TAN-3CEF96C7F88C","source":"Woollen Lovat Handkerchief","translation":"洛瓦特羊毛手帕","status":"translated","notes":"Lovat 指苏格兰灰绿色织物／色名，暂音译。"}
+{"id":"TAN-3D10E8119F69","source":"A letter from Max Mustermann to Madame Zelia, in a white envelope lettered with punctilious copperplate care.","translation":"马克斯·穆斯特曼写给泽莉娅夫人的一封信，装在白信封里；地址以一丝不苟的铜版体写就。","status":"translated","notes":"Max Mustermann 为德语常用示例姓名，仍按专名音译。"}
+{"id":"TAN-3D45B4AE2F59","source":"Martial","translation":"军旅","status":"translated","notes":"服装性相标签。"}
+{"id":"TAN-3E022CB702F1","source":"Surveillance","translation":"监视","status":"translated","notes":"状态标签。"}
+{"id":"TAN-3E0345D63592","source":"Grail","translation":"杯","status":"translated","notes":"依术语表。"}
+{"id":"TAN-3E0549FF38F3","source":"Real ghosts, fictional memories, severed souls, and the trains keep running.","translation":"真实的鬼魂，虚构的记忆，断离的灵魂；列车仍在运行。","status":"translated","notes":"保留末句现实运转与超自然并置的冷调。"}
+{"id":"TAN-3E0828668984","source":"4-6 Fascination: \"CROWNED gifts DELIGHT us.\"\n\nCurrent Fascination: [q=fascination]","translation":"4—6点入迷：“蒙冕者以恩赐取悦我们。”\n\n当前入迷：[q=fascination]","status":"translated","notes":"保留变量与段落；CROWNED／DELIGHT 的全大写强调以凝练格言语气补偿。"}
+{"id":"TAN-3E1AF8F80391","source":"Witch's Knot","translation":"女巫之结","status":"translated","notes":"制作配方名。"}
+{"id":"TAN-3E7B591A97E6","source":"The powers of higher heaven might honour this request - or wink at an exception.","translation":"高天诸力或许会垂允此请——也可能睁一只眼闭一只眼，破例一次。","status":"translated","notes":"保留 wink 的字面动作与默许双义。"}
+{"id":"TAN-3E8A39F4DC67","source":"Madder Paisley Silk Handkerchief","translation":"茜草色佩斯利花纹丝质手帕","status":"translated","notes":"物品名；Madder 为茜草染色。"}
+{"id":"TAN-3E917249729C","source":"Good in summer, bad in winter, and won't slow you down. A socially neutral aspect.","translation":"夏天好用，冬天吃亏，也不会拖慢脚步。社交效果中性。","status":"translated","notes":"机制说明直接化。"}
+{"id":"TAN-3EA481223571","source":"Chrysolepsis","translation":"金痫","status":"translated","notes":"设定病名，与 Chrysoleptic 统一。"}
+{"id":"TAN-3EE2BE0C49E5","source":"If Nina has an opinion, she keeps it to herself.","translation":"宁娜若有想法，也只藏在心里。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
+{"id":"TAN-3EFF9F8D8E10","source":"Where is this stealthy creature? ","translation":"这鬼祟家伙躲哪儿去了？","status":"translated","notes":"仅新增尾随空格；译文沿用（烘焙边缘空白机制自动补回尾随空格）。"}
+{"id":"TAN-3F75231A1C18","source":"Spanish Visa","translation":"西班牙签证","status":"translated","notes":"物品名。"}
+{"id":"TAN-3F7F2F34AE5C","source":"[q=Fascination] Fascination: Chrysophoria, the first stage of a kind of delirium...","translation":"[q=Fascination]点入迷：金荷症，某种谵妄的第一阶段……","status":"translated","notes":"保留查询变量；Chrysophoria 取“承载黄金”词源暂译“金荷症”。"}
+{"id":"TAN-3FD4DFBF4834","source":"Denounced Linou","translation":"举报了莉努","status":"translated","notes":"状态显示名；人名沿前批。"}
+{"id":"TAN-3FE36B1C998E","source":"Time Passing","translation":"时间流逝","status":"translated","notes":"变量标签。"}
+{"id":"TAN-3FEF366FFBCE","source":"=[Inc","translation":"=[Inc","status":"translated","notes":"不完整的内部条件片段，严格原样保留。"}
+{"id":"TAN-4009E4016C3C","source":"Quell","translation":"平息","status":"translated","notes":"伟大之术相关机制标签。"}
+{"id":"TAN-4050700F6D5C","source":"Memory: Paradox","translation":"记忆：悖论","status":"translated","notes":"物品名。"}
+{"id":"TAN-406F3D28E142","source":"The Ordo Limiae, later called the Obliviates, often used this rite to cover their tracks, despite its inherent risk of Fascination.","translation":"利米亚教团（后称忘却会）常用这项仪式掩盖踪迹，尽管它本身便有引发入迷的风险。","status":"translated","notes":"Ordo Limiae／Obliviates 沿用《司辰之书》“利米亚教团／忘却会”；Fascination 译“入迷”。 破折号专项终审：改用更适合中文的逗号、括号或分号。"}
+{"id":"TAN-40A723F3AD64","source":"A State-sanctioned daily paper. The masthead: a wheat-sheaf gethered around the <i>francisque</i> axe of the state.","translation":"一份获邦国核准的日报。报头是一捆麦穗，环绕着邦国的<i>弗朗西斯克</i>斧。","status":"translated","notes":"State 暂译“邦国”；francisque 为双刃斧徽号；保留斜体；源文 gethered 疑为 gathered。"}
+{"id":"TAN-40B154687993","source":"Ivinek","translation":"伊维内克","status":"translated","notes":"专名／地名，暂音译。"}
+{"id":"TAN-40C0DDB28D26","source":"Spencer's spent his second night in one place.","translation":"斯宾塞已经在同一地点度过第二夜。","status":"translated","notes":"变量说明。"}
+{"id":"TAN-40E40240838B","source":"I'm there.","translation":"我到了。","status":"translated","notes":"状态说明。"}
+{"id":"TAN-40E76A154A65","source":"Package: Father's Day","translation":"包裹：‘父亲节’","status":"translated","notes":"服装包名称沿相邻批次。"}
+{"id":"TAN-40E91B5E865C","source":"My Weariness has increased to [q=Weariness]. I'm Exhausted now.","translation":"我的疲惫已增至[q=Weariness]点。我现在精疲力竭。","status":"translated","notes":"保留查询变量；Exhausted 统一译“精疲力竭”。"}
+{"id":"TAN-40FCD8E5DA10","source":"An impossibly thin, paradoxically heatless geometric segment of contained fire.","translation":"一段薄得不可思议、又自相矛盾地不带热量的几何线段，内中封存着火焰。","status":"translated","notes":"保留不可能物质的悖论式描述。"}
+{"id":"TAN-41A9377DBFC6","source":"Linen, and chromic catgut; silk, and silkworm gut; instruments of ivory, silver, and steel.","translation":"亚麻线与铬制肠线；丝线与蚕肠线；象牙、白银与钢制器械。","status":"translated","notes":"保留三段材料排比。"}
+{"id":"TAN-41BD2B78A3C5","source":"The Oath of Kufra is fulfilled; above the scarred Cathedral, three colours glow","translation":"库夫拉誓言已经兑现；伤痕累累的大教堂上方，三色辉映","status":"translated","notes":"指勒克莱尔在库夫拉立下、于斯特拉斯堡兑现的历史誓言；保留无句号标题式结构。"}
+{"id":"TAN-427B35AED79D","source":"Reintroduced","translation":"已重新引入","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-429CF78A76FF","source":"Andrée, proprietor of the Librarie des Heures near the station, is not only a bookseller.","translation":"车站附近“司辰书店”的店主安德蕾，并不只是一名书商。","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-42A931220EE0","source":"My unpaid tab, in francisques. Settlement will oblige.","translation":"我欠下的酒账，以弗朗西斯克计。烦请结清。","status":"translated","notes":"francisque 作为货币单位沿前批音译。"}
+{"id":"TAN-4309A44A86DE","source":"D-Mark","translation":"德国马克","status":"translated","notes":"货币名。"}
+{"id":"TAN-433C613920F6","source":"Unveil","translation":"揭幕","status":"translated","notes":"伟大之术相关机制标签，保留揭开帷幕意象。"}
+{"id":"TAN-434ED89C740D","source":"You can pay in cash, or you can offer items for barter, if you have anything the merchant's interested in. But you'll often need to top up with cash - look at the total in the barter block.","translation":"你可以付现金；若有商人感兴趣的物品，也可以拿来易货。不过通常仍要补些现金——请查看易货栏中的总额。","status":"translated","notes":"交易教程说明，采用直接 UI 口吻。"}
+{"id":"TAN-438FC6FE144E","source":"A little white ceramic jar containing a small quantity of golden ink - uzult, one of the five <i>encausta terminalia</i>, the Great Inks in which interpretations of [[Histories]] can be recorded by the appointed few.\n\n[This is a precious substance. Use it only at need. You can sell it, but few in all Europe will appreciate its true price.]","translation":"一只白色小陶罐，盛着少量金色墨水——珀金，五种<i>终刻墨</i>之一。获准的少数人能以这些伟大墨水记录对[[Histories]]的阐释。\n\n[这是珍贵之物。不到非用不可，不要动它。你可以卖掉它，但全欧洲也没几个人识得它的真正价值。]","status":"translated","notes":"珀金／伟大墨水／终刻墨沿用《司辰之书》既有译名；保留链接、段落与方括号。"}
+{"id":"TAN-43F9B89C0B9D","source":"Present","translation":"在场","status":"translated","notes":"孤立状态显示名；若实际为礼物语境需界面复核。"}
+{"id":"TAN-4426062E3BB0","source":"I declined to help her.","translation":"我拒绝帮助她。","status":"translated","notes":"状态说明。"}
+{"id":"TAN-4465077590CF","source":"Salt-Skein","translation":"盐绞","status":"translated","notes":"与本批前文统一，保留纺线意象。"}
+{"id":"TAN-44D686F2AF4E","source":"Memory: St Stephen's Eve, Paris, 1907","translation":"记忆：圣斯德望节前夕，巴黎，1907年","status":"translated","notes":"天主教圣名采用“斯德望”。"}
+{"id":"TAN-44DAE9479611","source":"Active Items","translation":"活动物品","status":"translated","notes":"UI 分区标签。"}
+{"id":"TAN-4590BAA5FB8E","source":"Despondency","translation":"消沉","status":"translated","notes":"状态标签。"}
+{"id":"TAN-4591807107E4","source":"A covenant of travel in silence. 'Twilight and evening bell / And after that the dark!'","translation":"一份静默旅行之约。‘暮色与晚钟／此后便是黑暗！’","status":"translated","notes":"引自丁尼生《过沙洲》；保留斜杠分行结构。"}
+{"id":"TAN-45A6B79568B8","source":"Berlin, Allied Sector","translation":"柏林，盟军辖区","status":"translated","notes":"场景名。"}
+{"id":"TAN-4624BB6B2D2D","source":"The Mansus has fallen, but we still dream. Dr Aubière must go somewhere to dream. A sufficiently skilled nyctodromist might follow him there - or perhaps there's another way.","translation":"漫宿已经陷落，但我们仍会做梦。奥比耶医生必定也要去某处入梦。技艺足够高明的夜游术士或许能跟过去——也可能另有办法。","status":"translated","notes":"Mansus 依术语表译“漫宿”；Aubière 按总表译“奥比耶”。"}
+{"id":"TAN-46279EA406CF","source":"\"The oldest and strongest emotion of mankind is fear, and the oldest and strongest kind of fear is fear of the unknown.\"- Lovecraft","translation":"“人类最古老而强烈的情感是恐惧；最古老而强烈的恐惧，是对未知的恐惧。”——洛夫克拉夫特","status":"translated","notes":"k.6 新增/修订文本翻译"}
+{"id":"TAN-464508806DF0","source":"I gave Zèlia the letter from Maître Argant. She seems convinced it is, indeed, her missing husband. A happy ending.","translation":"我把阿尔冈律师的信交给了泽莉娅。她似乎确信，他的确就是自己失踪的丈夫。皆大欢喜。","status":"translated","notes":"Maître 在法语人名语境为律师称谓；保留末句可能不可靠的轻快收束。"}
+{"id":"TAN-46C72DE4D0D4","source":"Rosa Mundi Calendrier","translation":"罗莎·蒙迪日程表","status":"translated","notes":"Rosa Mundi／calendrier 沿前批译名。"}
+{"id":"TAN-46CFA4EA57A8","source":"Uzult","translation":"珀金","status":"translated","notes":"沿前批专名译法。"}
+{"id":"TAN-4727F6353C17","source":"Tracks what the player last ordered, for inconspicuous callback","translation":"记录玩家上次点的东西，以便不着痕迹地呼应。","status":"translated","notes":"开发／变量说明，保留功能含义。"}
+{"id":"TAN-472EFB2E3647","source":"I agreed to find her husband... for the price of ten thousand francisques.","translation":"我答应替她寻找丈夫……代价是一万弗朗西斯克。","status":"translated","notes":"francisque 作为货币单位沿前批音译。"}
+{"id":"TAN-476E34801BCE","source":"Light - light leaks through the cracks...","translation":"光——光从裂缝中漏出……","status":"translated","notes":"保留 Light 的重复与未完省略。"}
+{"id":"TAN-478516B0BFDF","source":"FNORD","translation":"FNORD","status":"translated","notes":"疑为内部占位／文化梗，原样保留。"}
+{"id":"TAN-485DD3529020","source":"Opinion - Aristide","translation":"看法——阿里斯蒂德","status":"translated","notes":"关系 UI 标签；人名沿前批。"}
+{"id":"TAN-48C0582F3D38","source":"What does Spencer call Medea?","translation":"斯宾塞怎么称呼美狄亚？","status":"translated","notes":"变量说明；Medea 沿既有独立专名译“美狄亚”。"}
+{"id":"TAN-48EF7B2290D2","source":"Alias — Full name","translation":"化名——全名","status":"translated","notes":"UI 标签；保留分隔结构。"}
+{"id":"TAN-495ED1F1AFDC","source":"Zèlia wants to know if I'm the 'signaire' she tried to summon.","translation":"泽莉娅想知道，我是不是她试图召来的那个“西涅尔”。","status":"translated","notes":"signaire 按实际法语读音定译“西涅尔”；中文引号统一。"}
+{"id":"TAN-498A6ED9A712","source":"'Gentlemen perspire, ladies glow, horses sweat.' Ergo, I'm not sweating. But I'd be slightly more comfortable in something lighter.\n\n[A lighter Outfit would provide a small bonus.]","translation":"‘绅士冒汗，淑女容光焕发，马才流汗。’所以，我没有流汗。不过换身轻薄些的衣服，我会稍微舒服一点。\n\n[更轻薄的服装会提供少量加成。]","status":"translated","notes":"保留英语礼仪俗语的阶级笑话、段落和方括号教程。"}
+{"id":"TAN-49C266BAAAA7","source":"Search","translation":"搜索","status":"translated","notes":"状态／目标名。"}
+{"id":"TAN-49FD01C86FAE","source":"Unease","translation":"不安","status":"translated","notes":"状态标签。"}
+{"id":"TAN-4A04AE200D22","source":"Heart Memory","translation":"心之记忆","status":"translated","notes":"Heart 依术语表译“心”。"}
+{"id":"TAN-4A64B9AEC2A2","source":"Unobtrusive Notepad","translation":"不显眼的记事本","status":"translated","notes":"物品名。"}
+{"id":"TAN-4AB37AD83138","source":"<i>O wad some Pow'r the giftie gie us\nTo see oursels as ithers see us!</i>\n- Burns\n\nDone. You're welcome. Review the opinions of your Associates - characters of some importance in your life - at any time on this Journal page.","translation":"<i>但愿上天赐我们本领\n能像旁人一样看清自己！</i>\n——彭斯\n\n好了。不必客气。你可以随时在本日志页查看关系人对你的看法——他们是你生命中颇为重要的人物。","status":"translated","notes":"保留斜体与全部换行；诗句为彭斯《致虱子》名句，采用凝练意译；Associates／Journal 按 UI 译“同伴／日志”。；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
+{"id":"TAN-4B4CE163882E","source":"I haven't performed gentleman's rites this morning.","translation":"今早我还没有完成绅士的晨间仪式。","status":"translated","notes":"与同批肯定状态句统一。"}
+{"id":"TAN-4BEFB3ACBEAF","source":"Enliven, invigorate, awaken.","translation":"赋生，振奋，唤醒。","status":"translated","notes":"保留三项递进。"}
+{"id":"TAN-4C0AAC562F08","source":"When the feast of the Sun's Resurrection came to Brancrug, the rectory was still cold - those old stone walls, thick as a castle's - and with no housekeeper, I had to lay my own fire... \n\nRecall <link=\"mypastanastasis\">My Past: Anastasis, Brancrug, 1920</link>","translation":"太阳复活节来到布兰库格时，教区长宅仍旧寒冷——那些古老石墙厚得像城堡——而我又没有管家，只得亲自生火…… \n\n回忆<link=\"mypastanastasis\">我的过往：复生，布兰库格，1920年</link>","status":"translated","notes":"沿 chunk_009／010 的既有整段与回忆标题译法；保留省略号后的空格、段落及 link 标签。"}
+{"id":"TAN-4C30CF36ED0C","source":"Hanover","translation":"汉诺威","status":"translated","notes":"地名。"}
+{"id":"TAN-4C4F2142C2F7","source":"VSTUPNÍ VÍZUM. An official signature on an official stamp adorned by the two-tailed lion of Bohemia. Czechoslovakia is not yet, not quite, not quite yet, a People's Republic. ","translation":"VSTUPNÍ VÍZUM（入境签证）。正式签名落在正式印章上，印章饰以波希米亚双尾狮。捷克斯洛伐克尚不是人民共和国；还不算，还没完全算。  ","status":"translated","notes":"捷克语签证标题原样保留；保留反复措辞及源文尾随空格。 破折号专项终审：改用更适合中文的逗号、括号或分号。；v2.3.2 签证章补（入境签证）注"}
+{"id":"TAN-4C764CB6248E","source":"Shadow","translation":"阴影","status":"translated","notes":"性相标签。"}
+{"id":"TAN-4CA80B8A3F96","source":"Limian Discipline","translation":"利米亚教律","status":"translated","notes":"Limian 与“利米亚教团”词根统一。"}
+{"id":"TAN-4CE80E7BFD80","source":"'The Sheaf'","translation":"《禾捆》","status":"translated","notes":"报刊名沿 chunk_005。"}
+{"id":"TAN-4D5EB135F1C9","source":"To advance another Plan, I could use an item that has the [[Wither]] aspect. A Midnight Mark would be perfect.","translation":"要推进另一项计划，我可以使用一件具备[[Wither]]性相的物品。午夜之印再合适不过。","status":"translated","notes":"保留链接；Aspect 依术语表译“性相”；Midnight Mark 暂译“午夜之印”。"}
+{"id":"TAN-4DABA167D208","source":"Order: Father's Day","translation":"订单：‘父亲节’","status":"translated","notes":"服装订单名，与同批包裹名统一。"}
+{"id":"TAN-4DC1BB0D7688","source":"A pre-war passport in the name of Mr Spencer Hobson. My place of birth is given as Kerisham, in England.\n\nIt's a real passport, but the government's changed the law, and it might not be valid much longer.","translation":"一本战前签发、属于斯宾塞·霍布森先生的护照。出生地写的是英格兰凯里沙姆。\n\n这是真护照，但政府已经修改法律，它恐怕很快就会失效。","status":"translated","notes":"Kerisham 暂沿 chunk_005 译“凯里沙姆”；保留段落。"}
+{"id":"TAN-4EE50D96996D","source":"Everyone in Europe knows the unimpeachable value of their [[currency]]. Even on the eastern side of the Iron Curtain, even legitimate businesses will quietly accept payment in Swiss francs.\n\nIt <I>is</i> odd that the Ministries permit use of a gold-backed currency in their mutualist paradise. But there has been something opaque happening in Switzerland, ever since the Alps grew colder.\n\nOne Swiss franc is worth about one dollar.","translation":"欧洲人人都知道这种[[currency]]价值可靠，无可置疑。即使在铁幕东侧，连正经商家也会悄悄收下瑞士法郎。\n\n部委<I>竟会</i>允许在他们的互助主义天堂使用金本位货币，的确奇怪。但自阿尔卑斯山愈发寒冷以来，瑞士便一直有些事，教人看不透。\n\n一瑞士法郎约值一美元。","status":"translated","notes":"由 j.18 同文迁移；新原文修正语病，保留链接、富文本与三段结构。"}
+{"id":"TAN-4EEAEE4B086D","source":"Zèlia was satisfied with her revenge on Philomèle, though she seemed a little confused about exactly whom she had been revenged upon. In any case, she paid me.","translation":"泽莉娅对自己向菲洛梅勒复仇的结果很满意，尽管她似乎有点弄不清自己究竟报复了谁。不管怎样，她付了钱。","status":"translated","notes":"保留复仇对象错乱的冷幽默。"}
+{"id":"TAN-4F34FDCB6665","source":"This is too tiny an offer for the merchant to bother with. You need to put enough on the table for at least one note of the currency they're offering.","translation":"这份报价少得不值得商人费心。你放上桌面的价值，至少要抵得上一张对方所用货币的纸币。","status":"translated","notes":"易货教程说明。"}
+{"id":"TAN-4FE65CC1E206","source":"Occult treasures are purchased with occult coin: spintriae. This one is silver. Its reverse displays a man and woman coupling. Their configuration implies enthusiasm, but what can be seen of their faces suggests boredom.","translation":"秘术珍宝要用秘术钱币购买：春宫币。这一枚是银制的。背面刻着一对交合的男女。姿势显得兴致勃勃，依稀可见的面孔却透着无聊。","status":"translated","notes":"spintria 沿前批译“春宫币”；保留末句色情图像与倦怠表情的反差。"}
+{"id":"TAN-4FF49E8301EA","source":"Memory: Michaelmas, Brancrug, 1921","translation":"记忆：米迦勒节，布兰库格，1921年","status":"translated","notes":"沿 chunk_009 回忆标题译法。"}
+{"id":"TAN-5043F2A23CB9","source":"[To continue, explore.]","translation":"[要继续，请探索。]","status":"translated","notes":"保留方括号教程结构。"}
+{"id":"TAN-5066A257E95F","source":"Twinges","translation":"刺痛","status":"translated","notes":"痛苦阶段状态标签。"}
+{"id":"TAN-51A580DFD7EC","source":"I've determined that I'll wake at midnight.","translation":"我已打定主意，要在午夜醒来。","status":"translated","notes":"状态说明。"}
+{"id":"TAN-51EE5A13F94B","source":"Double-click to run. If you click somewhere distant, Spencer will break into a run anyway, perhaps from sheer enthusiasm, perhaps out of desperation.","translation":"双击即可奔跑。地点点得够远，斯宾塞自己也会跑起来——或许是兴致使然，或许是走投无路。","status":"translated","notes":"操作教程保持直接，保留末句调侃。"}
+{"id":"TAN-52166DE4CE80","source":"Hint-Haunted Glass","translation":"暗示缠身之镜","status":"translated","notes":"物品名；Hint 可能为设定实体，暂保留“暗示”歧义。"}
+{"id":"TAN-52361C14D3BC","source":"With time and travel, good things become bad things: sandwiches, soufflé, flower arrangements.\n\n[All Perishable items will disappear when you travel.]","translation":"随着时间与旅行，好东西会变成坏东西：三明治、舒芙蕾、插花。\n\n[旅行时，所有易腐物品都会消失。]","status":"translated","notes":"Perishable 与本批性相标签统一译“易腐”；保留段落与方括号。"}
+{"id":"TAN-524A883758E6","source":"Repaid","translation":"已偿还","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-526FE863EED6","source":"Knock Experiences","translation":"启之经历","status":"translated","notes":"Knock 依术语表译“启”；沿前批系统句式。"}
+{"id":"TAN-5282E7501859","source":"Oddment","translation":"零碎物件","status":"translated","notes":"性相标签。"}
+{"id":"TAN-52B718F4D8E9","source":"[q=Weariness] Weariness - I'm Exhausted!","translation":"[q=Weariness]点疲惫——我精疲力竭了！","status":"translated","notes":"保留查询变量；Exhausted 统一译“精疲力竭”。"}
+{"id":"TAN-52D22D190F67","source":"Set whenever we exit the map. Important for tracking how we got to a minor destination circus scene","translation":"每次退出地图时设置。用于追踪我们如何进入次要目的地的马戏团场景，十分重要。","status":"translated","notes":"开发变量说明。"}
+{"id":"TAN-52D830B49EC6","source":"Walled and wooded town aboil now with revolution","translation":"有墙有林的小镇，如今因革命而沸腾","status":"translated","notes":"目的地短描述；保留无句号结构。"}
+{"id":"TAN-5307289D7DF1","source":"Clouds part; wounds creak; doors strain.","translation":"云层分开；伤口作响；门扉绷紧。","status":"translated","notes":"保留三项物质化异象与分号节奏。"}
+{"id":"TAN-5307728774B3","source":"No dawn knows only a single colour. No sky knows only a single dawn.","translation":"没有哪个黎明只知一种颜色。没有哪片天空只知一个黎明。","status":"translated","notes":"保留重复、悖论与 knows 的拟人。"}
+{"id":"TAN-531C7B28ABF2","source":"Unlocked","translation":"已解锁","status":"translated","notes":"商店／UI 状态。"}
+{"id":"TAN-532D2D7A98C3","source":"When you move the cursor over something interactable, it'll highlight. Or hold Z to highlight everything interactable on screen.","translation":"将光标移到可交互对象上时，对象会高亮。也可以按住Z键，高亮屏幕上的所有可交互对象。","status":"translated","notes":"保留按键名 Z；操作教程保持直接。"}
+{"id":"TAN-533FAE9F74D7","source":"The proper use of this sombre sign silences restless spirits. Improper use can trouble the sleep and health of living human spirits.","translation":"正确使用这道阴郁之印，能使躁动的灵魂沉寂。使用不当，则会扰乱生者的睡眠与健康。","status":"translated","notes":"保留 spirits 在亡灵与生者精神之间的复义。"}
+{"id":"TAN-5342AD48FC4C","source":"Influence: Lantern","translation":"影响：灯","status":"translated","notes":"Lantern 依术语表译“灯”。"}
+{"id":"TAN-538CFADF4B68","source":"Permission for an 'educational theatre company' to give performances in Berlin. This will get Rosa Mundi through the blockade into the Ministries occupation zone of Germany. Issued by the All-Union Committee on Arts Affairs (under the Ministry of Cherries).","translation":"准许一家“教育剧团”在柏林演出的许可证。它能让罗莎·蒙迪穿过封锁线，进入诸部委在德国的占领区。由全联盟艺术事务委员会（隶属樱桃部）签发。","status":"translated","notes":"2026.8.j.66 增量：对照新版资产、上下文与相邻旧译人工复核。；润色2026-08-18：罗莎·蒙迪统一"}
+{"id":"TAN-53F3768C189B","source":"Tanglebrag","translation":"夸口乱结","status":"translated","notes":"纺织系秘术物品复合词，暂译“夸口乱结”，待实物图与前作术语复核。"}
+{"id":"TAN-548BF9BD7F42","source":"Tooltips and Footnotes","translation":"工具提示与脚注","status":"translated","notes":"教程标题。"}
+{"id":"TAN-54C60DC29B42","source":"Dr Aubière declares he will tell me where to find Nina, if I stay a few days at the Sanitarium and attend sessions with him. Aubière, however, has already reneged on one arrangement. There are likely other possibilities at the Sanitarium to winkle the information out.","translation":"奥比耶医生声称，只要我在疗养院住上几天、接受几次诊疗，他就会告诉我去哪找宁娜。可奥比耶已经反悔过一次。疗养院里大概还有别的办法能套出情报。","status":"translated","notes":"状态／计划说明；保留主角对承诺可靠性的怀疑。"}
+{"id":"TAN-54CFC99F5471","source":"A little knowledge is a dangerous thing. If you use occult tools carelessly at random, you'll often make matters worse. Before you begin, make sure you know what you're dealing with. ","translation":"一知半解是件危险的事。漫无目的地胡乱使用秘术工具，往往只会令情况更糟。动手之前，务必先弄清楚自己在应付什么。 ","status":"translated","notes":"2026.8.j.18 新增／改写字段；已按上下文人工终审。"}
+{"id":"TAN-555ED93E460D","source":"Karlshorst Fleck","translation":"卡尔斯霍斯特斑币","status":"translated","notes":"Karlshorst 为柏林地名；Fleck 疑为架空货币名，暂译“斑币”。"}
+{"id":"TAN-5574F3A08F05","source":"Comfortably on the sofa.","translation":"舒舒服服地躺在沙发上。","status":"translated","notes":"状态说明。"}
+{"id":"TAN-559191F3390D","source":"The Glory is a question, and the Moth always answers, Yes.","translation":"辉光是一个问题，而蛾总是回答：是。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
+{"id":"TAN-559589E86432","source":"At [q=Pain] Pain, my Twinges have gone.","translation":"痛苦降至[q=Pain]点时，我的刺痛已经消失。","status":"translated","notes":"保留查询变量；Twinges 与同批状态标签统一。"}
+{"id":"TAN-561ED7BE5B1B","source":"Sink or Swim","translation":"不游则沉","status":"translated","notes":"保留英语惯用语的生死抉择意象。"}
+{"id":"TAN-566367C0B717","source":"Items: Refreshments","translation":"物品：茶点","status":"translated","notes":"Refreshments 沿其他游戏数据批次译“茶点”。"}
+{"id":"TAN-56951AA70B2A","source":"Ascent","translation":"攀升","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-569E0E5A062B","source":"Withered","translation":"已凋萎","status":"translated","notes":"与 Wither／Withering“凋萎”统一。"}
+{"id":"TAN-56F2CD83DFD6","source":"Traces [q=trace]. I'm no longer a subject of Rumour.","translation":"痕迹：[q=trace]。我已不再是流言的对象。","status":"translated","notes":"保留查询变量；Traces／Rumour 暂译“痕迹／流言”。"}
+{"id":"TAN-571F7816BF39","source":"A web of subtle work to encourage peace, healing and a slow knitting-together of possibilities.","translation":"一张精工织就的网，让和平、疗愈与种种可能慢慢缝合。","status":"translated","notes":"保留 web／knitting 的连续纺织意象。"}
+{"id":"TAN-573A65D459CD","source":"Sanitarium","translation":"疗养院","status":"translated","notes":"地点／状态显示名。"}
+{"id":"TAN-5762B7B1EC11","source":"A pure white square of fine linen. Cambric; named for [[Cambray]] town…","translation":"一方纯白的细亚麻布。康布里克细布；因[[Cambray]]城得名……","status":"translated","notes":"保留链接与省略号；Cambric 采用织物通称音译。"}
+{"id":"TAN-57746AA1D466","source":"Here is the road long concealed from their sight.","translation":"这便是那条长久隐于他们眼前的道路。","status":"translated","notes":"仪式／制作说明，保留揭示语气。"}
+{"id":"TAN-57863D23B945","source":"Opinion - Bessy","translation":"看法——贝茜","status":"translated","notes":"关系 UI 标签；人名沿前批。"}
+{"id":"TAN-57DE7252B8EE","source":"The town in the forest is the forest in the town, now","translation":"林中之镇，如今成了镇中之林","status":"translated","notes":"保留交错反复与无句号的目的地短句。"}
+{"id":"TAN-583876B9CFF5","source":"October in [[Brancrug]], the last year before the war. Dusk-purple heather, grey-growling sea...\n\nRecall <link=\"mypaststreparataseve\">My Past: St Reparata's Eve, Brancrug, 1938</link>","translation":"战前最后一年，[[Brancrug]]的十月。暮紫的石楠，灰沉低吼的海……\n\n回忆<link=\"mypaststreparataseve\">我的过往：圣雷帕拉塔节前夕，布兰库格，1938年</link>","status":"translated","notes":"保留链接、link 标签与段落；St Reparata 沿前批译“圣雷帕拉塔”。"}
+{"id":"TAN-583F98EFBAF6","source":"It's much too hot to be wearing this. Uncomfortable and embarrassing.\n\n[Change to a lighter Outfit - or stay inside.]","translation":"天气太热，实在不该穿这身。既不舒服，又显得尴尬。\n\n[换上更轻薄的服装——或者留在室内。]","status":"translated","notes":"服装机制说明；保留段落与方括号。"}
+{"id":"TAN-584BEC7FDA39","source":"Package: Man of Mystery","translation":"包裹：‘神秘人’","status":"translated","notes":"服装名与 chunk_005 统一。"}
+{"id":"TAN-58AE714657EF","source":"Finishing a Plan gives a choice of [[Experiences]]. Collect them by clicking the Plan, which you'll find under the Finished column.\n\n","translation":"完成计划后，你可以从[[Experiences]]中任选一项。点击“已完成”栏中的计划即可领取。\n\n","status":"translated","notes":"保留链接及末尾双换行；教程 UI 保持直接。"}
+{"id":"TAN-58BFC56B70D7","source":"Francisque","translation":"弗朗西斯克","status":"translated","notes":"架空货币名，沿前批。"}
+{"id":"TAN-58D431059CA7","source":"I've learnt where to look for Nina Lagasse. I have no need to pester Dr A in his dreams.","translation":"我已经知道去哪里找宁娜·拉格斯。没必要再到梦里纠缠奥比耶医生。","status":"translated","notes":"Nina Lagasse 依术语表；Dr A 按上下文展开。"}
+{"id":"TAN-58E594A38989","source":"Failure: Rescue","translation":"失败：救援","status":"translated","notes":"教程标题。"}
+{"id":"TAN-58EA8EDC90EA","source":"Six","translation":"六","status":"translated","notes":"变量标签。"}
+{"id":"TAN-58FCA1367347","source":"Refreshments are, generally, delicious. Use them to restore pips in your [[Aspect Pool]].\n- Most Refreshments expire when [[travelling]] - eat up before you go\n- You can only use Refreshments when they match missing pips - mouse over the Refreshment to check.","translation":"茶点通常很好吃，也能补回[[Aspect Pool]]中的点数。\n- 多数茶点会在[[travelling]]时过期——上路前赶紧吃完\n- 缺少的点数与茶点相符时才能使用——将鼠标悬停在茶点上即可查看。","status":"translated","notes":"Refreshments 统一译“茶点”；保留两个链接、换行与列表连字符。"}
+{"id":"TAN-594643F94BDF","source":"Jean-Bernard rather wistfully asked me to remember him to the  bookseller Andrée, who sells other things than books.","translation":"让-贝尔纳颇为惆怅地托我向书商安德蕾问好；她卖的并不只有书。","status":"translated","notes":"保留 quieter business 的含蓄暗示；源文 bookseller 前双空格未承载结构。"}
+{"id":"TAN-594896A54BD4","source":"Traces [q=trace]: no longer Pursued.","translation":"痕迹达到 [q=trace] 点：追捕已经停止。","status":"translated","notes":"2026.8.j.66 增量：对照新版资产、上下文与相邻旧译人工复核。"}
+{"id":"TAN-59D2C2CBB0A0","source":"The Stars are bright here.","translation":"群星在这里格外明亮。","status":"translated","notes":"Stars 作为设定存在译“群星”。"}
+{"id":"TAN-5A4AEACFBAE2","source":"This is how it ends.\n\nCurrent Pain: [q=pain]","translation":"事情就这样结束。\n\n当前痛苦：[q=pain]","status":"translated","notes":"保留段落与查询变量；维持简短不祥语气。"}
+{"id":"TAN-5A4E5FC65E04","source":"'The City of Light', they called it, before the war","translation":"战前，人们称它为‘光之城’","status":"translated","notes":"目的地短描述，保留无句号结构。"}
+{"id":"TAN-5AA5437B5236","source":"Spencer's spent his third night in one place. He's gained two Traces. Time to go.","translation":"斯宾塞在同一处过了第三晚。他获得了两条痕迹。该走了。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
+{"id":"TAN-5AAE2018147E","source":"Sanitarium, Upper Floor","translation":"疗养院，上层","status":"translated","notes":"场景名。"}
+{"id":"TAN-5B174C099DDB","source":"A soggy mess of identity cards and mulched ration books, scavenged from the Dead of Kerisham beach.","translation":"身份证件与被泡烂的配给本混成一团湿漉漉的烂泥，都是从凯里沙姆海滩的死者身上搜来的。","status":"translated","notes":"Dead 作为死者集合处理；Kerisham 暂沿前批译“凯里沙姆”。"}
+{"id":"TAN-5B4FE8E76B06","source":"4-6 Weariness: \"I could use a nap.\"\n\nCurrent Weariness: [q=weariness]","translation":"4—6点疲惫：“我该打个盹。”\n\n当前疲惫：[q=weariness]","status":"translated","notes":"保留段落、引语与查询变量。"}
+{"id":"TAN-5B54D525AE5A","source":"Naenian Quittance","translation":"挽歌解契","status":"translated","notes":"Naenia 为挽歌，quittance 为解除／清偿；秘术物品名暂译“挽歌解契”。"}
+{"id":"TAN-5BCE8313A3CC","source":"I'm now Well-Groomed.","translation":"我现在仪容整洁。","status":"translated","notes":"Well-Groomed 作为梳洗状态译“仪容整洁”。"}
+{"id":"TAN-5BD3BB234916","source":"An effective cure for Weariness, but it always brings at least a little pain in its wake.","translation":"这是治疗疲惫的有效方法，但过后总会带来至少一点痛苦。","status":"translated","notes":"机制效果说明。"}
+{"id":"TAN-5C0BF408A781","source":"Consideration","translation":"考虑","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-5C8071CE8171","source":"can wither as well as bewitch!","translation":"既能凋萎，也能施魅！","status":"translated","notes":"与本批逆序关键词句保持完全一致的术语。"}
+{"id":"TAN-5CF6C6AA01FD","source":"<i>Agio</i>, the fee charged for exchanging currency. \n\nWonderfully, it's derived from the italian <i>aggio</i>, meaning 'comfort' or 'ease'. The merchant is charging a fee for <i>your</i> comfort and ease.\n\nWhenever you pay in a non-native currency, a merchant will charge you <i>agio</i> - about fifteen per cent, but they'll round down.","translation":"<i>贴水</i>，即兑换货币时收取的费用。 \n\n妙的是，它源自意大利语<i>aggio</i>，意思是“舒适”或“方便”。商人收的，正是让<i>你</i>舒适方便的费用。\n\n使用外地货币付款时，商人会收取<i>贴水</i>——约百分之十五，向下取整。","status":"translated","notes":"保留四组斜体标签、三段结构及首段尾随空格；Agio 采用金融术语“贴水”。"}
+{"id":"TAN-5CFAED846B3E","source":"Pale Sign","translation":"苍白征象","status":"translated","notes":"Sign 固定译“征象”。"}
+{"id":"TAN-5D52E8A63483","source":"I've learnt that Aubière is accepting inducements from his residents to provide black market goods. He probably wouldn't want this to come out.","translation":"我得知奥比耶会收受住客好处，为他们提供黑市商品。他大概不希望此事曝光。","status":"translated","notes":"状态说明；inducements 按隐晦贿赂语境处理。"}
+{"id":"TAN-5D8B17743E46","source":"The amber town adrift on consolation's tides far from the rush of the world","translation":"琥珀色的小镇漂浮于慰藉之潮，远离世界的匆忙","status":"translated","notes":"目的地短描述；保留诗性与无句号结构。"}
+{"id":"TAN-5DD272B4F316","source":"Paris","translation":"巴黎","status":"translated","notes":"地名。"}
+{"id":"TAN-5E00D4AA05B1","source":"Medea: Use-name","translation":"美狄亚：常用名","status":"translated","notes":"变量标签；Medea 沿既有独立专名译法。"}
+{"id":"TAN-5E1AEC7B7AAC","source":"4-6 Dread: \"This seems pointless.\"\n\nCurrent Dread: [q=dread]","translation":"4—6点恐惧：“这一切似乎毫无意义。”\n\n当前恐惧：[q=dread]","status":"translated","notes":"保留段落、引语与查询变量。"}
+{"id":"TAN-5E4AECBE3195","source":"Edge Experiences","translation":"刃之经历","status":"translated","notes":"Edge 依术语表译“刃”；沿前批系统句式。"}
+{"id":"TAN-5EAE9529B13E","source":"An intricate, beautiful pattern that's <i>just</i> brash enough to remain tasteful.","translation":"纹样繁复而美丽，<i>恰好</i>张扬到仍不失品味。","status":"translated","notes":"保留斜体强调及品味悖论。"}
+{"id":"TAN-5EC17D5752F5","source":"[q=trace] Traces. From long experience, I know when I'm under Surveillance.","translation":"[q=trace]点痕迹。凭多年经验，我知道自己何时正受监视。","status":"translated","notes":"保留查询变量；Surveillance 与同批状态标签统一译“监视”。"}
+{"id":"TAN-5EC5A66C2073","source":"The new heart of Europe... not quite as broken as we might expect","translation":"欧洲的新心脏……并没有我们想象中那么破碎","status":"translated","notes":"目的地短描述；保留省略与无句号结构。"}
+{"id":"TAN-5EC74C8829B9","source":"Departed","translation":"已离开","status":"translated","notes":"状态显示名。"}
+{"id":"TAN-5F1CC2F9213B","source":"The wound is visible; the pain is not. ","translation":"伤口看得见；痛苦看不见。 ","status":"translated","notes":"保留对照、分号及源文尾随空格。"}
+{"id":"TAN-5F4B9F19A442","source":"Salve","translation":"药膏","status":"translated","notes":"治疗类性相标签。"}
+{"id":"TAN-5F75DE6EE393","source":"Kedgeree","translation":"英式熏鱼饭","status":"translated","notes":"英国常见的印度渊源米饭料理。"}
+{"id":"TAN-5FC201381DDD","source":"Pragmatism collapses abstraction.","translation":"务实使抽象崩塌。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
+{"id":"TAN-601D2B9AAACF","source":"Use to reduce a [[Trouble]], and usually receive a small random additional benefit.","translation":"用于降低一项[[Trouble]]，通常还会获得一份随机的小额额外收益。","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-6116E046CCE3","source":"Nina is absent from the circus. But she's here, somewhere. 'In the woods.'","translation":"宁娜不在马戏团里。但她就在这里，某个地方。‘在树林里。’","status":"translated","notes":"保留短句与引语中的不确定线索。"}
+{"id":"TAN-614D35522DF4","source":"Pastis","translation":"茴香酒","status":"translated","notes":"沿前批饮品译名。"}
+{"id":"TAN-6157D995CC8D","source":"'Spencer Hobson: multiple entries Germany, US Zone of Occupation'. A single sheet of paper, enlivened with the flaming-sword stamp.","translation":"“斯宾塞·霍布森：多次入境德国美占区。”一张纸，因烈焰之剑印章而平添几分生气。","status":"translated","notes":"保留官方记录的简略句式与 enlivened 的冷幽默；统一中文引号。"}
+{"id":"TAN-61622162CDB3","source":"Knock","translation":"启","status":"translated","notes":"依术语表。"}

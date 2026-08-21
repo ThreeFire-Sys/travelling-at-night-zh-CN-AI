@@ -57,6 +57,15 @@ LINKABLE_SCRIPTS = (
 )
 
 
+def with_source_edge_whitespace(source: str, translation: str) -> str:
+    """把源串的首尾空白套到译文上：引文的 \\t\\t 缩进、段落尾距 \\n\\n、对话
+    尾随空格都是排版结构，整体 strip 会把它们剥掉造成版式错位（v2.4.14 开场
+    引文首行缩进丢失的教训）。"""
+    lead = source[:len(source) - len(source.lstrip())]
+    trail = source[len(source.rstrip()):]
+    return lead + translation + trail
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("game_root", type=Path, help="Game install root (read-only reference)")
@@ -423,11 +432,13 @@ def main() -> int:
                 continue
             for context in entry.get("contexts") or []:
                 site = (context["asset_file"], context["path_id"], context["field_path"])
-                if site in site_translation and site_translation[site] != translation:
-                    conflicts.append(f"{site}: {site_translation[site][:40]!r} vs {translation[:40]!r}")
+                ctx_source = context.get("source", entry["source"]) or ""
+                baked = with_source_edge_whitespace(ctx_source, translation)
+                if site in site_translation and site_translation[site] != baked:
+                    conflicts.append(f"{site}: {site_translation[site][:40]!r} vs {baked[:40]!r}")
                     continue
-                site_translation[site] = translation
-                site_source[site] = context.get("source", entry["source"])
+                site_translation[site] = baked
+                site_source[site] = ctx_source
                 object_scripts.setdefault(
                     (context["asset_file"], context["path_id"]),
                     context.get("script", ""))

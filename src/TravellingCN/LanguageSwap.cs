@@ -266,12 +266,77 @@ namespace TravellingCN
                 }
                 _en2zh = BuildDirectionMap(loaded.en2zh, "en2zh");
                 _zh2en = BuildDirectionMap(loaded.zh2en, "zh2en");
+                LoadLabelFidelity(pluginDirectory);
                 _mapsLoaded = true;
             }
             catch (Exception exception)
             {
                 Log.LogError($"语言切换映射无法解析：{exception}");
             }
+        }
+
+        // 资产标签保真表（label_fidelity.json，byId/byCn）：通用 zh2en 是按
+        // 字符串的函数，多个英文原文共享一个中文标签时只能择一——另一资产的
+        // 标签会被换成错的变体，按标签（不区分大小写）解析的链接随之失效
+        // （v2.4.13 实测：旅行脚注被换成 "Travel"，作者链接 id "travelling"
+        // 失配成青链）。标签字段交换与英文别名注入先查本表。
+        private static Dictionary<string, string> _labelFidelityById = new Dictionary<string, string>(StringComparer.Ordinal);
+        private static Dictionary<string, string> _labelFidelityByCn = new Dictionary<string, string>(StringComparer.Ordinal);
+
+        private static void LoadLabelFidelity(string pluginDirectory)
+        {
+            var path = Path.Combine(pluginDirectory, "label_fidelity.json");
+            if (!File.Exists(path))
+            {
+                Log.LogWarning($"未找到标签保真映射：{path}；标签交换退回通用映射。");
+                return;
+            }
+            try
+            {
+                var loaded = JsonConvert.DeserializeObject<LabelFidelityFile>(File.ReadAllText(path));
+                if (loaded?.byId != null)
+                {
+                    _labelFidelityById = new Dictionary<string, string>(loaded.byId, StringComparer.Ordinal);
+                }
+                if (loaded?.byCn != null)
+                {
+                    _labelFidelityByCn = new Dictionary<string, string>(loaded.byCn, StringComparer.Ordinal);
+                }
+                Log.LogInfo($"标签保真映射：byId {_labelFidelityById.Count} 条，byCn {_labelFidelityByCn.Count} 条。");
+            }
+            catch (Exception exception)
+            {
+                Log.LogError($"标签保真映射无法解析：{exception}");
+            }
+        }
+
+        private sealed class LabelFidelityFile
+        {
+            public Dictionary<string, string> byId;
+            public Dictionary<string, string> byCn;
+        }
+
+        // 标签保真查询：CN→EN 方向换标签字段时优先于通用映射。先按资产 id，
+        // 再按中文标签（byCn 仅收资产标签域内无冲突的）。
+        internal static bool TryGetFidelityEnglishLabel(string assetId, string cnLabel, out string english)
+        {
+            english = null;
+            if (!_mapsLoaded)
+            {
+                return false;
+            }
+            if (!string.IsNullOrEmpty(assetId) &&
+                _labelFidelityById.TryGetValue(assetId, out english))
+            {
+                return true;
+            }
+            if (!string.IsNullOrEmpty(cnLabel) &&
+                _labelFidelityByCn.TryGetValue(cnLabel, out english))
+            {
+                return true;
+            }
+            english = null;
+            return false;
         }
 
         private static DirectionMap BuildDirectionMap(Dictionary<string, string> raw, string name)
@@ -302,6 +367,14 @@ namespace TravellingCN
                 if (map.Squashed.TryGetValue(squashedKey, out var existing) &&
                     existing != pair.Value)
                 {
+                    // v2.4.16：值只差首尾空白不算冲突——源串带排版尾距的主条目
+                    // 与其 trimmed 变体必然撞同一个 squash 键；此前一律封禁导致
+                    // 这类长文（如教程泡"制作：场所与技艺"）在 EN→CN 时折叠层
+                    // 失配掉到子串级（英文句子+中文链接词混排回归）。
+                    if (string.Equals(existing?.Trim(), pair.Value?.Trim(), StringComparison.Ordinal))
+                    {
+                        continue;
+                    }
                     map.Squashed.Remove(squashedKey);
                     squashedConflict.Add(squashedKey);
                 }
@@ -505,6 +578,17 @@ namespace TravellingCN
             }
         }
 
+        // 自动排障驱动用（Diagnostics.AutoProbeSwap）：与 F9 按键完全同路径的换语言触发。
+        internal static void DebugToggleNow()
+        {
+            if (!_enabled.Value || !_mapsLoaded)
+            {
+                return;
+            }
+            _englishMode = !_englishMode;
+            RunSwapPass(_englishMode ? _zh2en : _en2zh, _englishMode ? "调试切为英文" : "调试切为中文");
+        }
+
         internal static void Tick()
         {
             if (!_enabled.Value || !_mapsLoaded)
@@ -681,7 +765,25 @@ namespace TravellingCN
             return _zh2en.Exact.TryGetValue(label, out english);
         }
 
+        // 带资产 id 的版本：先查标签保真表（真实英文标签），退回通用映射。
+        internal static bool TryGetEnglishLabel(string assetId, string label, out string english)
+        {
+            if (TryGetFidelityEnglishLabel(assetId, label, out english))
+            {
+                return true;
+            }
+            return TryGetEnglishLabel(label, out english);
+        }
+
         internal static bool IsEnglishMode => _englishMode;
+
+        // 巡测电池用（Diagnostics.AutoProbeSoak）：判断一段剥净显示文本是否
+        // 是本方向的精确键——CN 态下命中 en2zh 键 = 应换未换的英文残留。
+        internal static bool DebugIsExactEnKey(string plain)
+        {
+            return _mapsLoaded && !string.IsNullOrEmpty(plain) &&
+                   _en2zh.Exact.ContainsKey(plain);
+        }
 
         // ComposeWrapped 补丁用：英文模式下把浮签组成段换回英文。只走精确与
         // 折叠空白两层——整段 authored 文本必定整串命中，子串级若只换出碎片
@@ -820,6 +922,16 @@ namespace TravellingCN
                 return;
             }
             var seen = new HashSet<object>(new ReferenceComparer());
+            // 缓存失效（v2.4.12 链接失效根治）：curator 的 ByLabel 字典与
+            // _alternativeToPrimaryLabel 是**惰性构建+永久缓存**（首次链接解析时
+            // 按当时语言建键），SwapDictionaryKeys 接触不到它们（字典字段是
+            // System 命名空间，字段递归闸门不进）。交换后标签已换语言而缓存仍是
+            // 建缓存时的语言：若缓存建于 CN 期，阶段二 SettleLinks 拿 EN 标签来
+            // 查必然落空（别名通道只覆盖被注入英文别名的 Footnote，Passion/
+            // Aspect 等直查 CN 键字典直接 miss）——链接被判失效打成青色/剥成
+            // 裸文本（用户实测：切英文后 Passion/Aspect Pool 全变青链）。
+            // 交换开始前统一失效缓存，此后任何解析都按目标语言重建。
+            Plugin.RequestCuratorCacheRefresh();
             // 阶段零：ScriptablesCurator 优先。阶段一里经显示管线交换的字段
             // （字幕面板 m_accumulatedText 等）的 SettleLinks 着色依赖 curator
             // 字典键已是目标语言；阶段一内部遍历顺序不定，curator 靠后时历史
@@ -935,6 +1047,9 @@ namespace TravellingCN
             // 交换可能改写了脚注 alternativeLabels 的内容；中文态下复注入英文别名
             // （手写 <link="英文"> 的解析通道，v2.2.16）。
             Plugin.RequestAlternativeLabelsInjection();
+            // 捏人链接白名单的 label 缓存同样按建缓存时的语言失效（v2.5.0 实测：
+            // 捏人 tooltip 链接 F9 后剥成裸文本）。
+            Plugin.ResetCharGenLinkWhitelistCache();
             // 陈旧检测（仅 DebugLog）：交换结束后再跑一趟只读遍历，凡仍匹配
             // 本方向映射键（=本应被换掉却没换）的字符串值都报出来，用于定位
             // 运行态缓存的旧语言字段。
@@ -1245,6 +1360,18 @@ namespace TravellingCN
         private static void SwapDisplayText(
             DirectionMap map, string current, Action<string> setter, SwapCounters counters)
         {
+            // 排障埋点（v2.4.10）：跟踪含宁娜的文本在交换中的层级归宿。
+            if (_debugLog.Value && current != null && current.Contains("宁娜"))
+            {
+                var hit = TrySwapDisplayText(map, current, counters, 0, out var probeSwapped);
+                Log.LogInfo(
+                    $"[LanguageSwap] 宁娜文本交换：命中={hit} 原文={TruncateForLog(current, 160)}");
+                if (hit)
+                {
+                    setter(probeSwapped);
+                }
+                return;
+            }
             if (!string.IsNullOrEmpty(current) &&
                 TrySwapDisplayText(map, current, counters, 0, out var swapped))
             {
@@ -1289,6 +1416,54 @@ namespace TravellingCN
                 swapped = SettleLinks(squashedValue, text);
                 counters.TaglessExact++;
                 return true;
+            }
+            // Tier 1.7：链接还原精确。显示态里 [[X]] 已被解析成
+            // <link="id"><color=…>X</color></link>；把每个 link 段还原成
+            // [[X]]（仅剥链接段内部的装饰标签），**其余标签原样保留**——
+            // 原始键里本就有 <i>/<b> 等排版标签（如教程泡的题辞斜体），
+            // 一并剥掉会让精确/折叠两层都失配（v2.4.12 实测"工具提示与
+            // 脚注"泡 EN→CN 掉到子串级：正文英文、链接名中文混排）。
+            // 提示泡（ToastStackView.Enqueue 在 Show 时一次性组合消息）等
+            // 长期停留的表面在打开状态切语言时靠这层整体命中。
+            if (text.IndexOf("<link=", StringComparison.Ordinal) >= 0)
+            {
+                var restoredTagged = LinkRestorePattern.Replace(
+                    text, match => "[[" + StripTags(match.Groups[1].Value) + "]]");
+                if (restoredTagged != text)
+                {
+                    // 依次尝试：保标签精确 → 全剥标签精确 → 保标签折叠 → 全剥折叠。
+                    // 保标签优先：原键常含 <i>/<b> 排版标签，忠实还原才能命中
+                    // 带格式的键；全剥兜底：覆盖显示态被额外套色/套标签的表面。
+                    var restoredPlain = StripTags(restoredTagged);
+                    if (map.Exact.TryGetValue(restoredTagged, out var restoredValue) ||
+                        (restoredPlain != restoredTagged &&
+                         map.Exact.TryGetValue(restoredPlain, out restoredValue)))
+                    {
+                        swapped = SettleLinks(restoredValue, text);
+                        counters.TaglessExact++;
+                        return true;
+                    }
+                    // 游戏显示时给长文本插入手动换行：还原链接后再折叠空白查
+                    // Squashed 表（v2.4.12 实测：提示泡长文 EN→CN 因换行差异
+                    // 精确失配，掉到子串级只剩链接名被换）。
+                    if (map.Squashed.Count > 0)
+                    {
+                        if (HasWhitespace(restoredTagged) &&
+                            map.Squashed.TryGetValue(SquashWhitespace(restoredTagged), out var restoredSquashed))
+                        {
+                            swapped = SettleLinks(restoredSquashed, text);
+                            counters.TaglessExact++;
+                            return true;
+                        }
+                        if (restoredPlain != restoredTagged && HasWhitespace(restoredPlain) &&
+                            map.Squashed.TryGetValue(SquashWhitespace(restoredPlain), out restoredSquashed))
+                        {
+                            swapped = SettleLinks(restoredSquashed, text);
+                            counters.TaglessExact++;
+                            return true;
+                        }
+                    }
+                }
             }
             // Tier 2：模板匹配（运行时拼装串：说话人格式行、技能名列表实例化等）。
             if (depth < MaxSwapDepth)
@@ -1823,23 +1998,14 @@ namespace TravellingCN
                 // 文本标签匹配、标签集按首次求值时的语言缓存，F9 换语言后失配
                 // 会把白名单内链接也剥掉（v2.2.11/2.2.12 实测）；而新鲜显示的
                 // 原生过滤本就生效，交换层无需再叠一层。不干涉原版创建界面设计。
-                string decorated;
-                if (TryExtractLinkColor(sourceText, out var linkColor) &&
-                    TryGetDefaultStyleColors(out var viewedColor, out var brokenColor))
-                {
-                    decorated =
-                        Travelling.Utility.TravellingUtility.ResolveQualityTokensAndColourizeLinks(
-                            value, GetCustomLinkStyle(linkColor, viewedColor, brokenColor),
-                            hideVisited);
-                }
-                else
-                {
-                    decorated =
-                        Travelling.Utility.TravellingUtility.ResolveQualityTokensAndColourizeLinks(
-                            value,
-                            Travelling.UI.Info.LinkStyle.Default,
-                            hideVisited);
-                }
+                //
+                // v2.4.14 一致性语义：交换只换语言，不顺带刷新链接的已读状态。
+                // 原版渲染后已读状态变化不会重渲染既有文本（无此机制），若交换
+                // 层按"当前状态"重装饰，同一行文字 F9 后链接会突然变淡/剥除
+                // （用户实测：点开"心念"后中文态不变，F9 切英文 Passion 变纯文本）。
+                // 逐链接继承源文本的当前显示色与剥除形态；配对不上的（源串里
+                // 已剥除/新增）走原生状态逻辑兜底。
+                string decorated = DecorateLinksPreservingDisplayedState(value, sourceText, hideVisited);
                 if (!string.IsNullOrEmpty(decorated))
                 {
                     return decorated;
@@ -1878,6 +2044,80 @@ namespace TravellingCN
             "<link\\b[^>]*>(?:(?!</link>)[\\s\\S])*?<color=(#[0-9A-Fa-f]{6,8})>",
             RegexOptions.Compiled);
 
+        // Tier 1.7 用：整段 <link="…">…</link> 捕获，替换为 [[内部裸文本]]。
+        private static readonly Regex LinkRestorePattern = new Regex(
+            "<link\\b[^>]*>([\\s\\S]*?)</link>",
+            RegexOptions.Compiled);
+
+        // 完整链接标签（装饰目标侧逐个处理）。
+        private static readonly Regex WholeLinkTagPattern = new Regex(
+            "<link=\"([^\"]*)\">([\\s\\S]*?)</link>",
+            RegexOptions.Compiled);
+
+        // 链接内部的 <color=#RRGGBB>（继承源串显示色用）。
+        private static readonly Regex InnerLinkColorPattern = new Regex(
+            "<color=(#[0-9A-Fa-f]{6,8})>",
+            RegexOptions.Compiled);
+
+        // 交换时逐链接继承源文本的当前显示状态（v2.4.14 一致性语义，v2.5.2 改为
+        // 跨语言按词配对）：目标链接的 id 经反向映射回源语言词——源串里它是
+        // 裸文本（已读+含蓄剥除）则同样剥除；是链接则继承其显示色；找不到
+        // 对应词（交换后新增）才走原生状态逻辑。v2.4.14 的顺序配对在源串有
+        // 剥除链接时整体错位（已剥除者不占位），用户实测 Passion 错继承
+        // Aspect Pool 的颜色、剥除状态丢失。
+        private static string DecorateLinksPreservingDisplayedState(
+            string value, string sourceText, bool hideVisitedFallback)
+        {
+            var linked = Travelling.Utility.TravellingUtility.DoubleBracketsToLink(value, null);
+            if (string.IsNullOrEmpty(linked) ||
+                linked.IndexOf("<link=", StringComparison.Ordinal) < 0)
+            {
+                return linked;
+            }
+            // 源串链接 id → 显示色（无 <color> 包装记 null）。
+            var sourceLinkColors = new Dictionary<string, string>(StringComparer.Ordinal);
+            if (!string.IsNullOrEmpty(sourceText))
+            {
+                foreach (Match linkMatch in WholeLinkTagPattern.Matches(sourceText))
+                {
+                    var colorMatch = InnerLinkColorPattern.Match(linkMatch.Groups[2].Value);
+                    sourceLinkColors[linkMatch.Groups[1].Value] =
+                        colorMatch.Success ? colorMatch.Groups[1].Value : null;
+                }
+            }
+            // 目标语言词 → 源语言词的反向映射（切英文时 map=zh2en，反向=en2zh）。
+            var reverse = (_englishMode ? _en2zh : _zh2en)?.Exact;
+            var hasDefaults = TryGetDefaultStyleColors(out var defaultLink, out var viewed, out var broken);
+            return WholeLinkTagPattern.Replace(linked, match =>
+            {
+                var id = match.Groups[1].Value;
+                var text = match.Groups[2].Value;
+                string sourceWord = null;
+                reverse?.TryGetValue(id, out sourceWord);
+                if (sourceWord != null && !string.IsNullOrEmpty(sourceText) &&
+                    !sourceLinkColors.ContainsKey(sourceWord) && sourceText.Contains(sourceWord))
+                {
+                    // 剥除继承：源串里该词以裸文本存在（已读剥除），保持剥除。
+                    return text;
+                }
+                if (sourceWord != null && sourceLinkColors.TryGetValue(sourceWord, out var inherited))
+                {
+                    if (inherited != null)
+                    {
+                        return $"<link=\"{id}\"><color={inherited}><b>{text}</b></color></link>";
+                    }
+                    // 源链接无颜色包装（手写裸 link）：保持链接形态不上色。
+                    return $"<link=\"{id}\">{text}</link>";
+                }
+                if (!hasDefaults)
+                {
+                    return match.Value;
+                }
+                return Travelling.Utility.TravellingUtility.ColourizeLinks(
+                    match.Value, defaultLink, viewed, broken, bold: true, hideVisitedLinks: hideVisitedFallback);
+            });
+        }
+
         private static bool TryExtractLinkColor(string sourceText, out Color color)
         {
             color = default;
@@ -1891,14 +2131,15 @@ namespace TravellingCN
                    ColorUtility.TryParseHtmlString(match.Groups[1].Value, out color);
         }
 
-        // LinkStyle.Default 的 viewed/broken 色：实例字段或属性（小写/帕斯卡
+        // LinkStyle.Default 的 link/viewed/broken 色：实例字段或属性（小写/帕斯卡
         // 命名都试），反射一次并缓存。
         private static bool _styleColorsTried;
         private static bool _styleColorsOk;
+        private static Color _defaultLinkColor;
         private static Color _defaultViewedLinkColor;
         private static Color _defaultBrokenLinkColor;
 
-        private static bool TryGetDefaultStyleColors(out Color viewed, out Color broken)
+        private static bool TryGetDefaultStyleColors(out Color link, out Color viewed, out Color broken)
         {
             if (!_styleColorsTried)
             {
@@ -1907,6 +2148,7 @@ namespace TravellingCN
                 {
                     var style = Travelling.UI.Info.LinkStyle.Default;
                     if (style != null &&
+                        TryReadStyleColor(style, "linkColor", out _defaultLinkColor) &&
                         TryReadStyleColor(style, "viewedLinkColor", out _defaultViewedLinkColor) &&
                         TryReadStyleColor(style, "brokenLinkColor", out _defaultBrokenLinkColor))
                     {
@@ -1915,9 +2157,10 @@ namespace TravellingCN
                 }
                 catch (Exception)
                 {
-                    // 读取失败则 _styleColorsOk 保持 false，Settle 走样式重载。
+                    // 读取失败则 _styleColorsOk 保持 false，兜底链接保持原标签形态。
                 }
             }
+            link = _defaultLinkColor;
             viewed = _defaultViewedLinkColor;
             broken = _defaultBrokenLinkColor;
             return _styleColorsOk;
@@ -1970,12 +2213,36 @@ namespace TravellingCN
             return builder.ToString();
         }
 
+        private static readonly Dictionary<Type, bool> _gameDataTypeCache = new Dictionary<Type, bool>();
+
         private static bool IsGameDataType(Type type)
         {
+            if (_gameDataTypeCache.TryGetValue(type, out var cached))
+            {
+                return cached;
+            }
+            var result = ComputeIsGameDataType(type);
+            _gameDataTypeCache[type] = result;
+            return result;
+        }
+
+        private static bool ComputeIsGameDataType(Type type)
+        {
             var ns = type.Namespace;
-            return ns != null &&
-                   (ns.StartsWith("Travelling", StringComparison.Ordinal) ||
-                    ns.StartsWith("PixelCrushers", StringComparison.Ordinal));
+            if (ns != null)
+            {
+                return ns.StartsWith("Travelling", StringComparison.Ordinal) ||
+                       ns.StartsWith("PixelCrushers", StringComparison.Ordinal);
+            }
+            // 全局命名空间的游戏类型：travelling.scripts.dll 里的 AxisQuality/
+            // Quality/VariableQuality/ExperienceQuality/ToastStackView 等没有
+            // 命名空间，旧判定把它们整批漏扫——F9 阶段一换不到 AxisQuality 的
+            // _label/_description，任务栏详情在重新打开时从未交换的数据重新
+            // 组合、回原语言（v2.4.12 实测：物品栏里切英文再开任务栏，"内心
+            // 所求？"一段滞留中文）。按程序集名归属兜底。
+            var assemblyName = type.Assembly?.GetName().Name;
+            return assemblyName != null &&
+                   assemblyName.StartsWith("travelling", StringComparison.OrdinalIgnoreCase);
         }
 
         // 剥掉开头的 <sprite=...> 前缀（说话人名标记），body 为前缀后的内容。
@@ -2051,6 +2318,32 @@ namespace TravellingCN
         // 存在 StandardUISubtitlePanel.accumulatedText 里，是带装饰的显示文本
         // 大 blob，精确匹配永不命中；不换它，点"继续"重建 TMP.text 时会把已
         // 交换的历史行覆盖回旧语言（v2.1.5 实测回弹）。
+        // 逻辑查找键（非显示文本）判定：音频库/环境音按这些字符串查条目，
+        // 换成中文后查找失败、音效静默消失（v2.4.16 用户实测捏人音效消失）。
+        // 显示文本字段（如 MusicTrackListing.DisplayName）不在此列。
+        private static bool IsLogicLookupKeyField(string hostTypeName, string fieldName)
+        {
+            switch (hostTypeName)
+            {
+                // UiSfx.Play("Select")→AudioFXLibrary.GetListingByName(_name)；
+                // ItemAudioFXListing 继承 AudioFXListing（_name 在基类声明）。
+                case "AudioFXListing":
+                case "AmbientFXListing":
+                    return fieldName == "_name";
+                // 音乐曲目按 Id 查（GetTrack/TrackIdIsValid）；UseInScenes 是
+                // 场景 id 匹配表。DisplayName 是显示文本，不在保护之列。
+                case "MusicTrackListing":
+                    return fieldName == "Id" ||
+                           fieldName == "UseInScenes" ||
+                           fieldName == "UseAsFirstTrackInScenes";
+                // 环境音床按场景名匹配（AmbienceBedLibrary.GetBedForScene）。
+                case "SceneBed":
+                    return fieldName == "Scenes";
+                default:
+                    return false;
+            }
+        }
+
         private static int SwapObjectFields(
             object instance, DirectionMap map, SwapCounters counters, HashSet<object> seen)
         {
@@ -2117,6 +2410,14 @@ namespace TravellingCN
                         {
                             continue;
                         }
+                        // 逻辑查找键（非显示文本）永不交换：音频库按这些字符串
+                        // 名查条目（UiSfx.Play("Select")→GetListingByName），
+                        // 换成中文后查找失败、音效静默消失（v2.4.16 用户实测：
+                        // 捏人选职业/心念/加点音效全没）。
+                        if (IsLogicLookupKeyField(current.Name, field.Name))
+                        {
+                            continue;
+                        }
                         var stringValue = (string)value;
                         // loc 键形态（全大写+下划线，如 UI_FOOTNOTE_UNSUBTLE）是
                         // 程序查找键而非显示文本，永不交换——OptionStringValue.Label
@@ -2125,6 +2426,25 @@ namespace TravellingCN
                         // 无下划线，不受影响。
                         if (LocKeyPattern.IsMatch(stringValue))
                         {
+                            continue;
+                        }
+                        // 标签保真（CN→EN 方向）：标签字段先查 label_fidelity
+                        // （资产 id/中文标签 → 真实英文标签），再退回通用映射。
+                        // 通用映射按字符串择一，共享中文标签的资产会拿错变体、
+                        // 链接按标签解析即失效（v2.4.13 "travelling" 青链实测）。
+                        if (ReferenceEquals(map, _zh2en) && IsLabelFieldName(field.Name) &&
+                            TryGetFidelityEnglishLabel(GetSiblingId(instance), stringValue, out var fidelityEnglish) &&
+                            !string.Equals(stringValue, fidelityEnglish, StringComparison.Ordinal))
+                        {
+                            try
+                            {
+                                field.SetValue(instance, fidelityEnglish);
+                                replaced++;
+                            }
+                            catch (Exception)
+                            {
+                                // 只读/特殊字段写不进去就跳过。
+                            }
                             continue;
                         }
                         // accumulatedText 是带装饰的显示文本，走显示级流水线。
@@ -2199,6 +2519,22 @@ namespace TravellingCN
                     }
                     else if (value is IList list)
                     {
+                        // alternativeLabels 是链接解析的备用通道（中文主 label +
+                        // 英文别名）：逐元素语言交换会把别名换成与主标签同语言的
+                        // 副本，且每趟往返复制膨胀一份（v2.4.14 探针实测 alt 涨成
+                        // [性相池,性相池,性相池,性相池,Aspect Pool]，别名映射表随之
+                        // 出现自映射）。别名的语言形态由 InjectAlternativeLabels
+                        // 统一维护，交换不碰这个字段。
+                        if (field.Name == "alternativeLabels" || field.Name == "_alternativeLabels")
+                        {
+                            continue;
+                        }
+                        // 逻辑查找键数组（场景 id 列表等）：同名字段保护，见
+                        // IsLogicLookupKeyField（v2.4.16 音效消失修复）。
+                        if (IsLogicLookupKeyField(current.Name, field.Name))
+                        {
+                            continue;
+                        }
                         // string[]、List<string>、嵌套类实例的数组/List。
                         for (var i = 0; i < list.Count; i++)
                         {
@@ -2229,7 +2565,31 @@ namespace TravellingCN
                             }
                             else if (element != null && IsGameDataType(element.GetType()))
                             {
-                                replaced += SwapObjectFields(element, map, counters, seen);
+                                var elementType = element.GetType();
+                                if (elementType.IsClass)
+                                {
+                                    replaced += SwapObjectFields(element, map, counters, seen);
+                                }
+                                else
+                                {
+                                    // 结构体元素（ToastStackView._queue 是
+                                    // List<QueuedToast>）：list[i] 读出的是装箱
+                                    // 拷贝，换完字段必须写回——v2.4.12 实测：交换
+                                    // 时仍在排队的教程泡消息不换，弹出显示旧语言。
+                                    var structReplaced = SwapStructStringFields(element, map);
+                                    if (structReplaced > 0)
+                                    {
+                                        try
+                                        {
+                                            list[i] = element;
+                                            replaced += structReplaced;
+                                        }
+                                        catch (Exception)
+                                        {
+                                            // 只读列表写不进去就跳过。
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -2242,9 +2602,183 @@ namespace TravellingCN
                         // 0 bindings"，点击脚注触发）。显示文本不走这条路（阶段二负责）。
                         replaced += SwapObjectFields(value, map, counters, seen);
                     }
+                    else if (value is System.Collections.IEnumerable enumerable &&
+                             !(value is IDictionary) && !(value is IList))
+                    {
+                        // 非列表/字典的集合（Queue<QueuedToast> 等）：交换时仍排在
+                        // 队列里的教程泡消息永远不换、弹出时显示旧语言（v2.4.12
+                        // 实测）。类元素原地递归；结构体元素（QueuedToast 是 struct，
+                        // 枚举出来的是装箱拷贝）原位换字段后须重建集合写回——
+                        // Queue<T> 按 Clear+Enqueue 保序重建。string 元素写不回，
+                        // 跳过；引擎/System 命名空间元素由 IsGameDataType 闸拦截。
+                        replaced += SwapEnumerableElements(value, map, counters, seen);
+                    }
                 }
             }
             return replaced;
+        }
+
+        // 非列表/字典集合的元素交换：类元素原地递归；Queue<T> 的结构体元素
+        // （如 ToastStackView.QueuedToast）在装箱拷贝上原位换字段后重建队列写回。
+        private static int SwapEnumerableElements(
+            object collection, DirectionMap map, SwapCounters counters, HashSet<object> seen)
+        {
+            var replaced = 0;
+            List<object> elements;
+            try
+            {
+                elements = new List<object>();
+                foreach (var element in (System.Collections.IEnumerable)collection)
+                {
+                    elements.Add(element);
+                }
+            }
+            catch (Exception)
+            {
+                return 0; // 枚举期异常（集合正被碰等）：整集跳过。
+            }
+            if (elements.Count == 0)
+            {
+                return 0;
+            }
+            var changed = false;
+            foreach (var element in elements)
+            {
+                if (element == null || element is string || element is UnityEngine.Object)
+                {
+                    continue;
+                }
+                var elementType = element.GetType();
+                if (!IsGameDataType(elementType))
+                {
+                    continue;
+                }
+                if (elementType.IsClass)
+                {
+                    replaced += SwapObjectFields(element, map, counters, seen);
+                }
+                else
+                {
+                    // 结构体：装箱拷贝上原位换 string 字段（Queue<QueuedToast> 的
+                    // Message/Title）。不走 seen——值类型每次装箱都是新对象。
+                    replaced += SwapStructStringFields(element, map);
+                    changed = true;
+                }
+            }
+            if (!changed)
+            {
+                return replaced;
+            }
+            // 仅 Queue<T> 支持写回（Clear + Enqueue 保序）；其他集合的结构体
+            // 元素改动只落在拷贝上，白换但不重建（避免误伤未知集合语义）。
+            var collectionType = collection.GetType();
+            if (collectionType.IsGenericType &&
+                collectionType.GetGenericTypeDefinition() == typeof(Queue<>))
+            {
+                try
+                {
+                    collectionType.GetMethod("Clear").Invoke(collection, null);
+                    var enqueue = collectionType.GetMethod("Enqueue");
+                    foreach (var element in elements)
+                    {
+                        enqueue.Invoke(collection, new[] { element });
+                    }
+                }
+                catch (Exception)
+                {
+                    // 重建失败：队列保持原样（元素是拷贝，原集合未受损）。
+                }
+            }
+            return replaced;
+        }
+
+        // 结构体字段的精简交换：只处理 string 字段的精确映射（LocKey 跳过）。
+        // 供 SwapEnumerableElements 的装箱结构体元素使用。
+        private static int SwapStructStringFields(object boxedStruct, DirectionMap map)
+        {
+            var replaced = 0;
+            for (var current = boxedStruct.GetType();
+                 current != null && current != typeof(object) && current != typeof(ValueType);
+                 current = current.BaseType)
+            {
+                FieldInfo[] fields;
+                try
+                {
+                    fields = current.GetFields(
+                        BindingFlags.Instance | BindingFlags.Public |
+                        BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+                foreach (var field in fields)
+                {
+                    if (field.FieldType != typeof(string))
+                    {
+                        continue;
+                    }
+                    object raw;
+                    try
+                    {
+                        raw = field.GetValue(boxedStruct);
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                    var value = raw as string;
+                    if (string.IsNullOrEmpty(value) || LocKeyPattern.IsMatch(value))
+                    {
+                        continue;
+                    }
+                    if (map.Exact.TryGetValue(value, out var mapped) &&
+                        !string.Equals(value, mapped, StringComparison.Ordinal))
+                    {
+                        try
+                        {
+                            field.SetValue(boxedStruct, mapped);
+                            replaced++;
+                        }
+                        catch (Exception)
+                        {
+                            // 只读字段写不进去就跳过。
+                        }
+                    }
+                }
+            }
+            return replaced;
+        }
+
+        // 标签字段形态：公开字段 label、私有存储 _label、自动属性 <Label> backing。
+        private static bool IsLabelFieldName(string fieldName)
+        {
+            return fieldName == "label" || fieldName == "_label" ||
+                   fieldName == "<Label>k__BackingField";
+        }
+
+        // 读对象同级的 id/_id 字符串字段（资产稳定 id），供标签保真按 id 查询。
+        private static string GetSiblingId(object instance)
+        {
+            for (var current = instance.GetType();
+                 current != null && current != typeof(object);
+                 current = current.BaseType)
+            {
+                var idField = current.GetField("id", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic) ??
+                              current.GetField("_id", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if (idField != null && idField.FieldType == typeof(string))
+                {
+                    try
+                    {
+                        return idField.GetValue(instance) as string;
+                    }
+                    catch (Exception)
+                    {
+                        return null;
+                    }
+                }
+            }
+            return null;
         }
 
         // 阶段零专用：类型或其基类名为 ScriptablesCurator（不硬引用类型，

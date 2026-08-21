@@ -66,7 +66,11 @@ def main() -> int:
             source = entry.get("source", "")
             translation = (entry.get("translation") or "").strip()
             if source and translation and translation != source:
-                pairs[source] = translation
+                # 与烘焙一致（bake_translations.with_source_edge_whitespace）：
+                # 译文继承源串首尾空白，引文缩进/段落尾距是排版结构，运行时
+                # 整串交换若丢掉它们会造成版式错位。
+                pairs[source] = (source[:len(source) - len(source.lstrip())] + translation +
+                                 source[len(source.rstrip()):])
     with supplement_path.open(encoding="utf-8-sig", newline="") as handle:
         for row in csv.DictReader(handle):
             source = (row.get("source_en") or "").strip()

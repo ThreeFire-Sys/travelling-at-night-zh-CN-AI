@@ -695,3 +695,110 @@
 - 清理：CJK 字体净化（Static 化）经实证与本案无关且改变游戏字体动态行为，已移除；探针电池辅助方法已删；populate 日志只在首次修复时打一行。
 - 链路：slim 119 → 打包 2.4.8 → 装卸 46/46 → 自动探针自测通过（截图存 build/probe_screenshot.png）。
 - 待用户验收：脚注搜索页行标签中文正常。
+## 82. 2026-08-21 v2.4.12：F9 漏换根治——全局命名空间类型漏扫 + 提示泡链接还原匹配（全程自测）
+
+- 用户报告两 bug：①切回中文时提示文本（"制作：查看配方"教程泡）切不回来、正文英文链接名中文混排；②在物品栏里 F9 切英文再点开任务栏，任务栏详情 CN/EN 混杂（直接在任务栏里切则正常）。
+- 根因一（bug②，也是"漏译广泛存在"忧虑的系统性答案）：`IsGameDataType` 只认 `Travelling*`/`PixelCrushers*` 命名空间，而 travelling.scripts.dll 里 **AxisQuality/Quality/VariableQuality/ExperienceQuality/ChoiceTagProperties/ToastStackView 等在全局命名空间**（Namespace=null）→ 阶段一整批跳过。任务栏详情在 VisualOpen 时从数据实时重组（DisplayDetailFor），数据没换 → 重开即回原语言；面板开着切时阶段二换了显示文本所以"看起来正常"。修复：命名空间为空时按程序集名 `travelling*` 兜底（带类型缓存）。实证：交换精确替换数 11607→11746（+139）；探针显示 nina.prologue 的 _label/_description 已换英文、任务栏 CJK 转储 0 条。
+- 根因二（bug①）：教程泡文本在 ToastStackView.Show 时一次性组合成**链接已解析**形态（`<link="id"><color=…>蠕虫</color></link>`），打开状态切语言时精确/去标签/折叠三层全部失配，掉到子串级只换掉链接名。修复：新增 Tier 1.7"链接还原精确"——把 `<link…>inner</link>` 段还原成 `[[剥净的inner]]` 再查精确表，失配再折叠空白查 Squashed 表（长文显示态有插入手动换行）；命中后照常走 SettleLinks 重装饰。实证：泡打开中 CN→EN→CN 往返，文本两向完整切换。
+- 顺带修复：Plugin.cs 探针引用不存在的 `Travelling.PCQualities.AxisQuality`（编译不过）——改反射按名查找（全局命名空间）。
+- 陈旧字段检测现报 177 条，全部是**设计内豁免**的新覆盖噪音：AxisQuality.Category="Plan"（逻辑字段永不交换）与 Footnote.alternativeLabels 英文别名（中文态刻意注入）。
+- 装机事故记录：手工覆盖 DLL 导致哈希不符→卸载器拒删→安装器拒装；需先删 `.travelling-cn-install.json` + 残留 `BepInEx/plugins/TravellingCN/` 再装。教训：**不要在受管安装里手工覆盖文件**。
+- 链路：slim 119 → 打包 2.4.12 → 装卸 46/46 哈希全对 → 探针自测两场景通过 → 关诊断（AutoProbeSwap/DebugLog=false）→ 冷启动 0 异常、插件自报 2.4.12。
+- 待用户验收：①物品栏里 F9 切英文再开任务栏，详情应全英文（切回中文应全中文）；②"制作：查看配方"教程泡打开中切语言应整体切换无混排；③顺观察其他面板是否还有漏换。
+## 83. 2026-08-21 v2.4.13：F9 验收回归三修——curator 惰性缓存失效 + 集合结构体元素交换 + Tier1.7 保排版标签（全程自测）
+
+- 用户验收 v2.4.12 报三处回归：①切英文后链接全失效（对话里 Passion/Aspect Pool 变青链，心念详情里 "A Passion." 变裸文本）；②对话历史"动用了心念：冷峻；性相池恢复了…"合成行掉到子串级半换；③提示泡"有部分好有部分坏"（滞留旧语言或正文/链接名混排）。
+- 根因一（①）：curator 的 ByLabel 字典与 _alternativeToPrimaryLabel 是**惰性构建+永久缓存**（首次链接解析时按当时语言建键）；SwapDictionaryKeys 碰不到它们（字典字段是 System 命名空间，字段递归闸门不进，日志里"字典键 0 条"从未开火）。缓存建于 CN 期时，EN 标签解析只能走别名通道——而英文别名注入只覆盖 Footnote，Passion/Aspect 等直查必落空。修复：RunSwapPass 起手 `ForceRefresh()` 失效全部缓存（新增 Plugin.RequestCuratorCacheRefresh），此后解析按目标语言重建；中文态仍由注入里的 ForceRefresh 接力。探针实证：CN 态预建缓存后切 EN，DoesDetailableLabelExist(Passion)=True。
+- 根因二（③的一部分）：`ToastStackView._queue` 是 `List<QueuedToast>`——**结构体**元素：IList 分支 `SwapObjectFields(element)` 被 `!type.IsClass` 入口闸静默拒绝，交换时仍在排队的教程泡消息永不换，弹出显示旧语言。修复：IList 分支结构体元素走新 SwapStructStringFields（精简精确映射）并 `list[i]=` 写回；另新增 SwapEnumerableElements 兜底非 IList/IDictionary 集合（Queue<T> 结构体元素 Clear+Enqueue 保序重建）。
+- 根因三（③的另一部分）：v2.4.12 的 Tier 1.7 链接还原把**所有**标签剥掉，但原始键常含 `<i>` 排版标签（教程泡题辞斜体），导致精确/折叠双失配。修复：还原分保标签/全剥两形态，各查精确+折叠四层（保标签优先）。
+- 根因四（②）：后果提示行是 Loc 运行时三段合成（UI_ACTED_WITH_PASSION + UI_SEMICOLON + UI_RECOVERED_POOL_ASPECTS），目录无整行键。修复：runtime_supplement.csv 新增合成对 `Acted with Passion: {0}; Aspect Pool recovered {1}` ↔ `动用了心念：{0}; 性相池恢复了 {1}`（双占位符模板，组内递归走完整流水线），lang_swap.json 已重建。
+- 排障设施增量：探针在首次交换前强制预建 CN 链接缓存（覆盖用户长会话路径）；提示泡探针加弹"工具提示与脚注"泡并记录带标签原文（StripMarkupForLog 会藏关键差异）。
+- 装机教训复用：手工覆盖受管文件必导致卸载拒删/安装拒装；恢复=删 `.travelling-cn-install.json` + 残留插件目录后重装。本轮又踩一次，复验流程同上。
+- 链路：slim 119 → 打包 2.4.13 → 装卸 46/46 → 探针复测：双提示泡 CN→EN→CN 全量干净往返、链接解析 EN 态健康、任务栏 0 残留、四趟扫描陈旧报告无新增实损 → 关诊断 → 冷启动 0 异常、插件自报 2.4.13。
+- 待用户验收：①切英文后链接正常显色可点（对话/心念详情/提示泡）；②"动用了心念…"类历史行完整换英文；③提示泡不再部分好部分坏；④v2.4.12 原两项（任务栏、制作提示泡）仍正常。
+## 84. 2026-08-21 v2.4.13 后续：自主巡测电池 + 青链根治（标签保真映射）+ 新游戏全流程自测
+
+- 用户要求"自己游玩、自己找 bug 修"。已建成三套探针电池（Diagnostics 节门控，默认全关）：
+  - **AutoProbeSoak**：读档 → 6 个 HUD 面板（任务/物品/脚注搜索/角色/地图/制作）×（开状态切/关状态切）× EN/CN 双方向 + 详情弹窗（InfoWindowManager.Show 脚注/心念）+ Esc 菜单；每步转储"残留嫌疑"（EN 态可见 CJK；CN 态剥净命中 en2zh 精确键；**任何语言的 #00FFFF 青链**，BROKEN_LINK_COLOR=Color.cyan）。
+  - **AutoProbeNewGame**：引文页反射 Advance → 主菜单 → NewGame → 捏人（CareerChoiceSelected/ChoosePassion/FinishCharacterCreation 全反射驱动）→ 进场景驻留 40s → 启动开发冒烟会话（_read/test）覆盖打字机/选项列表。**每次 NewGame 后立即禁用 AutosaveMonitor**（见下方事故）。
+  - 复测全绿：24 面板步 + 2 弹窗 + Esc + 主菜单/捏人/进场景/会话全程 0 残留 0 青链 0 异常。
+- **青链根治（用户报"切英文链接仍失效"的真根）**：通用 zh2en 按字符串择一，旅行脚注被换成 "Travel"（应为 "Travelling"），作者手写链接 id "travelling" 不区分大小写也配不上 → 青链。新建 `tools/build_label_fidelity.py`：从 vanilla 抽取的资产标签位点生成 label_fidelity.json（byId 769 条唯一无冲突 / byCn 732 条，共享中文标签的冲突对由 byId 兜底）。插件在 CN→EN 换 label/_label 字段时先查保真表；英文别名注入同步带 id 查保真。会话级复测：CN 态预建缓存 + 多次往返后青链归零。
+- **存档事故（已向用户坦白）**：新游戏探针首次运行触发 AutosaveMonitor 存档节拍，覆盖了用户 102 号存档；已从 build/save_backup_before_newgame_probe/ 完整恢复（save_102/saveinfo/saveSlotMetadata），探针现已内建禁用保护并复测验证不落盘。**任何涉及 NewGame 的探针必须先禁用 AutosaveMonitor。**
+- **打包卫生**：build/baked_assets 里躺着 k6 时代的 level2 残件（引文场景，两处占位符位点，运行时会被 QuoteSceneController 覆写），被打包脚本的全量扫描捎进资产负载——已移至 build/attic/level2.k6era-placeholder-only，打包脚本排除清单补 label_fidelity.json（它只应进插件目录）。游戏里的 level2 是该残件（无 vanilla 备份可还），实际不可见；若用户日后要彻底纯净卸载，可用 Steam 校验完整性兜底。
+- **安装链再踩两坑**：①Edit 工具改含中文 ps1 会丢 UTF-8 BOM（本轮又犯一次，打包报 README 找不到）——改后必须 python 恢复 BOM；②手工拷贝 DLL/JSON 进游戏再装卸会导致哈希不符卡死——恢复套路：删 `.travelling-cn-install.json` + 删 `BepInEx/plugins/TravellingCN/`（或全 BepInEx）+ 从最近 vanilla 备份恢复资产后全新安装。
+- 已知噪音（非 bug）：主菜单倒计时 "30s" 每帧重渲染，交换后会跳回英文形态，自检探测器会误报 1 条。
+- 最终装机： vanilla 恢复 → 全新安装 46 文件（replaced 15 + created 30 + unchanged 1）哈希全对 → 冷启动 0 异常、插件自报 2.4.13、保真映射载入正常 → 诊断全关 → 存档区完好。
+- 待用户验收：①切英文链接不再失效；②新游戏/捏人/开场/会话全流程 F9 正常；③此前各项修复不回退。
+## 85. 2026-08-21 v2.4.14：开场引文错位根治（烘焙边缘空白）+ alternativeLabels 交换膨胀根治 + 链接变色调查（未复现，附结论）
+
+- **开场引文格式错位（用户报）**：根因是 `bake_translations.py` 加载目录时对译文整体 `.strip()`——引文 `\t\t` 缩进、对话尾随空格、段落尾距 `\n\n` 这类排版结构全被剥掉（共 159 条目受影响）。游戏内 assets 实锤：`_content` 长度 0x94（少了两个 tab）。修复三处同步：`with_source_edge_whitespace()`（译文继承源串首尾空白）入 bake_translations；verify_baked_assets.py 与 build_lang_swap_map.py 同逻辑（运行时整串交换也不再丢空白）。重烘焙 9081 位点 0 漂移、回读 9018/9018、0 mismatch，引文带缩进字节实证。
+- **alternativeLabels 交换膨胀（探针实证）**：F9 每往返一次，footnote.alternativeLabels 被 SwapObjectFields 逐元素换语言并复注入，膨胀出 `[性相池,性相池,性相池,性相池,Aspect Pool]` 这类形态，`_alternativeToPrimaryLabel` 随之出现 `性相池→性相池` 自映射——链接解析健壮性被持续腐蚀。修复：SwapObjectFields 对 `alternativeLabels`/`_alternativeLabels` 字段整体跳过（别名语言形态由 InjectAlternativeLabels 统一维护）；InjectAlternativeLabels 注入前去空/去重/去自映射。v2.4.14 正式环境 5 次 F9 往返后 alt 恒为单条目。
+- **链接变色 bug（用户报"心念点击不变色/切英文失色/性相池误淡"）调查结论**：
+  - 端到端复现（新游戏→antibes/intro 自动推进到含链接的教学 Advice，OnClick 首响应/OnContinueConversation 驱动）：富文本 `<link="心念"><color=#BA4802>` + 像素截图砖红——**当前版本渲染完全正确**，未复现亮蓝色。
+  - "性相池没点也变淡"：探针实证存档里两脚注都已 viewed（LogInteraction 按 footnote id 记录，详情页内导航也计入）——是正确行为。
+  - "点击后不变色"：游戏原生机制——已渲染文本不随点击查看重渲染，颜色等下次文本重建才刷新（F9/对话推进会触发）。英文原版同样如此，非补丁 bug。
+  - 亮蓝色心念最可能来自用户测试路径（大量 F9）下的 alt 膨胀污染，v2.4.14 已根治；若仍复现，让用户按 F12 转储后把日志发来。
+  - 旁证修正：TravellingConstants 实为 LINK_COLOR=砖红(186,72,2)、VISITED=灰粉(135,73,73)、**BROKEN=cyan(#00FFFF)**；LinkHoverStyle 悬停色=#CA4F04 橙（排除悬停误判）。
+- **探针电池增强**（Diagnostics 门控，默认全关）：DumpLinkResolutionState 加中文基线（F9 前）+ 解析对象 id + LabelState 四值 + footnote 运行时 label/alt 实测；RenderProbeAdvice 直调游戏上色纯函数（注意：对话 Title 是内部 id "antibes/intro"，界面标题"直至安提波利斯"是 Description 字段）；ProbeConversation 改真实开场对话自动推进 + convlink 富文本转储 + ScreenCapture 截图（反射调 UnityEngine.ScreenCaptureModule，csproj 未引用该模块）。
+- **打包卫生再补**：catalog 收录了 level2 占位位点（"MUNUMUNUM" 开发测试词），重烘焙会把 k6 残件重新复制回 build/baked_assets——打包脚本排除清单补 level2（附件注释）。
+- **链路**：slim 119 过 → 打包 2.4.14 → 卸载（手工 DLL 哈希不符按套路恢复：删残留插件目录+删清单）→ 全新安装 45 文件核验全对 → 正式环境新游戏探针全绿（残留仅已知噪音"30s"）→ 诊断全关。
+- 待用户验收：①开场引文排版（缩进/分行）与原版一致；②F9 往返后链接颜色稳定（心念/性相池砖红，查看后变淡）；③如仍见亮蓝链接，F12 转储发日志。
+## 86. 2026-08-21 v2.4.15：F9 交换链接状态继承（中英行为一致）——用户拍板的一致性语义
+
+- **用户需求（澄清后）**：不是"点击即变色"，而是"F9 只换语言，不该顺带刷新链接已读状态"。用户场景：点开"心念"（标记已读，中文文本不重渲染是原版机制），F9 切英文后 Passion 突然变纯文本（已读+SUBTLE 剥除）——中英两态显示不一致。
+- **原版机制确认（代码证据）**：点击链接只走 InfoWindowManager.Show→TryRecordDetailableViewed（按 footnote id 记 loggedInteractions），全游戏**没有任何"点击后重渲染当前文本"的调用**（无 RefreshLinks/Recolourize；OnInfoWindowForDetailableManuallyClosed 仅脚注搜索面板订阅）。颜色只在文本重建时刷新。SUBTLE（FootnoteSubtlety>0）下 ShowAsViewed 剥成纯文本、ShowAsViewedWithChoicesRemaining 保持淡色——用户英文截图两态均符合设计。
+- **实现**：SettleLinks 的装饰改为 DecorateLinksPreservingDisplayedState——源串按序提取每个 `<link>` 的显示色（SourceLinkHeadPattern，无 color 记 null 占位）；目标串 `[[]]`→`<link>` 后逐链接处理：配对成功→原色继承、永不剥除；配对失败（源串已剥除/新增链接）→ 单条走原生 ColourizeLinks（含 hideVisited 剥除）。TryGetDefaultStyleColors 加 linkColor 输出（fallback 单条用）。TryExtractLinkColor/GetCustomLinkStyle 不再被 SettleLinks 引用（保留未删）。
+- **探针实证**（新游戏→antibes/intro 自动推进→反射 LogInteraction 标记心念已读→F9 往返）：已读后 F9 前 `#BA4802` 砖红 → 切 EN `Passion` 保持 `#BA4802` 链接形态（不剥不淡）→ 切回 CN 仍砖红。三行全对。
+- **回归确认**：v2.4.14 装机后新游戏探针全绿（残留仅已知噪音"30s"）；alt 修复实证：5 次 F9 往返后 alternativeLabels 恒为 `[Passion]` 单条目。
+- **存档排查**：save_102 的 20:32 写入是用户自己在玩（自动保存），非探针事故——探针 AutosaveMonitor 禁用有效，零落盘。
+- 版本说明：v2.4.14（边缘空白+alt 膨胀）未交付验收即被 v2.4.15（+链接状态继承）覆盖安装；装机核验 9 文件全对（资产未变故 unchanged），探针开关全关。
+- 待用户验收：①开场引文排版；②点开链接后 F9 往返，中英两态链接颜色/形态一致；③其余不回退。
+## 87. 2026-08-21 v2.4.15 用户验收通过
+
+- 用户确认 v2.4.15 无问题。本轮修复（边缘空白烘焙、alt 膨胀、F9 链接状态继承）全部生效。
+- 覆盖空白自陈：探针只到开场对话自动推进+面板矩阵；真实 NPC 对话、任务推进、旅行、制作等正常玩家流程未测。用户将引入 ChatGPT 扮演玩家做深度游玩测试。
+## 88. 2026-08-21 v2.4.16：音效消失根治（逻辑查找键保护）+ 提示泡 EN→CN 失配回归根治（squash 撞键误封）
+
+- **音效消失（用户戴耳机实测：捏人选职业/心念/技艺加点无声）**：UiSfx.Play("Select") 经 ScriptablesCurator.GetUIAudioFXRequest→AudioFXLibrary.GetListingByName(_name 序)；`_name` 被 SwapObjectFields 换成中文（"Select"→"选择"等 4/23 命中 en2zh）→ 查找落空→静音。v2.4.12 全局命名空间兜底放行把这些逻辑键纳入了遍历。修复：`IsLogicLookupKeyField` 保护名单（AudioFXListing/AmbientFXListing._name、MusicTrackListing.Id/UseInScenes/UseAsFirstTrackInScenes、SceneBed.Scenes），字符串字段与 IList 分支双插入点；MusicTrackListing.DisplayName 是显示文本不在保护列。探针实证：F9 全往返后条目名恒英文、GetUIAudioFXRequest(Select) 非空。
+- **提示泡切不回中文回归（用户报，制作教程泡"制作：场所与技艺"英文句子+中文链接词混排）**：根因是 v2.4.14 的边缘空白改动——lang_swap 的 pairs 同时含"带尾距主条目"（源→带空白译文）与 trimmed 变体（strip 源→strip 译文），两者 SquashWhitespace 后撞同一键、值只差空白，BuildDirectionMap 的撞键封禁逻辑把它们**删键+永久封禁**（约 153 个带空白条目全灭）。游戏长文显示态有手动换行，Exact 必失配、Squashed 是唯一能救的层——被封就掉子串级（只换链接词）。修复：squash 撞键时两值 Trim 后相同则保留先到条目、不封禁。探针实证：泡 EN→CN 恢复完整中文整句，同轮 18 条泡零残留。
+- **安装套路复用**：手工 DLL 污染 → 删 BepInEx\plugins\TravellingCN + 删 .travelling-cn-install.json → 全新安装 → 核验 9 文件全对。
+- **综合回归（v2.4.16 正式环境）**：新游戏全流程、对话链接状态继承三行全对（已读后 F9 往返均 #BA4802 砖红）、音效名全英文、残留仅已知噪音"30s"。诊断开关全关。
+- 待用户验收：①捏人界面音效（职业卡片/心念/加点）；②提示泡 F9 往返中英完整切换；③之前各项不回退。
+## 89. 2026-08-21 v2.5.0：游戏更新 k.52→k.83 迁移（Steam 更新后补丁全失效应对方案）
+
+- **背景**：Steam 更新游戏到 2026.8.k.83，travelling_Data 资产被还原为新版英文（补丁烘焙层全失效；BepInEx 插件文件 Steam 不动所以幸存）。**k.83 新增内容：寻路系统重做（不可达点击直接拒绝+红点音效反馈）、取消音效、需求文本清晰化等（见补丁说明新段）。**
+- **迁移管线（再次复用，全程约 25 分钟）**：
+  1. `extract_unity_text.py 游戏目录 build/extracted_k83`（29 文件/117871 候选）→ 同步替换 build/extracted_current 快照（烘焙器 supplement 位点查询依赖）
+  2. `prepare_worklist.py`（6694 条，净增 12）→ `rebase_translations_to_worklist.py worklist_k83 translations_k52 worklist_k83_rebased`（按内容哈希复用 6661 条，退役 21；**33 条修订文本缺译报错中断**）
+  3. 33 条新旧对照：9 条 Dread 条件开发占位恒等保留；补丁说明 k.83 段新译（diff 确认其余全文未变，旧译直接拼接）；订单类统一改"包裹将替换这份收据"；其余拼写/斜体/措辞微调沿用或对齐旧译。产物 build/translations_k83_supplement.jsonl → rebase --supplement 通过
+  4. 合并 0 错误 → 烘焙（game_root 直接指游戏目录=新版 vanilla）8762 位点 0 漂移 → 回读 9029/9029 → 重建 lang_swap（7433 对）+ label_fidelity（byId 769/byCn 732，旅行/纯白之门两冲突照旧 byId 兜底）
+- **安装坑新增**：Steam 更新后资产已是 vanilla，但安装器在"BepInEx 已存在"时只装插件跳过资产（旧坑），删全 BepInEx 后又撞"孤儿注入器文件"保护——**正确顺序：删 BepInEx 目录 + 删 winhttp.dll/doorstop_config.ini + 删 .travelling-cn-install.json，再全新安装**。诊断 cfg 不在包里（首启生成），探针开关要手工预建 cfg 文件。
+- **插件版本号**：PluginVersion 常量手工维护，长期停留在 2.4.13 导致 v2.4.14~2.4.16 日志自报旧版——发版时务必同步（本轮已改 2.5.0）。
+- **回归**：新游戏全流程探针全绿（链接状态继承三行全对、残留仅已知"30s"噪音）；音效名保护不受迁移影响（保护名单在交换器层，与资产版本无关）。
+- 待用户验收：①游戏正常启动进中文；②旧存档（k.52 的 save_102 等）能否读取（游戏自身兼容性，与本补丁无关——k.83 官方未声明存档失效）；③新增内容（寻路拒绝音效等）显示正常；④此前修复不回退。
+## 90. 2026-08-21 v2.5.1：捏人界面链接 F9 后剥成裸文本——CharGenLinkWhitelist 惰性缓存
+
+- **用户报（k.83/v2.5.0）**：捏人界面心念说明（悬停 tooltip），中文态链接正常，F9 切英文后 Experiences/Aspect 变裸文本。
+- **根因**：`CharGenLinkWhitelist._labels` 惰性缓存——首次 PermitsLabel 时按**当时语言**的 detailable.Label 建集合；谓词 resolveToLabel(id) 按**当前语言**解析。F9 换语言后两语言错位，白名单失配 → tooltip 渲染路径（27925/27955，带 CharGenLinkContext.ActivePermit）把链接剥成裸文本。与 v2.2.11/2.2.12 历史坑同源（那次修的是交换层不传 permit；这次是原生渲染层的缓存没失效）。
+- **修复**：`Plugin.ResetCharGenLinkWhitelistCache()`（反射清所有 CharGenLinkWhitelist 实例的 `_labels` 字段为 null），在 RunSwapPass 末尾（RequestAlternativeLabelsInjection 之后）调用——交换完成后清缓存，下次求值按当前语言重建。
+- **探针实证**：弹窗往返三态富文本全对（CN `<link="经历">…#BA4802` / EN `<link="Experiences">…#BA4802` / 切回完整恢复）；原生渲染路径（带 ActivePermit）EN 态链接数=4 全活；缓存清理日志 3 次。
+- **顺带发现（原生设计，非 bug）**：对话推进的新字幕在"已读+SUBTLE 开"时链接剥成裸文本（会话步13 心念裸文本=该规则）；与 F9 交换层的"保持显示状态"语义分层各自正确。
+- **版本号纪律**：PluginVersion 常量同步 2.5.1（上次忘同步的教训已记 §89）。
+- 安装顺序复用 §89：删 BepInEx+winhttp.dll+doorstop_config.ini+清单 → 全新装 → 核验 0 异常。
+- 待用户验收：①捏人界面悬停心念/技艺/性相池等说明 tooltip，F9 往返后英文链接完整显示；②此前各项不回退。
+## 91. 2026-08-22 v2.5.2：F9 剥除状态继承——顺序配对错位根治（改跨语言按词配对）
+
+- **用户报（v2.5.1）**：已读+SUBTLE 下中文态"心念"是普通文本（剥除正确），但 F9 切英文后 Passion 变成未读的链接样式，切回中文心念也被污染回链接。
+- **根因**：v2.4.14 的 DecorateLinksPreservingDisplayedState 用**顺序配对**（目标第 i 个链接继承源串第 i 个 `<link>` 的颜色）。源串里已剥除的链接是裸文本、不占位——目标第一个链接 Passion 错位继承了第二个链接（性相池）的颜色，剥除状态丢失。
+- **修复**：改**跨语言按词配对**——目标链接 id 经反向映射（切英文用 en2zh、切中文用 zh2en）找回源语言词：源串里该词是裸文本→剥除继承（返回裸文本）；是链接→继承其显示色；找不到对应词→原生 ColourizeLinks 状态逻辑兜底。顺序配对完全废弃。
+- **探针实证**（反射直接调装饰方法，构造源串=心念裸文本+性相池链接）：输出 Passion 两处裸文本 + Aspect Pool 带色链接 ✓。另发现探针副效应：弹窗探针 Show 详情会把 passion 标记已读（InfoWindowManager.Show→TryRecordDetailableViewed），导致后续对话里心念按 SUBTLE 规则剥除——顺带实证了原生剥除行为本身正常。
+- v2.5.2 正式环境回归：剥除验证过、白名单原生渲染 4 链接、非零残留仅"30s"噪音、0 异常。装机核验 0 异常。
+- 待用户验收：①已读链接 F9 往返两态都保持剥除（普通文本）；②未读链接保持链接样式；③此前修复不回退。
+## 92. 2026-08-22 v2.5.3：防再犯基建——一键迁移管线 + 回归断言电池（用户要求根治"重复犯错"）
+
+- **用户痛点**：每次游戏更新都经历"修 bug→用户发现回归→再修"循环，太累。根因复盘：①改共享数据形态不查全部消费方；②防御名单靠用户报一个加一个；③回归靠用户肉眼。
+- **`tools/migrate_game_version.py`（一键迁移）**：`python tools/migrate_game_version.py <游戏目录> --patch-version X` 自动走完 §89 全流程：version.txt 读新版号 → 提取 → worklist → rebase 复用旧译（缺译时写 tmp/<tag>_missing_diffs.json 新旧对照并退出码 2，补译后 --supplement 续跑，已完成步骤自动复用）→ 合并 → 烘焙 → 回读 → 重建 lang_swap/label_fidelity → 更新 extracted_current → slim → 打包 → 清注入器残留全新安装 → 哈希核验。会拒绝在烘焙中文资产上跑（提示先卸载）。
+- **回归断言设施（插件探针内）**：`ProbeAssert` + `[FAIL]`/`[pass]` 日志 + 每探针结束 `[regression]` 汇总（非零即"发版前必须清零"）。已断言化：音效条目名全英文+Select 解析非空（AutoProbeSwap）、捏人白名单原生渲染链接存活（弹窗探针）、剥除继承单元（会话探针）。newgame 探针实测全绿。
+- **拷 DLL 教训**：bash 多行命令里后台任务被用户打断时 cp 可能没执行——探针跑前必须 stat 校验游戏内 DLL 时间戳/内容标记（本轮一次假"探针没跑"其实是旧 DLL）。
+- 发版纪律更新：改代码后 → slim 119 → 打包 → 装 → **跑三个探针全部 [regression] 全绿** → 才能交用户验收。
+- 待用户验收 v2.5.3（内容同 v2.5.2 + 断言设施；无行为差异）。

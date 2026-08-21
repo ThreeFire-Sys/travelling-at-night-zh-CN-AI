@@ -24,6 +24,7 @@ from bake_translations import (  # noqa: E402
     read_raw_with_offset,
     serialized_files,
     find_data_dir,
+    with_source_edge_whitespace,
 )
 
 UNITY_VERSION = "6000.4.0f1"
@@ -58,7 +59,9 @@ def main() -> int:
                 continue
             for context in entry.get("contexts") or []:
                 site = (context["asset_file"], context["path_id"], context["field_path"])
-                sites[site] = translation
+                # 与烘焙一致的边缘空白继承（引文缩进/段落尾距是写入值的一部分）。
+                sites[site] = with_source_edge_whitespace(
+                    context.get("source", entry["source"]) or "", translation)
                 object_scripts.setdefault(
                     (context["asset_file"], context["path_id"]), context.get("script", ""))
                 if context["field_path"].endswith(("label", "Label")):

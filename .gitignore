@@ -2,6 +2,8 @@ __pycache__/
 *.pyc
 build/
 dist/
+tmp/
+output/
 tools/bin/
 tools/obj/
 src/**/bin/

@@ -207,7 +207,7 @@ if ($BakedAssetsDir -ne '') {
         throw "Baked assets contain mismatches; rebuild the bake before packaging."
     }
     $bakedFiles = Get-ChildItem -LiteralPath $bakedRoot -File | Where-Object {
-        $_.Name -ne 'bake_report.json' -and $_.Name -ne 'raw_labels.json' -and $_.Name -ne 'lang_swap.json'
+        $_.Name -ne 'bake_report.json' -and $_.Name -ne 'raw_labels.json' -and $_.Name -ne 'lang_swap.json' -and $_.Name -ne 'label_fidelity.json' -and $_.Name -ne 'level2'
     }
     if (@($bakedFiles).Count -eq 0) {
         throw "Baked assets directory is empty: $bakedRoot"
@@ -225,6 +225,11 @@ if ($BakedAssetsDir -ne '') {
     $langSwapPath = Join-Path $bakedRoot 'lang_swap.json'
     if (Test-Path -LiteralPath $langSwapPath -PathType Leaf) {
         Copy-Item -LiteralPath $langSwapPath -Destination $pluginRoot -Force
+    }
+    # 资产标签保真表（v2.4.13）：CN→EN 换标签字段时恢复资产真实英文标签。
+    $labelFidelityPath = Join-Path $bakedRoot 'label_fidelity.json'
+    if (Test-Path -LiteralPath $labelFidelityPath -PathType Leaf) {
+        Copy-Item -LiteralPath $labelFidelityPath -Destination $pluginRoot -Force
     }
 }
 
