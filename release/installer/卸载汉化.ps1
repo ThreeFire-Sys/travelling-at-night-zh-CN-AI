@@ -1,10 +1,22 @@
 ﻿param(
-    [string]$GamePath = 'D:\Steam\steamapps\common\Travelling at Night Demo'
+    [string]$GamePath = ''
 )
 
 $ErrorActionPreference = 'Stop'
 Import-Module Microsoft.PowerShell.Utility -ErrorAction Stop
-$gameRoot = [System.IO.Path]::GetFullPath($GamePath)
+
+# 游戏目录：显式 -GamePath 优先；未指定时自动探测（只接受含安装状态文件的目录）。
+. (Join-Path $PSScriptRoot 'Resolve-GamePath.ps1')
+if (-not [string]::IsNullOrWhiteSpace($GamePath)) {
+    $gameRoot = [System.IO.Path]::GetFullPath($GamePath)
+}
+else {
+    $gameRoot = Resolve-TravellingGamePath -RequireStateFile
+    if (-not $gameRoot) {
+        throw "未能自动定位已安装汉化的游戏目录（未找到安装状态文件）。请手动指定，例如：一键卸载.bat -GamePath `"E:\Games\steamapps\common\Travelling at Night Demo`""
+    }
+    Write-Host "已自动定位游戏目录：$gameRoot"
+}
 $statePath = Join-Path $gameRoot '.travelling-cn-install.json'
 if (-not (Test-Path -LiteralPath $statePath -PathType Leaf)) {
     throw "未找到安装状态文件：$statePath"

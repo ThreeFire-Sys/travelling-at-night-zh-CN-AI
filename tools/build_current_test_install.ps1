@@ -246,6 +246,7 @@ $installerRoot = Join-Path $packageRoot 'installer'
 New-Item -ItemType Directory -Force -Path $installerRoot | Out-Null
 Copy-Item -LiteralPath (Join-Path $workspace 'release\installer\安装汉化.ps1') -Destination $installerRoot
 Copy-Item -LiteralPath (Join-Path $workspace 'release\installer\卸载汉化.ps1') -Destination $installerRoot
+Copy-Item -LiteralPath (Join-Path $workspace 'release\installer\Resolve-GamePath.ps1') -Destination $installerRoot
 Copy-Item -LiteralPath (Join-Path $workspace 'release\一键安装.bat') -Destination $packageRoot
 Copy-Item -LiteralPath (Join-Path $workspace 'release\一键卸载.bat') -Destination $packageRoot
 Copy-Item -LiteralPath (Join-Path $workspace 'release\README_安装说明.md') -Destination $packageRoot

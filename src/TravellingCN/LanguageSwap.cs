@@ -398,6 +398,27 @@ namespace TravellingCN
         //                    位于模板末尾的占位符用贪婪 (.+)（非贪婪在右无界时
         //                    只会吞 1 个字符），其余保持非贪婪 (.+?)（左端有
         //                    正则最左匹配偏置，不需特殊处理）。
+        // 捕获组贪婪特例（v2.3.4）：若占位符紧随的字面段以开括号开头
+        // （" ("／"（"），该组改用贪婪——物品名自带括号后缀时（"第三共和国护照
+        // （已失效）"／"Third Republic Passport (Invalid)"），非贪婪会在第一个
+        // 括号处错切，导致组内容查不到映射、交换后名字残留旧语言（"Gained
+        // {0} ({1})" 实测）。贪婪按最右开括号切分，正合"计数括号在最后"的
+        // 结构。子串版的贪婪组限制不跨换行（[^\n]+），防长 blob 里跨界。
+        private static bool LiteralStartsWithParen(string literal)
+        {
+            var i = 0;
+            while (i < literal.Length && char.IsWhiteSpace(literal[i]))
+            {
+                i++;
+            }
+            if (i >= literal.Length)
+            {
+                return false;
+            }
+            var c = literal[i];
+            return c == '(' || c == '（' || c == '[' || c == '【';
+        }
+
         private static TemplateEntry BuildTemplate(string sourceTemplate, string targetTemplate)
         {
             try
@@ -420,11 +441,18 @@ namespace TravellingCN
                     literalLength += literal.Length;
                     pattern.Append(Regex.Escape(literal));
                     substringPattern.Append(Regex.Escape(literal));
-                    pattern.Append("(.+?)");
+                    var followingLiteral = (i + 1 < placeholders.Count)
+                        ? sourceTemplate.Substring(
+                            match.Index + match.Length,
+                            placeholders[i + 1].Index - (match.Index + match.Length))
+                        : sourceTemplate.Substring(match.Index + match.Length);
+                    var greedyForParen = LiteralStartsWithParen(followingLiteral);
+                    pattern.Append(greedyForParen ? "(.+)" : "(.+?)");
                     var isLastToken =
                         i == placeholders.Count - 1 &&
                         match.Index + match.Length == sourceTemplate.Length;
-                    substringPattern.Append(isLastToken ? "(.+)" : "(.+?)");
+                    substringPattern.Append(
+                        isLastToken ? "(.+)" : (greedyForParen ? "([^\n]+)" : "(.+?)"));
                     groupPlaceholders.Add(int.Parse(match.Groups[1].Value));
                     position = match.Index + match.Length;
                 }
@@ -1147,15 +1175,17 @@ namespace TravellingCN
                                         context, type.FullName, fieldPath + "[" + i + "]", elementString);
                                 }
                             }
-                            else
+                            else if (element != null && IsGameDataType(element.GetType()))
                             {
                                 InspectStaleFields(
                                     element, forward, seen, fieldPath + "[" + i + "]", context);
                             }
                         }
                     }
-                    else if (fieldType.IsClass)
+                    else if (fieldType.IsClass && IsGameDataType(fieldType))
                     {
+                        // 与交换路径同款闸门：只递归游戏命名空间，不进 InputSystem 等
+                        // 引擎内部类型（只读巡检不需要，且避免噪音报告）。
                         InspectStaleFields(value, forward, seen, fieldPath, context);
                     }
                 }
@@ -1599,10 +1629,14 @@ namespace TravellingCN
             {
                 return text;
             }
-            // 合并两类区间（各自按起点升序、互不重叠），纯文本坐标经 indexMap
-            // 换算回原始串区间后一趟拼装。
+            // 合并两类区间（各自按起点升序、互不重叠），一趟拼装。区间间隙按
+            // 原始串坐标照抄——v2.3.3 实测旧实现按纯文本坐标取间隙，会把紧贴
+            // 替换区间首尾的标签（<font>/<color> 等）整段丢掉：读书界面
+            // <font="georgia"><b><i><sprite=N>名字</i></b></font> — <color>正文</color>
+            // 格式的行在交换后开场标签被剥、残留闭标签，历史文本颜色全错。
             var builder = new StringBuilder(text.Length + 16);
-            var cursor = 0; // 纯文本游标
+            var cursorPlain = 0; // 纯文本游标（重叠防御用）
+            var cursorOrig = 0;  // 原始串游标
             var ti = 0;
             var ki = 0;
             while (ti < templateCount || ki < keyCount)
@@ -1622,15 +1656,24 @@ namespace TravellingCN
                     value = keyValues[ki];
                     ki++;
                 }
-                if (span[0] < cursor)
+                if (span[0] < cursorPlain)
                 {
                     continue; // 防御：区间异常重叠时跳过
                 }
-                AppendOriginal(text, indexMap, builder, cursor, span[0]);
+                var spanOrigStart = indexMap[span[0]];
+                var spanOrigEnd = indexMap[span[1] - 1] + 1;
+                if (spanOrigStart > cursorOrig)
+                {
+                    builder.Append(text, cursorOrig, spanOrigStart - cursorOrig);
+                }
                 builder.Append(value);
-                cursor = span[1];
+                cursorPlain = span[1];
+                cursorOrig = spanOrigEnd;
             }
-            AppendOriginal(text, indexMap, builder, cursor, plainText.Length);
+            if (cursorOrig < text.Length)
+            {
+                builder.Append(text, cursorOrig, text.Length - cursorOrig);
+            }
             return builder.ToString();
         }
 
@@ -1649,19 +1692,6 @@ namespace TravellingCN
                 }
             }
             return false;
-        }
-
-        // 把纯文本区间 [plainFrom, plainTo) 对应的原始串内容追加到 builder。
-        private static void AppendOriginal(
-            string text, List<int> indexMap, StringBuilder builder, int plainFrom, int plainTo)
-        {
-            if (plainTo <= plainFrom)
-            {
-                return;
-            }
-            var originStart = indexMap[plainFrom];
-            var originEnd = indexMap[plainTo - 1] + 1;
-            builder.Append(text, originStart, originEnd - originStart);
         }
 
         // Settle：value 里仍含 [[Y]] 时，调用游戏原生管线统一装饰——
@@ -2197,14 +2227,19 @@ namespace TravellingCN
                                     }
                                 }
                             }
-                            else
+                            else if (element != null && IsGameDataType(element.GetType()))
                             {
                                 replaced += SwapObjectFields(element, map, counters, seen);
                             }
                         }
                     }
-                    else if (fieldType.IsClass)
+                    else if (fieldType.IsClass && IsGameDataType(fieldType))
                     {
+                        // 只递归游戏命名空间（Travelling/PixelCrushers）。v2.3.4 实测：
+                        // 无闸门时递归会沿 SubmitSpaceTypingGuard._submit 进入
+                        // UnityEngine.InputSystem.InputAction 内部，把动作名 "Submit"
+                        // 换成"提交"，游戏按名查绑定随即崩溃（"action 'UI/提交' with
+                        // 0 bindings"，点击脚注触发）。显示文本不走这条路（阶段二负责）。
                         replaced += SwapObjectFields(value, map, counters, seen);
                     }
                 }

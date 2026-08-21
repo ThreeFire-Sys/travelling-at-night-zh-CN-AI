@@ -655,3 +655,43 @@
 - **批量登记**：glossary.csv 新增 27 行（防剿局/十字派/伊斯/于西耶/肉源神/边境/圣域/脊索动物/格劳斯塔克等，含前作出处备注），术语表 366→393 行（Sleep 登记后撤下——普通词入表只给散文制造告警噪音）。登记即生效：新表首轮审计立刻抓到 6 处"亚历山大/亚历山大港"混用与 1 处"同伴/关系人"（Associates 机制名）——已全部统一。USER_GLOSSARY.md 增补肉源神/边境两条前作出处记录，并修正 Duties 条目对 The First Duty 的误关联。
 - 链路：merge 0 错 → 审计新术语 0 残留告警（fixed_term_missing 108→97，低于旧基线 99）→ 烘焙 0 漂移 → verify 9018/9018 → lang_swap 重建 → slim 119 → 打包 2.3.3 → 安装 46/46。
 - 待用户验收：肉源神/边境/第一职责/亚历山大港/关系人 实机可见。
+
+## 77. 2026-08-20 v2.3.4：Tier3 标签保留根治（读书界面颜色/名字）+ 模板括号贪婪切分（带括号物品名）
+
+- **诊断过程**：用户报读书界面 F9 后历史文本颜色错误+"我"没切英文。开 DebugLog 请用户复现一轮，拿到运行时原始串：读书行格式是 `<font="georgia"><b><i><sprite=N>名字</i></b></font> — <color=#231a17cc>正文</color>`（font 外包装、sprite 在 b/i 内、名字闭标签与内容 color 都在行中），与对话窗口的 `<color><sprite><b><i>名字 — 正文</i></b></color>` 不同。
+- **根因（Fix A，架构级）**：Tier 3/3.5 替换区间的间隙拷贝按纯文本坐标取（AppendOriginal），紧贴替换区间首尾的原始串标签会被跳过——读书格式行整块进通用流水线后，替换句两侧的开场标签被剥、闭标签残留 → 颜色错乱、单行名字失配残留中文。对话窗口没中招是因为缓冲逐行解析（SwapBufferByLines）把包装标签剥离后再过流水线。修复：合并区间改用原始串坐标游标，间隙原样照抄（含全部标签）。菜单行开场 <color> 丢失（早前"菜单栏"报告）同根因，一并根治。
+- **Fix C（模板切分）**："Gained {0} ({1})"类模板的捕获组原先一律非贪婪，在第一个括号处错切——物品名自带括号后缀（第三共和国护照（已失效）/Third Republic Passport (Invalid)）时名字查不到映射残留旧语言。修复：占位符紧随的字面段以开括号开头时该组改贪婪（按最右开括号切分）；子串版贪婪组限制不跨换行防长 blob 跨界。空格分隔的多组模板（Can't pay 等）保持非贪婪。
+- 诊断设施：插件 config 的 LanguageSwap.DebugLog 本轮证明能拿到运行时原始串结构；已在装回 v2.3.4 后关回 false。
+- 链路：slim 119（AppendOriginal 结构断言更新为 cursorOrig 合并）→ 打包 2.3.4 → 装卸 → 46/46。
+- 待用户验收：①读书界面 F9 来回：历史行颜色正常、"我"/[阅读] 切换正常；②获得带括号名字的物品（如护照）时 F9 后名称完整切换。
+
+## 78. 2026-08-20 安装器游戏路径自动探测（v2.3.4 同包）
+
+- 用户提问"游戏不在 D 盘能否安装"——此前不能：安装/卸载脚本的 $GamePath 写死 D:\Steam\...，仅支持 -GamePath 手动指定。
+- 修复：新增 release/installer/Resolve-GamePath.ps1（点源共享）。探测链：显式 -GamePath 参数 → 注册表 SteamPath（HKCU/HKLM 双查 SteamPath/InstallPath）→ steamapps\libraryfolders.vdf 全部库目录 → appmanifest_2915730.acf 的 installdir → 历史默认路径兜底；逐候选校验 travelling.exe。卸载器用 -RequireStateFile 只接受含 .travelling-cn-install.json 的目录。实机测试通过（注册表探测正确返回本机 D: 安装，含状态文件变体同样命中）。
+- 打包器/发布包校验器同步登记新文件；README_安装说明.md 改为"自动定位，失败再手动"。ps1 全程保持 UTF-8 BOM；注意 release/installer/*.ps1 是裸 LF 行尾（与 CRLF 的 Resolve-GamePath.ps1 混存无碍，PowerShell 两者都认）。
+- 教训：python 改 ps1 时对 '\r\n' 与反斜杠转义要逐字节断言——本轮一次 split('\r\n') 不命中把 Resolve-GamePath.ps1 写成单行，已重写恢复。
+## 79. 2026-08-20 v2.3.5：F9 后点击脚注崩溃根治（InputSystem 递归闸门）+ 搜索行中文空白 + 多利亚币
+
+- **崩溃（严重，已修）**：用户实测——脚注搜索页 F9 切英文能显示行标签，切回中文后点击脚注即崩溃弹窗：`ArgumentOutOfRangeException ... action 'UI/提交 [/Keyboard/enter]' with 0 bindings`。根因：SwapObjectFields 的嵌套类/列表递归无命名空间闸门，沿 Travelling 组件的 InputAction 字段递归进 UnityEngine.InputSystem 内部，把动作名 "Submit" 按 lang_swap 换成"提交"，游戏按名查绑定即崩。修复：SwapObjectFields 的类字段递归与 IList 元素递归都加 IsGameDataType 闸门（只进 Travelling/PixelCrushers 命名空间）；只读巡检 InspectStaleFields 同步加闸。烘焙无此问题（工作清单从不收输入动作字段，已实证 0 位点）。
+- **脚注搜索行中文空白（已修）**：英文模式下行标签正常 → 非缺字而是字形问题；搜索行是运行时 Instantiate 的预制体，其 TMP 的字体资产从未被启动巡检覆盖。修复双保险：RefreshFonts 直接扫描全部已加载 TMP_FontAsset 补挂 fallback；启动密集巡检结束后转入 15s 低频常驻巡检（运行时实例化的预制体随后也被覆盖）。
+- **多利亚券→多利亚币**（用户裁定）：物品图标是金属币，文本却说 bill of exchange（汇票）——以图标为准改"币"，一处量词"一张"改"一枚"；glossary/USER_GLOSSARY 已更新（弃"券"理由留痕）。
+- **引号拉直变体**：脚注搜索页题辞"历史从来不止一条。"切英文不换——目录键是弯引号、显示态被规范成直引号。build_lang_swap_map.py 新增引号拉直变体（双向、冲突自动封禁）。
+- **安装器外层清单联动坑**：新增 installer 文件后安装器报"外层文件清单成员数量无效"——schema v2 的 requiredOuter 精确集合校验包含安装脚本自身；新文件必须同步登记进 安装汉化.ps1 的 $requiredOuter（卸载器无此清单）。本轮已登。
+- 链路：merge 0 错 → 烘焙 0 漂移 → verify 9018/9018 → lang_swap 重建（新增引号变体）→ slim 119 → 打包 2.3.5 → 安装 46/46。
+- 待用户验收：①F9 切中文后点击脚注不再崩溃；②脚注搜索页中文模式行标签可见；③多利亚币；④搜索页题辞切英文正常。
+## 80. 2026-08-20 v2.3.6：搜索行空白二修（网格强刷）+ 全局字体 fallback 失败日志化
+
+- v2.3.5 验收：崩溃修复确认（点击脚注不再崩）；但脚注搜索行中文仍空白、"已选还能重选"仍在。
+- 搜索行空白二修：v2.3.5 只挂 fallback 不刷新网格——已按缺字形建的空白网格不会自愈。v2.3.6 改为：字体新挂上 fallback 的 TMP 强制 ForceMeshUpdate(true, true) 重解析重建；新挂载会打日志"字体巡检：新挂载 N 个"。全局 fallback（TMP_Settings.fallbackFontAssets）首次失败现在记录原因（此前静默）。
+- "已选还能重选"核查：性相池选项 id 为 aspectpool.1/2/3，永不撞 lang_swap 键，选项记录链路（MakeChoice→LogInteraction→GetDependentChoiceMade）与我们无关；用户存档里无 aspectpool 选择记录——最可能是所选会话未保存（或崩溃丢失）。已请用户做"现选→重开验证锁定"测试；若仍不锁定再深挖。
+- 链路：slim 119 → 打包 2.3.6 → 装卸 → 46/46。
+- 待用户验收：①搜索页中文行标签可见（若仍空白，日志里"字体巡检/全局 fallback 失败"两行是下一步依据）；②现选一个性相池选项后重开详情应锁定。
+## 81. 2026-08-21 v2.4.8：脚注搜索行中文空白根治（Ellipsis 截断 × CJK 行高）——全程自测
+
+- 根因（经插件内建探针电池实测定案）：搜索结果行 TMP 是 **Ellipsis 截断模式 + 固定行高矩形**；CJK 经后备字体渲染的行高超出矩形即被整行截掉（截断省略号自身也解析失败），生成 0 顶点 → 空白。同面板占位符是 Overflow 模式所以一直正常；拉丁文本行高不超标所以英文正常。绝非字体/fallback/烘焙问题——逐项排除过程：原版对照（正常）→ 烘焙资产 diff（仅占位文本差异）→ 全局/逐字体 fallback（早已挂载）→ 查找字典（742 条 CJK 只是解析缓存，无关）→ 字符表净化（无效）。
+- 修复：DetailableDisplay.PopulateWith 的 Harmony 后缀（仅父链含 fsr_/SearchResultsContainer 的搜索行）把 overflowMode 改为 Overflow 并强制重建网格。自测实证：修复前 verts=0 → 修复后 verts=8-12，截屏确认行标签中文正常显示。
+- 排障设施（全部保留、默认关闭）：F12 全量 CJK 文本渲染转储；Diagnostics.AutoProbeSearch 启动自动读档+开搜索页采集（本次自测所用，用户授权后由我驱动游戏完成）。测试用自动探针不改写存档（读档+开菜单，进程结束时直接 kill 不落盘）。
+- 清理：CJK 字体净化（Static 化）经实证与本案无关且改变游戏字体动态行为，已移除；探针电池辅助方法已删；populate 日志只在首次修复时打一行。
+- 链路：slim 119 → 打包 2.4.8 → 装卸 46/46 → 自动探针自测通过（截图存 build/probe_screenshot.png）。
+- 待用户验收：脚注搜索页行标签中文正常。

@@ -2,7 +2,7 @@
 
 面向 Weather Factory《Travelling at Night》公开 Steam Demo 的简体中文本地化工程。
 
-- 当前补丁版本：**v2.3.3**（更新日志见 `CHANGELOG.md`）
+- 当前补丁版本：**v2.4.8**（更新日志见 `CHANGELOG.md`）
 - 对应游戏构建标识：`2026.8.k.52`（游戏内 `version.txt`；Steam 未公布对应的正式版本号）
 - 平台：Windows x64，Unity 6000.4.0f1（Mono）
 - 性质：个人制作的**非官方**汉化，与 Weather Factory 无关。初译由 GPT 5.6sol 完成，润色与校对由 Kimi K3 完成；术语逐词考据（见随包的术语表）。

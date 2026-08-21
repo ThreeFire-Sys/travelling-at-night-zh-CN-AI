@@ -1,5 +1,5 @@
 ﻿param(
-    [string]$GamePath = 'D:\Steam\steamapps\common\Travelling at Night Demo'
+    [string]$GamePath = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -8,10 +8,21 @@ Import-Module Microsoft.PowerShell.Utility -ErrorAction Stop
 $releaseRoot = Split-Path -Parent $PSScriptRoot
 $payloadRoot = Join-Path $releaseRoot 'payload'
 $manifestPath = Join-Path $releaseRoot 'payload-manifest.json'
-$gameRoot = [System.IO.Path]::GetFullPath($GamePath)
 
-if (-not (Test-Path -LiteralPath (Join-Path $gameRoot 'travelling.exe') -PathType Leaf)) {
-    throw "未在目标目录找到 travelling.exe：$gameRoot"
+# 游戏目录：显式 -GamePath 优先；未指定时自动探测（Steam 库目录 + 历史默认路径）。
+. (Join-Path $PSScriptRoot 'Resolve-GamePath.ps1')
+if (-not [string]::IsNullOrWhiteSpace($GamePath)) {
+    $gameRoot = [System.IO.Path]::GetFullPath($GamePath)
+    if (-not (Test-Path -LiteralPath (Join-Path $gameRoot 'travelling.exe') -PathType Leaf)) {
+        throw "未在目标目录找到 travelling.exe：$gameRoot"
+    }
+}
+else {
+    $gameRoot = Resolve-TravellingGamePath
+    if (-not $gameRoot) {
+        throw "未能自动定位《夜游漫记》Demo 的安装目录（已尝试 Steam 库目录与历史默认路径）。请手动指定，例如：一键安装.bat -GamePath `"E:\Games\steamapps\common\Travelling at Night Demo`""
+    }
+    Write-Host "已自动定位游戏目录：$gameRoot"
 }
 if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
     throw "发布包缺少 payload-manifest.json。"
@@ -51,6 +62,7 @@ if (@($manifest.outer_files).Count -eq 0) {
 $requiredOuter = @(
     'installer\安装汉化.ps1',
     'installer\卸载汉化.ps1',
+    'installer\Resolve-GamePath.ps1',
     '一键安装.bat',
     '一键卸载.bat',
     'README_安装说明.md',

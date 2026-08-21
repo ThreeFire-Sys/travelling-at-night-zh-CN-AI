@@ -21,6 +21,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -38,7 +40,7 @@ namespace TravellingCN
     {
         public const string PluginGuid = "cn.nyctodromy.travelling.zhcn";
         public const string PluginName = "夜游漫记简体中文补丁";
-        public const string PluginVersion = "2.3.3";
+        public const string PluginVersion = "2.4.8";
 
         private static ManualLogSource Log;
         private static TMP_FontAsset ChineseFont;
@@ -51,6 +53,7 @@ namespace TravellingCN
             new Dictionary<object, float>();
 
         private ConfigEntry<float> _fontScale;
+        private ConfigEntry<bool> _autoProbeSearch;
         private Harmony _harmony;
 
         private void Awake()
@@ -97,10 +100,31 @@ namespace TravellingCN
             {
                 Log.LogError($"安装 WorldPopupComposeWrappedPatch 失败：{exception}");
             }
+            try
+            {
+                var patched = _harmony.CreateClassProcessor(typeof(SearchResultLabelProbePatch)).Patch();
+                if (patched == null || patched.Count == 0)
+                {
+                    Log.LogError("SearchResultLabelProbePatch 未解析到目标方法。");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogError($"安装 SearchResultLabelProbePatch 失败：{exception}");
+            }
 
             RefreshFonts("awake");
             SceneManager.sceneLoaded += OnSceneLoaded;
             StartCoroutine(FontRefreshLoop());
+            _autoProbeSearch = Config.Bind(
+                "Diagnostics",
+                "AutoProbeSearch",
+                false,
+                "诊断：启动后自动读档并打开脚注搜索页采集渲染数据（仅排障用）。");
+            if (_autoProbeSearch.Value)
+            {
+                StartCoroutine(AutoProbeSearchRoutine());
+            }
             Log.LogInfo(
                 $"资产烘焙版字体插件已载入；RawLabel 映射 {RawLabelByChineseLabel.Count} 条。");
         }
@@ -115,6 +139,211 @@ namespace TravellingCN
         private void Update()
         {
             LanguageSwap.Tick();
+            if (UnityEngine.Input.GetKeyDown(KeyCode.F12))
+            {
+                DumpFontDiagnostics();
+            }
+        }
+
+
+
+
+
+        private static string GetIntField(object instance, string fieldName)
+        {
+            try
+            {
+                for (var type = instance.GetType(); type != null; type = type.BaseType)
+                {
+                    var field = type.GetField(fieldName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    if (field != null)
+                    {
+                        return field.GetValue(instance)?.ToString() ?? "null";
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // 读取失败按 ? 处理
+            }
+            return "?";
+        }
+
+
+
+
+
+
+        private static string MeshVertexSummary(TMP_Text text)
+        {
+            try
+            {
+                var info = text.textInfo;
+                if (info == null)
+                {
+                    return "?";
+                }
+                var total = 0;
+                for (var i = 0; i < info.meshInfo.Length; i++)
+                {
+                    total += info.meshInfo[i].vertexCount;
+                }
+                return $"{total}/{info.meshInfo.Length}sub";
+            }
+            catch (Exception)
+            {
+                return "?";
+            }
+        }
+
+        // 自动探针（v2.4.4 排障专用，Diagnostics.AutoProbeSearch 门控）：
+        // 启动 → 读最近存档 → 打开脚注搜索页 → 转储渲染数据，全程无人值守。
+        private IEnumerator AutoProbeSearchRoutine()
+        {
+            Log.LogInfo("[autoprobe] 等待启动……");
+            yield return new WaitForSecondsRealtime(12f);
+            try
+            {
+                Travelling.Infrastructure.TravellingPersistenceManager.LoadMostRecentSave();
+                Log.LogInfo("[autoprobe] 已调用 LoadMostRecentSave");
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[autoprobe] 读档失败：{exception.Message}");
+            }
+            object hud = null;
+            for (var i = 0; i < 45 && hud == null; i++)
+            {
+                yield return new WaitForSecondsRealtime(2f);
+                hud = FindObjectByTypeName("FootnoteSearchHUD");
+            }
+            Log.LogInfo($"[autoprobe] 搜索 HUD：{(hud == null ? "未找到" : "已找到")}");
+            if (hud == null)
+            {
+                yield break;
+            }
+            yield return new WaitForSecondsRealtime(3f);
+            try
+            {
+                var handlerType = FindTypeByName("IUIActionHandler");
+                var watchman = FindTypeByName("Watchman");
+                var getter = watchman.GetMethods(BindingFlags.Public | BindingFlags.Static)
+                    .First(m => m.Name == "GetRegisteredInterface" && m.IsGenericMethodDefinition);
+                var handler = getter.MakeGenericMethod(handlerType).Invoke(null, null);
+                handlerType.GetMethod("ToggleFootnoteSearch").Invoke(handler, null);
+                Log.LogInfo("[autoprobe] 已调用 ToggleFootnoteSearch");
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[autoprobe] 打开搜索页失败：{exception.Message}");
+            }
+            yield return new WaitForSecondsRealtime(4f);
+            DumpFontDiagnostics();
+            Log.LogInfo("[autoprobe] 完成");
+        }
+
+        private static Type FindTypeByName(string simpleName)
+        {
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                Type found = null;
+                try
+                {
+                    found = assembly.GetTypes().FirstOrDefault(x => x.Name == simpleName);
+                }
+                catch (Exception)
+                {
+                    // 某些程序集类型枚举会抛异常，跳过。
+                }
+                if (found != null)
+                {
+                    return found;
+                }
+            }
+            return null;
+        }
+
+        private static object FindObjectByTypeName(string simpleName)
+        {
+            var type = FindTypeByName(simpleName);
+            if (type == null)
+            {
+                return null;
+            }
+            var found = Resources.FindObjectsOfTypeAll(type);
+            return found != null && found.Length > 0 ? found[0] : null;
+        }
+
+        // F12 诊断（v2.3.6）：脚注搜索行中文空白（英文正常、全局与逐字体 fallback
+        // 均已确认挂载、Player.log 无缺字告警）——静态排查到头，改为运行时转储
+        // 现场：每个含 CJK 的 TMP 的字体/材质/矩形/激活状态与父链，外加全局
+        // fallback 状态与全部已载字体资产清单。
+        private static void DumpFontDiagnostics()
+        {
+            try
+            {
+                var fallbacks = TMP_Settings.fallbackFontAssets;
+                Log.LogInfo(
+                    $"[F12] 全局 fallback 列表：{(fallbacks == null ? "null" : string.Join(",", fallbacks.ConvertAll(f => f == null ? "null" : f.name)))}");
+                var fontNames = new List<string>();
+                foreach (var fontAsset in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
+                {
+                    fontNames.Add(fontAsset.name + (HasChineseFallback(fontAsset) ? "(+CN)" : "(无CN)"));
+                }
+                Log.LogInfo($"[F12] 已载字体资产 {fontNames.Count} 个：{string.Join(";", fontNames)}");
+                var dumped = 0;
+                foreach (var text in Resources.FindObjectsOfTypeAll<TMP_Text>())
+                {
+                    if (text == null || string.IsNullOrEmpty(text.text))
+                    {
+                        continue;
+                    }
+                    var hasCjk = false;
+                    foreach (var c in text.text)
+                    {
+                        if (c >= '一' && c <= '鿿')
+                        {
+                            hasCjk = true;
+                            break;
+                        }
+                    }
+                    if (!hasCjk)
+                    {
+                        continue;
+                    }
+                    var font = text.font;
+                    var chain = new List<string>();
+                    Transform t = text.transform;
+                    while (t != null && chain.Count < 6)
+                    {
+                        chain.Add(t.name);
+                        t = t.parent;
+                    }
+                    var rect = text.rectTransform != null ? text.rectTransform.rect.ToString() : "?";
+                    var charCount = -1;
+                    try
+                    {
+                        charCount = text.textInfo.characterCount;
+                    }
+                    catch (Exception)
+                    {
+                        // textInfo 未就绪时记 -1。
+                    }
+                    Log.LogInfo(
+                        $"[F12] CJK文本 \"{(text.text.Length <= 18 ? text.text : text.text.Substring(0, 18) + "…")}\" " +
+                        $"font={(font == null ? "null" : font.name)} 已挂CN={HasChineseFallback(font)} " +
+                        $"mat={(text.fontSharedMaterial == null ? "null" : text.fontSharedMaterial.name)} " +
+                        $"size={text.fontSize} active={text.isActiveAndEnabled} rect={rect} " +
+                        $"chars={charCount} verts={MeshVertexSummary(text)} " +
+                        $"cull={(text.canvasRenderer == null ? "?" : text.canvasRenderer.cull.ToString())} 链={string.Join("<", chain)}");
+                    dumped++;
+                }
+                Log.LogInfo($"[F12] CJK 文本转储完成，共 {dumped} 条。");
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[F12] 诊断转储失败：{exception}");
+            }
         }
 
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -131,6 +360,17 @@ namespace TravellingCN
         // 脚注补上英文原标签，注入后刷新 curator 的别名缓存。英文模式标签即英文，
         // 无需注入。
         private static bool _altLabelsInjected;
+        private static bool _overflowFixLogged;
+
+        // 搜索行字体直换（v2.4.2）：行标签含 CJK 时把 TMP 字体直接换成中文字体，
+        // 无 CJK 时还原。绕过游戏动态字体字符表里的空字形对 fallback 的抢占。
+        private static readonly ConditionalWeakTable<TMP_Text, OriginalFontHolder> OriginalFonts =
+            new ConditionalWeakTable<TMP_Text, OriginalFontHolder>();
+
+        private sealed class OriginalFontHolder
+        {
+            internal TMP_FontAsset Font;
+        }
 
         // 交换后复注入：交换过程会按映射改写 alternativeLabels 列表内容，
         // 可能把注入的英文别名换掉；每趟交换结束重置标记并在中文态复注入。
@@ -189,6 +429,15 @@ namespace TravellingCN
                 RefreshFonts($"startup:{attempt + 1}");
                 InjectAlternativeLabels($"startup:{attempt + 1}");
             }
+            // 启动密集巡检后转入低频常驻巡检（v2.3.5）：运行时按需实例化的
+            // 预制体（如脚注搜索结果行）其字体资产可能从未被启动窗口覆盖，
+            // 中文因此渲染成空白——周期性补挂兜底。
+            for (var steady = 1; ; steady++)
+            {
+                yield return new WaitForSecondsRealtime(15f);
+                RefreshFonts($"steady:{steady}");
+                InjectAlternativeLabels($"steady:{steady}");
+            }
         }
 
         private static void RefreshFonts(string reason)
@@ -199,14 +448,43 @@ namespace TravellingCN
                 {
                     Log.LogInfo($"TMP 全局设置现已就绪（{reason}），已补装中文 fallback 字体。");
                 }
+                // 直接扫描字体资产：仅被预制体引用的字体（如脚注搜索结果行）
+                // 在 TMP 实例化前就可挂上中文 fallback，防止运行时新实例中文空白。
+                var newlyCovered = 0;
+                foreach (var fontAsset in Resources.FindObjectsOfTypeAll<TMP_FontAsset>())
+                {
+                    if (AttachChineseFallback(fontAsset))
+                    {
+                        newlyCovered++;
+                    }
+                }
                 foreach (var text in Resources.FindObjectsOfTypeAll<TMP_Text>())
                 {
                     if (text == null)
                     {
                         continue;
                     }
+                    var had = HasChineseFallback(text.font);
                     AttachChineseFallback(text.font);
                     ApplyChineseFontScale(text);
+                    if (!had && HasChineseFallback(text.font))
+                    {
+                        // 字体刚挂上 fallback：既有网格是按缺字形建的（渲染空白），
+                        // 强制重解析重建（v2.3.5 实测：仅挂 fallback 不刷新网格，
+                        // 脚注搜索结果行的中文仍不可见）。
+                        try
+                        {
+                            text.ForceMeshUpdate(true, true);
+                        }
+                        catch (Exception)
+                        {
+                            // 单个文本刷新失败不影响整体。
+                        }
+                    }
+                }
+                if (newlyCovered > 0)
+                {
+                    Log.LogInfo($"字体巡检（{reason}）：新挂载 {newlyCovered} 个字体资产。");
                 }
             }
             catch (Exception exception)
@@ -254,6 +532,8 @@ namespace TravellingCN
             }
         }
 
+        private static bool _globalFallbackFailureLogged;
+
         private static bool EnsureGlobalChineseFallback()
         {
             if (ChineseFont == null)
@@ -279,17 +559,31 @@ namespace TravellingCN
                 GlobalFallbackInstalled = true;
                 return true;
             }
-            catch
+            catch (Exception exception)
             {
+                // v2.3.6：首次失败时记录原因（此前静默，排障无据）。
+                if (!_globalFallbackFailureLogged)
+                {
+                    _globalFallbackFailureLogged = true;
+                    Log.LogWarning($"TMP 全局 fallback 挂载失败（转为按字体逐个补挂）：{exception.Message}");
+                }
                 return false;
             }
         }
 
-        private static void AttachChineseFallback(TMP_FontAsset font)
+        private static bool HasChineseFallback(TMP_FontAsset font)
+        {
+            return font != null &&
+                   font.fallbackFontAssetTable != null &&
+                   font.fallbackFontAssetTable.Contains(ChineseFont);
+        }
+
+        // 返回是否为本次新挂载（供调用方强制重建已按缺字形渲染的空白网格）。
+        private static bool AttachChineseFallback(TMP_FontAsset font)
         {
             if (font == null || ChineseFont == null || font == ChineseFont)
             {
-                return;
+                return false;
             }
             var fallbacks = font.fallbackFontAssetTable;
             if (fallbacks == null)
@@ -300,7 +594,9 @@ namespace TravellingCN
             if (!fallbacks.Contains(ChineseFont))
             {
                 fallbacks.Insert(0, ChineseFont);
+                return true;
             }
+            return false;
         }
 
         private static void ApplyChineseFontScale(TMP_Text text)
@@ -386,6 +682,77 @@ namespace TravellingCN
                     return;
                 }
                 segments = segments.Select(LanguageSwap.SwapPopupSegment).ToArray();
+            }
+        }
+
+        // v2.3.8 脚注搜索结果行中文空白探针：资产/字体/挂载全部正常但行标签渲染
+        // 空白（英文正常；F9 重写文本后可见）。在 DetailableDisplay.PopulateWith
+        // 之后对搜索行（父链含 fsr_/SearchResultsContainer）做网格级探针并强制
+        // 重建网格——既取决定性数据（顶点数/cull 状态），也可能即时修复。
+        [HarmonyPatch(
+            typeof(Travelling.UI.DetailableDisplay),
+            "PopulateWith")]
+        private static class SearchResultLabelProbePatch
+        {
+            private static FieldInfo _labelTextField;
+
+            private static void Postfix(Travelling.UI.DetailableDisplay __instance)
+            {
+                try
+                {
+                    if (__instance == null)
+                    {
+                        return;
+                    }
+                    var inSearchResults = false;
+                    for (var t = __instance.transform; t != null; t = t.parent)
+                    {
+                        if (t.name.StartsWith("fsr_") || t.name.Contains("SearchResultsContainer"))
+                        {
+                            inSearchResults = true;
+                            break;
+                        }
+                    }
+                    if (!inSearchResults)
+                    {
+                        return;
+                    }
+                    if (_labelTextField == null)
+                    {
+                        _labelTextField = typeof(Travelling.UI.DetailableDisplay).GetField(
+                            "_labelText", BindingFlags.Instance | BindingFlags.NonPublic);
+                    }
+                    if (_labelTextField?.GetValue(__instance) is not TMP_Text label || label == null)
+                    {
+                        return;
+                    }
+                    var rowText = label.text ?? string.Empty;
+                    try
+                    {
+                        // v2.4.8 根治：搜索结果行 TMP 是 Ellipsis 截断 + 固定行高矩形；
+                        // CJK 经后备字体渲染的行高溢出即被整行截掉（同面板 Overflow
+                        // 模式的占位符不受影响）。改 Overflow 后网格正常生成。
+                        if (label.overflowMode != TextOverflowModes.Overflow)
+                        {
+                            label.overflowMode = TextOverflowModes.Overflow;
+                            label.SetText(rowText);
+                            label.ForceMeshUpdate(true, true);
+                            if (!_overflowFixLogged)
+                            {
+                                _overflowFixLogged = true;
+                                Log.LogInfo("脚注搜索结果行：溢出模式已由截断改为 Overflow（修复 CJK 文本整行被截的空白问题）。");
+                            }
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        Log.LogWarning($"[populate] 搜索行修复失败：{exception.Message}");
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Log.LogWarning($"[populate] 搜索行处理失败：{exception.Message}");
+                }
             }
         }
     }

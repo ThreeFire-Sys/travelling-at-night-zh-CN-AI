@@ -34,7 +34,7 @@
 {"id":"TAN-02A6B411F7D0","source":"Something smells wonderful.","translation":"什么东西这么香。","status":"translated","notes":""}
 {"id":"TAN-02AEBFF196E4","source":"Course you can. Once a Legionnaire, always a Legionnaire. <i>'Honneur et Humanité'</i>, remember?","translation":"当然可以。一天是军团兵，一辈子都是军团兵。还记得<i>“荣誉与人道”</i>吗？","status":"translated","notes":"军团格言统一译“荣誉与人道”；完整法文在军团脚注首次出现处保留。"}
 {"id":"TAN-02B2BAE23BE5","source":"Heal, grow, change, I suppose. Those all seem like good options.","translation":"疗愈、生长、改变，我想。听起来都是不错的选择。","status":"translated","notes":""}
-{"id":"TAN-02C70D1954C4","source":"A single Ministries <i>dolya</i>.","translation":"一张部委的<i>多利亚券</i>。","status":"translated","notes":"dolya 为新作货币名，译“多利亚券”；Ministries 此处作部委定语。"}
+{"id": "TAN-02C70D1954C4", "source": "A single Ministries <i>dolya</i>.", "translation": "一枚部委的<i>多利亚币</i>。", "status": "translated", "notes": "dolya 为新作货币名，译“多利亚券”；Ministries 此处作部委定语。；v2.3.5 多利亚券→多利亚币（用户裁定：物品图标为金属币形式）"}
 {"id":"TAN-02C9FA07CBCD","source":"Why don't you tell me some diverting thing?","translation":"你何不讲件有趣的事给我听？","status":"translated","notes":""}
 {"id":"TAN-02E43AB149B3","source":"A many-storeyed hospital populated by masked eccentrics. Any adept would recognise it as the [[Mansus]].","translation":"一所层层叠叠的医院，住满戴面具的怪人。任何修习者一眼都能认出，那就是[[Mansus]]。","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
 {"id":"TAN-030D252E5C37","source":"So... Nina?","translation":"那么……宁娜呢？","status":"translated","notes":""}

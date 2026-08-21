@@ -42,6 +42,14 @@ def strip_tags(value: str) -> str:
     return LINK_RE.sub(lambda match: match.group(1), value)
 
 
+_QUOTE_STRAIGHTEN = str.maketrans({"“": '"', "”": '"', "‘": "'", "’": "'"})
+
+
+def straighten_quotes(value: str) -> str:
+    """弯引号拉直形态：部分显示面（如脚注搜索页题辞）把弯引号规范成直引号。"""
+    return value.translate(_QUOTE_STRAIGHTEN)
+
+
 def main() -> int:
     catalog_path = Path(sys.argv[1])
     supplement_path = Path(sys.argv[2])
@@ -90,6 +98,7 @@ def main() -> int:
     trimmed_count = 0
     folded_count = 0
     stripped_count = 0
+    quote_count = 0
     for source, target in list(pairs.items()):
         if source.strip() != source:
             before = len(variants)
@@ -108,6 +117,14 @@ def main() -> int:
             before = len(variants)
             collect_variant(stripped_source, target)
             stripped_count += len(variants) - before
+        # 引号拉直变体：显示面可能把弯引号规范成直引号（脚注搜索页题辞实测：
+        # 目录键是弯引号"……"，显示态是直引号"……"，整串/子串永远失配）。
+        # 值保持原始形态（弯引号原样）。
+        straightened_source = straighten_quotes(source)
+        if straightened_source != source:
+            before = len(variants)
+            collect_variant(straightened_source, target)
+            quote_count += len(variants) - before
     pairs.update(variants)
 
     en2zh = dict(pairs)
@@ -131,6 +148,7 @@ def main() -> int:
     # 也能整句命中。值保持英文原始形态（含 [[ ]]），由插件交换时重新装饰。
     folded_zh_count = 0
     stripped_zh_count = 0
+    quote_zh_count = 0
     for source, target in sorted(pairs.items()):
         folded_target = fold_links(target)
         if folded_target != target:
@@ -148,6 +166,11 @@ def main() -> int:
                 if current is None:
                     stripped_zh_count += 1
                 zh2en[stripped_target] = source
+        # zh2en 引号拉直变体（中文显示态弯引号被拉直的场合）。
+        straightened_target = straighten_quotes(target)
+        if straightened_target != target and straightened_target not in zh2en:
+            zh2en[straightened_target] = source
+            quote_zh_count += 1
 
     # 位点级覆盖的 zh→en 单向键：烘焙资产中这些位点的显示值是覆盖译文
     # （如 Quote 题签《西班牙》），F9 切英文时要能换回英文源串。反向
@@ -174,7 +197,7 @@ def main() -> int:
     with out_path.open("w", encoding="utf-8", newline="\n") as handle:
         json.dump(payload, handle, ensure_ascii=False, separators=(",", ":"))
     size_kb = out_path.stat().st_size // 1024
-    print(f"pairs: {len(en2zh)} (含裁剪变体 {trimmed_count}、折叠变体 {folded_count}、剥标签变体 {stripped_count}、封禁冲突键 {len(blocked)})  zh2en: {len(zh2en)} (折叠键 {folded_zh_count}、剥标签键 {stripped_zh_count}、位点覆盖键 {override_zh_count})  ambiguous zh: {len(ambiguous)}  size: {size_kb} KiB")
+    print(f"pairs: {len(en2zh)} (含裁剪变体 {trimmed_count}、折叠变体 {folded_count}、剥标签变体 {stripped_count}、引号变体 {quote_count}、封禁冲突键 {len(blocked)})  zh2en: {len(zh2en)} (折叠键 {folded_zh_count}、剥标签键 {stripped_zh_count}、引号键 {quote_zh_count}、位点覆盖键 {override_zh_count})  ambiguous zh: {len(ambiguous)}  size: {size_kb} KiB")
     for target, sources in list(ambiguous.items())[:5]:
         print(f"  ambiguous {target[:24]!r} <- {[s[:24] for s in sources]}")
     return 0

@@ -129,7 +129,8 @@ def main() -> int:
     require("template substring counter", "TemplateSubstring" in LANGUAGE_SWAP)
     require("template assembly shared", "AssembleTemplateSwap" in LANGUAGE_SWAP)
     require("template span overlap guard", "OverlapsTemplateSpan" in LANGUAGE_SWAP)
-    require("plain to original mapping apply", "AppendOriginal" in LANGUAGE_SWAP)
+    require("plain to original mapping apply",
+            "cursorOrig" in LANGUAGE_SWAP and "indexMap[span[0]]" in LANGUAGE_SWAP)
     require("trailing placeholder greedy", '"(.+)"' in LANGUAGE_SWAP)
     require("accumulatedText display-tier routing", '"accumulatedText"' in LANGUAGE_SWAP)
     require("accumulatedText routed to display swap",

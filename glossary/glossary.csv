@@ -388,6 +388,6 @@ scrine,龛壳,设定物,false,high,灵体寄居显现的媒介；英语 scrine �
 scrineway,龛路,设定物,false,high,与 scrine 同源的通道概念；“龛壳/龛路”构词一致
 Labrikon,拉布里孔,物品,false,high,本作虚构的入梦制剂，无设定词源，音译
 spintria,春宫币,物品,false,high,古罗马春宫代币 spintriae 的通用解说性译名；本作沿用为秘术货币
-dolya,多利亚券,货币,false,high,部委阵营准奇迹汇票，以生产劳动计价；音译多利亚+“券”明其票据物类（原拼写异体 doli 同译）
+dolya,多利亚币,货币,false,high,"部委阵营准奇迹汇票（bill of exchange），以生产劳动计价；音译多利亚+""币""——v2.3.5 用户裁定改""币""（物品图标为金属币形式；原""券""按文本汇票义，弃）"
 retenebration,复晦礼,设定程序,false,medium,教会虚构程序：re-+tenebrae（黑暗），神父还俗归于幽暗；以“复晦”对译并加“礼”明其仪式性
 fulgent,辉耀者,位阶,false,medium,本作对灯之长生者一类存在的称呼；fulgent=光辉的，译“辉耀者”与位阶体系并列

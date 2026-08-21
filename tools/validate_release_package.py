@@ -23,6 +23,7 @@ PACKAGE_PREFIX = "TravellingAtNight_ZH-CN_v"
 REQUIRED_OUTER = {
     "installer/安装汉化.ps1",
     "installer/卸载汉化.ps1",
+    "installer/Resolve-GamePath.ps1",
     "README_安装说明.md",
     "术语表与译名说明.md",
     "术语表与译名说明.txt",
