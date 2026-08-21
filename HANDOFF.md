@@ -802,3 +802,7 @@
 - **拷 DLL 教训**：bash 多行命令里后台任务被用户打断时 cp 可能没执行——探针跑前必须 stat 校验游戏内 DLL 时间戳/内容标记（本轮一次假"探针没跑"其实是旧 DLL）。
 - 发版纪律更新：改代码后 → slim 119 → 打包 → 装 → **跑三个探针全部 [regression] 全绿** → 才能交用户验收。
 - 待用户验收 v2.5.3（内容同 v2.5.2 + 断言设施；无行为差异）。
+## 93. 2026-08-22 v2.5.3 发布（对应游戏 2026.8.k.83）
+
+- 仓库整理：.gitignore 补 tmp//output/；translations_k83/ 入库（rebased chunks + supplement，沿袭 translations_k* 惯例）；CHANGELOG 补 v2.5.3 条目（v2.4.12–v2.5.2 内部版并入说明）；README 版本号/构建标识同步。
+- 发布链路：current-test 包 → dist/TravellingAtNight_ZH-CN_v2.5.3 → Compress-Archive（-LiteralPath 带根目录）→ validate_release_package.py 全量 ok（7280 条/223 链接目标）→ sha256 169B701B… → git 7128b29 推送 → **gh CLI 不在机器上，改用 GitHub REST API**（token 走 `git credential fill` 不落盘不打印；python urllib 的 SSL 在这台机器上会 EOF，用 curl）→ Release v2.5.3 + zip 25MB + sha256 已上线。
