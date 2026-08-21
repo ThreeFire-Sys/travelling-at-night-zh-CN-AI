@@ -164,7 +164,16 @@ def main() -> int:
         print("\n已跳过安装（--skip-install）。包在 build/current_test_install/。")
         return 0
 
-    # 10. 安装：清注入器残留 → 全新安装 → 哈希核验（§89 顺序）
+    # 10. 安装：若存在旧安装状态，先跑卸载器（还原 vanilla 资产、清除旧文件），
+    # 再全新安装——绝不能用"删清单+强装"的套路：那会让安装器把已烘焙资产判为
+    # unchanged，斩断 vanilla 还原链，用户卸载后中文资产留在原地、没有插件
+    # 字体全部豆腐块（v2.5.3 用户实测事故）。
+    state_file = game_root / ".travelling-cn-install.json"
+    if state_file.exists():
+        print("检测到旧安装状态，先运行卸载器……")
+        uninstall = WORKSPACE / "build" / "current_test_install" / "TravellingAtNight_ZH-CN_current-test" / "installer" / "卸载汉化.ps1"
+        run(["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
+             str(uninstall), "-GamePath", str(game_root)])
     for name in ("winhttp.dll", "doorstop_config.ini", ".travelling-cn-install.json"):
         p = game_root / name
         if p.exists():

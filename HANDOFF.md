@@ -806,3 +806,11 @@
 
 - 仓库整理：.gitignore 补 tmp//output/；translations_k83/ 入库（rebased chunks + supplement，沿袭 translations_k* 惯例）；CHANGELOG 补 v2.5.3 条目（v2.4.12–v2.5.2 内部版并入说明）；README 版本号/构建标识同步。
 - 发布链路：current-test 包 → dist/TravellingAtNight_ZH-CN_v2.5.3 → Compress-Archive（-LiteralPath 带根目录）→ validate_release_package.py 全量 ok（7280 条/223 链接目标）→ sha256 169B701B… → git 7128b29 推送 → **gh CLI 不在机器上，改用 GitHub REST API**（token 走 `git credential fill` 不落盘不打印；python urllib 的 SSL 在这台机器上会 EOF，用 curl）→ Release v2.5.3 + zip 25MB + sha256 已上线。
+## 94. 2026-08-22 卸载后豆腐块事故：unchanged 斩断 vanilla 还原链（我的开发操作所致，正常用户流程安全）
+
+- **事故**：用户卸载补丁后全屏豆腐块。现场：中文烘焙资产未还原 + BepInEx 插件已删 → 中文文本无字体。根因：我开发期的"删清单+强装"套路让安装器把内容相同的烘焙资产判为 unchanged（无 vanilla 备份关联），卸载器对 unchanged 文件按"补丁没动过"跳过还原。
+- **救急**：从最近 vanilla 备份手工还原 15 个资产 + 清残留，游戏恢复干净 k.83 vanilla。
+- **排查澄清**：①安装器对"已有清单"一律拒绝覆盖安装（须先卸载）——正常用户流程（装→卸→装→卸）实测全程安全还原；②Steam 更新后卸载：资产当前值==original_sha256（已是 vanilla）时卸载器视为成功不阻断 ✓；③卸载后 BepInEx 留空目录树（文件已删净）无害。
+- **曾写死的继承代码已回退**：给安装器加的"读旧清单继承备份链"在"已有清单拒绝安装"的保护下是死代码，git checkout 回退。真正修复是流程纪律——
+- **纪律确立**：**任何情况下不许删 .travelling-cn-install.json 强装**；要重装先跑卸载器。migrate_game_version.py 安装段已改：检测到旧清单先跑卸载器再全新装。
+- 游戏最终状态：v2.5.3 装回，清单健康（15 个资产 replaced + vanilla 备份链在位），卸载可正常工作。无需重发版本（安装器无变更）。
