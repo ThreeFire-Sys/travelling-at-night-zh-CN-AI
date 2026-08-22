@@ -14,6 +14,7 @@ import UnityPy
 ROOT = Path(__file__).resolve().parents[1]
 HEADING_RE = re.compile(r"(?m)^##\s+(\d{4}\.\d+\.[a-z]\.\d+).*?$")
 BULLET_RE = re.compile(r"^\s*[-*=]\s+\S", re.M)
+VERSION_RE = re.compile(r"^\d{4}\.\d+\.[a-z]\.\d+$", re.I)
 
 
 def parse_args() -> argparse.Namespace:
@@ -43,6 +44,28 @@ def section_list(text: str) -> list[tuple[str, str]]:
     ]
 
 
+def game_parsed_versions(text: str) -> tuple[list[str], list[str]]:
+    """Mirror PatchNotesParser.IsHeader/SplitHeader from the game."""
+    versions: list[str] = []
+    errors: list[str] = []
+    for line_number, line in enumerate(
+        text.replace("\r\n", "\n").replace("\r", "\n").split("\n"), start=1
+    ):
+        if not line.startswith("## "):
+            continue
+        header = line[len("## ") :].strip()
+        em_index = header.find(" — ")
+        hyphen_index = header.find(" - ")
+        indexes = [index for index in (em_index, hyphen_index) if index >= 0]
+        split_index = min(indexes) if indexes else -1
+        version = header[:split_index].strip() if split_index >= 0 else header.strip()
+        if VERSION_RE.fullmatch(version):
+            versions.append(version)
+        else:
+            errors.append(f"line {line_number}: invalid game header {header!r}")
+    return versions, errors
+
+
 def main() -> int:
     args = parse_args()
     rows = [
@@ -56,6 +79,16 @@ def main() -> int:
         if any(context.get("game_object") == "patch-notes" for context in row.get("contexts", []))
     ]
     errors: list[str] = []
+    invalid_fixture_versions, invalid_fixture_errors = game_parsed_versions(
+        "## 2026.8.k.98 ——“不合法的旧中文标题”"
+    )
+    if invalid_fixture_versions or not invalid_fixture_errors:
+        errors.append("parser mirror no longer rejects the old no-space double-em-dash heading")
+    valid_fixture_versions, valid_fixture_errors = game_parsed_versions(
+        "## 2026.8.k.98 — “合法的中文标题”"
+    )
+    if valid_fixture_versions != ["2026.8.k.98"] or valid_fixture_errors:
+        errors.append("parser mirror rejects the supported spaced single-em-dash heading")
     if len(hits) != 1:
         errors.append(f"expected one patch-notes row, found {len(hits)}")
     else:
@@ -70,6 +103,15 @@ def main() -> int:
             )
         if len(target_versions) != len(set(target_versions)):
             errors.append("duplicate translated News version headings")
+        source_game_versions, source_game_errors = game_parsed_versions(row.get("source", ""))
+        target_game_versions, target_game_errors = game_parsed_versions(row.get("translation", ""))
+        errors.extend(f"source {error}" for error in source_game_errors)
+        errors.extend(f"translation {error}" for error in target_game_errors)
+        if target_game_versions != source_game_versions:
+            errors.append(
+                "game parser version drift: "
+                f"source={source_game_versions!r} target={target_game_versions!r}"
+            )
         for (source_version, source_body), (target_version, target_body) in zip(source, target):
             if source_version != target_version:
                 continue
@@ -82,7 +124,7 @@ def main() -> int:
             if not re.search(r"[\u3400-\u9fff]", target_body):
                 errors.append(f"{source_version}: translated section has no CJK text")
         if not row.get("translation", "").startswith(
-            "## 2026.8.k.98 ——“我思先生去看望一个死去的朋友”"
+            "## 2026.8.k.98 — “我思先生去看望一个死去的朋友”"
         ):
             errors.append("latest k.98 Chinese News heading is missing")
         if args.baked_asset is not None:
@@ -106,6 +148,8 @@ def main() -> int:
                     actual = objects[0].read_typetree().get(context["field_path"])
                     if actual != row["translation"]:
                         errors.append("baked patch-notes TextAsset does not equal reviewed translation")
+                    elif game_parsed_versions(actual)[0] != source_game_versions:
+                        errors.append("game parser rejects one or more baked News headings")
 
     print(
         json.dumps(

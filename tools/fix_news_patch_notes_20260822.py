@@ -109,6 +109,14 @@ def update(path: Path, canonical_translation: str | None = None) -> str:
     rebuilt = rebuilt.replace("莫名出现的“发冷”提示", "莫名出现的“瑟瑟发抖”提示")
     rebuilt = rebuilt.replace("本体梦理协调局", "本体梦理协调办公室")
     rebuilt = rebuilt.replace("必需之印", "必然之印")
+    # PatchNotesParser.SplitHeader only recognises " - " or " — " (one em dash,
+    # surrounded by spaces).  Chinese typography previously used "——" here,
+    # causing the game to reject every such heading and display j.34 as latest.
+    rebuilt = re.sub(
+        r"(?m)^##\s+(\d{4}\.\d+\.[a-z]\.\d+)\s+(?:-|\u2014{1,2})\s*(.+?)\s*$",
+        r"## \1 — \2",
+        rebuilt,
+    )
     row["translation"] = canonical_translation if canonical_translation is not None else rebuilt
     row["notes"] = (
         "News 完整性终审：中文公告版本标题与当前英文资产逐段对齐；"

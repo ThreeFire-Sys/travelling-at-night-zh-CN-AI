@@ -3,7 +3,7 @@
 
 Steam 更新游戏后运行：
 
-    python tools/migrate_game_version.py <游戏目录> --patch-version 2.6.2
+    python tools/migrate_game_version.py <游戏目录> --patch-version 2.6.3
 
 自动走完：提取 → 工作清单 → rebase 复用旧译 → 合并 → 烘焙 → 回读校验 →
 重建 lang_swap/label_fidelity → 更新 extracted_current 快照 → 打包 → 安装。
@@ -111,7 +111,7 @@ def archive_stale_manifest_if_safe(state_file: Path, game_root: Path, game_versi
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("game_root", type=Path)
-    ap.add_argument("--patch-version", required=True, help="补丁版本号，如 2.6.2")
+    ap.add_argument("--patch-version", required=True, help="补丁版本号，如 2.6.3")
     ap.add_argument("--translations", type=Path, default=None, help="旧版审校译文目录（默认自动取最新 translations_k*）")
     ap.add_argument("--supplement", type=Path, default=None, help="增补译文 jsonl（rebase 缺译后续跑用）")
     ap.add_argument("--skip-install", action="store_true")

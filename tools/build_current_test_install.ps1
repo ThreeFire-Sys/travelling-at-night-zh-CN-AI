@@ -1,5 +1,5 @@
 ﻿param(
-    [string]$PatchVersion = '2.6.2',
+    [string]$PatchVersion = '2.6.3',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = '',
     [string]$WorklistRoot = 'build\worklist_k97\worklist.jsonl',
