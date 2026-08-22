@@ -37,7 +37,27 @@ def main() -> int:
         if issue.get("severity") == "error":
             continue
         code = issue["code"]
-        if code == "fixed_term_missing":
+        if issue["id"] == "TAN-560B3D164FC3" and code == "english_residue":
+            decision = "news_tokens_intentionally_preserved"
+            basis = "in_game_news_copy_review"
+            note = (
+                "News 中 UNSTUCK 附中文按钮名，cadc 是提交号，toast/HUD 是界面术语，"
+                "Iris Xe 是硬件名；LANTERN/Lantern 则是 j.65 公告专门讨论的英文拼写，"
+                "保留原词才能成立“里有个 N”的笑点。"
+            )
+        elif (
+            issue["id"] == "TAN-560B3D164FC3"
+            and code == "fixed_term_missing"
+            and issue.get("term", {}).get("source") == "Lantern"
+        ):
+            decision = "news_spelling_example_preserved"
+            basis = "in_game_news_j65_spelling_hotfix"
+            note = (
+                "j.65 公告的内容就是解释 Lantern 曾在角色创建界面拼错；"
+                "此处保留 LANTERN/Lantern 是引述待修的英文词形，不是性相名漏译。"
+                "真正的 Lantern 性相在游戏正文仍固定译“灯”。"
+            )
+        elif code == "fixed_term_missing":
             term = issue.get("term", {}).get("source", "")
             candidate = potential.get(norm(term))
             if candidate:

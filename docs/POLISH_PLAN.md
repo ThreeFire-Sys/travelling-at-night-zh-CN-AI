@@ -71,6 +71,9 @@ build/baked_assets/lang_swap.json                        ← F9 热切换映射�
   `润色YYYY-MM-DD：<一句话理由>`（原 notes 保留，用 `；` 分隔）。
 - **结构红线**（merge QA 会卡）：富文本标签、[[链接]]、`[q=]` 标记、`{0}` 占位符、
   换行数必须与原义逐一对应；只译玩家可见自然语言。
+- **News 结构红线**：`patch-notes` 是单条超长 Markdown TextAsset；
+  `test_news_patch_notes.py` 必须确认中英文版本标题、顺序和逐段项目数完全一致，
+  并在正式打包时直接回读烘焙后的 `sharedassets3.assets`。
 
 ## 5. 逐条审校流程（每条都走）
 

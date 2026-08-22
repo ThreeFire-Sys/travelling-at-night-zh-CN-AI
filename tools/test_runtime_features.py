@@ -141,7 +141,7 @@ def main() -> None:
             errors.append(name)
 
     required = {
-        "plugin version 2.6.1": 'PluginVersion = "2.6.1"',
+        "plugin version 2.6.2": 'PluginVersion = "2.6.2"',
         "F9 default shortcut": "new KeyboardShortcut(KeyCode.F9)",
         "toggle update loop": "_toggleShortcut.Value.IsDown()",
         "English restore": "RestoreOriginalValues();",

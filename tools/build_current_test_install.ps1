@@ -1,5 +1,5 @@
 ﻿param(
-    [string]$PatchVersion = '2.6.1',
+    [string]$PatchVersion = '2.6.2',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = '',
     [string]$WorklistRoot = 'build\worklist_k97\worklist.jsonl',
@@ -60,6 +60,11 @@ Invoke-Checked 'Current translation merge or structural QA failed.' {
     python -B (Join-Path $workspace 'tools\merge_and_validate_translations.py') `
         $worklistPath $translationsRoot $mergedRoot `
         --link-targets (Join-Path $workspace 'glossary\link_targets.csv')
+}
+
+Invoke-Checked 'In-game News translation is stale or structurally incomplete.' {
+    python -B (Join-Path $workspace 'tools\test_news_patch_notes.py') `
+        --catalog (Join-Path $mergedRoot 'review_catalog.jsonl')
 }
 
 $translationTests = @(
@@ -241,6 +246,11 @@ if ($BakedAssetsDir -ne '') {
     $bakeReport = Get-Content -LiteralPath $bakeReportPath -Raw | ConvertFrom-Json
     if (@($bakeReport.mismatches).Count -ne 0) {
         throw "Baked assets contain mismatches; rebuild the bake before packaging."
+    }
+    Invoke-Checked 'Baked in-game News TextAsset is stale or incomplete.' {
+        python -B (Join-Path $workspace 'tools\test_news_patch_notes.py') `
+            --catalog (Join-Path $mergedRoot 'review_catalog.jsonl') `
+            --baked-asset (Join-Path $bakedRoot 'sharedassets3.assets')
     }
     $bakedFiles = Get-ChildItem -LiteralPath $bakedRoot -File | Where-Object {
         $_.Name -ne 'bake_report.json' -and $_.Name -ne 'raw_labels.json' -and $_.Name -ne 'lang_swap.json' -and $_.Name -ne 'label_fidelity.json' -and $_.Name -ne 'level2'
