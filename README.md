@@ -2,7 +2,7 @@
 
 面向 Weather Factory《Travelling at Night》公开 Steam Demo 的简体中文本地化工程。
 
-- 当前补丁版本：**v2.6.0**（更新日志见 `CHANGELOG.md`）
+- 当前补丁版本：**v2.6.1**（更新日志见 `CHANGELOG.md`）
 - 对应游戏构建标识：`2026.8.k.97`（游戏内 `version.txt`；Steam 未公布对应的正式版本号）
 - 平台：Windows x64，Unity 6000.4.0f1（Mono）
 - 性质：个人制作的**非官方**汉化，与 Weather Factory 无关。初译由 GPT 5.6sol 完成，主要润色与校对由 Kimi K3 完成；终审、术语逐词考据与 k.97 迁移由 OpenAI Codex 接续完成（见随包的术语表与审计账本）。
@@ -15,7 +15,7 @@
 
 **中文字体后备**。挂载 Noto Sans CJK SC 动态字体，按字符需求生成字形，保持原版排版与字号。
 
-**术语考据体系**。`docs/USER_GLOSSARY.md`（发布包内为《术语表与译名说明》）逐词登记证据类型、置信等级、命名理由与被否决的候选译法；`glossary/final_term_audit.jsonl` 留存 350 个历史概念的逐项终审裁决，不以家族套话代替单词证据。Quote 组件的全部 23 处文学引文（莎士比亚、叶芝、奥登、毕肖普、Leonard Cohen 等）逐条考据出处并记录排版处置。
+**术语考据体系**。`docs/USER_GLOSSARY.md`（发布包内为《术语表与译名说明》）逐词登记证据类型、置信等级、命名理由与被否决的候选译法；`glossary/final_term_audit.jsonl` 现有 436 项概念裁决，活动术语为 433 个概念／521 个精确词形。v2.6.1 不再只审既有术语闭集：开放发现器从 6694 条源文召回 2817 个潜在候选，逐项裁决纳入、并入、保留语境形态或排除；v2.6.0 的 279 条临时 notes 与 83 条前作同源完整文本另有逐行账本。Quote 组件的全部 23 处文学引文（莎士比亚、叶芝、奥登、毕肖普、Leonard Cohen 等）逐条考据出处并记录排版处置。
 
 **全量逐条审校**。约 6700 条译文逐条人工+AI 复核：上下文连贯性、机翻感消除、与前作风格一致性、排比/诗节结构保持。改动全部留痕于 `polish/changelog.jsonl`，裁决记录于 `polish/decisions.md`。
 

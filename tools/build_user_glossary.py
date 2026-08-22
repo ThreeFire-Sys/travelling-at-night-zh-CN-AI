@@ -63,7 +63,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--final-audit", type=Path, default=Path("glossary/final_term_audit.jsonl")
     )
-    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_k83/worklist.jsonl"))
+    parser.add_argument(
+        "--potential-audit", type=Path, default=Path("glossary/potential_term_audit.jsonl")
+    )
+    parser.add_argument(
+        "--provisional-row-audit", type=Path, default=Path("glossary/provisional_row_audit.jsonl")
+    )
+    parser.add_argument(
+        "--predecessor-exact-audit",
+        type=Path,
+        default=Path("glossary/predecessor_exact_source_audit.jsonl"),
+    )
+    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_k97/worklist.jsonl"))
     parser.add_argument("--translations", type=Path, default=Path("translations_k97"))
     parser.add_argument("--strict", action="store_true")
     return parser.parse_args()
@@ -85,6 +96,14 @@ def load_glossary(path: Path) -> dict[str, dict[str, str]]:
             raise ValueError(f"duplicate glossary source_en: {source}")
         result[source] = row
     return result
+
+
+def load_json_lines(path: Path) -> list[dict[str, object]]:
+    return [
+        json.loads(raw)
+        for raw in path.read_text(encoding="utf-8-sig").splitlines()
+        if raw
+    ]
 
 
 def load_records(directory: Path) -> list[dict[str, object]]:
@@ -270,8 +289,11 @@ def load_final_audit(
     ]
     errors = []
     by_term = {str(row.get("canonical")): row for row in audit}
-    if len(audit) != 350 or len(by_term) != 350:
-        errors.append(f"{path}: expected 350 unique historical verdicts, found {len(audit)}/{len(by_term)}")
+    if len(audit) < 350 or len(by_term) != len(audit):
+        errors.append(
+            f"{path}: expected at least the 350-verdict historical baseline with unique canonicals, "
+            f"found {len(audit)}/{len(by_term)}"
+        )
     active = {str(record["canonical"]): record for record in records}
     for canonical, record in active.items():
         verdict = by_term.get(canonical)
@@ -460,6 +482,9 @@ def render(
     glossary: dict[str, dict[str, str]],
     records: list[dict[str, object]],
     final_audit: list[dict[str, object]],
+    potential_audit: list[dict[str, object]],
+    provisional_audit: list[dict[str, object]],
+    predecessor_exact_audit: list[dict[str, object]],
 ) -> str:
     grouped: dict[str, list[dict[str, object]]] = defaultdict(list)
     for record in records:
@@ -467,6 +492,11 @@ def render(
     counts = {origin: len(grouped[origin]) for origin in ORIGIN_FILES}
     covered = sum(1 + len(record.get("aliases", [])) for record in records)
     audit_counts = Counter(str(row["decision"]) for row in final_audit)
+    potential_counts = Counter(str(row["decision"]) for row in potential_audit)
+    potential_excluded = sum(
+        count for decision, count in potential_counts.items() if decision.startswith("exclude")
+    )
+    provisional_counts = Counter(str(row["decision"]) for row in provisional_audit)
 
     lines = [
         "# 《夜游漫记》简体中文术语与考据表",
@@ -475,7 +505,9 @@ def render(
         "",
         f"当前收录 {len(records)} 个概念，覆盖内部术语表 {covered}/{len(glossary)} 个精确词形：前作既有 {counts['predecessor']} 个、新作新增 {counts['travelling_new']} 个、现实实体 {counts['real_world']} 个、编辑裁决 {counts['editorial']} 个。",
         "",
-        f"终审台账逐项覆盖 350 个历史概念：保留 {audit_counts['keep']} 个、改译 {audit_counts['change']} 个、从当前资产退役 {audit_counts['retire']} 个。‘编辑定名’表示证据足以作出项目终稿选择，但不冒充官方唯一译名。",
+        f"概念终审台账现覆盖 {len(final_audit)} 个历史与新增概念：保留 {audit_counts['keep']} 个、改译 {audit_counts['change']} 个、新增 {audit_counts['add']} 个、从当前资产退役 {audit_counts['retire']} 个。‘编辑定名’表示证据足以作出项目终稿选择，但不冒充官方唯一译名。",
+        "",
+        f"开放发现另从 6694 条完整源文中召回 {len(potential_audit)} 个潜在候选：{len(potential_audit)-potential_excluded} 个被现有术语、链接、引文账本覆盖或记录为有效整字段／语境词形，{potential_excluded} 个经逐项定位后排除为句首大写、非完整片段、普通同形词或内部夹具。v2.6.0 留下的 {len(provisional_audit)} 条临时 notes 已全部逐行裁决（改译 {provisional_counts['change']}、复核保留 {provisional_counts['retain_after_review']}）；另有 {len(predecessor_exact_audit)} 条与前作官中完全同源的完整英文逐条比对。",
         "",
         "证据优先级：本地 Demo 英文原文与界面上下文 → 同作官方页面/Steam 简中 → 前作官方简中与中文 Wiki → 开发者文章 → 其他权威或专业资料。‘暂定’条目不得用于最终严格构建。",
         "",
@@ -531,6 +563,14 @@ def render(
 
     lines.extend(
         [
+            "## 开放发现与排除账本",
+            "",
+            "本表正文只展开活动术语；候选并不等于术语。所有大写/连字符称谓、玩家可见标签、双括号链接、引文内部称谓和发布版临时标记都先进入开放候选账本，再分别裁决为：纳入活动术语、并入既有词形、保留整字段/特定语境译法，或有证据地排除。完整机器可读记录见仓库：",
+            "",
+            "- `glossary/potential_term_audit.jsonl`：开放发现候选及逐项处置；",
+            "- `glossary/provisional_row_audit.jsonl`：v2.6.0 全部临时 notes 的改译/保留历史；",
+            "- `glossary/predecessor_exact_source_audit.jsonl`：与两部前作官中完全同源的完整字符串比对。",
+            "",
             "## 终审退役词项",
             "",
             "以下词项曾在旧构建或早期方案中出现，但当前试玩版已不再使用，故移出活动术语表与运行时 QA：",
@@ -551,6 +591,7 @@ def render(
             "- `glossary/conversation_description_provenance.jsonl` 记录 DialogueDatabase 会话题辞的外部出处与反证；不得把检索无据的题辞伪造为诗句。",
             "- 最终发布只接受 `verified`；`provisional` 与 `draft` 会令严格构建失败。",
             "- `glossary/final_term_audit.jsonl` 必须为每个历史概念保留唯一终审结论；活动词的最终译名和别名必须与 glossary/provenance 精确一致。",
+            "- `glossary/potential_term_audit.jsonl` 必须覆盖开放发现器的全部候选且不得残留 `pending`；发布版临时 notes 必须在 `provisional_row_audit.jsonl` 有逐行结论，当前译文中不得再含临时标记。",
             "- 本表记录译名证据，不复制 Wiki 或游戏长文；链接内容的版权归各自权利人。",
             "",
         ]
@@ -577,7 +618,17 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    output = render(glossary, records, final_audit)
+    potential_audit = load_json_lines(args.potential_audit)
+    provisional_audit = load_json_lines(args.provisional_row_audit)
+    predecessor_exact_audit = load_json_lines(args.predecessor_exact_audit)
+    output = render(
+        glossary,
+        records,
+        final_audit,
+        potential_audit,
+        provisional_audit,
+        predecessor_exact_audit,
+    )
     marker = "## 维护规则\n"
     extra = render_quotes(quote_records) + render_conversation_descriptions(
         description_records, descriptions

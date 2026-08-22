@@ -75,14 +75,14 @@
 {"id":"TAN-47D05A6A39E6","source":"Neatly made, but patched with undisturbed lichen. It must have been weeks at least since anyone slept in these sheets.","translation":"床铺收拾得利落，原封未动的地衣却在上头打着补丁。这床单至少有好几个星期没人睡过。","status":"translated","notes":""}
 {"id":"TAN-47D2A515EF2F","source":"Loading...","translation":"加载中……","status":"translated","notes":""}
 {"id":"TAN-48E45F05ED2B","source":"Dislikes ","translation":"不喜欢 ","status":"translated","notes":""}
-{"id":"TAN-49690454E285","source":"Donned Outfit: {0}","translation":"已穿上套装：{0}","status":"translated","notes":""}
+{"id":"TAN-49690454E285","source":"Donned Outfit: {0}","translation":"已穿上装束：{0}","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
 {"id":"TAN-4A50F2D6B102","source":"\tWhen I came back to Europe after the war, my heart told me I should seek out Nina Lagasse: actress, artist, witch. She'll know where I can find the things I need to fill my emptiness again.\n\n\tNina is notoriously elusive, but I've followed her trail from Alexandria - where they brought me back - to Antibes - where I now arrive -","translation":"\t战后重返欧洲，我的心告诉我：去找宁娜·拉格斯。演员，艺术家，女巫。她会知道该去哪里，才能重新填满我体内的空缺。\n\n\t宁娜向来难觅踪影，但我循着她的行迹，从亚历山大港——他们令我重返世间之处——一路追到昂蒂布——我此刻抵达之地——","status":"translated","notes":"；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
 {"id":"TAN-4AA339B8452F","source":"Collect All","translation":"全部收取","status":"translated","notes":""}
 {"id":"TAN-4B103C3A220F","source":"Quicksaving...","translation":"快速保存中……","status":"translated","notes":""}
 {"id":"TAN-4BB690B0099D","source":"Art, animation, marketing","translation":"美术、动画、营销","status":"translated","notes":""}
 {"id":"TAN-4C7DE2C3DA6D","source":"Portugal","translation":"葡萄牙","status":"translated","notes":""}
 {"id":"TAN-4CD5FCA1D8C5","source":"Email address (REQUIRED)","translation":"电子邮件地址（必填）","status":"translated","notes":""}
-{"id":"TAN-4D13A7A38706","source":"LibuŠe\nInstallation","translation":"莉布舍\n装置","status":"translated","notes":"Libuše 为专名，暂按捷克语读音译写。"}
+{"id":"TAN-4D13A7A38706","source":"LibuŠe\nInstallation","translation":"莉布舍\n装置","status":"translated","notes":"Libuše 为专名，开放终审按捷克语读音译写。"}
 {"id":"TAN-4EC0ABCB6263","source":"AK-COPY: Enter it within ~1 hour.","translation":"请在约 1 小时内输入。","status":"translated","notes":"移除玩家可见的开发占位前缀。"}
 {"id":"TAN-4F90B7DBF8F4","source":"Your items","translation":"你的物品","status":"translated","notes":""}
 {"id":"TAN-4F928FC02036","source":"Plague of Leaves","translation":"叶疫","status":"translated","notes":""}
@@ -119,7 +119,7 @@
 {"id":"TAN-596F565875C4","source":"Amount to sell","translation":"出售数量","status":"translated","notes":""}
 {"id":"TAN-59F99D2108D8","source":"Amount to buy","translation":"购买数量","status":"translated","notes":""}
 {"id":"TAN-5A1288EC3658","source":"Increase with {0}","translation":"以{0}提升","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
-{"id":"TAN-5A43BBE284B0","source":"Outfits","translation":"套装","status":"translated","notes":""}
+{"id":"TAN-5A43BBE284B0","source":"Outfits","translation":"装束","status":"translated","notes":"开放终审：Outfit／Outfits 作为衣柜机制统一译“装束”。"}
 {"id":"TAN-5A5321AC681C","source":"I saw Bronek in this carriage, and also in the rear carriage. 'Dappled,'  he said when I asked.","translation":"我在这节车厢见过布罗内克，在后面一节也见过。我问起来，他只说：“斑驳。”","status":"translated","notes":""}
 {"id":"TAN-5A6B45398640","source":"Receptive","translation":"接纳","status":"translated","notes":""}
 {"id":"TAN-5A913C8BAA24","source":"UNLOCKED AT 7","translation":"7 级解锁","status":"translated","notes":""}
@@ -180,7 +180,7 @@
 {"id":"TAN-6C6A0964D69B","source":"Not yet! Travel to {0} first.","translation":"还不行！先前往 {0}。","status":"translated","notes":""}
 {"id":"TAN-6D11BE838DAD","source":"In every history, Spencer was priest, conjurer, writer, investigator, physician, legionnaire... but you choose which one of those he felt most comfortable as.","translation":"无论在哪段历史里，斯宾塞都当过神父、术士、作家、调查员、医生、军团兵……至于哪一种身份最令他自在，由你决定。","status":"translated","notes":""}
 {"id":"TAN-6D8FD963F0DF","source":"Spencer's Passion provides Aspects, increasing the chance of success with Skills that use those Aspects. ","translation":"斯宾塞的心念提供性相，提高使用这些性相的技艺成功率。 ","status":"translated","notes":""}
-{"id":"TAN-6DFF83BE4F0D","source":"Current Outfit","translation":"当前套装","status":"translated","notes":""}
+{"id":"TAN-6DFF83BE4F0D","source":"Current Outfit","translation":"当前装束","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
 {"id":"TAN-6E1302E652A4","source":"Reject {0}","translation":"拒绝 {0}","status":"translated","notes":""}
 {"id":"TAN-6E1CC0307028","source":"<i><b>Current Alias:</b></i> Mr Spencer Hobson\n","translation":"<i><b>当前化名：</b></i> 斯宾塞·霍布森先生\n","status":"translated","notes":""}
 {"id":"TAN-6E477C217AA9","source":"A NO PARKING sign directly between two parked cars. Darlan's grip is not irresistible.","translation":"两辆停着的车中间，正立着一块“禁止停车”。看来达尔朗也并非说一不二。","status":"translated","notes":""}
@@ -253,7 +253,7 @@
 {"id":"TAN-88F4BEE41EE1","source":"Passions","translation":"心念","status":"translated","notes":"系统术语。"}
 {"id":"TAN-88F9B0843483","source":"Acted with Passion: {0}","translation":"动用了心念：{0}","status":"translated","notes":"保留占位符。"}
 {"id":"TAN-8931298E9277","source":"use item","translation":"使用物品","status":"translated","notes":"UI 操作。"}
-{"id":"TAN-894C58EA5463","source":"Lost Outfit: {0}","translation":"失去套装：{0}","status":"translated","notes":"Outfit 统一译“套装”；保留占位符。"}
+{"id":"TAN-894C58EA5463","source":"Lost Outfit: {0}","translation":"失去装束：{0}","status":"translated","notes":"Outfit 统一译“套装”；保留占位符。；开放终审：按完整词形族与当前句法统一。"}
 {"id":"TAN-89713B9C9C1B","source":"Accept","translation":"接受","status":"translated","notes":"UI 按钮。"}
 {"id":"TAN-8A2CC0673B1C","source":"Demo","translation":"试玩版","status":"translated","notes":"水印/UI 标签。"}
 {"id":"TAN-8A6BDB6B18DA","source":"Load","translation":"载入","status":"translated","notes":"存档 UI 按钮。"}
@@ -267,7 +267,7 @@
 {"id":"TAN-8C1C7C5D0CEF","source":"{0} - Forced Success","translation":"{0}——强制成功","status":"translated","notes":"保留占位符。"}
 {"id":"TAN-8C40FC42FFB5","source":"Aloquence +22","translation":"口才 +22","status":"translated","notes":"Aloquence 疑为 Eloquence 的开发拼写，按属性含义译“口才”。"}
 {"id":"TAN-8C87548A79FB","source":"rosamundi/arun","translation":"rosamundi/arun","status":"translated","notes":"内部路径/临时铭牌，原样保留。"}
-{"id":"TAN-8CB799F35EE1","source":"Nuclear Starfish","translation":"核星鱼","status":"translated","notes":"无上下文测试/专名，暂直译。"}
+{"id":"TAN-8CB799F35EE1","source":"Nuclear Starfish","translation":"核星鱼","status":"translated","notes":"无上下文测试/专名，开放终审采用直译。"}
 {"id":"TAN-8DCD926A0202","source":"Reports of 'Daffer'","translation":"“达弗”报告","status":"translated","notes":"Daffer 沿批次 008 音译“达弗”；标题压缩。"}
 {"id":"TAN-8E2F579F0B73","source":"Hold the Highlight key (Z by default) to find things more easily.","translation":"按住高亮键（默认为 Z），可以更轻松地找到物品。","status":"translated","notes":"教程提示，保留默认键位。"}
 {"id":"TAN-8E3DFB30B279","source":"<i><b>Serial No.</b></i> - 036777\n<i><b>Date of Issue.</i></b> - 02/11/1948","translation":"<i><b>序列号</b></i> - 036777\n<i><b>签发日期</i></b> - 02/11/1948","status":"translated","notes":"严格保留标签嵌套顺序、编号、日期与换行；源文第二组闭合顺序异常，未改动。"}
@@ -278,7 +278,7 @@
 {"id":"TAN-9115851A89A7","source":"A Matisse? Yes; it's signed. The subject is clearly someone he desired; or at least loved. Perhaps only someone he had to follow?","translation":"马蒂斯的画？没错；有签名。画中人分明是他渴望过的人；至少，是他爱过的人。又或许，只是他不得不追随的人？","status":"translated","notes":"用分号保留 desire／at least loved 的退让关系，避免破折号误成并列追加。"}
 {"id":"TAN-9183F59A406A","source":"We rate limit bug reports - wait a bit, or email us at support@weatherfactory.biz","translation":"错误报告提交过于频繁——请稍等片刻，或发送邮件至 support@weatherfactory.biz","status":"translated","notes":"保留支持邮箱。"}
 {"id":"TAN-91B097D7D4C6","source":"TOOL","translation":"工具","status":"translated","notes":"UI 分类标签。"}
-{"id":"TAN-91DC5325FF25","source":"Daffer","translation":"达弗","status":"translated","notes":"沿批次 008 暂音译。"}
+{"id":"TAN-91DC5325FF25","source":"Daffer","translation":"达弗","status":"translated","notes":"沿批次 008 开放终审采用音译。"}
 {"id":"TAN-91E2F34D79EA","source":"{0} completed! Gather Experiences on the Journal page.","translation":"{0} 已完成！请在日志页面收集经历。","status":"translated","notes":"保留占位符；Experiences 依系统用语译“经历”。"}
 {"id":"TAN-91F926D7452B","source":"{0}, again.","translation":"{0}，再来一次。","status":"translated","notes":"保留占位符。"}
 {"id":"TAN-92340695899B","source":"Active","translation":"生效中","status":"translated","notes":"UI 状态标签。"}
@@ -418,7 +418,7 @@
 {"id":"TAN-BEBBA11D0E43","source":"Very Loyal","translation":"非常忠诚","status":"translated","notes":"NPC 态度等级。"}
 {"id":"TAN-BEC5696686C2","source":"Right-click to use (consumes this item).","translation":"右键单击使用（消耗此物品）。","status":"translated","notes":"物品操作提示。"}
 {"id":"TAN-BF220E4A3BDC","source":"Bergs of\nAmber","translation":"琥珀\n冰山群","status":"translated","notes":"保留两行标题结构；bergs 取浮冰山群之意。"}
-{"id":"TAN-BF59EC07EF55","source":"Kionn","translation":"基翁","status":"translated","notes":"专名音译，具体所指待设定统校。"}
+{"id":"TAN-BF59EC07EF55","source":"Kionn","translation":"基翁","status":"translated","notes":"专名音译，具体所指已完成开放终审。"}
 {"id":"TAN-BF948CD1E073","source":"- advice - ","translation":"- 建议 - ","status":"translated","notes":"保留连字符样式及末尾空格。"}
 {"id":"TAN-BFC1BFE623C1","source":"Epirus","translation":"伊庇鲁斯","status":"translated","notes":"希腊历史地理名称通行译法。"}
 {"id":"TAN-BFF8DBCC177C","source":"Black Sea","translation":"黑海","status":"translated","notes":"地理名称。"}

@@ -56,13 +56,13 @@ def main() -> int:
     for canonical, count in seen.items():
         if count != 1:
             errors.append(f"ledger canonical count {count}: {canonical!r}")
-    if len(ledger) != 350:
-        errors.append(f"expected 350 historical audit verdicts, found {len(ledger)}")
+    if len(ledger) < 350:
+        errors.append(f"historical baseline shrank below 350 verdicts: {len(ledger)}")
 
     ledger_by_term = {row["canonical"]: row for row in ledger}
     for canonical, row in ledger_by_term.items():
         decision = row.get("decision")
-        if decision not in {"keep", "change", "retire"}:
+        if decision not in {"keep", "change", "add", "retire"}:
             errors.append(f"{canonical}: invalid decision {decision!r}")
         if row.get("basis") not in ALLOWED_BASIS:
             errors.append(f"{canonical}: invalid basis {row.get('basis')!r}")
@@ -101,6 +101,8 @@ def main() -> int:
             errors.append(f"{canonical}: keep verdict changes target")
         if decision == "change" and row.get("target_before") == row.get("target_final"):
             errors.append(f"{canonical}: change verdict is a no-op")
+        if decision == "add" and row.get("target_before") is not None:
+            errors.append(f"{canonical}: add verdict unexpectedly has a previous target")
 
         expected_aliases = row.get("alias_targets_final", {})
         if set(record.get("aliases", [])) != set(expected_aliases):

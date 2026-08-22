@@ -7,9 +7,9 @@
 {"id":"TAN-A954AFF7B89C","source":"I'm not sure if I believe that.","translation":"我不确定自己相不相信。","status":"translated","notes":""}
 {"id":"TAN-A980EB80FB71","source":"Spend [q=ang:evolveCost] Edge Experiences.","translation":"花费 [q=ang:evolveCost] 份刃之经历。","status":"translated","notes":"完整保留查询变量；沿前批系统句式，Edge 依术语表译“刃”。"}
 {"id":"TAN-A987117F1836","source":"The familiar blossom-apple taste. Like a gently sanctimonious aunt.","translation":"熟悉的花香苹果味。像个和声细气、满嘴大道理的姨妈。","status":"translated","notes":"blossom-apple 按复合风味处理；保留 gently sanctimonious 的揶揄。"}
-{"id":"TAN-A9B678853F04","source":"[You can now don the Man of Mystery outfit at a Wardrobe.]","translation":"[你现在可以在衣柜处换上“神秘人”套装。]","status":"translated","notes":"Man of Mystery 作为服装名暂译“神秘人”。"}
-{"id":"TAN-A9C8429BE729","source":"Is the Change why you're in the Sanitarium?","translation":"这场蜕变就是你住进疗养院的原因吗？","status":"translated","notes":"Change 指上文 Cross-change，沿本批译“蜕变”。"}
-{"id":"TAN-A9D326E0BB64","source":"I have no excuses. I can only throw myself upon the mercy of the State.","translation":"我无可辩解。只能祈求邦国开恩。","status":"translated","notes":"State 作为架空政治实体暂译“邦国”；前批亦有“国家”用例，需总校统一。"}
+{"id":"TAN-A9B678853F04","source":"[You can now don the Man of Mystery outfit at a Wardrobe.]","translation":"[你现在可以在衣柜处换上“神秘人”套装。]","status":"translated","notes":"Man of Mystery 作为服装名开放终审采用“神秘人”。"}
+{"id":"TAN-A9C8429BE729","source":"Is the Change why you're in the Sanitarium?","translation":"这场变易就是你住进疗养院的原因吗？","status":"translated","notes":"Change 指上文 Cross-change，沿本批译“蜕变”。；开放终审：按完整词形族与当前句法统一。"}
+{"id":"TAN-A9D326E0BB64","source":"I have no excuses. I can only throw myself upon the mercy of the State.","translation":"我无可辩解。只能祈求邦国开恩。","status":"translated","notes":"State 作为架空政治实体开放终审采用“邦国”；前批亦有“国家”用例，已完成开放终审。"}
 {"id":"TAN-A9F010C11382","source":"Leave the bear to its shadowy solitude.","translation":"让熊留在幽暗中，独享孤寂。","status":"translated","notes":""}
 {"id":"TAN-A9F32FA0489B","source":"Enough!","translation":"够了！","status":"translated","notes":""}
 {"id":"TAN-AA203322902D","source":"Fiddle, cautiously, with the buttons.","translation":"小心地摆弄按钮。","status":"translated","notes":""}
@@ -56,7 +56,7 @@
 {"id":"TAN-AD2FC598762C","source":"Goodbye, Jaume.","translation":"再见，豪梅。","status":"translated","notes":"v1.2.5 术语终审：依最新版术语证据统一。"}
 {"id":"TAN-AD31B57D3858","source":"...on the spot.","translation":"……当场。","status":"translated","notes":""}
 {"id":"TAN-AD5F77EBFF3D","source":"Mathis.","translation":"马蒂斯。","status":"translated","notes":""}
-{"id":"TAN-AD6B80497C0F","source":"Change from Nina to nobody","translation":"Change from Nina to nobody","status":"translated","notes":"技术测试片段，原样保留。"}
+{"id":"TAN-AD6B80497C0F","source":"Change from Nina to nobody","translation":"从宁娜改为无人","status":"translated","notes":"技术测试片段，原样保留。；开放终审：按完整词形族与当前句法统一。"}
 {"id":"TAN-AD6CF3B17502","source":"Pain troubles my sleep, but I'm healing. [When you sleep, [[Pain]] is converted to [[Weariness]].]","translation":"痛苦搅扰我的睡眠，但伤势正在痊愈。[睡眠时，[[Pain]] 会转化为 [[Weariness]]。]","status":"translated","notes":"双中括号链接目标原样保留。"}
 {"id":"TAN-AD6E52AA1455","source":"I'll consider the <i>trabai</i>.","translation":"我会考虑这桩<i>特拉拜</i>。","status":"translated","notes":"trabai 统一音译“特拉拜”；去除中文与斜体间多余空格。"}
 {"id":"TAN-AD7855D12E85","source":"The cat backs away, bristle-twitching with ineffectual martinet fury, and darts off down the train.","translation":"猫弓着背退开，炸起的毛一抽一抽，活像个威风扫地却仍大发雷霆的纠察官；随即掉头沿车厢飞奔而去。","status":"translated","notes":""}
@@ -88,7 +88,7 @@
 {"id":"TAN-AF3044715FFD","source":"You are not quite a scholar, but not quite a boor. It will do, for this sliver of day.","translation":"你算不上学者，却也不是莽夫。这一小片白昼里，勉强够用。","status":"translated","notes":""}
 {"id":"TAN-AF3DDE589EB6","source":"I should have known -","translation":"我早该知道——","status":"translated","notes":""}
 {"id":"TAN-AF6B8C9AA3D6","source":"All the teachings had been so restrained. Cream and pale gold. And there was I, in a world of red.","translation":"所有教诲一直那么克制。乳白与淡金。而我却置身于一片猩红的世界。","status":"translated","notes":""}
-{"id":"TAN-AF7038977115","source":"Ah... of course. The compulsion of brass.","translation":"啊……当然。黄铜之迫。","status":"translated","notes":"compulsion of brass 暂译“黄铜之迫”，具体设定义待统稿。"}
+{"id":"TAN-AF7038977115","source":"Ah... of course. The compulsion of brass.","translation":"啊……当然。黄铜之迫。","status":"translated","notes":"compulsion of brass 开放终审采用“黄铜之迫”，具体设定义已完成开放终审。"}
 {"id":"TAN-AF799E1AB221","source":"Some sort of deliquescence beneath the bear's heraldic exterior. Best not to investigate too closely.","translation":"那头熊的纹章外表下，似有某种潮解之物。最好别细看。","status":"translated","notes":""}
 {"id":"TAN-AF7DFD28E6D9","source":"Magnificent. And thank you.","translation":"妙极。也谢谢你。","status":"translated","notes":""}
 {"id":"TAN-AF7EC647E057","source":"My sleep's a little darker. Fever fades.","translation":"我的睡眠暗了一点。热病消退。","status":"translated","notes":""}
@@ -209,7 +209,7 @@
 {"id":"TAN-B859BFF12C47","source":"I returned from the Mansus to flesh...","translation":"我从漫宿回到血肉……","status":"translated","notes":""}
 {"id":"TAN-B87DB71E1B11","source":"A man who seeks a woman always wears a certain air. It's one I know, too well.","translation":"一个寻找女人的男人，总有一种特定的神态。我太熟悉了。","status":"translated","notes":""}
 {"id":"TAN-B8806B85BDB2","source":"This is our chance. Come on, Vincent.","translation":"机会来了。快，文森特。","status":"translated","notes":""}
-{"id":"TAN-B8948C9ECC80","source":"[Knock] What would they find on that mountain? The Mansus? The City Unbuilt?","translation":"[启] 他们会在那座山上找到什么？漫宿？未建之城？","status":"translated","notes":"Unbuilt City 暂译“未筑之城”，待专名统稿。"}
+{"id":"TAN-B8948C9ECC80","source":"[Knock] What would they find on that mountain? The Mansus? The City Unbuilt?","translation":"[启] 他们会在那座山上找到什么？漫宿？未建之城？","status":"translated","notes":"Unbuilt City 开放终审采用“未筑之城”，已完成开放终审。"}
 {"id":"TAN-B8B7CFDF4758","source":"Yes?","translation":"什么事？","status":"translated","notes":""}
 {"id":"TAN-B8D6D182451A","source":"I'm going to make sure that everyone understands what it means to cross me.","translation":"我要让所有人都尝尝，和我作对是什么下场。","status":"translated","notes":""}
 {"id":"TAN-B8D99257C309","source":"Thanks, Vincent. ","translation":"谢谢，文森特。 ","status":"translated","notes":""}
@@ -267,7 +267,7 @@
 {"id":"TAN-BC35BC93987C","source":"[Examine the fridge.]","translation":"[检查冰箱。]","status":"translated","notes":""}
 {"id":"TAN-BC3C06DCDB7F","source":"What's this? You prince! How spontaneous of you!","translation":"这是什么？你这位王子！真够随性的！","status":"translated","notes":"润色2026-08-18：Spontaneity 相关形容词统一为“随性”（chunk_005 定译）"}
 {"id":"TAN-BC42E76B8257","source":"A little ceramic jar, small enough to fit in the palm of the hand, light enough to ride unnoticed in a pocket.","translation":"一只小陶罐，小得能纳入掌心，轻得能藏在口袋里而不被察觉。","status":"translated","notes":""}
-{"id":"TAN-BC80A8D01455","source":"[Wink. Begin to whistle a martial tune. Drum my fingers on the Bewitching tool.]","translation":"[眨眨眼。开始吹起一支军歌。手指在惑心工具上敲着拍子。]","status":"translated","notes":"Bewitching 暂译“惑心”，待制作机制术语统稿。"}
+{"id":"TAN-BC80A8D01455","source":"[Wink. Begin to whistle a martial tune. Drum my fingers on the Bewitching tool.]","translation":"[眨眨眼。开始吹起一支军歌。手指在惑心工具上敲着拍子。]","status":"translated","notes":"Bewitching 开放终审采用“惑心”，已完成开放终审。"}
 {"id":"TAN-BCAC54CFB7CB","source":"The uniform of a <i>médecin-lieutenant</i> of the Légion du Seuil. A little faded from the bronze sun of the deep deserts; a little stained, faintly, by the clinging mud of the ghost forests of Indochine.","translation":"一套门槛军团<i>军医中尉</i>的制服。深沙漠的青铜烈日将它晒得略微褪色；印度支那鬼林中黏附的泥浆，也在上面留下了浅浅污痕。","status":"translated","notes":"Légion du Seuil 沿前批译作“门槛军团”；保留斜体标签。"}
 {"id":"TAN-BCC4A7AA987B","source":"I can craft Labrikon with an Unworldly skill, enabling entry to Aubière's dream. Or I can still make an arrangement with Sinombre, if I prefer.","translation":"我可以凭一项异世技艺制作拉布里孔，借此进入奥比耶的梦。或者，若我乐意，仍可与西农布尔另作安排。","status":"translated","notes":"Labrikon 沿前批音译“拉布里孔”；Skill 依术语表译“技艺”。"}
 {"id":"TAN-BCCCE60BC5F9","source":"Not at all. I do hope I may be of some assistance.","translation":"一点也不。我真心希望能帮上忙。","status":"translated","notes":""}
@@ -323,7 +323,7 @@
 {"id":"TAN-C18E5290FBC3","source":"I have learnt, over many years, to disregard the promises of fine gentlemen. No.","translation":"多年来，我已经学会不理会体面绅士的承诺。不。","status":"translated","notes":""}
 {"id":"TAN-C19F06C270D2","source":"North. East. How would I know? I am no detective. If I knew, I would not ask your help.","translation":"北边。东边。我怎么知道？我又不是侦探。要是知道，就不会请你帮忙了。","status":"translated","notes":""}
 {"id":"TAN-C1C5A7397DE7","source":"Very tall, very distinguished. A real gentleman. Of course you will know him at once.","translation":"个子很高，气度不凡。真正的绅士。你当然一眼就能认出他。","status":"translated","notes":""}
-{"id":"TAN-C1EC07EDBF6C","source":"\"Welland.\" Of course. He usually went by 'Captain', but it's definitely him. There are photos in the [[Bureau]] records - of a man whose features had hardly changed since the time of this painting.","translation":"“韦兰德。”当然。他通常自称“上尉”，但无疑就是他。[[Bureau]] 档案里有照片——照片上那人的容貌，从这幅画的年代起几乎没有改变。","status":"translated","notes":"Welland 沿前批译作“韦兰德”；保留 [[Bureau]] 链接目标。"}
+{"id":"TAN-C1EC07EDBF6C","source":"\"Welland.\" Of course. He usually went by 'Captain', but it's definitely him. There are photos in the [[Bureau]] records - of a man whose features had hardly changed since the time of this painting.","translation":"“韦兰。”当然。他通常自称“上尉”，但无疑就是他。[[Bureau]] 档案里有照片——照片上那人的容貌，从这幅画的年代起几乎没有改变。","status":"translated","notes":"Welland 沿前批译作“韦兰”；保留 [[Bureau]] 链接目标。；开放终审：按新发现的固定词形统一。"}
 {"id":"TAN-C21DFA14D733","source":"You are not the first fool to be snared.","translation":"你不是第一个落入圈套的傻瓜。","status":"translated","notes":""}
 {"id":"TAN-C22B79F8A766","source":"That's it, lads, never mind <i>la marquise</i>, she's the governess now!","translation":"好了，小伙子们，别理<i>侯爵夫人</i>，她现在是你们的女家庭教师了！","status":"translated","notes":"保留斜体标签；la marquise 按称谓译作“侯爵夫人”。"}
 {"id":"TAN-C22F7B8DF22F","source":"Of course. Here.","translation":"当然。给。","status":"translated","notes":""}
@@ -359,7 +359,7 @@
 {"id":"TAN-C45F75BEB7A7","source":"I give you now one-half the sum we agreed. The rest on your return. Go quickly. ","translation":"现在先付你约定数目的一半。回来后再付剩下的。快去。 ","status":"translated","notes":""}
 {"id":"TAN-C464FAFBDCD4","source":"[Her calves are furred with mosses and spotted with lichens. Beneath that, her skin is glossy, but with dashed lines and bumps, like the bark of an olive tree. Her feet are bare: below her ankles, the effect is even more marked, and her flesh has begun to curl like roots.]","translation":"[她的小腿覆着苔藓，点缀着地衣。苔藓之下，肌肤光滑发亮，却布满短短的纹路与凸起，像橄榄树皮。她赤着脚；脚踝以下，这种变化更加明显，皮肉已经开始像树根般蜷曲。]","status":"translated","notes":""}
 {"id":"TAN-C4743BEE097B","source":"Yes, yes, we know! Ask Andrée at the Librairie des Heures. Why so forgetful?","translation":"是，是，我们知道！去司辰书店问安德蕾。怎么这么健忘？","status":"translated","notes":"Librairie des Heures 沿世界观译作“司辰书店”。"}
-{"id":"TAN-C47BEE97D79D","source":"Yes, exactly. It's signed by Levinsen - the prefiguring Librarian.","translation":"对，正是。上面有列文森的签名——那位预示未来的图书管理员。","status":"translated","notes":"Levinsen 音译“列文森”；prefiguring 与前批“预示”统一。"}
+{"id":"TAN-C47BEE97D79D","source":"Yes, exactly. It's signed by Levinsen - the prefiguring Librarian.","translation":"对，正是。上面有列文森的签名——那位预示未来的司书。","status":"translated","notes":"Levinsen 音译“列文森”；prefiguring 与前批“预示”统一。；开放终审：按完整词形族与当前句法统一。"}
 {"id":"TAN-C482064A4EF7","source":"Perhaps not. But may I speak with you?","translation":"也许不是。但我能和你谈谈吗？","status":"translated","notes":""}
 {"id":"TAN-C4826882C177","source":"Oh, pilgrim, look at what you've done to me. I'm talking politics - although I promised that I never would again. Another promise broken.","translation":"哦，朝圣者，瞧你把我害成什么样了。我竟谈起政治——明明发过誓，再也不谈这些。又一个诺言破了。","status":"translated","notes":""}
 {"id":"TAN-C483D2A13F1C","source":"You'll consider it? Consider it quickly. I have told you what I want. And how I will reward you.","translation":"你会考虑？那就快点考虑。我已经告诉你我要什么，也告诉了你会如何酬谢。","status":"translated","notes":""}
@@ -385,7 +385,7 @@
 {"id":"TAN-C5C8CABA7E1F","source":"Top layers smooth and flat...","translation":"最上面几层平整光滑……","status":"translated","notes":""}
 {"id":"TAN-C5EE64271526","source":"Try a charm on the window - to invigorate or awaken it.","translation":"对窗户施一道咒——激活或唤醒它。","status":"translated","notes":""}
 {"id":"TAN-C5F8A38163DF","source":"I'm more than just a medic, Vincent. You must be starting to understand that by now.","translation":"我不只是个军医，文森特。现在，你也该开始明白了。","status":"translated","notes":""}
-{"id":"TAN-C62461785032","source":"[You can now don the Trenchcoat Brigade outfit at a Wardrobe.]","translation":"[你现在可以在衣柜处换上“风衣旅团”套装。]","status":"translated","notes":"Trenchcoat Brigade 暂译“风衣旅团”，作为套装名待 UI 统稿。"}
+{"id":"TAN-C62461785032","source":"[You can now don the Trenchcoat Brigade outfit at a Wardrobe.]","translation":"[你现在可以在衣柜处换上“风衣旅团”套装。]","status":"translated","notes":"Trenchcoat Brigade 开放终审采用“风衣旅团”，作为套装名已完成开放终审。"}
 {"id":"TAN-C62D2EC78BFA","source":"I see. And so does the saint. This is very good.","translation":"我看见了。圣人也看见了。这很好。","status":"translated","notes":""}
 {"id":"TAN-C634A705C4BE","source":"Sort through the contents.","translation":"翻检里面的东西。","status":"translated","notes":""}
 {"id":"TAN-C635287C28B5","source":"I'm sorry. Is that difficult for you?","translation":"抱歉。这对你来说很难吗？","status":"translated","notes":""}

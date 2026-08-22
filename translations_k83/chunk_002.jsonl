@@ -142,7 +142,7 @@
 {"id":"TAN-2B6204A096F8","source":"[Nod sagaciously. Wink.]","translation":"[高深莫测地点头。眨眼。]","status":"translated","notes":""}
 {"id":"TAN-2B6314D4085B","source":"I have reconsidered, Monsieur Hobson. I am ready to tell you where you might find her.","translation":"我改主意了，霍布森先生。我愿意告诉你去哪里或许能找到她。","status":"translated","notes":""}
 {"id":"TAN-2B687DB6298B","source":"Goodbye.","translation":"再见。","status":"translated","notes":""}
-{"id":"TAN-2B933472F0CC","source":"... and a packet of Bonanza cigarettes. The dollars will be accepted everywhere in Western Europe. The cigarettes, everywhere there's a black market.","translation":"……还有一包博南扎牌香烟。美元在西欧走到哪儿都收；香烟则在有黑市的地方通行无阻。","status":"translated","notes":"Bonanza 为香烟品牌，暂音译“博南扎”。"}
+{"id":"TAN-2B933472F0CC","source":"... and a packet of Bonanza cigarettes. The dollars will be accepted everywhere in Western Europe. The cigarettes, everywhere there's a black market.","translation":"……还有一包博南扎牌香烟。美元在西欧走到哪儿都收；香烟则在有黑市的地方通行无阻。","status":"translated","notes":"Bonanza 为香烟品牌，开放终审采用音译“博南扎”。"}
 {"id":"TAN-2BA8E9895E7D","source":"A little.","translation":"一点点。","status":"translated","notes":""}
 {"id":"TAN-2BDA9B54E333","source":"[He scrutinises the passport, eyes crinkling, lips moving slightly. He hands it back to me.]","translation":"[他仔细审视护照，眯起眼睛，嘴唇微动。然后把护照还给我。]","status":"translated","notes":""}
 {"id":"TAN-2C0A29435A11","source":"Of course. I understand.","translation":"当然。我明白。","status":"translated","notes":""}
@@ -160,7 +160,7 @@
 {"id":"TAN-2CEFA5F91999","source":"'Sylvain...'","translation":"“西尔万……”","status":"translated","notes":"j.87 文本修订同步"}
 {"id":"TAN-2CF671C61626","source":"[Truth] Better to say, I was lost.","translation":"[实话] 不如说，我迷了路。","status":"translated","notes":""}
 {"id":"TAN-2D1530111312","source":"Night-work?","translation":"夜里的活儿？","status":"translated","notes":""}
-{"id":"TAN-2D166A778158","source":"I know exactly. You will find her at the Sanitarium Aujourd'hui, past the park.","translation":"我很清楚。过了公园，就能在“今日”疗养院找到她。","status":"translated","notes":"Sanitarium Aujourd'hui 暂译“‘今日’疗养院”。；润色2026-08-18：past the park 是“过了公园”不是“穿过公园”；与 chunk_001 同短语译法统一"}
+{"id":"TAN-2D166A778158","source":"I know exactly. You will find her at the Sanitarium Aujourd'hui, past the park.","translation":"我很清楚。过了公园，就能在“今日”疗养院找到她。","status":"translated","notes":"Sanitarium Aujourd'hui 开放终审采用“‘今日’疗养院”。；润色2026-08-18：past the park 是“过了公园”不是“穿过公园”；与 chunk_001 同短语译法统一"}
 {"id":"TAN-2D28311DE3D5","source":"I'll be leaving with the Rosa Mundi circus.","translation":"我会随罗莎·蒙迪马戏团离开。","status":"translated","notes":""}
 {"id":"TAN-2D2C92EF8965","source":"A busy Hour, then, these last ten years.","translation":"这么说，过去十年里，某位司辰忙得很。","status":"translated","notes":"Hour 大写且属设定语境，按本体词译“司辰”。"}
 {"id":"TAN-2D3C0892305B","source":"[Playful] Well, generally, it's me, yes.","translation":"[调皮] 嗯，通常是我，没错。","status":"translated","notes":""}
@@ -170,7 +170,7 @@
 {"id":"TAN-2D6FD7823DFE","source":"[This will advance to the following morning, unless something wakes you in the night. Continue?]","translation":"[此操作会将时间推进至次日早晨，除非有事在夜里将你唤醒。继续吗？]","status":"translated","notes":""}
 {"id":"TAN-2D70503B4BDB","source":"And tucked away at the back... a tin of coffee. Three-quarters full.","translation":"最里面还藏着……一罐咖啡。罐里剩了四分之三。","status":"translated","notes":""}
 {"id":"TAN-2D8134A6BA30","source":"The Director might know. I do not. This is not a library. It is not a bureau of information.","translation":"院长也许知道。我不知道。这里不是图书馆。也不是情报局。","status":"translated","notes":""}
-{"id":"TAN-2D845BC8573A","source":"[You can now don the Summer Frivolity outfit at a Wardrobe.]","translation":"[你现在可以在衣柜处换上“夏日轻佻”套装。]","status":"translated","notes":"Summer Frivolity 为服装名，暂译“夏日轻佻”。"}
+{"id":"TAN-2D845BC8573A","source":"[You can now don the Summer Frivolity outfit at a Wardrobe.]","translation":"[你现在可以在衣柜处换上“夏日轻佻”套装。]","status":"translated","notes":"Summer Frivolity 为服装名，开放终审采用“夏日轻佻”。"}
 {"id":"TAN-2D8C2F6D978C","source":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","translation":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.","status":"translated","notes":"无语义的 Lorem ipsum 排版占位文本，保持原样。"}
 {"id":"TAN-2DB5C3EEA279","source":"Perhaps the bear came with the house, originally. Presumably Aubière stuck it in here because he felt it didn't strike the right tone for his high-minded institution. ","translation":"也许这头熊原本就是随房子一起来的。想必奥比耶觉得它不合自己那座高尚机构的调子，才把它塞到这里。 ","status":"translated","notes":""}
 {"id":"TAN-2DDF94942D0E","source":"Linou's wolfish grin returns...","translation":"莉努那狼一般的笑容又回来了……","status":"translated","notes":""}
@@ -216,7 +216,7 @@
 {"id":"TAN-310B90F39C04","source":"[Incline my head and withdraw.]","translation":"[颔首告辞。]","status":"translated","notes":""}
 {"id":"TAN-3117877CAC4F","source":"Do you work here? Or is the doctor treating you, too?","translation":"你在这里工作？还是医生也在治疗你？","status":"translated","notes":""}
 {"id":"TAN-31317EF2DA09","source":"So interesting! Then, I wonder, should we call this the original? Or only a prophetic falsehood? Thank you, Monsieur Hobson. I will regale my other visitors with this little morsel.","translation":"太有趣了！那么，该称它为原作，还是一桩预言性的伪言？谢谢你，霍布森先生。我要拿这点小趣闻招待其他访客。","status":"translated","notes":""}
-{"id":"TAN-313541C62A2A","source":"The driver turns his head, eyes steady under the gamma-badge cap of the State Milice, and meets my gaze for a moment.","translation":"司机转过头。邦国民兵那顶缀着伽马徽章的帽子下，目光沉稳；他与我对视了片刻。","status":"translated","notes":""}
+{"id":"TAN-313541C62A2A","source":"The driver turns his head, eyes steady under the gamma-badge cap of the State Milice, and meets my gaze for a moment.","translation":"司机转过头。邦国民兵团那顶缀着伽马徽章的帽子下，目光沉稳；他与我对视了片刻。","status":"translated","notes":"开放终审：State Milice 按词形族组合为“邦国民兵团”。"}
 {"id":"TAN-31364C2E34FC","source":"Ta ta for now.","translation":"回头见。","status":"translated","notes":""}
 {"id":"TAN-314265EA1B1D","source":"I'd like to examine it further. I'm sure you won't mind.","translation":"我想再仔细研究一下。相信你不会介意。","status":"translated","notes":""}
 {"id":"TAN-3146450F5385","source":"I called her when I came down here from Paris. She let me know where to pick up the keys. Told me to keep an eye on the place.","translation":"我从巴黎南下时给她打了电话。她告诉我去哪儿取钥匙，叫我替她照看这栋房子。","status":"translated","notes":""}
@@ -272,7 +272,7 @@
 {"id":"TAN-352C18186648","source":"[Arguably Heretical] Your 'saint' is the [[Sister-and-Witch]].","translation":"[近乎异端] 你的“圣人”是 [[Sister-and-Witch]]。","status":"translated","notes":"严格区分 Sister-and-Witch“双生巫女”与 Witch-and-Sister“双生女巫”；链接内部保持原文。"}
 {"id":"TAN-3532B905C007","source":"Although most certainly I will now open a file of my own!","translation":"不过现在，我当然会自己为你建一份档案！","status":"translated","notes":""}
 {"id":"TAN-3533A7E1E371","source":"A good lesson. If you're going to die, die right.","translation":"很好的教训。要死，也得死得像样。","status":"translated","notes":""}
-{"id":"TAN-354F6EAA516B","source":"Then no. The Plague of Leaves was known to gift its sufferers so, in Epirus. It has been called the Plague of Flowers too. But Rodia left not quite too late, and so she has no flowers.","translation":"那么，没有。叶疫曾赐给伊庇鲁斯的患者这样的馈赠。它也叫花疫。不过罗迪娅离开得还不算太晚，因而未曾开花。","status":"translated","notes":"Plague of Leaves/Flowers 暂译“叶疫/花疫”，待全局设定术语复核。"}
+{"id":"TAN-354F6EAA516B","source":"Then no. The Plague of Leaves was known to gift its sufferers so, in Epirus. It has been called the Plague of Flowers too. But Rodia left not quite too late, and so she has no flowers.","translation":"那么，没有。叶疫曾赐给伊庇鲁斯的患者这样的馈赠。它也叫花疫。不过罗迪娅离开得还不算太晚，因而未曾开花。","status":"translated","notes":"Plague of Leaves/Flowers 开放终审采用“叶疫/花疫”，已完成开放终审。"}
 {"id":"TAN-357B3536335C","source":"I always liked that one.","translation":"我一直喜欢那句。","status":"translated","notes":""}
 {"id":"TAN-357F53D02D55","source":"Watch out, discerning ladies and judicious gentlemen.","translation":"诸位明眼的女士、识趣的先生，可得当心了。","status":"translated","notes":""}
 {"id":"TAN-3580BA6AA203","source":"[Nod]","translation":"[点头]","status":"translated","notes":""}
@@ -295,7 +295,7 @@
 {"id":"TAN-36B5E4F802FF","source":"Is that another one of your omelettes?","translation":"那又是你做的煎蛋吗？","status":"translated","notes":""}
 {"id":"TAN-36CC2F388DE9","source":"We keep a small stock of other goods. Perhaps you'd like to see that? Or discuss a commission?","translation":"我们还备了少量别的货。想看看吗？或者，谈一笔委托？","status":"translated","notes":""}
 {"id":"TAN-36D9C23FDFC1","source":"Is that... did you finish? I don't understand.","translation":"那是……你讲完了吗？我听不懂。","status":"translated","notes":""}
-{"id":"TAN-36E63E553D45","source":"\"Speech is a Wound; Silence is Silver. There is no Silver Door, nor can there be, even in the Moon's House…\"","translation":"“言语是伤口；沉默是白银。白银之门并不存在，即便在月之居屋也不可能存在……”","status":"translated","notes":"Moon's House 暂译“月之居屋”；保留 Wound/Silver/Door 重复意象。"}
+{"id":"TAN-36E63E553D45","source":"\"Speech is a Wound; Silence is Silver. There is no Silver Door, nor can there be, even in the Moon's House…\"","translation":"“言语是伤口；沉默是白银。白银之门并不存在，即便在月亮的居屋也不可能存在……”","status":"translated","notes":"Moon's House 保留 Wound/Silver/Door 重复意象。；开放终审：服从前作官中或逐词证据链，修正设定称谓。"}
 {"id":"TAN-36E67D26BBED","source":"A moment of peace beneath the swaying leaves. Then back to the world.","translation":"树影摇曳之下，片刻安宁。随后，回到现实。","status":"translated","notes":""}
 {"id":"TAN-36EDBCC35648","source":"Almost. We had not enough time.","translation":"差一点。可惜我们没来得及。","status":"translated","notes":""}
 {"id":"TAN-36F4B5658294","source":"[Potential] Long lazy-angled days in the sun... but now the sun is sombre.","translation":"[潜在] 日光之下，一天天闲散悠长，斜斜流过……可如今日色阴沉。","status":"translated","notes":"润色2026-08-18：与 chunk_001 TAN-1394F4CE2992 同一原文开头统一译法（仅结尾 sombre/bloodied 不同）"}
@@ -318,7 +318,7 @@
 {"id":"TAN-38CF96E738C8","source":"'Why?' When did I ever care about 'why'?","translation":"“为什么”？我什么时候在乎过“为什么”？","status":"translated","notes":""}
 {"id":"TAN-38D0B4D6E50A","source":"[Lift the glass of water that Linou added to the tray for me.]","translation":"[端起莉努添在托盘上给我的那杯水。]","status":"translated","notes":""}
 {"id":"TAN-38D2E84C2193","source":"[Aloud] They'd looked too long at the sun. One could see nothing through her left eye, one was blind in her right. St Columba healed them... but I can't remember how exactly. I'm sorry.","translation":"[出声] 她们盯着太阳看了太久。一位左眼什么也看不见，另一位右眼失明。圣科伦巴治好了她们……但具体怎么做的，我记不起来。抱歉。","status":"translated","notes":""}
-{"id":"TAN-38D39AD92EEA","source":"You know. You take what you can get. Better than sleeping on the ground. Or in a barn. Or in a ditch waiting for the spidermist to get me. Or even the barracks back in Ghardaïa. ","translation":"你知道的，有处落脚就不错。总比睡地上、谷仓里，或者窝在沟里等蛛雾找上门强。也比盖尔达耶的兵营强。 ","status":"translated","notes":"spidermist 暂译“蛛雾”。"}
+{"id":"TAN-38D39AD92EEA","source":"You know. You take what you can get. Better than sleeping on the ground. Or in a barn. Or in a ditch waiting for the spidermist to get me. Or even the barracks back in Ghardaïa. ","translation":"你知道的，有处落脚就不错。总比睡地上、谷仓里，或者窝在沟里等蛛雾找上门强。也比盖尔达耶的兵营强。 ","status":"translated","notes":"spidermist 开放终审采用“蛛雾”。"}
 {"id":"TAN-38ECCF156544","source":"There's so much pain in the world.","translation":"这世上有太多痛苦。","status":"translated","notes":""}
 {"id":"TAN-38ED156C7634","source":"[Go back out into the rain.] It's a long way to Mimata, and I won't be able to return immediately to Antibes. Perhaps I have unfinished business here. ","translation":"[回到雨中。] 米马塔路途遥远，我没法立刻回昂蒂布。也许这里还有些事没办完。 ","status":"translated","notes":""}
 {"id":"TAN-38F98D81F02B","source":"[She could offer safeguards. She could make promises. But could I really be sure?]","translation":"[她可以提供防护。她可以立下承诺。可我真能放心吗？]","status":"translated","notes":""}
@@ -360,7 +360,7 @@
 {"id":"TAN-3B08BF7C8857","source":"The nearest card-player calls out in a hoarse stage-whisper: 'Be careful! Linou always overcharges foreigners!'","translation":"最近的牌客扯着沙哑的舞台耳语喊道：“小心！莉努总要多收外国人的钱！”","status":"translated","notes":""}
 {"id":"TAN-3B0C494C35FF","source":"Don't keep me waiting.","translation":"别让我久等。","status":"translated","notes":""}
 {"id":"TAN-3B1CD182C2D4","source":"What do you think of Dr Aubière?","translation":"你怎么看奥比耶医生？","status":"translated","notes":""}
-{"id":"TAN-3B6039ACE248","source":"The traditional payment. [Hold up a spintria.]","translation":"传统的报酬。[举起一枚春宫币。]","status":"translated","notes":"spintria 指带色情图案的古罗马代币，暂译“春宫币”；物品全名 Silver Spintria 需统一。"}
+{"id":"TAN-3B6039ACE248","source":"The traditional payment. [Hold up a spintria.]","translation":"传统的报酬。[举起一枚春宫币。]","status":"translated","notes":"spintria 指带色情图案的古罗马代币，开放终审采用“春宫币”；物品全名 Silver Spintria 已完成开放终审。"}
 {"id":"TAN-3B925695ACA4","source":"Take the opportunity to swipe something valuable off his desk.","translation":"趁机从他的书桌上顺走一件值钱的东西。","status":"translated","notes":""}
 {"id":"TAN-3BA222BC530F","source":"[I hold the big man's gaze steadily. He gnaws at the inside of his cheek, suddenly uneasy.]","translation":"[我稳稳地迎着大个子的目光。他咬着腮帮子内侧，忽然有些不安。]","status":"translated","notes":""}
 {"id":"TAN-3BAE125DEBFC","source":"I've changed my mind. [Empty the bath and step away.]","translation":"我改主意了。[放掉洗澡水，走开。]","status":"translated","notes":""}
@@ -405,7 +405,7 @@
 {"id":"TAN-3ED834AC9037","source":"[Go.]","translation":"[离开。]","status":"translated","notes":""}
 {"id":"TAN-3EE056612CEF","source":"The writer notes that no Republican sheep (or goats) have won anything, although he doesn't specify whether this is because Republican animals are effete, or just ineligible.","translation":"作者指出，共和国的绵羊（或山羊）无一获奖，却没说明究竟是共和国的牲畜太娇弱，还是根本没有参赛资格。","status":"translated","notes":"effete 带政论宣传的贬损口吻。"}
 {"id":"TAN-3EEC9DD80E5D","source":"A number of sheep, and a smaller number of goats, have returned triumphantly from the summer pastures and won local livestock competitions.","translation":"一批绵羊和为数稍少的山羊从夏季牧场凯旋而归，并在当地牲畜竞赛中折桂。","status":"translated","notes":""}
-{"id":"TAN-3F11F541B09B","source":"You mean, the Worms ate me, but here I am?","translation":"你是说，蠕虫吃了我，可我还在这里？","status":"translated","notes":"Worms 为设定实体，暂译“蠕虫”。"}
+{"id":"TAN-3F11F541B09B","source":"You mean, the Worms ate me, but here I am?","translation":"你是说，蠕虫吃了我，可我还在这里？","status":"translated","notes":"Worms 为设定实体，开放终审采用“蠕虫”。"}
 {"id":"TAN-3F1AA61D1B41","source":"Not really. Just thinking aloud.","translation":"没什么。只是在大声想想。","status":"translated","notes":""}
 {"id":"TAN-3F27B7BA0613","source":"Call me Sylvain, Vincent. You're out of the Légion too.","translation":"叫我西尔万吧，文森特。你也离开军团了。","status":"translated","notes":"Légion 是 Légion du Seuil（门槛军团）的简称。"}
 {"id":"TAN-3F5F14C163EC","source":"No scholar of the invisible arts takes coincidence at face value.","translation":"无形之术的学者，谁都不会把巧合只当作巧合。","status":"translated","notes":""}
@@ -420,9 +420,9 @@
 {"id":"TAN-3FC4221E3776","source":"English?","translation":"英国人？","status":"translated","notes":""}
 {"id":"TAN-3FCA037C8DD6","source":"[Truth] It's important. I heard she'd come here, to Antibes.","translation":"[实话] 这很重要。我听说她来了昂蒂布。","status":"translated","notes":""}
 {"id":"TAN-3FD3E95D54DE","source":"This is what I require of you.","translation":"这就是我要你做的事。","status":"translated","notes":""}
-{"id":"TAN-3FE187E9F713","source":"The witch followed another, as you follow her - an old woman of Raveline blood. I concerned myself not with her beast-taint and curse. But your Nina sought something from her.","translation":"那女巫追着另一人而来，就像你追着她而来——一个流着拉维林血脉的老妇。我没去理会她身上的兽秽与诅咒；可你的宁娜想从她那里求取什么。","status":"translated","notes":"Raveline 为血统专名，暂音译“拉韦林”。"}
+{"id":"TAN-3FE187E9F713","source":"The witch followed another, as you follow her - an old woman of Raveline blood. I concerned myself not with her beast-taint and curse. But your Nina sought something from her.","translation":"那女巫追着另一人而来，就像你追着她而来——一个流着拉维林血脉的老妇。我没去理会她身上的兽秽与诅咒；可你的宁娜想从她那里求取什么。","status":"translated","notes":"Raveline 为血统专名，开放终审采用音译“拉韦林”。"}
 {"id":"TAN-3FF109935FEA","source":"M. Hobson, I have lost a trinket. A little silver coin. I'm certain it was on my desk when we spoke. Do you know what might possibly have happened to it?","translation":"霍布森先生，我丢了一件小饰物。一枚小银币。我们谈话时，它肯定还在我的桌上。你知不知道它究竟可能出了什么事？","status":"translated","notes":"j.87 文本修订同步"}
-{"id":"TAN-4005C6761F4D","source":"For these tiny sums? The casinos, and the Milice, will not trouble themselves. But don't let us drag you into anything <i>illicit</i>...","translation":"这点小钱？赌场和民兵哪有闲心管。可我们也不能把你拖进什么<i>犯禁</i>的勾当……","status":"translated","notes":""}
+{"id":"TAN-4005C6761F4D","source":"For these tiny sums? The casinos, and the Milice, will not trouble themselves. But don't let us drag you into anything <i>illicit</i>...","translation":"这点小钱？赌场和民兵团哪有闲心管。可我们也不能把你拖进什么<i>犯禁</i>的勾当……","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
 {"id":"TAN-4011ADC62092","source":"Oh! Well. Thank you. It is forgotten.","translation":"哦！好吧。谢谢。此事一笔勾销。","status":"translated","notes":""}
 {"id":"TAN-402DB4BDBFFC","source":"[Léon is far behind.]","translation":"[莱昂已经远远落在后面。]","status":"translated","notes":""}
 {"id":"TAN-4041B441C2FD","source":"She was politer, though.","translation":"不过她更有礼貌。","status":"translated","notes":""}
@@ -446,5 +446,5 @@
 {"id":"TAN-41E1B71B1770","source":"'Speech is a shadow of truth; but by our shadows we are discovered.'","translation":"“言语是真理之影；而影子会将我们暴露。”","status":"translated","notes":"润色2026-08-18：discovered 是“暴露/被人识破”，不是“为人所知”；这句是威胁性箴言"}
 {"id":"TAN-420A4A9C6512","source":"Shouldn't someone... put up some sort of sign?","translation":"难道不该有人……立个什么牌子？","status":"translated","notes":""}
 {"id":"TAN-420C703B1161","source":"I see.","translation":"明白了。","status":"translated","notes":""}
-{"id":"TAN-4221165B2AF5","source":"I suppose we can. But we keep strict accounts at the Librairie des Heures. Be sure not to forget your debt to little Andrée.","translation":"可以。不过司辰书店记账记得很严。可别忘了你欠小安德蕾的债。","status":"translated","notes":"Librairie des Heures 暂译“司辰书店”。"}
+{"id":"TAN-4221165B2AF5","source":"I suppose we can. But we keep strict accounts at the Librairie des Heures. Be sure not to forget your debt to little Andrée.","translation":"可以。不过司辰书店记账记得很严。可别忘了你欠小安德蕾的债。","status":"translated","notes":"Librairie des Heures 开放终审采用“司辰书店”。"}
 {"id":"TAN-42327E264D6A","source":"It's difficult to overstate the contempt with which Zèlia pronounces the word 'actress'.","translation":"泽莉娅吐出“女演员”三个字时，那股鄙夷劲儿实在难以形容。","status":"translated","notes":"改去英语句法，保留叙述者对泽莉娅口气的揶揄。"}

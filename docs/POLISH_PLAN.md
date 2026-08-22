@@ -21,9 +21,12 @@
 
 - `docs/STYLE_GUIDE.md`——总体标尺、文本层级、句法标点、去机翻腔、强制 QA。
   **本文件的一切裁决不得违反它**；它与本计划冲突时，以 STYLE_GUIDE 为准。
-- `docs/USER_GLOSSARY.md`——面向玩家的术语考据表（347 个当前有效概念，每项有独立证据链）。
-- `glossary/glossary.csv`——内部术语表（393 个当前有效精确词形，QA 强校验）。
-- `glossary/final_term_audit.jsonl`——350 个历史概念的逐项终审账本（含 3 个退役项）。
+- `docs/USER_GLOSSARY.md`——面向玩家的术语考据表（433 个当前有效概念，每项有独立证据链）。
+- `glossary/glossary.csv`——内部术语表（521 个当前有效精确词形，QA 强校验）。
+- `glossary/final_term_audit.jsonl`——436 个历史与新增概念的逐项终审账本（含 3 个退役项）。
+- `glossary/potential_term_audit.jsonl`——全量源文开放发现的 2817 个候选及逐项纳入／并入／排除结论。
+- `glossary/provisional_row_audit.jsonl`——v2.6.0 全部 279 条临时 notes 的改译／保留历史。
+- `glossary/predecessor_exact_source_audit.jsonl`——83 条前作官中完全同源英文的逐条比对。
 - `glossary/link_targets.csv`——`[[链接]]` 固定译名。
 
 ### 术语增删改纪律

@@ -1,5 +1,5 @@
 ﻿param(
-    [string]$PatchVersion = '2.6.0',
+    [string]$PatchVersion = '2.6.1',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = '',
     [string]$WorklistRoot = 'build\worklist_k97\worklist.jsonl',
@@ -68,6 +68,7 @@ $translationTests = @(
     'test_steam_official_terms.py',
     'test_glossary_translation_alignment.py',
     'test_final_term_audit.py',
+    'test_open_term_audit.py',
     'test_spatial_viewpoint.py',
     'test_dialogue_semantic_red_flags.py'
 )
@@ -134,6 +135,9 @@ Invoke-Checked 'Terminology and Chinese consistency QA failed.' {
         (Join-Path $mergedRoot 'review_catalog.jsonl') `
         (Join-Path $workspace 'glossary\glossary.csv') `
         --json-output (Join-Path $mergedRoot 'consistency_report.json') --fail-on error
+}
+Invoke-Checked 'Consistency warning dispositions are stale or incomplete.' {
+    python -B (Join-Path $workspace 'tools\test_consistency_warning_audit.py')
 }
 
 Invoke-Checked 'TravellingCN plugin build failed.' {

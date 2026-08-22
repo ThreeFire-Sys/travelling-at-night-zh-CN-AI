@@ -9,9 +9,12 @@ and character-generation regressions from reaching that stage.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -103,6 +106,31 @@ def replace_standalone_visible_token(value: str, token: str, replacement: str) -
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--translations", type=Path, default=ROOT / "translations_k97")
+    parser.add_argument(
+        "--catalog", type=Path, default=ROOT / "build/merged_k97/catalog.zh-CN.json"
+    )
+    args = parser.parse_args()
+    # The pre-bake interceptor profile was retired in v2.0.  Keep this legacy
+    # entry point callable, but route the current asset-bake plugin to its
+    # authoritative 119-check contract instead of asserting removed patches.
+    if "OriginalTextValues" not in PLUGIN:
+        result = subprocess.run(
+            [sys.executable, "-B", str(ROOT / "tools/test_slim_plugin.py")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+        )
+        print(result.stdout.strip())
+        if result.stderr.strip():
+            print(result.stderr.strip())
+        if result.returncode:
+            raise SystemExit(result.returncode)
+        print(json.dumps({"profile": "asset-bake", "delegated_to": "test_slim_plugin.py"}))
+        return
     errors: list[str] = []
     checks = 0
 
@@ -113,7 +141,7 @@ def main() -> None:
             errors.append(name)
 
     required = {
-        "plugin version 1.2.17": 'PluginVersion = "1.2.17"',
+        "plugin version 2.6.1": 'PluginVersion = "2.6.1"',
         "F9 default shortcut": "new KeyboardShortcut(KeyCode.F9)",
         "toggle update loop": "_toggleShortcut.Value.IsDown()",
         "English restore": "RestoreOriginalValues();",
@@ -173,8 +201,8 @@ def main() -> None:
         "plugin still loads the thin-default variable font",
         re.search(r"NotoSansSC-VF\.ttf", PLUGIN) is None,
     )
-    rows = load_translations(ROOT / "build" / "translations_j66_candidate")
-    runtime_catalog_path = ROOT / "build" / "merged_j66_reviewed" / "catalog.zh-CN.json"
+    rows = load_translations(args.translations)
+    runtime_catalog_path = args.catalog
     runtime_catalog = json.loads(runtime_catalog_path.read_text(encoding="utf-8-sig"))
 
     # Exercise the two concrete strings from the reported screenshots. These
