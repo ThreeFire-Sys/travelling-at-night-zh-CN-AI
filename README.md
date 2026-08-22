@@ -2,10 +2,10 @@
 
 面向 Weather Factory《Travelling at Night》公开 Steam Demo 的简体中文本地化工程。
 
-- 当前补丁版本：**v2.5.3**（更新日志见 `CHANGELOG.md`）
-- 对应游戏构建标识：`2026.8.k.83`（游戏内 `version.txt`；Steam 未公布对应的正式版本号）
+- 当前补丁版本：**v2.6.0**（更新日志见 `CHANGELOG.md`）
+- 对应游戏构建标识：`2026.8.k.97`（游戏内 `version.txt`；Steam 未公布对应的正式版本号）
 - 平台：Windows x64，Unity 6000.4.0f1（Mono）
-- 性质：个人制作的**非官方**汉化，与 Weather Factory 无关。初译由 GPT 5.6sol 完成，润色与校对由 Kimi K3 完成；术语逐词考据（见随包的术语表）。
+- 性质：个人制作的**非官方**汉化，与 Weather Factory 无关。初译由 GPT 5.6sol 完成，主要润色与校对由 Kimi K3 完成；终审、术语逐词考据与 k.97 迁移由 OpenAI Codex 接续完成（见随包的术语表与审计账本）。
 
 ## 特点
 
@@ -15,7 +15,7 @@
 
 **中文字体后备**。挂载 Noto Sans CJK SC 动态字体，按字符需求生成字形，保持原版排版与字号。
 
-**术语考据体系**。`docs/USER_GLOSSARY.md`（发布包内为《术语表与译名说明》）逐词登记：前作《司辰之书》《密教模拟器》既有译名附中文 Wiki 词条链接，本作新词附命名理由与被否决的候选译法。Quote 组件的全部 23 处文学引文（莎士比亚、叶芝、奥登、毕肖普、Leonard Cohen 等）逐条考据出处并记录排版处置。
+**术语考据体系**。`docs/USER_GLOSSARY.md`（发布包内为《术语表与译名说明》）逐词登记证据类型、置信等级、命名理由与被否决的候选译法；`glossary/final_term_audit.jsonl` 留存 350 个历史概念的逐项终审裁决，不以家族套话代替单词证据。Quote 组件的全部 23 处文学引文（莎士比亚、叶芝、奥登、毕肖普、Leonard Cohen 等）逐条考据出处并记录排版处置。
 
 **全量逐条审校**。约 6700 条译文逐条人工+AI 复核：上下文连贯性、机翻感消除、与前作风格一致性、排比/诗节结构保持。改动全部留痕于 `polish/changelog.jsonl`，裁决记录于 `polish/decisions.md`。
 
@@ -34,7 +34,7 @@
 ```
 src/TravellingCN/         BepInEx 插件源码（字体挂载、F9 切换、少量 Harmony 补丁）
 tools/                    管线与 QA 工具（Python + 一个 PowerShell 打包器）
-translations_k52/         当前译文源（按 chunk 分卷的 JSONL）
+translations_k97/         当前译文源（按 chunk 分卷的 JSONL）
 translations*/            历史译文快照（供游戏更新后 rebase 复用，勿删）
 glossary/                 术语表、链接译名表、运行时补充表、位点覆盖表、引文出处
 docs/                     风格指南、资料来源、用户术语表、第三方声明、QA 报告
@@ -52,9 +52,9 @@ extract_unity_text.py          从游戏资产提取全部玩家可见文本（�
         ↓
 prepare_worklist.py            生成工作单（提取器会把 loc 键/程序标识符排除在可译候选外）
         ↓
-translations_k52/chunk_*.jsonl  译文（人工+AI 审校的工作对象）
+translations_k97/chunk_*.jsonl  译文（人工+AI 审校的工作对象）
         ↓ merge_and_validate_translations.py   结构 QA：标签/占位符/链接/换行逐一对应
-build/merged_k52/              合并产物（review_catalog 带全部位点）
+build/merged_k97/              合并产物（review_catalog 带全部位点）
         ↓ bake_translations.py（需游戏处于未打补丁的原版状态）
 build/baked_assets/            译文烘进游戏资产
         ↓ build_lang_swap_map.py

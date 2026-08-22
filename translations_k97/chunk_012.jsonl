@@ -1,4 +1,3 @@
-{"id":"TAN-61B51D6E265B","source":"I've learnt what I needed from Dr A in his dream.","translation":"我已在奥比耶医生的梦里拿到所需情报。","status":"translated","notes":"Dr A 按上下文展开。"}
 {"id":"TAN-61E2EBBCC1CA","source":"Bonanza Cigarette","translation":"博南扎牌香烟","status":"translated","notes":"品牌名暂音译。"}
 {"id":"TAN-61F798CD930C","source":"A token of the old order of Heaven - or of [[Corona]], which claims to be its inheritor. An Incorporate dollar is the easiest option, but there are ways to craft a token in the absence of greenbacks.\n\n[Since the Wars, the currency of Corona is used for the Bright Arts - but you can create an Eye of Authority as a substitute.]","translation":"旧日高天秩序的一枚信物——或者说，是自称其继承者的[[Corona]]之信物。  集团美元是最容易取得的选择，但没有美钞时，也有办法制作这样的信物。\n\n[诸战以来，冕的货币被用于光之技艺——但你可以制作权威之眼作为替代。]","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
 {"id":"TAN-62283A73FC1E","source":"Perugia","translation":"佩鲁贾","status":"translated","notes":"意大利地名。"}
@@ -230,7 +229,6 @@
 {"id":"TAN-92FF7E6E8AAF","source":"Memory: Fear","translation":"记忆：恐惧","status":"translated","notes":""}
 {"id":"TAN-930B4A7982D2","source":"Spencer was hollowed out by Worms; he is much less than he was. But that's changing now.\n\nYou know now that [[Experiences]] come in nine different flavours, and you can only use them to upgrade <i>matching</i> Skills and Passions. You could try to use Skills that offer the Experiences you need. Or you could just let Experiences guide you into developing Spencer in unexpected ways. See what you prefer. ","translation":"斯宾塞曾被蠕虫掏空，所剩远不如往昔。但如今，他正一点点恢复。\n\n你现在知道，[[Experiences]]分为九类，只能用来提升<i>相应的</i>技艺和心念。你可以选用能带来所需经历的技艺；也可以任由经历领路，让斯宾塞走上意料之外的发展方向。看你喜欢哪种。 ","status":"translated","notes":"保留链接、斜体、段落及原文末尾空格。"}
 {"id":"TAN-930B58496192","source":"I'm going on stage again. It's been a while.","translation":"我又要登台了。已经有些年头了。","status":"translated","notes":""}
-{"id":"TAN-9351BA1CC5D0","source":"Sterling","translation":"英镑","status":"translated","notes":"Sterling 为货币物品。"}
 {"id":"TAN-936E42650CD7","source":"Spencer's spent a whole week in one place. Seven Traces. Asking for trouble.","translation":"斯宾塞在同一处待了整整一周。七条痕迹。这是在自找麻烦。","status":"translated","notes":"k.6 新增文本；译文沿用 runtime_supplement 既有定译"}
 {"id":"TAN-93FF9273DE4B","source":"Clock","translation":"时钟","status":"translated","notes":""}
 {"id":"TAN-9407B804783B","source":"I left the Légion when my five years were done. I didn't think anything could be worse than the Rung Ma or Khorasan... \n\nRecall <link=\"mypaststrobigoseve\">My Past: St Robigo's Eve, Gladwyn Lake, 1935</link>","translation":"我在五年服役期满后离开了军团。我原以为什么也不可能比龙马或呼罗珊更糟…… \n\n回忆 <link=\"mypaststrobigoseve\">我的过往：圣罗比戈前夜，格拉德温湖，1935 年</link>","status":"translated","notes":"My Past 统一作“我的过往”；保留 link 标签、段落及省略号前空格。"}
@@ -255,6 +253,7 @@
 {"id":"TAN-98165468C4B4","source":"Steam and steel and the long shadow of the Hanged Man","translation":"蒸汽与钢铁，还有倒吊人的长长阴影","status":"translated","notes":""}
 {"id":"TAN-98166B10FB42","source":"Use this luminous token to unveil the hidden, or purify and exalt the tainted.","translation":"用这枚发光的信物揭示隐秘，或净化并升华受污之物。","status":"translated","notes":""}
 {"id":"TAN-983B304B8159","source":"Denounced Andrée","translation":"已告发安德蕾","status":"translated","notes":""}
+{"id":"TAN-985C3B9F6174","source":"A tin medallion commemorating the wolf-headed patron of travellers, storms, and strength - an unfailingly popular and notoriously unsophisticated saint.","translation":"一枚锡制徽章，纪念那位守护旅人、风暴与力量的狼首圣人——他向来人气不衰，也出了名的土气。","status":"translated","notes":"仅 travelers→travellers 拼写变化，译文沿用。"}
 {"id":"TAN-9866BA59FFAF","source":"Memory: Eve of St James the Greater, Khorasan, 1934","translation":"记忆：圣大雅各伯节前夕，呼罗珊，1934 年","status":"translated","notes":"St James the Greater 依天主教称谓暂译“圣大雅各伯”。"}
 {"id":"TAN-9870E049BBBE","source":"Viennese Coffee","translation":"维也纳咖啡","status":"translated","notes":""}
 {"id":"TAN-9885F1012D2C","source":"I don't remember much of how it was, when the Worms were in me...\n\nRecall <link=\"mypaststagneseve\">My Past: St Agnes' Eve, 1937 (?)</link>","translation":"我已经不太记得蠕虫在我体内时是什么情形了……\n\n回忆  <link=\"mypaststagneseve\">我的过往：圣亚割妮节前夕，1937 年（？）</link>","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
@@ -448,3 +447,4 @@
 {"id":"TAN-BB9FB19ABCBB","source":"...but I'm not sleeping. [To return to the daylight world, find a bed and sleep the last few hours.]","translation":"……但我没有入睡。[若要返回白昼世界，找张床睡完最后几个小时。]","status":"translated","notes":""}
 {"id":"TAN-BC3308A10215","source":"Package: Trenchcoat Brigade","translation":"包裹：风衣旅团","status":"translated","notes":"套装名沿 chunk_006。"}
 {"id":"TAN-BCC5FEC2906C","source":"My Pain has increased to [q=Pain]. I'm suffering Agonies now.","translation":"我的痛苦增加到 [q=Pain] 点。如今我正承受剧痛。","status":"translated","notes":"保留变量；Pain／Agonies 译“痛苦／剧痛”。"}
+{"id":"TAN-BCDD4CBC7517","source":"Kerisham","translation":"凯尔伊苏姆","status":"translated","notes":"沿用《司辰之书》Kerisham 定名“凯尔伊苏姆”。"}

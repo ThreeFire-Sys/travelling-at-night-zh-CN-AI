@@ -32,6 +32,18 @@ ORIGIN_TITLES = {
     "editorial": "界面与编辑裁决",
 }
 
+AUDIT_BASIS_LABELS = {
+    "predecessor_official_same_id": "前作官中同 ID",
+    "predecessor_official_corpus": "前作官中语料",
+    "same_game_official_zh": "同作官方简中",
+    "external_authority": "权威外部资料",
+    "explicit_editorial_policy": "明确编辑裁决",
+    "editorial_transliteration": "编辑音译",
+    "language_or_professional_reference": "语言／专业资料",
+    "current_asset_semantics": "当前资产语义",
+    "retired_not_in_current_assets": "当前资产已退役",
+}
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
@@ -48,8 +60,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("glossary/conversation_description_provenance.jsonl"),
     )
-    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_current/worklist.jsonl"))
-    parser.add_argument("--translations", type=Path, default=Path("build/translations_j46_candidate"))
+    parser.add_argument(
+        "--final-audit", type=Path, default=Path("glossary/final_term_audit.jsonl")
+    )
+    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_k83/worklist.jsonl"))
+    parser.add_argument("--translations", type=Path, default=Path("translations_k97"))
     parser.add_argument("--strict", action="store_true")
     return parser.parse_args()
 
@@ -100,6 +115,22 @@ def nonempty(record: dict[str, object], key: str) -> bool:
     return isinstance(record.get(key), str) and bool(str(record[key]).strip())
 
 
+def research_fingerprint(
+    record: dict[str, object], field: str, glossary: dict[str, dict[str, str]]
+) -> str:
+    """Expose boilerplate that differs only by the term substituted into it."""
+    value = str(record.get(field, "")).casefold()
+    source_terms = [str(record.get("canonical", "")), *[str(a) for a in record.get("aliases", [])]]
+    terms = list(source_terms)
+    for term in source_terms:
+        row = glossary.get(term)
+        if row:
+            terms.append(row["target_zh"])
+    for term in sorted({term for term in terms if term}, key=len, reverse=True):
+        value = re.sub(re.escape(term.casefold()), "<词项>", value)
+    return re.sub(r"\s+", " ", value).strip()
+
+
 def validate(
     glossary: dict[str, dict[str, str]], records: list[dict[str, object]], strict: bool
 ) -> list[str]:
@@ -143,6 +174,21 @@ def validate(
             errors.append(f"{location}: predecessor term must link a Huiji Wiki entry")
         if origin == "travelling_new" and not nonempty(record, "alternatives"):
             errors.append(f"{location}: new term must document rejected alternatives")
+        public_research = " ".join(
+            str(record.get(key, ""))
+            for key in ("reference_label", "evidence", "rationale", "alternatives")
+        )
+        stale = re.search(r"(?i)\bj\.\d+\b|暂译|本轮|润色期", public_research)
+        if stale:
+            errors.append(
+                f"{location}: player-facing research contains stale/internal marker {stale.group(0)!r}"
+            )
+        if origin == "travelling_new":
+            target = glossary.get(canonical, {}).get("target_zh", "")
+            if target and target not in f"{record.get('evidence', '')} {record.get('rationale', '')}":
+                errors.append(
+                    f"{location}: evidence/rationale does not name final target {target!r}"
+                )
         comparison_label = record.get("comparison_label")
         comparison_url = record.get("comparison_url")
         if bool(comparison_label) != bool(comparison_url):
@@ -161,6 +207,22 @@ def validate(
     uncovered = sorted(set(glossary) - set(coverage), key=str.casefold)
     if uncovered:
         errors.append("uncovered glossary terms: " + ", ".join(uncovered))
+
+    # A family may share a source, but its lexical evidence, naming argument and
+    # rejected candidates may not be copy-pasted with only the headword changed.
+    new_records = [record for record in records if record.get("origin") == "travelling_new"]
+    for field in ("evidence", "rationale", "alternatives"):
+        fingerprints: dict[str, list[str]] = defaultdict(list)
+        for record in new_records:
+            fingerprints[research_fingerprint(record, field, glossary)].append(
+                str(record["canonical"])
+            )
+        for fingerprint, terms in fingerprints.items():
+            if fingerprint and len(terms) > 1:
+                errors.append(
+                    f"new-term {field} is templated across {len(terms)} concepts: "
+                    + ", ".join(sorted(terms, key=str.casefold))
+                )
     return errors
 
 
@@ -189,7 +251,50 @@ def reasoning_cell(record: dict[str, object]) -> str:
         label = md(record["comparison_label"])
         url = md(record["comparison_url"])
         reasoning += f" 前作比较：[{label}]({url})。"
+    if record.get("_audit_basis"):
+        basis = AUDIT_BASIS_LABELS.get(str(record["_audit_basis"]), str(record["_audit_basis"]))
+        confidence = {"fixed": "定译", "strong": "强证据", "editorial": "编辑定名"}.get(
+            str(record.get("_audit_confidence", "")), str(record.get("_audit_confidence", ""))
+        )
+        reasoning += f" 终审依据：{basis}（{confidence}）。"
     return reasoning
+
+
+def load_final_audit(
+    path: Path, glossary: dict[str, dict[str, str]], records: list[dict[str, object]]
+) -> tuple[list[dict[str, object]], list[str]]:
+    audit = [
+        json.loads(raw)
+        for raw in path.read_text(encoding="utf-8-sig").splitlines()
+        if raw
+    ]
+    errors = []
+    by_term = {str(row.get("canonical")): row for row in audit}
+    if len(audit) != 350 or len(by_term) != 350:
+        errors.append(f"{path}: expected 350 unique historical verdicts, found {len(audit)}/{len(by_term)}")
+    active = {str(record["canonical"]): record for record in records}
+    for canonical, record in active.items():
+        verdict = by_term.get(canonical)
+        if verdict is None:
+            errors.append(f"{path}: active concept lacks final verdict: {canonical}")
+            continue
+        if verdict.get("decision") == "retire":
+            errors.append(f"{path}: retired concept remains active: {canonical}")
+            continue
+        target = glossary.get(canonical, {}).get("target_zh")
+        if target != verdict.get("target_final"):
+            errors.append(f"{path}: target drift for {canonical}: {target!r} != {verdict.get('target_final')!r}")
+        record["_audit_basis"] = verdict.get("basis")
+        record["_audit_confidence"] = verdict.get("confidence")
+        record["_audit_decision"] = verdict.get("decision")
+    for row in audit:
+        canonical = str(row.get("canonical"))
+        if row.get("decision") == "retire":
+            if canonical in active or canonical in glossary:
+                errors.append(f"{path}: retired concept still appears in active data: {canonical}")
+        elif canonical not in active:
+            errors.append(f"{path}: audited active concept missing provenance: {canonical}")
+    return audit, errors
 
 
 def load_quote_records(path: Path, strict: bool) -> tuple[list[dict[str, object]], list[str]]:
@@ -217,6 +322,15 @@ def load_quote_records(path: Path, strict: bool) -> tuple[list[dict[str, object]
             parsed = urlparse(str(record.get("reference_url", "")))
             if parsed.scheme not in {"http", "https"} or not parsed.netloc:
                 errors.append(f"{location}: reference_url must be an HTTP(S) URL")
+            public_research = " ".join(
+                str(record.get(key, ""))
+                for key in ("reference_label", "evidence", "format_note")
+            )
+            stale = re.search(r"(?i)\bj\.\d+\b|暂译|本轮|润色期", public_research)
+            if stale:
+                errors.append(
+                    f"{location}: quote research contains stale/internal marker {stale.group(0)!r}"
+                )
             if strict and record.get("status") != "verified":
                 errors.append(f"{location}: strict build requires status=verified")
     if len(records) != 23:
@@ -234,7 +348,7 @@ def render_quotes(records: list[dict[str, object]]) -> list[str]:
     lines = [
         "## Quote 组件引文与诗歌出处",
         "",
-        f"j.46 共核验 {len(records)} 个引文对象：诗歌／歌词 {broad_counts['诗歌／歌词']} 个、现实出版散文 {broad_counts['现实散文']} 个、秘史世界内文献 {broad_counts['秘史文献']} 个。它们并非全部出自诗句；仅对诗歌与歌词恢复原作分行，小说和设定散文保持段落体。",
+        f"当前试玩版共核验 {len(records)} 个引文对象：诗歌／歌词 {broad_counts['诗歌／歌词']} 个、现实出版散文 {broad_counts['现实散文']} 个、秘史世界内文献 {broad_counts['秘史文献']} 个。它们并非全部出自诗句；仅对诗歌与歌词恢复原作分行，小说和设定散文保持段落体。",
         "",
         "| 游戏署名 | 体裁 | 外部出处 | 译名与排版核验 |",
         "|---|---|---|---|",
@@ -302,6 +416,14 @@ def load_conversation_description_records(
         parsed = urlparse(str(record.get("reference_url", "")))
         if parsed.scheme not in {"http", "https"} or not parsed.netloc:
             errors.append(f"{location}: reference_url must be an HTTP(S) URL")
+        public_research = " ".join(
+            str(record.get(key, "")) for key in ("reference_label", "evidence")
+        )
+        stale = re.search(r"(?i)\bj\.\d+\b|暂译|本轮|润色期", public_research)
+        if stale:
+            errors.append(
+                f"{location}: conversation research contains stale/internal marker {stale.group(0)!r}"
+            )
         if strict and record.get("status") not in {"verified", "attribution_only", "no_external_source_found"}:
             errors.append(f"{location}: invalid review status")
     # There are 134 contexts but 133 unique string IDs: "Kepi Days" is reused
@@ -318,7 +440,7 @@ def render_conversation_descriptions(
     lines = [
         "## 会话题辞、互动场景名与出处",
         "",
-        f"j.46 的 DialogueDatabase 共有 134 条会话级 `Description`。本轮逐项复核其真实入边与显示用途，并为 {len(records)} 条有明确外部来源或需特别说明的题辞建立出处记录：可定位来源 {statuses['verified']} 条、仅能确认署名而未核得篇名 {statuses['attribution_only']} 条、精确检索后仍无外部文本见证 {statuses['no_external_source_found']} 条。其余条目属于内部机制／测试元数据、藏品题签、物品标签，或未发现可证外部来源的游戏原创与设定内题辞；不能仅因语言像诗就擅自署名。",
+        f"当前试玩版的 DialogueDatabase 共有 134 条会话级 `Description`。逐项复核其真实入边与显示用途后，为 {len(records)} 条有明确外部来源或需特别说明的题辞建立出处记录：可定位来源 {statuses['verified']} 条、仅能确认署名而未核得篇名 {statuses['attribution_only']} 条、精确检索后仍无外部文本见证 {statuses['no_external_source_found']} 条。其余条目属于内部机制／测试元数据、藏品题签、物品标签，或未发现可证外部来源的游戏原创与设定内题辞；不能仅因语言像诗就擅自署名。",
         "",
         "| 游戏题辞 → 本补丁译文 | 体裁判断 | 作品与作者 | 考据出处 | 核验说明 |",
         "|---|---|---|---|---|",
@@ -334,12 +456,17 @@ def render_conversation_descriptions(
     return lines
 
 
-def render(glossary: dict[str, dict[str, str]], records: list[dict[str, object]]) -> str:
+def render(
+    glossary: dict[str, dict[str, str]],
+    records: list[dict[str, object]],
+    final_audit: list[dict[str, object]],
+) -> str:
     grouped: dict[str, list[dict[str, object]]] = defaultdict(list)
     for record in records:
         grouped[str(record["origin"])].append(record)
     counts = {origin: len(grouped[origin]) for origin in ORIGIN_FILES}
     covered = sum(1 + len(record.get("aliases", [])) for record in records)
+    audit_counts = Counter(str(row["decision"]) for row in final_audit)
 
     lines = [
         "# 《夜游漫记》简体中文术语与考据表",
@@ -347,6 +474,8 @@ def render(glossary: dict[str, dict[str, str]], records: list[dict[str, object]]
         "> 本表随汉化补丁发布，面向玩家与后续审校者。英文大小写、单复数或词性异体按同一概念合并展示；内部 QA 仍逐项校验。译名不是 Weather Factory 的官方背书。",
         "",
         f"当前收录 {len(records)} 个概念，覆盖内部术语表 {covered}/{len(glossary)} 个精确词形：前作既有 {counts['predecessor']} 个、新作新增 {counts['travelling_new']} 个、现实实体 {counts['real_world']} 个、编辑裁决 {counts['editorial']} 个。",
+        "",
+        f"终审台账逐项覆盖 350 个历史概念：保留 {audit_counts['keep']} 个、改译 {audit_counts['change']} 个、从当前资产退役 {audit_counts['retire']} 个。‘编辑定名’表示证据足以作出项目终稿选择，但不冒充官方唯一译名。",
         "",
         "证据优先级：本地 Demo 英文原文与界面上下文 → 同作官方页面/Steam 简中 → 前作官方简中与中文 Wiki → 开发者文章 → 其他权威或专业资料。‘暂定’条目不得用于最终严格构建。",
         "",
@@ -402,6 +531,18 @@ def render(glossary: dict[str, dict[str, str]], records: list[dict[str, object]]
 
     lines.extend(
         [
+            "## 终审退役词项",
+            "",
+            "以下词项曾在旧构建或早期方案中出现，但当前试玩版已不再使用，故移出活动术语表与运行时 QA：",
+            "",
+            "| 英文 | 旧译 | 退役理由 |",
+            "|---|---|---|",
+            *[
+                f"| `{md(row['canonical'])}` | {md(row['target_before'])} | {md(row['audit_note'])} |"
+                for row in final_audit
+                if row.get("decision") == "retire"
+            ],
+            "",
             "## 维护规则",
             "",
             "- 修改 `glossary/glossary.csv` 时，必须同步更新 `glossary/provenance/` 中且只能有一条覆盖记录。",
@@ -409,6 +550,7 @@ def render(glossary: dict[str, dict[str, str]], records: list[dict[str, object]]
             "- `glossary/quote_provenance.jsonl` 必须逐一覆盖 23 个互动引文对象；诗歌按出处复核分行，散文不得为了形式感擅自拆成诗行。",
             "- `glossary/conversation_description_provenance.jsonl` 记录 DialogueDatabase 会话题辞的外部出处与反证；不得把检索无据的题辞伪造为诗句。",
             "- 最终发布只接受 `verified`；`provisional` 与 `draft` 会令严格构建失败。",
+            "- `glossary/final_term_audit.jsonl` 必须为每个历史概念保留唯一终审结论；活动词的最终译名和别名必须与 glossary/provenance 精确一致。",
             "- 本表记录译名证据，不复制 Wiki 或游戏长文；链接内容的版权归各自权利人。",
             "",
         ]
@@ -421,6 +563,8 @@ def main() -> int:
     glossary = load_glossary(args.glossary)
     records = load_records(args.provenance_dir)
     errors = validate(glossary, records, args.strict)
+    final_audit, audit_errors = load_final_audit(args.final_audit, glossary, records)
+    errors.extend(audit_errors)
     quote_records, quote_errors = load_quote_records(args.quote_provenance, args.strict)
     errors.extend(quote_errors)
     descriptions = load_conversation_descriptions(args.worklist, args.translations)
@@ -433,7 +577,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}")
         return 1
-    output = render(glossary, records)
+    output = render(glossary, records, final_audit)
     marker = "## 维护规则\n"
     extra = render_quotes(quote_records) + render_conversation_descriptions(
         description_records, descriptions

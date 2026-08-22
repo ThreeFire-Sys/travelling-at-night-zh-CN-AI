@@ -19,7 +19,7 @@ def has_term(source: str, term: str, *, ignore_case: bool = False) -> bool:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--translations", type=Path, default=ROOT / "translations")
+    parser.add_argument("--translations", type=Path, default=ROOT / "translations_k97")
     args = parser.parse_args()
     rows: list[dict[str, str]] = []
     for path in sorted(args.translations.glob("chunk_*.jsonl")):
@@ -37,6 +37,9 @@ def main() -> None:
         "TAN-2886DEC38D47": "部委",
         "TAN-25A04C672386": "集团",
         "TAN-871C47DEB97B": "哀伤",
+        "TAN-1B7037D5C7C8": "餍足",
+        "TAN-DC3AE610370B": "空虚原就是用来填满的。餍足之选总是自私，也往往愉快。\n\n[将这份心念演化为餍足；它会为你的性相池提供刃与杯。]\n\n",
+        "TAN-FF0F596B1108": "[你正放任自己求取餍足。不过人总会变。尤其是斯宾塞·霍布森。]",
         "TAN-C0A70C188A99": "好奇心",
     }
     by_id = {row["id"]: row for row in rows}
@@ -52,6 +55,8 @@ def main() -> None:
                 errors.append(f"{row_id}: Skill mechanism retains 技能")
         if (has_term(source, "Passion") or has_term(source, "Passions")) and "激情" in target:
             errors.append(f"{row_id}: Passion mechanism retains 激情")
+        if has_term(source, "Appetite") and "欲求" in target:
+            errors.append(f"{row_id}: official Appetite term retains old 欲求")
         if (has_term(source, "Sign") or has_term(source, "Signs")) and "印记" in target:
             errors.append(f"{row_id}: Sign mechanism retains 印记")
         if has_term(source, "Ministries"):

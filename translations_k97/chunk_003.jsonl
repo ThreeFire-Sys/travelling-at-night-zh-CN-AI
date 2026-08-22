@@ -1,3 +1,4 @@
+{"id":"TAN-42327E264D6A","source":"It's difficult to overstate the contempt with which Zèlia pronounces the word 'actress'.","translation":"泽莉娅吐出“女演员”三个字时，那股鄙夷劲儿实在难以形容。","status":"translated","notes":"改去英语句法，保留叙述者对泽莉娅口气的揶揄。"}
 {"id":"TAN-4238A773D785","source":"Apparently it didn't kill them all. Not yet.","translation":"看来那东西没把他们全杀光。至少现在还没有。","status":"translated","notes":""}
 {"id":"TAN-423A39E845FE","source":"[True As Far As It Goes] Jaume, I was ordained at Plymouth Cathedral. Thirty years ago now. ","translation":"[只说实话一部分] 豪梅，我是在普利茅斯座堂领受的圣职。到现在三十年了。 ","status":"translated","notes":"ordained 译“领受圣职”，避免把行为误读为机构名称。 v1.2.5 术语终审：依最新版术语证据统一。"}
 {"id":"TAN-425159083100","source":"Lie back, close my eyes, wait for sleep.","translation":"躺下，闭上眼睛，等待入睡。","status":"translated","notes":""}
@@ -447,4 +448,3 @@
 {"id":"TAN-64E072808D4A","source":"Spend [q=hon:evolveCost] Lantern Experiences.","translation":"花费 [q=hon:evolveCost] 份灯之经历。","status":"translated","notes":"沿用既有系统句式。"}
 {"id":"TAN-64F231B5EA96","source":"FNORD later we might add choices, or even give Nightmares on first read.","translation":"FNORD，之后我们或许会添加选项，甚至让首次阅读引发梦魇。","status":"translated","notes":"开发占位文本，保留 FNORD 技术标记。"}
 {"id":"TAN-65000A33C5FC","source":"The woman is a white carrion crow, Hobson. A baleful nidus of betrayals! If you know what's good for you, you'll stay well away.","translation":"霍布森，那个女人是只白羽食腐鸦，是一座孕育背叛的凶巢！你要是识相，就离她远远的。","status":"translated","notes":"保留 Strathcoyne 夸饰、古怪的诅咒式比喻。"}
-{"id":"TAN-650FD9EC3ED5","source":"A shining ovoid, the colour of late summer.","translation":"一枚闪亮的卵形物，泛着夏末的色泽。","status":"translated","notes":"不擅自具体化原文未说明的“夏末之色”。"}

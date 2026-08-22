@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prove complete glossary/provenance coverage of j.46 mechanism families."""
+"""Prove complete glossary/provenance coverage of current mechanism families."""
 
 from __future__ import annotations
 
@@ -26,10 +26,23 @@ EXPECTED_INCLUDED = {
 }
 
 CANONICAL_LABELS = {
+    "Appetite": "餍足",
+    "Challenging": "颇具挑战",
+    "Chilly": "微寒",
     "Fascination": "入迷",
+    "Light": "轻便",
+    "Mandate": "号令",
+    "Obscure": "遮蔽",
+    "Polchinelle's Misfortune": "波尔希内尔之祸",
+    "Practicality": "实用物资",
+    "Quicken": "活化",
+    "Salve": "抚慰",
+    "Unveil": "揭示",
+    "Warm": "保暖",
+    "Weariness Collapse": "累倒",
     "Wounded Place": "受创之地",
     "Ephemeral": "易逝",
-    "Louche": "放荡",
+    "Louche": "轻佻",
     "Raffish": "不羁",
     "Necessity": "必然",
     "Fresh": "清爽",
@@ -41,11 +54,11 @@ CANONICAL_LABELS = {
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_k6/worklist.jsonl"))
-    parser.add_argument("--translations", type=Path, default=Path("translations_k6"))
+    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_k97/worklist.jsonl"))
+    parser.add_argument("--translations", type=Path, default=Path("translations_k97"))
     parser.add_argument("--glossary", type=Path, default=Path("glossary/glossary.csv"))
     parser.add_argument("--provenance-dir", type=Path, default=Path("glossary/provenance"))
-    parser.add_argument("--report", type=Path, default=Path("build/reviews/mechanism_glossary_coverage_j46.json"))
+    parser.add_argument("--report", type=Path, default=Path("build/reviews/mechanism_glossary_coverage_current.json"))
     args = parser.parse_args()
 
     translations = load_translations(args.translations)

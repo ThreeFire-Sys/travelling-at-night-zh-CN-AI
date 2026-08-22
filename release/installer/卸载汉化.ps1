@@ -5,6 +5,23 @@
 $ErrorActionPreference = 'Stop'
 Import-Module Microsoft.PowerShell.Utility -ErrorAction Stop
 
+function Get-Sha256Hex {
+    param([string]$Path)
+    $stream = [System.IO.File]::OpenRead($Path)
+    try {
+        $sha = [System.Security.Cryptography.SHA256]::Create()
+        try {
+            return ([System.BitConverter]::ToString($sha.ComputeHash($stream))).Replace('-', '')
+        }
+        finally {
+            $sha.Dispose()
+        }
+    }
+    finally {
+        $stream.Dispose()
+    }
+}
+
 # 游戏目录：显式 -GamePath 优先；未指定时自动探测（只接受含安装状态文件的目录）。
 . (Join-Path $PSScriptRoot 'Resolve-GamePath.ps1')
 if (-not [string]::IsNullOrWhiteSpace($GamePath)) {
@@ -82,7 +99,7 @@ foreach ($planned in $uninstallPlan) {
     try {
         $targetExists = Test-Path -LiteralPath $planned.target -PathType Leaf
         $currentHash = if ($targetExists) {
-            (Get-FileHash -LiteralPath $planned.target -Algorithm SHA256).Hash
+            Get-Sha256Hex $planned.target
         } else { $null }
 
         if ($planned.action -eq 'unchanged') {
@@ -105,7 +122,7 @@ foreach ($planned in $uninstallPlan) {
             $skipped.Add($planned.relative)
             continue
         }
-        $backupHash = (Get-FileHash -LiteralPath $planned.backup -Algorithm SHA256).Hash
+        $backupHash = Get-Sha256Hex $planned.backup
         if ($planned.original_sha256 -and $backupHash -ne $planned.original_sha256) {
             $skipped.Add($planned.relative)
             continue
@@ -123,7 +140,7 @@ foreach ($planned in $uninstallPlan) {
         $stagedRestore = Join-Path $targetDirectory ('.travelling-cn-restore-' + [Guid]::NewGuid().ToString('N'))
         try {
             Copy-Item -LiteralPath $planned.backup -Destination $stagedRestore
-            if ((Get-FileHash -LiteralPath $stagedRestore -Algorithm SHA256).Hash -ne $backupHash) {
+            if ((Get-Sha256Hex $stagedRestore) -ne $backupHash) {
                 throw "备份暂存校验失败"
             }
             Move-Item -LiteralPath $stagedRestore -Destination $planned.target -Force

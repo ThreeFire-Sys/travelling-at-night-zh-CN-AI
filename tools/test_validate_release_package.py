@@ -24,6 +24,7 @@ PACKAGE_ROOT = f"TravellingAtNight_ZH-CN_v{VERSION}"
 OUTER_FILES = {
     "installer/安装汉化.ps1": b"Write-Host install\n",
     "installer/卸载汉化.ps1": b"Write-Host uninstall\n",
+    "installer/Resolve-GamePath.ps1": b"function Resolve-TravellingGamePath {}\n",
     "一键安装.bat": b"@echo off\r\n",
     "一键卸载.bat": b"@echo off\r\n",
     "README_安装说明.md": b"# install instructions\n",

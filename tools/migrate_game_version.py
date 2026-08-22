@@ -70,6 +70,38 @@ def assert_vanilla_assets(game_root: Path) -> None:
             raise SystemExit("游戏资产仍是烘焙中文版——请先卸载旧补丁（或让 Steam 校验还原）再迁移。")
 
 
+def archive_stale_manifest_if_safe(state_file: Path, game_root: Path, game_version: str) -> None:
+    """归档 Steam 更新后无法由旧卸载器闭环的清单；绝不静默删除仍在生效的补丁文件。"""
+    manifest = json.loads(state_file.read_text(encoding="utf-8-sig"))
+    still_installed: list[str] = []
+    for item in manifest.get("files", []):
+        # unchanged 表示旧安装器没有创建或替换此文件；即使哈希相同也不属于需卸载内容。
+        if item.get("action") not in {"created", "replaced"}:
+            continue
+        wanted = (item.get("installed_sha256") or "").upper()
+        if not wanted:
+            continue
+        path = game_root / item["path"]
+        if path.is_file() and hashlib.sha256(path.read_bytes()).hexdigest().upper() == wanted:
+            still_installed.append(item["path"])
+    if still_installed:
+        preview = "、".join(still_installed[:5])
+        raise SystemExit(
+            "旧卸载器保留了仍与旧补丁哈希相同的文件，拒绝移除安装清单："
+            f"{preview}。请先处理卸载异常。"
+        )
+
+    old_patch = str(manifest.get("patch_version") or "unknown").replace("/", "_")
+    safe_game_version = game_version.replace("/", "_")
+    archive = game_root / f".travelling-cn-install.obsolete-{old_patch}-{safe_game_version}.json"
+    serial = 1
+    while archive.exists():
+        archive = game_root / f".travelling-cn-install.obsolete-{old_patch}-{safe_game_version}-{serial}.json"
+        serial += 1
+    state_file.replace(archive)
+    print(f"旧清单已归档（未删除）：{archive.name}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("game_root", type=Path)
@@ -84,15 +116,18 @@ def main() -> int:
     if not version_file.exists():
         raise SystemExit(f"未找到 {version_file}")
     game_version = version_file.read_text(encoding="utf-8").strip()
-    tag = game_version.split(".")[-1]  # 2026.8.k.83 -> k.83
+    version_parts = game_version.split(".")
+    if len(version_parts) < 2:
+        raise SystemExit(f"无法从 version.txt 解析构建标识：{game_version}")
+    tag = "".join(version_parts[-2:])  # 2026.8.k.97 -> k97
     print(f"游戏版本：{game_version}（标签 {tag}）")
 
     assert_vanilla_assets(game_root)
 
-    extracted = WORKSPACE / "build" / f"extracted_{tag.replace('.', '')}"
-    worklist = WORKSPACE / "build" / f"worklist_{tag.replace('.', '')}"
-    rebased = WORKSPACE / "build" / f"worklist_{tag.replace('.', '')}_rebased"
-    merged = WORKSPACE / "build" / f"merged_{tag.replace('.', '')}"
+    extracted = WORKSPACE / "build" / f"extracted_{tag}"
+    worklist = WORKSPACE / "build" / f"worklist_{tag}"
+    rebased = WORKSPACE / "build" / f"worklist_{tag}_rebased"
+    merged = WORKSPACE / "build" / f"merged_{tag}"
     translations = (args.translations or latest_translations_dir()).resolve()
     print(f"旧译来源：{translations}")
 
@@ -117,7 +152,7 @@ def main() -> int:
         print((result.stdout or "").strip()[-400:])
         if result.returncode != 0:
             # 缺译：生成新旧对照清单供补译
-            missing_out = WORKSPACE / "tmp" / f"{tag.replace('.', '')}_missing_diffs.json"
+            missing_out = WORKSPACE / "tmp" / f"{tag}_missing_diffs.json"
             write_missing_diffs(worklist, translations, missing_out)
             print(f"\n有文本在新版被修订/新增，需要补译。对照清单：{missing_out}")
             print("补译成 supplement jsonl 后加 --supplement 重跑本脚本。")
@@ -174,13 +209,11 @@ def main() -> int:
         uninstall = WORKSPACE / "build" / "current_test_install" / "TravellingAtNight_ZH-CN_current-test" / "installer" / "卸载汉化.ps1"
         run(["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
              str(uninstall), "-GamePath", str(game_root)])
-    for name in ("winhttp.dll", "doorstop_config.ini", ".travelling-cn-install.json"):
-        p = game_root / name
-        if p.exists():
-            p.unlink()
-    bepinex = game_root / "BepInEx"
-    if bepinex.exists():
-        shutil.rmtree(bepinex)
+        if state_file.exists():
+            # Steam 更新后的 15 个资产会同时不匹配旧 original/installed 哈希，旧卸载器
+            # 会安全保留清单。此时只在确认没有任何旧补丁文件仍按安装哈希存在后归档
+            # 清单；BepInEx 的用户配置/日志也保留，让新安装器自行做冲突检查。
+            archive_stale_manifest_if_safe(state_file, game_root, game_version)
     pkg = WORKSPACE / "build" / "current_test_install" / "TravellingAtNight_ZH-CN_current-test"
     run(["powershell.exe", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File",
          str(pkg / "installer" / "安装汉化.ps1"), "-GamePath", str(game_root)])

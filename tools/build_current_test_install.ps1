@@ -1,23 +1,49 @@
 ﻿param(
-    [string]$PatchVersion = '1.2.10',
-    [string]$SupportedGameVersion = '2026.8.j.66',
+    [string]$PatchVersion = '2.6.0',
+    [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = '',
-    [string]$WorklistRoot = 'build\worklist_j66\worklist.jsonl',
-    [string]$TranslationsRoot = 'build\translations_j66_candidate',
-    [string]$MergedRoot = 'build\merged_j66_reviewed',
+    [string]$WorklistRoot = 'build\worklist_k97\worklist.jsonl',
+    [string]$TranslationsRoot = 'translations_k97',
+    [string]$MergedRoot = 'build\merged_k97',
     [ValidateSet('runtime', 'baked')]
     [string]$PluginProfile = 'runtime'
 )
 
 $ErrorActionPreference = 'Stop'
 $workspace = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+
+function Resolve-WorkspacePath {
+    param([string]$Path)
+    if ([System.IO.Path]::IsPathRooted($Path)) {
+        return [System.IO.Path]::GetFullPath($Path)
+    }
+    return [System.IO.Path]::GetFullPath((Join-Path $workspace $Path))
+}
+
+function Get-Sha256Hex {
+    param([string]$Path)
+    $stream = [System.IO.File]::OpenRead($Path)
+    try {
+        $sha = [System.Security.Cryptography.SHA256]::Create()
+        try {
+            return ([System.BitConverter]::ToString($sha.ComputeHash($stream))).Replace('-', '')
+        }
+        finally {
+            $sha.Dispose()
+        }
+    }
+    finally {
+        $stream.Dispose()
+    }
+}
+
 $stagingRoot = Join-Path $workspace 'build\current_test_install'
 $packageRoot = Join-Path $stagingRoot 'TravellingAtNight_ZH-CN_current-test'
 $payloadRoot = Join-Path $packageRoot 'payload'
 $runtimeRoot = Join-Path $workspace 'build\bepinex_runtime'
-$worklistPath = Join-Path $workspace $WorklistRoot
-$translationsRoot = Join-Path $workspace $TranslationsRoot
-$mergedRoot = Join-Path $workspace $MergedRoot
+$worklistPath = Resolve-WorkspacePath $WorklistRoot
+$translationsRoot = Resolve-WorkspacePath $TranslationsRoot
+$mergedRoot = Resolve-WorkspacePath $MergedRoot
 $catalogPath = Join-Path $mergedRoot 'catalog.zh-CN.json'
 $linkTargetsPath = Join-Path $mergedRoot 'link_targets.zh-CN.json'
 $patternsPath = Join-Path $mergedRoot 'patterns.zh-CN.json'
@@ -30,7 +56,7 @@ function Invoke-Checked {
     if ($LASTEXITCODE -ne 0) { throw $FailureMessage }
 }
 
-Invoke-Checked 'j.66 translation merge or structural QA failed.' {
+Invoke-Checked 'Current translation merge or structural QA failed.' {
     python -B (Join-Path $workspace 'tools\merge_and_validate_translations.py') `
         $worklistPath $translationsRoot $mergedRoot `
         --link-targets (Join-Path $workspace 'glossary\link_targets.csv')
@@ -40,6 +66,8 @@ $translationTests = @(
     'test_translation_text_integrity.py',
     'test_control_markup_integrity.py',
     'test_steam_official_terms.py',
+    'test_glossary_translation_alignment.py',
+    'test_final_term_audit.py',
     'test_spatial_viewpoint.py',
     'test_dialogue_semantic_red_flags.py'
 )
@@ -58,22 +86,26 @@ if ($PluginProfile -ne 'baked') {
 Invoke-Checked 'Focused QA failed: test_global_semantic_consistency.py' {
     python -B (Join-Path $workspace 'tools\test_global_semantic_consistency.py') `
         --translations $translationsRoot `
-        --report (Join-Path $workspace 'build\reviews\global_semantic_consistency_j66.json')
+        --report (Join-Path $workspace 'build\reviews\global_semantic_consistency_current.json')
 }
 Invoke-Checked 'Focused QA failed: test_mechanism_glossary_coverage.py' {
     python -B (Join-Path $workspace 'tools\test_mechanism_glossary_coverage.py') `
         --worklist $worklistPath --translations $translationsRoot `
-        --report (Join-Path $workspace 'build\reviews\mechanism_glossary_coverage_j66.json')
+        --report (Join-Path $workspace 'build\reviews\mechanism_glossary_coverage_current.json')
+}
+Invoke-Checked 'Focused QA failed: one-term-one-research glossary build' {
+    python -B (Join-Path $workspace 'tools\build_user_glossary.py') `
+        --strict --worklist $worklistPath --translations $translationsRoot
 }
 Invoke-Checked 'Focused QA failed: test_quote_provenance.py' {
     python -B (Join-Path $workspace 'tools\test_quote_provenance.py') `
         --worklist $worklistPath --translations $translationsRoot `
-        --report (Join-Path $workspace 'build\reviews\quote_provenance_j66.json')
+        --report (Join-Path $workspace 'build\reviews\quote_provenance_current.json')
 }
 Invoke-Checked 'Focused QA failed: test_conversation_description_provenance.py' {
     python -B (Join-Path $workspace 'tools\test_conversation_description_provenance.py') `
         --worklist $worklistPath --translations $translationsRoot `
-        --report (Join-Path $workspace 'build\reviews\conversation_description_provenance_j66.json')
+        --report (Join-Path $workspace 'build\reviews\conversation_description_provenance_current.json')
 }
 foreach ($test in @('test_runtime_features.py', 'test_conversation_titles.py')) {
     if ($PluginProfile -eq 'baked' -and $test -eq 'test_runtime_features.py') {
@@ -119,10 +151,10 @@ $travellingSignatures = & dotnet run --project $methodInspector -- --signatures 
     ComposeDisplayText ComposeWrapped ApplyPaperStripStyle get_RawLabel `
     ResolveQualityTokensAndColourizeLinks BracketsToColourizedLinks `
     WrapTextAtSpecifiedMaxWidth ForCurrentCulture
-if ($LASTEXITCODE -ne 0) { throw 'Could not inspect j.66 travelling.scripts.dll patch targets.' }
+if ($LASTEXITCODE -ne 0) { throw 'Could not inspect current travelling.scripts.dll patch targets.' }
 $dialogueSignatures = & dotnet run --project $methodInspector -- --signatures `
     (Join-Path $managedRoot 'DialogueSystem.dll') get_Name
-if ($LASTEXITCODE -ne 0) { throw 'Could not inspect j.66 DialogueSystem.dll patch targets.' }
+if ($LASTEXITCODE -ne 0) { throw 'Could not inspect current DialogueSystem.dll patch targets.' }
 $signatureText = (@($travellingSignatures) + @($dialogueSignatures)) -join "`n"
 $requiredPatchTargets = @(
     'Travelling.UI.Dialogue.TravellingSubtitlePanel::SetSubtitleTextContent(PixelCrushers.DialogueSystem.Subtitle,System.Boolean)',
@@ -140,16 +172,16 @@ $requiredPatchTargets = @(
 )
 foreach ($requiredTarget in $requiredPatchTargets) {
     if (-not $signatureText.Contains($requiredTarget)) {
-        throw "j.66 runtime patch target missing: $requiredTarget"
+        throw "Current runtime patch target missing: $requiredTarget"
     }
 }
 $linkOverloadPattern = 'ResolveQualityTokensAndColourizeLinks\(System\.String,Travelling\.UI\.Info\.LinkStyle,System\.Boolean,'
 if ([regex]::Matches($signatureText, $linkOverloadPattern).Count -lt 2) {
-    throw 'j.66 quality-link overload coverage is incomplete.'
+    throw 'Current quality-link overload coverage is incomplete.'
 }
 $bracketOverloadPattern = 'BracketsToColourizedLinks\(System\.String,Travelling\.UI\.Info\.LinkStyle,System\.Boolean,System\.Predicate'
 if ([regex]::Matches($signatureText, $bracketOverloadPattern).Count -lt 1) {
-    throw 'j.66 generic bracket-link overload coverage is incomplete.'
+    throw 'Current generic bracket-link overload coverage is incomplete.'
 }
 
 $requiredInputs = @(
@@ -197,7 +229,7 @@ Copy-Item -LiteralPath (Join-Path $workspace 'build\NotoSansSC-OFL.txt') -Destin
 if ($BakedAssetsDir -ne '') {
     # v2.0 资产级汉化：把烘焙过的序列化资产纳入 payload（travelling_Data 下）。
     # 烘焙报告必须干净——任何位点漂移都意味着资产与目录不再同步。
-    $bakedRoot = [System.IO.Path]::GetFullPath((Join-Path $workspace $BakedAssetsDir))
+    $bakedRoot = Resolve-WorkspacePath $BakedAssetsDir
     $bakeReportPath = Join-Path $bakedRoot 'bake_report.json'
     if (-not (Test-Path -LiteralPath $bakeReportPath -PathType Leaf)) {
         throw "Baked assets report missing: $bakeReportPath"
@@ -261,7 +293,7 @@ Copy-Item -LiteralPath (Join-Path $workspace 'docs\USER_GLOSSARY.md') -Destinati
 $files = Get-ChildItem -LiteralPath $payloadRoot -Recurse -File | ForEach-Object {
     [pscustomobject]@{
         path = $_.FullName.Substring($payloadRoot.Length + 1)
-        sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash
+        sha256 = Get-Sha256Hex $_.FullName
         size = $_.Length
     }
 }
@@ -271,7 +303,7 @@ $outerFiles = Get-ChildItem -LiteralPath $packageRoot -Recurse -File | Where-Obj
 } | ForEach-Object {
     [pscustomobject]@{
         path = $_.FullName.Substring($packageRoot.Length + 1)
-        sha256 = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash
+        sha256 = Get-Sha256Hex $_.FullName
         size = $_.Length
     }
 }

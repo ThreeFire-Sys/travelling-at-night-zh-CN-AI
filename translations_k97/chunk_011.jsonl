@@ -25,7 +25,6 @@
 {"id":"TAN-02F3FB2D8DB7","source":"Passions: Evolution","translation":"心念：演化","status":"translated","notes":"系统教程标题；Passions 沿前批译“心念”。"}
 {"id":"TAN-02FA9EE805F2","source":"Essential markers of elegance or wealth.","translation":"优雅或财富不可或缺的标志。","status":"translated","notes":"保持物品性相描述的凝练。"}
 {"id":"TAN-0390713E90DB","source":"A hint of a reaction from Nina?","translation":"宁娜好像有了一丝反应？","status":"translated","notes":"关系变化提示；保留难以察觉的语气。"}
-{"id":"TAN-03A3D61B9241","source":"A tin medallion commemorating the wolf-headed patron of travelers, storms, and strength - an unfailingly popular and notoriously unsophisticated saint.","translation":"一枚锡制徽章，纪念那位守护旅人、风暴与力量的狼首圣人——他向来人气不衰，也出了名的土气。","status":"translated","notes":"保留 popular/unsophisticated 的轻微揶揄；不擅自将圣人等同具体司辰。"}
 {"id":"TAN-03BD523C4B0F","source":"Sanctified Lucifer Match","translation":"圣化路西法火柴","status":"translated","notes":"Lucifer match 为早期摩擦火柴名称；保留专名感。"}
 {"id":"TAN-03C1C5A207DB","source":"Opinion - Mathis","translation":"看法——马蒂斯","status":"translated","notes":"UI 标签。"}
 {"id":"TAN-03C87962428B","source":"Companions: Travelling Together","translation":"同伴：结伴旅行","status":"translated","notes":"系统教程标题。"}
@@ -448,3 +447,4 @@
 {"id":"TAN-614D35522DF4","source":"Pastis","translation":"茴香酒","status":"translated","notes":"沿前批饮品译名。"}
 {"id":"TAN-6157D995CC8D","source":"'Spencer Hobson: multiple entries Germany, US Zone of Occupation'. A single sheet of paper, enlivened with the flaming-sword stamp.","translation":"“斯宾塞·霍布森：多次入境德国美占区。”一张纸，因烈焰之剑印章而平添几分生气。","status":"translated","notes":"保留官方记录的简略句式与 enlivened 的冷幽默；统一中文引号。"}
 {"id":"TAN-61622162CDB3","source":"Knock","translation":"启","status":"translated","notes":"依术语表。"}
+{"id":"TAN-61B51D6E265B","source":"I've learnt what I needed from Dr A in his dream.","translation":"我已在奥比耶医生的梦里拿到所需情报。","status":"translated","notes":"Dr A 按上下文展开。"}

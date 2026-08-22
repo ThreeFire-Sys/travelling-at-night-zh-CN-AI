@@ -53,7 +53,9 @@ def main() -> int:
     args = parser.parse_args()
 
     rows = []
-    for path in sorted(args.translations.glob("*.jsonl")):
+    # Supplement files are provenance snapshots whose rows are already folded
+    # into chunk_*.jsonl by rebase; loading both silently double-counts them.
+    for path in sorted(args.translations.glob("chunk_*.jsonl")):
         rows.extend(
             json.loads(line)
             for line in path.read_text(encoding="utf-8-sig").splitlines()

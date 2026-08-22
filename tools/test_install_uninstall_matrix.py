@@ -25,6 +25,7 @@ from typing import Callable, Iterator
 ROOT = Path(__file__).resolve().parents[1]
 INSTALLER = ROOT / "release" / "installer" / "安装汉化.ps1"
 UNINSTALLER = ROOT / "release" / "installer" / "卸载汉化.ps1"
+RESOLVER = ROOT / "release" / "installer" / "Resolve-GamePath.ps1"
 README = ROOT / "release" / "README_安装说明.md"
 EVIDENCE_ROOT = ROOT / "build" / "final_qa" / "install_matrix"
 STATE_NAME = ".travelling-cn-install.json"
@@ -32,6 +33,7 @@ STATE_NAME = ".travelling-cn-install.json"
 OUTER_FILES = (
     "installer/安装汉化.ps1",
     "installer/卸载汉化.ps1",
+    "installer/Resolve-GamePath.ps1",
     "README_安装说明.md",
     "术语表与译名说明.md",
     "术语表与译名说明.txt",
@@ -108,10 +110,11 @@ def build_package(case_root: Path) -> Path:
     installer_root.mkdir()
     copy_script_for_sandbox(INSTALLER, installer_root / "安装汉化.ps1")
     copy_script_for_sandbox(UNINSTALLER, installer_root / "卸载汉化.ps1")
+    shutil.copy2(RESOLVER, installer_root / "Resolve-GamePath.ps1")
     shutil.copy2(README, package / "README_安装说明.md")
     write_bytes(package / "术语表与译名说明.md", b"# synthetic terminology notes\n")
 
-    for relative in OUTER_FILES[3:]:
+    for relative in OUTER_FILES[4:]:
         write_bytes(package / relative, f"synthetic fixture: {relative}\n".encode("utf-8"))
     for relative, data in PAYLOAD.items():
         write_bytes(payload_root / relative, data)

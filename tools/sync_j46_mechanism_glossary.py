@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Synchronise every player-facing j.46 mechanism label into the glossary.
+"""Audit every player-facing mechanism label against the curated glossary.
 
 The scope is deliberately taxonomic: parallel rule labels are included; item,
 recipe, person and place names are not treated as mechanism terminology merely
-because their assets also have a ``_label`` field.
+because their assets also have a ``_label`` field.  This tool deliberately does
+not invent provenance for newly discovered labels: every new concept needs its
+own asset evidence, naming argument and rejected alternatives before admission.
 """
 
 from __future__ import annotations
@@ -193,26 +195,16 @@ def covered_terms(records: dict[str, list[dict]]) -> set[str]:
 
 
 def new_record(source: str, target: str, spec: dict) -> dict:
-    record = {
-        "canonical": source,
-        "aliases": [],
-        "reference_label": spec["reference_label"],
-        "reference_url": spec["reference_url"],
-        "evidence": spec["evidence"],
-        "rationale": f"j.46 标签译作“{target}”。{spec['rationale']}",
-        "alternatives": spec["alternatives"],
-        "status": "verified",
-    }
-    if spec.get("comparison_url"):
-        record["comparison_label"] = spec["comparison_label"]
-        record["comparison_url"] = spec["comparison_url"]
-    return record
+    raise SystemExit(
+        f"{source!r} -> {target!r} lacks curated one-term-one-research provenance; "
+        "add a term-specific record to glossary/provenance before rerunning"
+    )
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_current/worklist.jsonl"))
-    parser.add_argument("--translations", type=Path, default=Path("build/translations_j46_candidate"))
+    parser.add_argument("--worklist", type=Path, default=Path("build/worklist_k97/worklist.jsonl"))
+    parser.add_argument("--translations", type=Path, default=Path("translations_k97"))
     parser.add_argument("--glossary", type=Path, default=Path("glossary/glossary.csv"))
     parser.add_argument("--provenance-dir", type=Path, default=Path("glossary/provenance"))
     args = parser.parse_args()
@@ -297,15 +289,24 @@ def main() -> int:
             covered.update([canonical, *([alias] if alias else [])])
 
     added_labels = 0
+    unprovenanced_labels = []
     for label in labels:
         key = (label["script"], label["source"])
         if key in EXCLUSIONS:
             continue
-        add_glossary(label["source"], label["target"], FAMILY_SPECS[label["script"]]["category"], "j.46 并列机制标签；全族覆盖检查")
         if label["source"] not in covered:
-            records["travelling_new"].append(new_record(label["source"], label["target"], FAMILY_SPECS[label["script"]]))
-            covered.add(label["source"])
-            added_labels += 1
+            unprovenanced_labels.append(f"{label['script']}::{label['source']} -> {label['target']}")
+            continue
+        add_glossary(
+            label["source"], label["target"], FAMILY_SPECS[label["script"]]["category"],
+            "逐词证据见 glossary/provenance 与 USER_GLOSSARY",
+        )
+
+    if unprovenanced_labels:
+        raise SystemExit(
+            "new mechanism labels require manual one-term-one-research provenance:\n- "
+            + "\n- ".join(unprovenanced_labels)
+        )
 
     glossary_rows.sort(key=lambda row: row["source_en"].casefold())
     with args.glossary.open("w", encoding="utf-8-sig", newline="") as handle:

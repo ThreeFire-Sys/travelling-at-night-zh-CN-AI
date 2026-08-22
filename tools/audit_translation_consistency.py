@@ -475,8 +475,23 @@ def audit_fixed_terms(
     for row in rows:
         source = visible_text(str(row.get("source", "")))
         target = visible_text(str(row.get("translation", "")))
+        exact_glossary_match = any(
+            (
+                source == entry.source
+                if entry.case_sensitive
+                else source.casefold() == entry.source.casefold()
+            )
+            and target == entry.target
+            for entry in effective
+        )
         seen: set[tuple[str, str]] = set()
         for entry in effective:
+            # A longer exact label may intentionally lexicalise its headword
+            # differently (e.g. Weariness Collapse -> 累倒). Once the complete
+            # source/target pair is canonical, substring terms must not produce
+            # false "missing" warnings.
+            if exact_glossary_match:
+                continue
             if not source_mentions(source, entry.source, entry.case_sensitive):
                 continue
             context_rule = AMBIGUOUS_TERM_CONTEXTS.get(entry.source)

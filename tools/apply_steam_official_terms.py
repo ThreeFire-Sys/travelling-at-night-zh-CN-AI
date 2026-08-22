@@ -116,6 +116,18 @@ def transform(row: dict[str, str]) -> bool:
         translation = translation.replace("好奇心", "好奇心")
         if row["id"] == "TAN-C0A70C188A99":
             translation = "好奇心"
+    if has_term(source, "Appetite"):
+        translation = translation.replace("欲求", "餍足")
+        notes = notes.replace("欲求", "餍足")
+        if row["id"] == "TAN-1B7037D5C7C8":
+            translation = "餍足"
+        elif row["id"] == "TAN-DC3AE610370B":
+            translation = (
+                "空虚原就是用来填满的。餍足之选总是自私，也往往愉快。\n\n"
+                "[将这份心念演化为餍足；它会为你的性相池提供刃与杯。]\n\n"
+            )
+        elif row["id"] == "TAN-FF0F596B1108":
+            translation = "[你正放任自己求取餍足。不过人总会变。尤其是斯宾塞·霍布森。]"
 
     if "War in the Sun" in source or "War in the [[Sun]]" in source:
         translation = translation.replace("太阳大战", "太阳之战")

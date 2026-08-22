@@ -4,6 +4,23 @@
 
 $ErrorActionPreference = 'Stop'
 Import-Module Microsoft.PowerShell.Utility -ErrorAction Stop
+
+function Get-Sha256Hex {
+    param([string]$Path)
+    $stream = [System.IO.File]::OpenRead($Path)
+    try {
+        $sha = [System.Security.Cryptography.SHA256]::Create()
+        try {
+            return ([System.BitConverter]::ToString($sha.ComputeHash($stream))).Replace('-', '')
+        }
+        finally {
+            $sha.Dispose()
+        }
+    }
+    finally {
+        $stream.Dispose()
+    }
+}
 # 脚本位于发布包的 installer\ 子目录（不对用户外露），包根目录取其上一级。
 $releaseRoot = Split-Path -Parent $PSScriptRoot
 $payloadRoot = Join-Path $releaseRoot 'payload'
@@ -102,7 +119,7 @@ foreach ($file in $manifest.outer_files) {
     }
     $sourceInfo = Get-Item -LiteralPath $source
     if ($sourceInfo.Length -ne [long]$file.size -or
-        (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash -ne [string]$file.sha256) {
+        (Get-Sha256Hex $source) -ne [string]$file.sha256) {
         throw "发布包外层文件完整性校验失败：$relative"
     }
 }
@@ -189,7 +206,7 @@ foreach ($file in $manifest.files) {
     if (-not (Test-Path -LiteralPath $source -PathType Leaf)) {
         throw "发布包缺少：$relative"
     }
-    $actualSourceHash = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash
+    $actualSourceHash = Get-Sha256Hex $source
     if ($actualSourceHash -ne [string]$file.sha256) {
         throw "发布包校验失败：$relative"
     }
@@ -239,14 +256,14 @@ try {
         $backup = $null
         $originalHash = $null
         if (Test-Path -LiteralPath $target -PathType Leaf) {
-            $originalHash = (Get-FileHash -LiteralPath $target -Algorithm SHA256).Hash
+            $originalHash = Get-Sha256Hex $target
             if ($originalHash -eq $actualSourceHash) {
                 $action = 'unchanged'
             } else {
                 $backup = Join-Path $backupRoot $relative
                 New-Item -ItemType Directory -Path (Split-Path -Parent $backup) -Force | Out-Null
                 Copy-Item -LiteralPath $target -Destination $backup -Force
-                if ((Get-FileHash -LiteralPath $backup -Algorithm SHA256).Hash -ne $originalHash) {
+                if ((Get-Sha256Hex $backup) -ne $originalHash) {
                     throw "安装前备份校验失败：$relative"
                 }
                 $action = 'replaced'
@@ -268,7 +285,7 @@ try {
             $stagedTarget = Join-Path $targetDirectory ('.travelling-cn-new-' + [Guid]::NewGuid().ToString('N'))
             try {
                 Copy-Item -LiteralPath $source -Destination $stagedTarget
-                if ((Get-FileHash -LiteralPath $stagedTarget -Algorithm SHA256).Hash -ne $actualSourceHash) {
+                if ((Get-Sha256Hex $stagedTarget) -ne $actualSourceHash) {
                     throw "安装暂存文件校验失败：$relative"
                 }
                 Move-Item -LiteralPath $stagedTarget -Destination $target -Force
@@ -277,7 +294,7 @@ try {
                     Remove-Item -LiteralPath $stagedTarget -Force -ErrorAction SilentlyContinue
                 }
             }
-            if ((Get-FileHash -LiteralPath $target -Algorithm SHA256).Hash -ne $actualSourceHash) {
+            if ((Get-Sha256Hex $target) -ne $actualSourceHash) {
                 throw "安装后文件校验失败：$relative"
             }
             $entry.applied = $true

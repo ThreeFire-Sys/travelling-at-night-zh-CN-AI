@@ -814,3 +814,59 @@
 - **曾写死的继承代码已回退**：给安装器加的"读旧清单继承备份链"在"已有清单拒绝安装"的保护下是死代码，git checkout 回退。真正修复是流程纪律——
 - **纪律确立**：**任何情况下不许删 .travelling-cn-install.json 强装**；要重装先跑卸载器。migrate_game_version.py 安装段已改：检测到旧清单先跑卸载器再全新装。
 - 游戏最终状态：v2.5.3 装回，清单健康（15 个资产 replaced + vanilla 备份链在位），卸载可正常工作。无需重发版本（安装器无变更）。
+
+## 95. 2026-08-22 术语体系接手重审：一词一考据 + 官方译名纠错 + 防模板回退
+
+- 用户指出 `USER_GLOSSARY.md` 的新作条目大量套用家族理由，并反馈 Steam 官方简中已将
+  `Appetite` 写作“餍足”，补丁仍用“欲求”。逐层追溯确认：Markdown 由
+  `glossary/provenance/*.jsonl` 生成，真正问题在 provenance；129 项带 j.xx／家族模板，
+  另有 40 个 glossary 词没有任何 provenance、2 个 provenance 别名不在 glossary。
+- 已将上述 129 项全部改为词项专属的试玩版说明、命名理由和独立排除候选；补齐 40 个
+  漏项及 `Silver Spintria`／`doli` 精确词形。严格构建现为 **350 概念／394 词形**，
+  Quote 23/23、会话题辞出处 36/134，零 provenance 错误。
+- 译名实改：`Appetite` 餍足；`Challenging` 颇具挑战；`Chilly` 微寒；`Light` 轻便；
+  `Warm` 保暖；`Mandate` 号令；`Obscure` 遮蔽；`Practicality` 实用物资；`Salve`
+  抚慰；`Unveil` 揭示；`Weariness Collapse` 疲惫倒下；`Top Up` 补足；
+  `Polchinelle's Misfortune` 波尔希内尔之祸。
+- 前作回归纠错：`Kerisham` 凯尔伊苏姆、`Leathy` 遗忘之水、`Numa` 闰时、`Season`
+  时节、`The Roost` 栖木、`Zachary` 扎迦利；La Roulotte 统一“鲁洛特”。术语表反向
+  修正 `The Chandler's Tale` 为本作内嵌《制烛人的故事》，不再错误宣称前作定名。
+- 防回退：`build_user_glossary.py --strict` 现拒绝换词头式模板、内部版本标记、未明写
+  最终译名的理由；`sync_j46_mechanism_glossary.py` 发现新标签时只报错，不再自动生成
+  verified 套话；新增 `test_glossary_translation_alignment.py`，当前 6694 条译文中
+  267 个精确标签位点全绿。`build_current_test_install.ps1` 已接入两项检查。
+- 验证：merge 6694/6694、结构错误 0、链接目标 147 且 unmapped 0；术语一致性 error 0；
+  文本完整性、控制标记、Steam 官方术语、机制覆盖、全局语义与对白红旗测试均通过。
+- 本轮只更新源码与文档，尚未重新烘焙／安装／发布新补丁；若要发版，必须按 §92 管线
+  从 vanilla 资产重烘焙并跑探针，绝不能删除安装清单强装。
+
+## 96. 2026-08-22 v2.6.0 终审版：350 项逐词账本、k.97 迁移、真实装卸与三探针全绿
+
+- **终审口径**：新增 `glossary/final_term_audit.jsonl`，对首轮 350 个历史概念逐项记录
+  英文词、审前译名、独立证据类型、置信等级、裁决与理由。裁决为 keep 340／change 7／
+  retire 3；退役项是 k.97 已无位点的 `Departments`、`the Group`、`the Union`。当前有效
+  347 概念／393 精确词形。证据分布：前作官中同 ID 120、前作官中全文 13、本作官方
+  中文 16、本作资产语义 140、外部权威 24、语言／专业资料 10、编辑转写 19、明确编辑
+  方针 5、退役 3；不是从既定中文倒推套话。
+- **终审核改**：`bisclavret` 狼骑／`Bisclavret's Knot` 狼骑结印；`Honour` 操守；
+  `Louche` 轻佻；`Quicken` 活化；`Weariness Collapse` 累倒；`scrine` 灵龛／
+  `scrineway` 龛道；`retenebration` 复晦。首轮的 `Appetite` 餍足及其他纠错一并保留。
+  `test_final_term_audit.py` 与 `test_glossary_translation_alignment.py` 已纳入正式构建。
+- **k.97 数据链**：游戏实际 `version.txt=2026.8.k.97`；6 条新增／修订文本补译后，
+  merge 6694/6694、结构错误 0、148 个源链接全映射；15 个资产烘焙 0 mismatch，回读
+  9029/9029、标签位点 1181、失败 0；lang_swap 7433 对（冲突 0），zh2en 7772 条。
+- **管线修复**：迁移脚本的 `k.97→97` 错误目录标签和绝对路径二次拼接已修；正式发包
+  脚本改为复用 current-test 同一 QA 链。Windows PowerShell 缺 `Get-FileHash` 的环境兼容
+  问题已在构建器、安装器、卸载器统一改为 .NET SHA-256。Steam 更新后旧清单若无法闭环，
+  迁移器只在确认没有 created/replaced 旧哈希仍生效后改名归档，不删除；不再清空用户的
+  BepInEx 配置／日志。安装沙箱矩阵 8/8、62 断言通过；ZIP 校验器 8/8 通过。
+- **真实装卸矩阵**：正式包装机 46 项（15 replaced／29 created／2 unchanged），全部实际
+  写入哈希一致；真实卸载后 15/15 原版资产恢复、0 创建文件残留、用户配置保留；再安装
+  后 46 项再次全绿，原版备份链健康。四个 Diagnostics 开关最终均为 false。
+- **运行时**：AutoProbeSwap、AutoProbeSoak、AutoProbeNewGame 三组均打印
+  `[regression] ... 全绿（0 失败）`；覆盖六面板开切／关切、详情弹窗、Esc、音效逻辑键、
+  引文页、捏人、教程驻留与真实开场对话 15 步。关探针冷启动明确载入插件 2.6.0，日志
+  无 Error/Exception。
+- **正式包**：`dist/TravellingAtNight_ZH-CN_v2.6.0.zip` 已经独立验证（payload 46、目录
+  catalog 7280、链接目标 224），SHA-256：
+  `43B299BD77B96813BDDB60590399FC1721C24AC6FD39A389EF4BE742F3147882`。

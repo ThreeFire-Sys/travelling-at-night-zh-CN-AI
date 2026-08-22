@@ -92,3 +92,6 @@ Worm,蠕虫,high,设定实体
 Worms,蠕虫,high,设定实体复数
 Outfit,装束,high,footnote label；与装束栏 UI 译名一致
 Outfits,装束,high,覆盖默认映射：链接 [[Outfits]] 必须解析到 footnote 装束，默认被 tips 标签“套装”污染
+sleep,睡眠,high,k.97 新提示使用小写链接；目标为 Sleep 脚注
+Sleep,睡眠,high,Sleep 脚注标签
+Bonanza Cigarettes,博南扎牌香烟,high,k.97 测试串使用复数链接；目标为 Bonanza Cigarette 脚注

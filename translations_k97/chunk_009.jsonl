@@ -49,6 +49,7 @@
 {"id":"TAN-7EFD59726CCD","source":"'The whole night listened to the flute of Nectaire. Already the evening star was rising above the paling horizon.' (Anatole France)","translation":"“整整一夜，都在聆听内克泰尔的笛声。暮星已从渐白的天际升起。”（阿纳托尔·法朗士）","status":"translated","notes":"保留引文的夜色与将晓意象。"}
 {"id":"TAN-7F6C6DD7169E","source":"Bessy","translation":"贝茜","status":"translated","notes":"人名。"}
 {"id":"TAN-7F8C93B32C16","source":"Parish priest in the church of St Reparata in Antibes.","translation":"昂蒂布圣雷帕拉塔教堂的本堂神父。","status":"translated","notes":"人物短描述。"}
+{"id":"TAN-827EE341D16B","source":"No Evidence","translation":"无证据","status":"translated","notes":"k.97 新增界面／测试标签。"}
 {"id":"TAN-82B28933E87F","source":"Mme Zèlia","translation":"泽莉娅夫人","status":"translated","notes":"人名/称谓。"}
 {"id":"TAN-835DB5F7A113","source":"Pablo Picasso, 'Woman in Armchair', 1941 (oil, canvas)","translation":"巴勃罗·毕加索，《扶手椅中的女人》，1941年（布面油画）","status":"translated","notes":"按画作铭牌格式处理。"}
 {"id":"TAN-8496305CA11C","source":"The Curious Incident","translation":"离奇事件","status":"translated","notes":"化用柯南·道尔《银色马》中 the curious incident of the dog；对应圣吉内福尔故事中的狗。"}
@@ -86,7 +87,7 @@
 {"id":"TAN-9D6719C1512C","source":"Bronek","translation":"布罗内克","status":"translated","notes":"人名音译。"}
 {"id":"TAN-A1CEF778620D","source":"I think of myself as a priest, first","translation":"我首先把自己视作神父","status":"translated","notes":"话题/分支标签。"}
 {"id":"TAN-A1E91CD9BDC8","source":"A grande dame of the old school, often found on the sunny side of the park in Antibes.","translation":"一位旧派贵妇，常在昂蒂布公园向阳的一侧出现。","status":"translated","notes":"grande dame 译“贵妇”，保留旧时代气质。"}
-{"id":"TAN-A20F2BAAEC6D","source":"Expel Item","translation":"驱离物品","status":"translated","notes":"仪式制作物标签，与 Hallow/Unveil 并列，暂译“驱离”。"}
+{"id":"TAN-A20F2BAAEC6D","source":"Expel Item","translation":"驱逐物品","status":"translated","notes":"终审：与性相 Expel“驱逐”同词根；这是功用类别标签。"}
 {"id":"TAN-A4128A778153","source":"Sylvain's mother?","translation":"西尔万的母亲？","status":"translated","notes":""}
 {"id":"TAN-A5D78441209D","source":"An elegant gentleman with a golden smile.","translation":"一位优雅的绅士，笑容如金。","status":"translated","notes":"无上下文人物短描述。"}
 {"id":"TAN-A627B324DAD4","source":"Mansus painting was from Hush House","translation":"漫宿画作来自噤声居屋","status":"translated","notes":"Mansus/Hush House 依术语表译“漫宿／噤声居屋”；条件标签。"}
@@ -137,7 +138,6 @@
 {"id":"TAN-BF89FCB2BA24","source":"Born on the Twenty-Eighth of June","translation":"生于六月二十八日","status":"translated","notes":"保持传记式章节题语气。"}
 {"id":"TAN-BFFA4772D6FE","source":"Rageful?","translation":"满腔怒火？","status":"translated","notes":"对应激情“愤怒”，保留形容式问句。"}
 {"id":"TAN-C04EF319E895","source":"Learnt Sinombre is trapped here","translation":"得知西农布尔受困于此","status":"translated","notes":"条件标签。"}
-{"id":"TAN-C1038E950631","source":"Not Yet","translation":"还没有","status":"translated","notes":"i.75 新增对话选项标签；承接“找到后再回来”，保留口语感并保持简短。"}
 {"id":"TAN-C1B5912E93D7","source":"Let me think...","translation":"让我想想……","status":"translated","notes":""}
 {"id":"TAN-C344FBFFA94D","source":"Curious?","translation":"好奇？","status":"translated","notes":"对应激情“好奇”。"}
 {"id":"TAN-C471F78288B4","source":"Stayed Nameless","translation":"仍未留名","status":"translated","notes":"条件标签。"}

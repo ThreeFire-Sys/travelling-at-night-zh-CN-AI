@@ -21,8 +21,9 @@
 
 - `docs/STYLE_GUIDE.md`——总体标尺、文本层级、句法标点、去机翻腔、强制 QA。
   **本文件的一切裁决不得违反它**；它与本计划冲突时，以 STYLE_GUIDE 为准。
-- `docs/USER_GLOSSARY.md`——面向玩家的术语考据表（303 概念，每项有证据链）。
-- `glossary/glossary.csv`——内部术语表（342 精确词形，QA 强校验）。
+- `docs/USER_GLOSSARY.md`——面向玩家的术语考据表（347 个当前有效概念，每项有独立证据链）。
+- `glossary/glossary.csv`——内部术语表（393 个当前有效精确词形，QA 强校验）。
+- `glossary/final_term_audit.jsonl`——350 个历史概念的逐项终审账本（含 3 个退役项）。
 - `glossary/link_targets.csv`——`[[链接]]` 固定译名。
 
 ### 术语增删改纪律
@@ -34,7 +35,7 @@
 
 ## 3. 参考语料（按优先级）
 
-1. 本作英文原文与实际上下文：`build/merged_j87/review_catalog.jsonl` 的 `contexts`
+1. 本作英文原文与实际上下文：`build/merged_k97/review_catalog.jsonl` 的 `contexts`
    字段（asset_file / path_id / field_path / game_object），游戏内实测截图。
 2. 前作官方简中全文（本机 Steam 目录，直接可读）：
    - 《司辰之书》：`D:\Steam\steamapps\common\Book of Hours\bh_Data\StreamingAssets\bhcontent\loc_zh-hans\`
@@ -45,10 +46,10 @@
 ## 4. 语料结构与数据流（改动前必须理解）
 
 ```
-translations_k6/chunk_001..015.jsonl     ← 润色工作对象（每行一条：
+translations_k97/chunk_001..015.jsonl   ← 润色工作对象（每行一条：
                                                          id / source / translation / status / notes）
         ↓ merge_and_validate_translations.py（打包脚本自动调用）
-build/merged_k6/review_catalog.jsonl                    ← 合并产物，带 contexts
+build/merged_k97/review_catalog.jsonl                  ← 合并产物，带 contexts
         ↓ bake_translations.py                           ← 需游戏处于【原版未打补丁】状态
 build/baked_assets/（level*、resources.assets 等）        ← 译文直接烘进游戏资产
         ↓ build_lang_swap_map.py
@@ -109,18 +110,18 @@ build/baked_assets/lang_swap.json                        ← F9 热切换映射�
 
 - 工作批次：以 chunk 为单位（450 条/个），内部按 50 条小批推进，每小批落盘一次。
 - 应用顺序（每完成若干 chunk 或用户要求出包时执行一次，不必每批都跑）：
-  1. 确认游戏已退出（`tasklist | grep -i travell` 无输出）。
+  1. 确认游戏已退出（PowerShell：`Get-Process travelling -ErrorAction SilentlyContinue` 无输出）。
   2. 卸载补丁：双击 `build\current_test_install\TravellingAtNight_ZH-CN_current-test\一键卸载.bat`
      （恢复原版资产——bake 必须在原版资产上跑）。
-  3. 烘焙：`python tools/bake_translations.py "<游戏根目录>" build/merged_k6/review_catalog.jsonl build/baked_assets --supplement glossary/runtime_supplement.csv --link-targets glossary/link_targets.csv`
+  3. 烘焙：`python tools/bake_translations.py "<游戏根目录>" build/merged_k97/review_catalog.jsonl build/baked_assets --supplement glossary/runtime_supplement.csv --link-targets glossary/link_targets.csv`
      （先跑一次 merge：打包脚本会代跑，或手动
-     `python tools/merge_and_validate_translations.py build/worklist_k6/worklist.jsonl translations_k6 build/merged_k6`）。
-  4. 重建映射表：`python tools/build_lang_swap_map.py build/merged_k6/review_catalog.jsonl glossary/runtime_supplement.csv build/baked_assets/lang_swap.json`。
+     `python tools/merge_and_validate_translations.py build/worklist_k97/worklist.jsonl translations_k97 build/merged_k97`）。
+  4. 重建映射表：`python tools/build_lang_swap_map.py build/merged_k97/review_catalog.jsonl glossary/runtime_supplement.csv build/baked_assets/lang_swap.json`。
   5. 打包+安装+46 文件哈希核验（命令见 HANDOFF.md 各节，版本号顺延）。
 - merge/QA 报 structural 错误（标签丢失、占位符不配对）必须当场修掉再打包。
 
 ## 8. 完成标准
 
-- 6652 条全部有"保持/修改"结论，progress.json 全 chunk status=done。
+- 当前 6694 条全部有“保持/修改”结论，progress.json 全 chunk status=done。
 - decisions.md 无未解决的"考据待核"（或逐条有用户确认的处置）。
 - 全管线跑通，实机抽查至少三段完整对话无异常。
