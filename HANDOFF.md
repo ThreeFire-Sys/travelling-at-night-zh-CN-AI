@@ -1070,3 +1070,13 @@
   v2.5.3/v2.4.8/v2.3.0/v2.2.19 六个 Release（git tag 保留，发布说明均已在
   CHANGELOG.md 留有全文，可随时重建）。v2.6.4 为开发版，待用户实机验收后再作为
   唯一最新 Release 发布并替换 v2.6.2。
+
+## 102. 2026-08-24 v2.6.4 正式发布
+
+- 正式包：`dist/TravellingAtNight_ZH-CN_v2.6.4.zip`（25,135,769 字节），SHA-256：
+  `2F839243D3DEA245CC1BC05675E29A77608385648D1DE09B5F7C2816C1BE43C0`；
+  `tools/build_release.ps1` 全 QA 链产出并独立校验通过。
+- 提交 `5471cdf` + tag `v2.6.4` 已推送；GitHub Release v2.6.4 已建（zip+sha256 资产），
+  同日删除 v2.6.2 Release——仓库保持"只有最新版一个 Release"的约定。
+- 发版前实机验证：场景探针（antibes/janvierShop）与缓冲往返探针（4 条用户现场
+  夹具）全绿；autoswap/newgame/soak 三套全绿。
