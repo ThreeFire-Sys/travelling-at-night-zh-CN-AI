@@ -127,7 +127,26 @@ def main() -> int:
         final_note = normalise_note(current.get("notes", "") or "")
         current["notes"] = final_note
         decision = "change" if changed else "retain_after_review"
-        if compact_terms:
+        memory_reveal_reasons = {
+            "TAN-48E6E8048F00": (
+                "该长版与未揭示回忆共用同一英文前缀；中文因此统一为"
+                "‘那些年里，我没有血肉，在边境漂流；薄如雨丝，空如皂泡’，"
+                "揭示后只追加贝尔·伊莱等后续内容。"
+            ),
+            "TAN-6BC99E618D6A": (
+                "该长版与未揭示回忆的英文在 skin 之前完全相同；中文统一为"
+                "‘我们一行人跺着脚……藏在皮肤下的东西’，避免揭示后突然从"
+                "‘走出来’变成‘走进’。"
+            ),
+            "TAN-D3190771D0DC": (
+                "该长版与未揭示回忆共用同一英文前缀；中文统为"
+                "‘我刚和特蕾莎、克里斯托弗喝完酒……那些沉默的男人正在等我’，"
+                "揭示后只追加防剿局的条件。"
+            ),
+        }
+        if changed and row_id in memory_reveal_reasons:
+            reason = memory_reveal_reasons[row_id]
+        elif compact_terms:
             term_summary = "、".join(
                 f"{term['source_en']}→{term['target_zh']}" for term in compact_terms[:12]
             )

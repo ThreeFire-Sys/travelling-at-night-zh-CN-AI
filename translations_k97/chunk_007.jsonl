@@ -209,7 +209,7 @@
 {"id":"TAN-D98F6ECE8A91","source":"Well, you did keep dropping our tickets.","translation":"嗯，你确实一直在掉我们的车票。","status":"translated","notes":""}
 {"id":"TAN-D991A24E8E04","source":"Who?","translation":"谁？","status":"translated","notes":""}
 {"id":"TAN-D99A4F4C3DF5","source":"[Through glistening streets, beneath blinded windows, past scar and wailing stone, and into the sun on the other side of town.]","translation":"[穿过泛着水光的街道，经过紧闭双目的窗户、伤痕与哀鸣的石头，来到城镇另一头的阳光下。]","status":"translated","notes":""}
-{"id":"TAN-D9BD58AB107B","source":"I am afraid that might in fact have been her intention. The animal is difficult to anticipate. It often interrupts my sessions with its... opinions. Even through two thicknesses of door.","translation":"恐怕那恰恰是它的用意。这畜生难以捉摸，常拿自己的……意见打断诊疗。隔着两道门都拦不住。","status":"translated","notes":""}
+{"id":"TAN-D9BD58AB107B","source":"I am afraid that might in fact have been her intention. The animal is difficult to anticipate. It often interrupts my sessions with its... opinions. Even through two thicknesses of door.","translation":"恐怕那恰恰是它的用意。这家伙难以捉摸，常拿自己的……意见打断诊疗。隔着两道门都拦不住。","status":"translated","notes":""}
 {"id":"TAN-D9C320F23A95","source":"Long may his reputation survive without further tarnish.","translation":"愿他的声名从此长存，再不添污点。","status":"translated","notes":""}
 {"id":"TAN-DA05D9E7E020","source":"I am a poor excuse for a poet, at best, [q=alias.title.fr].","translation":"我充其量只是个滥竽充数的诗人，[q=alias.title.fr]。","status":"translated","notes":"保留 [q=alias.title.fr] 变量。"}
 {"id":"TAN-DA15037FD30F","source":"It's obviously the honourable path.","translation":"显然，这是最体面的路。","status":"translated","notes":"honourable 与激情“荣誉”呼应，保留机制词根。"}
@@ -427,7 +427,7 @@
 {"id":"TAN-E931C2F6D985","source":"No-one mentioned them.","translation":"没人提过。","status":"translated","notes":""}
 {"id":"TAN-E948CF9530F8","source":"I need to make some discreet purchases. Things that aren't sold openly. Any advice?","translation":"我需要悄悄买些东西。那些不公开出售的货色。有什么建议吗？","status":"translated","notes":"j.87 文本修订同步"}
 {"id":"TAN-E94B8B5976DD","source":"To put it bluntly: yes.","translation":"直说吧：对。","status":"translated","notes":""}
-{"id":"TAN-E956627CDA2D","source":"The animal is essentially inert, monsieur. Expect nothing of him.","translation":"这畜生基本不会动，先生。别指望它。","status":"translated","notes":""}
+{"id":"TAN-E956627CDA2D","source":"The animal is essentially inert, monsieur. Expect nothing of him.","translation":"这猫基本不会动，先生。别指望它。","status":"translated","notes":""}
 {"id":"TAN-E95D1F3356B5","source":"These cigars look <i>sumptuous</i>. I have to try them. Pocket a few.","translation":"这些雪茄看着就<i>阔气</i>。非试不可。揣几根。","status":"translated","notes":""}
 {"id":"TAN-E968667E505F","source":"Nyctodromy, Horomachistry, Birdsong: once I'd have gone to a crossroads to call them up. But this is just as good.","translation":"夜游术、司辰学、鸟鸣学：从前我会去十字路口召用这些技艺。不过这里也一样合适。","status":"translated","notes":""}
 {"id":"TAN-E96E4C52D99B","source":"Just... go get us something to drink, eh?","translation":"就……去给我们弄点喝的，好吗？","status":"translated","notes":""}

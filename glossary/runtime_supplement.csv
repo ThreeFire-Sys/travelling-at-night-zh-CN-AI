@@ -1,4 +1,4 @@
-source_en,target_zh,confidence,notes
+﻿source_en,target_zh,confidence,notes
 Nina in Antibes?,宁娜在昂蒂布？,high,AxisQuality friendlyText；选项前提示标签，未被翻译批次覆盖
 Isnard,伊斯纳尔,high,alias francoisIsnard._lastName；与 François Isnard 既有译名一致
 François,弗朗索瓦,high,alias francoisIsnard._firstName
@@ -76,3 +76,4 @@ Spencer's spent more than a week in one place. This had better be part of a terr
 "I could use some time with a comb and a razor, if I want to look my best.",要想仪表体面，我得花点时间用梳子和剃刀收拾一下。,high,VariableQuality ChangeMessage；梳洗机制
 "I've smartened up, and I'm ready for the day.",我收拾整齐了，准备好迎接新的一天。,high,VariableQuality ChangeMessage
 "Acted with Passion: {0}; Aspect Pool recovered {1}","动用了心念：{0}; 性相池恢复了 {1}",high,"Loc 运行时合成行：UI_ACTED_WITH_PASSION + UI_SEMICOLON(;) + 空格 + UI_RECOVERED_POOL_ASPECTS；v2.4.12 实测历史缓冲里该行掉到子串级半换"
+"Used {0} ({1})","动用了 {0}（{1}）",high,"Loc 运行时拼接提示行：ShowAlertSmart(""Used "" + items + "" ("" + aspects + "")"")，不在任何资产字符串中（v2.6.3 用户实测漏翻）"

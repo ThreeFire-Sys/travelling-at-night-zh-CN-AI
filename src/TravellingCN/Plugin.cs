@@ -40,7 +40,7 @@ namespace TravellingCN
     {
         public const string PluginGuid = "cn.nyctodromy.travelling.zhcn";
         public const string PluginName = "夜游漫记简体中文补丁";
-        public const string PluginVersion = "2.6.3";
+        public const string PluginVersion = "2.6.4";
 
         private static ManualLogSource Log;
         private static TMP_FontAsset ChineseFont;
@@ -57,6 +57,8 @@ namespace TravellingCN
         private ConfigEntry<bool> _autoProbeSwap;
         private ConfigEntry<bool> _autoProbeSoak;
         private ConfigEntry<bool> _autoProbeNewGame;
+        private ConfigEntry<string> _autoProbeScenario;
+        private ConfigEntry<bool> _autoProbeBufferFixtures;
         private Harmony _harmony;
 
         private void Awake()
@@ -155,6 +157,25 @@ namespace TravellingCN
             {
                 StartCoroutine(AutoProbeNewGameRoutine());
             }
+            _autoProbeScenario = Config.Bind(
+                "Diagnostics",
+                "AutoProbeScenario",
+                "",
+                "诊断：启动后自动读档，按标题开一场对话做 F9 逐行复现检查" +
+                "（如 antibes/janvierShop；留空关闭；与其他探针互斥，别同时开）。");
+            if (!string.IsNullOrWhiteSpace(_autoProbeScenario.Value))
+            {
+                StartCoroutine(AutoProbeScenarioRoutine(_autoProbeScenario.Value.Trim()));
+            }
+            _autoProbeBufferFixtures = Config.Bind(
+                "Diagnostics",
+                "AutoProbeBufferFixtures",
+                false,
+                "诊断：启动后自动读档，把用户实测问题行注入字幕历史缓冲做 F9 往返断言（仅排障用）。");
+            if (_autoProbeBufferFixtures.Value)
+            {
+                StartCoroutine(AutoProbeBufferFixturesRoutine());
+            }
             Log.LogInfo(
                 $"资产烘焙版字体插件已载入；RawLabel 映射 {RawLabelByChineseLabel.Count} 条。");
         }
@@ -231,6 +252,7 @@ namespace TravellingCN
         private IEnumerator AutoProbeSwapRoutine()
         {
             Log.LogInfo("[autoswap] 等待启动……");
+            var failureBaseline = _regressionFailures;
             yield return new WaitForSecondsRealtime(12f);
             try
             {
@@ -306,7 +328,7 @@ namespace TravellingCN
             yield return StartCoroutine(ProbeToastRoundTrip());
             // 往返结束（已切回 CN）后再核一次音效条目名：en2zh 方向也不许碰。
             DumpAudioListingNames();
-            DumpRegressionSummary("autoswap");
+            DumpRegressionSummary("autoswap", failureBaseline);
             Log.LogInfo("[autoswap] 完成");
         }
 
@@ -325,6 +347,7 @@ namespace TravellingCN
         private IEnumerator AutoProbeSoakRoutine()
         {
             Log.LogInfo("[soak] 等待启动……");
+            var failureBaseline = _regressionFailures;
             yield return new WaitForSecondsRealtime(12f);
             try
             {
@@ -352,7 +375,7 @@ namespace TravellingCN
             yield return StartCoroutine(SoakInfoWindow("Footnotes", "性相池"));
             yield return StartCoroutine(SoakInfoWindow("Passions", "愤怒"));
             yield return StartCoroutine(SoakEscapeMenu());
-            DumpRegressionSummary("soak");
+            DumpRegressionSummary("soak", failureBaseline);
             Log.LogInfo("[soak] 完成");
         }
 
@@ -477,6 +500,7 @@ namespace TravellingCN
         private IEnumerator AutoProbeNewGameRoutine()
         {
             Log.LogInfo("[newgame] 等待主菜单……");
+            var failureBaseline = _regressionFailures;
             object menuController = null;
             for (var i = 0; i < 45 && menuController == null; i++)
             {
@@ -629,7 +653,7 @@ namespace TravellingCN
             yield return new WaitForSecondsRealtime(17f);
             DumpVisibleResidue("开场驻留 切回CN");
             yield return StartCoroutine(ProbeConversation());
-            DumpRegressionSummary("newgame");
+            DumpRegressionSummary("newgame", failureBaseline);
             Log.LogInfo("[newgame] 完成");
         }
 
@@ -756,9 +780,11 @@ namespace TravellingCN
             // 形态）+"性相池"带色链接；切英文语义下 Passion 应剥除成裸文本、
             // Aspect Pool 应继承 #BA4802。（v2.4.14 顺序配对在剥除占位缺失时
             // 错位：Passion 错继承性相池颜色——用户实测回归。）
+            // v2.6.4：强制英文语义（幂等），不再假定进入时是中文——巡测协程
+            // 交错可能把游戏停在英文态，假定会让反向映射取反、验证必然误报。
             try
             {
-                LanguageSwap.DebugToggleNow(); // 切英文语义（reverse=en2zh）
+                LanguageSwap.DebugSetEnglishMode(true);
                 var srcText = "[下一项选择会动用一种 心念。选择你已有 的心念，可恢复 <link=\"性相池\"><color=#BA4802><b>性相池</b></color></link> 中的点数。]";
                 var targetValue = "[The next choice acts with a [[Passion]]. Choose a Passion you possess to refresh pips in your [[Aspect Pool]].]";
                 var decorate = typeof(LanguageSwap).GetMethod(
@@ -769,7 +795,7 @@ namespace TravellingCN
                     output.Contains("<link=\"Aspect Pool\"><color=#BA4802"),
                     "剥除继承：已读裸文本不复活、未读链接保持");
                 Log.LogInfo($"[convlink] 剥除继承验证=【{output}】");
-                LanguageSwap.DebugToggleNow(); // 切回中文
+                LanguageSwap.DebugSetEnglishMode(false);
             }
             catch (Exception exception)
             {
@@ -810,6 +836,323 @@ namespace TravellingCN
             LanguageSwap.DebugToggleNow();
             yield return new WaitForSecondsRealtime(2.5f);
             DumpConversationLinkMarkup("已读切回CN");
+        }
+
+        // 场景复现探针（Diagnostics.AutoProbeScenario 门控，值为会话标题）：
+        // 读最近存档，按标题开一场对话并自动推进到底，随后 F9 往返，对对话区
+        // 可见文本逐行断言——EN 态任何 CJK 字符都是残留；CN 态拉丁字母明显
+        // 多于汉字的行（≈整行没换回来的英文）或整行命中 en2zh 精确键也是
+        // 残留。用户报 bug 的现场对话用它复现（v2.6.4 起，首个现场
+        // antibes/janvierShop：巧克力盒/Not 'kept'/赞同行）。
+        private IEnumerator AutoProbeScenarioRoutine(string conversationTitle)
+        {
+            Log.LogInfo($"[scenario] 等待启动……目标会话 {conversationTitle}");
+            var failureBaseline = _regressionFailures;
+            yield return new WaitForSecondsRealtime(12f);
+            try
+            {
+                Travelling.Infrastructure.TravellingPersistenceManager.LoadMostRecentSave();
+                Log.LogInfo("[scenario] 已调用 LoadMostRecentSave");
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[scenario] 读档失败：{exception.Message}");
+            }
+            for (var i = 0; i < 45 && FindObjectByTypeName("Journal") == null; i++)
+            {
+                yield return new WaitForSecondsRealtime(2f);
+            }
+            yield return new WaitForSecondsRealtime(3f);
+            try
+            {
+                // 探针不许可任何落盘（此前探针曾覆盖用户 102 号存档，靠备份恢复）。
+                var autosave = FindObjectByTypeName("AutosaveMonitor") as Behaviour;
+                if (autosave != null)
+                {
+                    autosave.enabled = false;
+                    Log.LogInfo("[scenario] 已禁用 AutosaveMonitor（探针不落盘）");
+                }
+            }
+            catch (Exception)
+            {
+                // 禁用失败也继续——对话推进本身不写盘。
+            }
+            try
+            {
+                var found = false;
+                foreach (var conversation in
+                         PixelCrushers.DialogueSystem.DialogueManager.masterDatabase.conversations)
+                {
+                    if (string.Equals(conversation.Title, conversationTitle, StringComparison.Ordinal))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                ProbeAssert(found, $"scenario 会话存在（{conversationTitle}）");
+                if (!found)
+                {
+                    yield break;
+                }
+                var player = FindObjectByTypeName("PlayerCharacter") as Component;
+                PixelCrushers.DialogueSystem.DialogueManager.StartConversation(
+                    conversationTitle, player?.transform, null);
+                Log.LogInfo($"[scenario] 已启动会话：{conversationTitle}");
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[scenario] 启动会话失败：{exception.Message}");
+                yield break;
+            }
+            // 自动推进（与 newgame 会话巡测同一套路）：有响应选第一项，否则按继续。
+            var steps = 0;
+            for (var step = 0; step < 40; step++)
+            {
+                yield return new WaitForSecondsRealtime(2f);
+                try
+                {
+                    var dialogueUI = FindObjectByTypeName("TravellingDialogueUI");
+                    var state = PixelCrushers.DialogueSystem.DialogueManager.instance
+                        ?.currentConversationState;
+                    if (dialogueUI == null || state == null)
+                    {
+                        Log.LogInfo($"[scenario] 会话结束（共 {steps} 步）");
+                        break;
+                    }
+                    var responses = state.pcResponses;
+                    if (responses != null && responses.Length > 0)
+                    {
+                        dialogueUI.GetType().GetMethod("OnClick")
+                            ?.Invoke(dialogueUI, new object[] { responses[0] });
+                    }
+                    else
+                    {
+                        dialogueUI.GetType().GetMethod("OnContinueConversation")
+                            ?.Invoke(dialogueUI, null);
+                    }
+                    steps++;
+                }
+                catch (Exception exception)
+                {
+                    Log.LogWarning($"[scenario] 步{step} 推进失败：{exception.Message}");
+                }
+            }
+            ProbeAssert(steps >= 3, $"scenario 会话推进步数（{steps}）");
+            yield return new WaitForSecondsRealtime(2f);
+            // 末尾 F9 往返：交换损坏会留在历史缓冲里，逐行断言全部抓得到。
+            DumpScenarioResidue("CN态（切换前）");
+            LanguageSwap.DebugSetEnglishMode(true);
+            yield return new WaitForSecondsRealtime(2.5f);
+            DumpScenarioResidue("EN态");
+            LanguageSwap.DebugSetEnglishMode(false);
+            yield return new WaitForSecondsRealtime(2.5f);
+            DumpScenarioResidue("CN态（切回）");
+            try
+            {
+                PixelCrushers.DialogueSystem.DialogueManager.StopConversation();
+            }
+            catch (Exception)
+            {
+                // 关不掉就随进程结束。
+            }
+            DumpRegressionSummary("scenario", failureBaseline);
+            Log.LogInfo("[scenario] 完成");
+        }
+
+        // 缓冲往返复现探针（Diagnostics.AutoProbeBufferFixtures 门控）：读最近存档
+        // 后把用户实测出过问题的缓冲行原样写入字幕历史缓冲，F9 往返后逐条断言
+        // 精确变成期望的另一语言——绕过"赶到现场"的不确定性，直接验证交换引擎对
+        // 现场文本的处理。每轮用户报新例就往 BufferFixtures 里加一对（v2.6.4 首批：
+        // 让维耶巧克力盒段 [q=] 查询令牌、Not 'kept' 短字面模板吞噬、赞同行前缀
+        // 占位符模板、Used 拼接提示行）。
+        private static readonly (string Cn, string En)[] BufferFixtures =
+        {
+            (
+                "老让维耶 — 请原谅，霍布森先生，但您身上有种东西，叫人想起……一只被弃置的巧克力盒。颜色鲜艳，四角方正，盒盖不过略略歪斜。可人总能感觉到，里面少了什么。",
+                "The elder Janvier — Forgive me, Herr Hobson, but there is something about you that recalls... the abandoned chocolate-box. The colours are bright, the corners square, the lid only a little askew. But one senses an absence."
+            ),
+            (
+                "老让维耶 — 严格说来，也不算“留着”。如今，让维耶一家已经散居欧洲大陆各处。就在上个月，我们卖掉了共和国境内的店面。有一批废置已久的物品辗转送到我这里。来得正巧。",
+                "The elder Janvier — Not 'kept', really. The Janviers are dispersed across the Continent, now. We sold our premises in the Republic, just last month. A number of long-abandoned items were sent on to me. Fortuitous."
+            ),
+            (
+                "老让维耶 表示赞同（+7），现为 感激",
+                "The elder Janvier approves (+7), and is now Appreciative"
+            ),
+            (
+                "动用了 摇篮之纬（活化）",
+                "Used Cradle-Weft (Quicken)"
+            ),
+        };
+
+        private IEnumerator AutoProbeBufferFixturesRoutine()
+        {
+            Log.LogInfo("[bufferfix] 等待启动……");
+            var failureBaseline = _regressionFailures;
+            yield return new WaitForSecondsRealtime(12f);
+            try
+            {
+                Travelling.Infrastructure.TravellingPersistenceManager.LoadMostRecentSave();
+                Log.LogInfo("[bufferfix] 已调用 LoadMostRecentSave");
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[bufferfix] 读档失败：{exception.Message}");
+            }
+            for (var i = 0; i < 45 && FindObjectByTypeName("Journal") == null; i++)
+            {
+                yield return new WaitForSecondsRealtime(2f);
+            }
+            yield return new WaitForSecondsRealtime(3f);
+            try
+            {
+                var autosave = FindObjectByTypeName("AutosaveMonitor") as Behaviour;
+                if (autosave != null)
+                {
+                    autosave.enabled = false;
+                    Log.LogInfo("[bufferfix] 已禁用 AutosaveMonitor（探针不落盘）");
+                }
+            }
+            catch (Exception)
+            {
+                // 禁用失败也继续——本探针只写显示缓冲，不落盘。
+            }
+            var panel = FindObjectByTypeName("TravellingSubtitlePanel");
+            ProbeAssert(panel != null, "bufferfix 字幕面板存在");
+            if (panel == null)
+            {
+                yield break;
+            }
+            FieldInfo bufferField = null;
+            PropertyInfo bufferProperty = null;
+            const BindingFlags memberFlags = BindingFlags.Instance | BindingFlags.Public |
+                                             BindingFlags.NonPublic | BindingFlags.DeclaredOnly;
+            for (var type = panel.GetType(); type != null && bufferField == null && bufferProperty == null;
+                 type = type.BaseType)
+            {
+                bufferField = type.GetField("m_accumulatedText", memberFlags) ??
+                              type.GetField("accumulatedText", memberFlags);
+                if (bufferField == null)
+                {
+                    var property = type.GetProperty("accumulatedText", memberFlags);
+                    if (property != null && property.CanRead && property.CanWrite)
+                    {
+                        bufferProperty = property;
+                    }
+                }
+            }
+            ProbeAssert(bufferField != null || bufferProperty != null,
+                "bufferfix 历史缓冲字段可定位");
+            if (bufferField == null && bufferProperty == null)
+            {
+                yield break;
+            }
+            string GetBuffer() => bufferField != null
+                ? bufferField.GetValue(panel) as string
+                : bufferProperty.GetValue(panel) as string;
+            void SetBuffer(string value)
+            {
+                if (bufferField != null)
+                {
+                    bufferField.SetValue(panel, value);
+                }
+                else
+                {
+                    bufferProperty.SetValue(panel, value);
+                }
+            }
+            var original = GetBuffer() ?? string.Empty;
+            var cnLines = new string[BufferFixtures.Length];
+            for (var i = 0; i < BufferFixtures.Length; i++)
+            {
+                cnLines[i] = BufferFixtures[i].Cn;
+            }
+            SetBuffer(string.Join("\n", cnLines) + "\n");
+            LanguageSwap.DebugSetEnglishMode(true);
+            yield return new WaitForSecondsRealtime(2.5f);
+            var englishBuffer = GetBuffer() ?? string.Empty;
+            foreach (var fixture in BufferFixtures)
+            {
+                ProbeAssert(englishBuffer.Contains(fixture.En),
+                    $"bufferfix EN 精确命中：{Truncate(fixture.En, 40)}");
+            }
+            ProbeAssert(!HasCjk(englishBuffer), "bufferfix EN 态缓冲无 CJK 残留");
+            LanguageSwap.DebugSetEnglishMode(false);
+            yield return new WaitForSecondsRealtime(2.5f);
+            var chineseBuffer = GetBuffer() ?? string.Empty;
+            foreach (var fixture in BufferFixtures)
+            {
+                ProbeAssert(chineseBuffer.Contains(fixture.Cn),
+                    $"bufferfix CN 精确还原：{Truncate(fixture.Cn, 40)}");
+            }
+            SetBuffer(original);
+            DumpRegressionSummary("bufferfix", failureBaseline);
+            Log.LogInfo("[bufferfix] 完成");
+        }
+
+        // 对话区逐行残留检查：只扫对话 UI（父链名字含 Dialogue/Subtitle/
+        // Response）的可见 TMP，逐行按当前语言模式判定残留并对总数断言。
+        private int DumpScenarioResidue(string phase)
+        {
+            var offenders = 0;
+            foreach (var text in Resources.FindObjectsOfTypeAll<TMP_Text>())
+            {
+                if (text == null || !text.isActiveAndEnabled ||
+                    !text.gameObject.activeInHierarchy ||
+                    string.IsNullOrWhiteSpace(text.text) ||
+                    !IsConversationSurface(text.transform))
+                {
+                    continue;
+                }
+                foreach (var rawLine in StripMarkupForLog(text.text).Split('\n'))
+                {
+                    var line = rawLine.Trim();
+                    if (line.Length < 8)
+                    {
+                        continue;
+                    }
+                    var cjk = 0;
+                    var latin = 0;
+                    foreach (var c in line)
+                    {
+                        if (c >= '一' && c <= '鿿')
+                        {
+                            cjk++;
+                        }
+                        else if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+                        {
+                            latin++;
+                        }
+                    }
+                    var suspect = LanguageSwap.IsEnglishMode
+                        ? cjk > 0
+                        : (latin >= 12 && latin > cjk * 2) ||
+                          (cjk == 0 && latin >= 4 && LanguageSwap.DebugIsExactEnKey(line));
+                    if (suspect)
+                    {
+                        offenders++;
+                        Log.LogWarning($"[scenario] 残留[{phase}]：{Truncate(line, 90)}");
+                    }
+                }
+            }
+            ProbeAssert(offenders == 0, $"scenario {phase} 对话区逐行残留（{offenders} 条）");
+            Log.LogInfo($"[scenario] {phase}：逐行残留 {offenders} 条");
+            return offenders;
+        }
+
+        private static bool IsConversationSurface(Transform transform)
+        {
+            for (var current = transform; current != null; current = current.parent)
+            {
+                var name = current.gameObject.name;
+                if (name.IndexOf("Dialogue", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    name.IndexOf("Subtitle", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    name.IndexOf("Response", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool DumpConversationLinkMarkup(string tag)
@@ -1449,15 +1792,16 @@ namespace TravellingCN
             }
         }
 
-        private static void DumpRegressionSummary(string probe)
+        private static void DumpRegressionSummary(string probe, int baseline = 0)
         {
-            if (_regressionFailures == 0)
+            var failures = _regressionFailures - baseline;
+            if (failures == 0)
             {
                 Log.LogInfo($"[regression] {probe} 全绿（0 失败）");
             }
             else
             {
-                Log.LogWarning($"[regression] {probe} 失败 {_regressionFailures} 项——发版前必须清零！");
+                Log.LogWarning($"[regression] {probe} 失败 {failures} 项——发版前必须清零！");
             }
         }
 

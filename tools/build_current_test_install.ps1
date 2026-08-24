@@ -67,6 +67,16 @@ Invoke-Checked 'In-game News translation is stale or structurally incomplete.' {
         --catalog (Join-Path $mergedRoot 'review_catalog.jsonl')
 }
 
+Invoke-Checked 'My Past concealed/revealed text prefixes have diverged.' {
+    python -B (Join-Path $workspace 'tools\test_memory_reveal_prefixes.py') `
+        --catalog (Join-Path $mergedRoot 'review_catalog.jsonl') `
+        --fields (Join-Path $workspace 'build\extracted_k97\all_string_fields.jsonl')
+}
+
+Invoke-Checked 'F9 composite-text regression contracts failed.' {
+    python -B (Join-Path $workspace 'tools\test_language_swap_regressions.py')
+}
+
 $translationTests = @(
     'test_translation_text_integrity.py',
     'test_control_markup_integrity.py',

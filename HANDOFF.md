@@ -941,3 +941,124 @@
   k.83。截图：`build/news_v263_mainmenu3.png`。验收后已关闭由本轮启动的游戏进程。
 - **发布策略**：用户明确不要每个小修复都创建 Release。因此本修复只作为 v2.6.3 开发版
   安装到本机并提交 main，不打标签、不生成/上传新 Release；待后续修改积累后统一发布。
+
+## 100. 2026-08-22 回忆显隐前缀 + F9 单字性相与模板重排修复（v2.6.3 开发版）
+
+- **17 组回忆全审**：从 `mypast*` 富文本链接回溯 Footnote.id/path_id，找齐 17 个未揭示
+  Item 描述与已揭示 Footnote 描述。16 组英文是严格前缀；唯一例外是
+  `mypasteveofstjamesthegreater`，英文长版自身额外插入 `of the [[Légion]]`。
+  中文现为 16 组去掉末尾省略号后逐字前缀一致；例外组只相应插入 `[[军团]]`，
+  其余字句一致。`test_memory_reveal_prefixes.py` 强制配对数=17、源例外集合固定。
+- **截图条目实改**：圣泰奥弗拉斯托斯前夜的共用前缀统一为
+  “我们一行人跺着脚，从巴兹医院冰冷的房间和那座大水池走出来，走进肉市；在那里，
+  我们再次看见那些被体面地藏在皮肤下的东西”；短版接省略号，长版接防剿局后文。
+- **F9 残留单字性相**：`Aspect Pool recovered {0}` 的捕获组会是 `1 启, 1 灯`。
+  通用 Tier 3 有意排除单字 CJK，所以旧版无法切回 Knock/Lantern。修复不放宽通用规则，
+  而在占位组符合“数量＋完整标签，…”时逐标签查 Exact；单项 `1 灯` 也覆盖。
+- **F9 脚注选项重排**：映射中有 `{0} in a {1}` → `{1} 中的 {0}`。Tier 3.5 曾将
+  `2. Frost in winter; sounds loudest at night; in a riven world, the Horned-Axe prominent.`
+  当成该模板，完整复现用户截图的
+  `riven world, the 双角斧 prominent. 中的 2. Frost in winter; sounds loudest at night;`。
+  现在所有前置占位符模板禁止去锚子串扫描；该重排模板即使做整串匹配，也要求
+  每个捕获组都是 Exact 键。`test_language_swap_regressions.py` 以 11 项断言锁定两个截图夹具。
+- **构建/安装**：6694/6694 合并、回忆 17/17、F9 夹具 11/11、一致性错误 0、资产回读
+  9029/9029；本机 v2.6.3 开发包 46/46 哈希一致，冷启动日志载入插件 2.6.3 且无
+  Error/Exception。本节不创建新 Release；用户存档中的特定旗帜场景仍待用户直接实机验收。
+
+## 101. 2026-08-22 v2.6.4：[q=] 查询令牌模板化 + F9 四类交换修复
+
+- **用户报告（GPT 接手后 v2.6.3 装机版）**：① 圣布伦丹修道院“忆起”后接“……但输了。”
+  （`... but lost.` 误译）；② `Used 摇篮之纬（活化）` 的 Used 漏翻；③ F9 后对话
+  段落中英卡死/混杂（赞同行只换人名与状态词；巧克力盒段落整段卡中文只剩
+  `Color鲜艳`；`Not 'kept'...` 段被吞成“非 'kept', really. …”）；④ 两处“畜生”
+  称呼猫语气不当。
+- **根因 A（[q=] 查询令牌，122 键）**：对话源文含 `[q=alias.formal.fr]`、`[q=Pain]`
+  等动态占位，显示态已被游戏解析成实际值，映射键里的令牌形态使整串/折叠/链接还原
+  各层全部失配，段落掉到子串级只剩链接词换语言（`Color鲜艳` 即 `颜色`→`Color`
+  子串替换）。修复：建图时把 `[q=...]` 令牌按“同一令牌同一合成占位序号”改写为
+  模板占位符（`TryRewriteQueryTokens`），走既有模板流水线，捕获组递归交换——
+  别名按 zh2en 确定性选择回译且往返稳定（`霍布森先生`↔`Herr Hobson`），性相/状态
+  类令牌（1:1 词）精确互换。目标侧出现源侧没有的令牌、或源侧两令牌严格相邻时
+  不模板化（保持纯精确条目）。
+- **根因 B（前缀占位符模板回归）**：v2.6.3 为修 `{0} in a {1}` 重排把所有
+  StartsWithPlaceholder 模板逐出 Tier 3.5；赞同行 `{0} 表示赞同（+{1}），现为 {2}`
+  行首带 ✧ 标记、Tier 2 整串永远失配，只剩人名/状态词被子串级半换。修复：Tier 3.5
+  允许前缀占位符模板，但仅限 `match.Index == 0`（纯文本行首锚），并把
+  RequiresExactGroups 校验（抽为 `TemplateGroupsAllExact`）同时应用到 Tier 2 与
+  Tier 3.5。`{0} in a {1}` 双保险：行首锚+组精确。
+- **根因 C（短字面模板吞噬）**：`Not {0}`→`非 {0}` 字面仅 4 字符，任何以 Not 开头
+  的长段都会被 Tier 2 整串/Tier 3.5 子串当成模板实例，输出“非 ”+递归残片。
+  修复：`Not {0}`/`非 {0}` 加入 RequiresExactGroups 登记表（捕获必须是独立映射键，
+  `Not Knock`→`非 刃` 仍可用）。
+- **根因 D（说话人前缀不含空格）**：历史缓冲切分模式 `^([^ —\n<>]{1,24})( — )`
+  禁止空格，`The elder Janvier — Not 'kept'...` 整行掉进通用流水线被根因 C 吞掉。
+  修复：模式改为 `^([^—\n<>]{1,40}?)( — )`（允许空格、懒匹配、排除破折号）；
+  名字是独立映射键才换名，正文换不动时整行退回通用流水线兜底（整行恰是完整键或
+  “ — ”本属正文的情况不受影响）。
+- **Used 漏翻**：`ShowAlertSmart("Used " + items + " (" + aspects + ")")` 是代码拼接
+  串、不在任何资产文本中，worklist 永远收不到。入 `glossary/runtime_supplement.csv`：
+  `Used {0} ({1})` → `动用了 {0}（{1}）`。同文件另一拼接串
+  `(aspectId experiences unchanged)` 属调试台指令路径，不译。
+- **译文数据**：`... but lost.` → `……却已失落。`；`The animal is essentially inert`
+  的“这畜生”→“这猫”（同场景已有 `The cat remains motionless...` 佐证）；
+  医生处 `The animal is difficult to anticipate` 的“这畜生”→“这家伙”。只改
+  translations_k97（现役），历史版本目录不动。
+- **防回退**：`tools/test_language_swap_regressions.py` 扩为 38 项断言：新增
+  [q=] 改写/双向整段夹具（含别名消歧往返）、`Not {0}` 精确组拒绝夹具、空格说话人
+  切分夹具、赞同行行首锚夹具、Used 模板入图断言、译文修复在位断言；并内嵌与 C# 侧
+  对应的 build_template/assemble 最小复刻。
+- **构建/装机**：6694/6694 合并 0 错；烘焙 15 资产 0 mismatch、回读 9029/9029；
+  slim 119 项、F9 夹具 38 项全绿；插件版本 2.6.4。按纪律先卸载 v2.6.3 再全新安装。
+  本节不创建新 Release；对话现场（让维耶巧克力盒段、`Not 'kept'` 段、赞同行）待
+  用户实机验收。
+
+### 101-a. 探针红绿排查（剥除继承误报与残留警告）
+
+- **首轮 v2.6.4 探针**：autoswap 全绿；newgame/soak 各报失败 1 项。唯一 [FAIL] 是
+  剥除继承单元验证：输出 `<link="Aspect Pool"><color=#874949>` 而非期望的 #BA4802。
+- **定位链**：离线复现（同一映射+同一夹具）输出 #BA4802、断言通过——产品逻辑无错。
+  日志行序显示该验证第一次 DebugToggleNow 实际是【切为中文】：巡测 soak 协程的
+  弹窗步骤切到 EN 后等待期间，newgame 协程会话结束并进入验证——游戏当时停在
+  EN 态，验证假设的"切英文语义"实为切回中文，反向映射取反，两个链接都落到
+  ColourizeLinks 兜底（Passion 已读被剥除、Aspect Pool 已读有余项染 #874949），
+  与游戏 `ColourizeLinks` 源码语义逐条吻合。
+- **探针修复**：新增幂等 `LanguageSwap.DebugSetEnglishMode(bool)`，剥除继承验证改为
+  强制英文/强制中文，不再依赖进入模式；三套巡测的失败计数改为套件基线差值
+  （`failureBaseline`），一处失败不再级联污染后续套件汇总。回归测试 40 项锁定。
+- **残留警告（未断言，另案跟进）**：soak 弹窗步骤发现过去/角色总结界面的拼装行
+  在多次 F9 往返后积累损坏：`从Alexandria到Antibes，一路漫长颠簸.穿山…`、
+  `1. [Ambition] [着魔] 那些年满是机遇.我本可以留下自己的印记.`、`被Expel` 等。
+  机理：拼装行（编号+选项标签+句干）不是任何整键，只能走子串级；子串碰撞
+  （如 驱逐→Expel 取错键）与半角句点混入后，行面不再匹配任何键而永久卡死。
+  静读无法完全还原半角句点的产生链，需开 DebugLog 复现定位，列入下一轮。
+
+### 101-b. 第二轮探针（修复后）结果
+
+- autoswap / newgame / soak 三套均 `[regression] 全绿（0 失败）`；剥除继承验证输出
+  恢复 `<link="Aspect Pool"><color=#BA4802>`（继承分支命中）。日志无真实 Error/
+  Exception（3 处 "Error" 均为音效条目名本身）。
+- 残留警告仍在（未断言）：主菜单 CN态 1 条、弹窗性相池 CN态/开切EN 各 4 条、
+  弹窗愤怒 开切EN 1 条——即 101-a 记录的拼装行积累损坏，另案跟进。
+- 装机流程：按纪律先卸载（vanilla 还原）→ 烘焙 15 资产 0 mismatch / 回读
+  9029/9029 → 打包（全 QA 链、F9 夹具 40 项、slim 119 项）→ 全新安装。
+
+### 101-c. 用户问题的复现验证基建（场景探针 + 缓冲往返探针 + 存档快照）
+
+- **用户需求**：每轮修复后由开发者侧自行复现用户报告的现场，确认 bug 真消失。
+- **缓冲往返探针（主力）**：`Diagnostics.AutoProbeBufferFixtures` 门控。读最近存档后，
+  把用户实测问题行原样写入字幕历史缓冲（`TravellingSubtitlePanel` 的
+  m_accumulatedText/accumulatedText，字段/属性两形态都认），F9 往返后逐条断言精确
+  变成期望的另一语言并精确还原；EN 态另断言缓冲无 CJK。首批夹具四条（让维耶巧克力
+  盒段 [q=] 令牌、Not 'kept' 吞噬、赞同行前缀占位符、Used 拼接行）全部
+  `[pass]`，`[regression] bufferfix 全绿（0 失败）`。以后用户每报一例，就往
+  `Plugin.cs` 的 `BufferFixtures` 加一对中英文现场行，即纳入永久复现验证。
+- **场景探针（补充）**：`Diagnostics.AutoProbeScenario`（值为会话标题，如
+  antibes/janvierShop）。读档→按标题开会话→自动推进→末尾 F9 往返→对话区逐行
+  断言（EN 态见 CJK 即失败；CN 态拉丁字母明显多于汉字的行、或整行命中 en2zh 键
+  即失败）。本轮 janvierShop 实跑全绿——但该存档里此会话只剩 3 步（内容已读尽），
+  深分支覆盖靠缓冲探针补足。
+- **存档快照**：`tools/snapshot_saves.py` 把存档目录（save_*.dat + 元数据）快照到
+  `build/repro_saves/current/`，`--restore` 还原。探针前快照，防探针/游戏意外写档。
+- **纪律补充**：安装/卸载前必须确认游戏进程已关——本轮曾因旧游戏实例锁死
+  TravellingCN.dll，安装器"成功"但 DLL 没换（游戏内是旧插件，探针配置空跑）。
+- **防回退**：F9 回归夹具扩至 41 项（含探针存在性与夹具在位断言）。

@@ -115,6 +115,29 @@ namespace TravellingCN
         private const int MaxSwapDepth = 8;
         private static readonly Regex PlaceholderPattern =
             new Regex(@"\{(\d+)\}", RegexOptions.Compiled);
+        // [q=...] 查询令牌：对话文本里的动态占位（玩家别名/性相名/数值等），
+        // 游戏显示时已解析成实际值，映射键里的令牌形态因此永远匹配不上显示态
+        // ——含 [q=alias.formal.fr] 的段落 F9 双向都掉到子串级，只剩链接词被
+        // 换掉（"Color鲜艳"，v2.6.3 用户实测）。建图时把令牌改写成合成占位符，
+        // 按模板匹配（见 TryRewriteQueryTokens）。
+        private static readonly Regex QueryTokenPattern =
+            new Regex(@"\[q=[^\[\]]+\]", RegexOptions.Compiled);
+        // 源侧严格相邻的两个查询令牌（"[q=a][q=b]"）：中间无字面锚点，捕获
+        // 切分有歧义，不模板化。
+        private static readonly Regex AdjacentQueryTokensPattern =
+            new Regex(@"\[q=[^\[\]]+\]\[q=", RegexOptions.Compiled);
+        // 捕获组必须是独立映射键的模板：字面部分太短/太常见时，任意文本都会
+        // 被当成模板实例吞掉重排（v2.6.2 "{0} in a {1}" 把普通句子重排成中英
+        // 混杂；v2.6.3 "Not {0}" 把 "Not 'kept', really. ..." 整段换成
+        // "非 'kept'…"）。两个方向各自的源形态都要登记。
+        private static readonly HashSet<string> ExactGroupTemplates =
+            new HashSet<string>(StringComparer.Ordinal)
+            {
+                "{0} in a {1}",
+                "{1} 中的 {0}",
+                "Not {0}",
+                "非 {0}",
+            };
         // [[Y]] 链接占位（折叠键的值保留的原始形态）；Settle 原生装饰失败时
         // 用它把 [[Y]] 折叠回 Y。
         private static readonly Regex BracketLinkPattern =
@@ -191,6 +214,8 @@ namespace TravellingCN
             internal Regex Pattern;            // 锚定 ^$ fullmatch（Tier 2）
             internal Regex SubstringPattern;   // 去锚子串匹配（Tier 3.5），末尾占位符贪婪
             internal string FirstLiteral;      // 首个字面段，非空时用于快速预筛
+            internal bool StartsWithPlaceholder; // 前置占位符模板只许整串匹配，不许子串扫描
+            internal bool RequiresExactGroups; // 会重排前置占位符的模板，每组必须是独立映射键
             internal int[] GroupPlaceholders;  // 捕获组（按出现顺序）对应的占位符序号
             internal TemplateSegment[] Target; // 目标语言模板切片
             internal int LiteralLength;        // 字面部分总长度，用于模板排序（越具体越先）
@@ -382,9 +407,17 @@ namespace TravellingCN
                 {
                     map.Squashed[squashedKey] = pair.Value;
                 }
-                if (PlaceholderPattern.IsMatch(pair.Key))
+                var templateKey = pair.Key;
+                var templateValue = pair.Value;
+                if (QueryTokenPattern.IsMatch(pair.Key) &&
+                    TryRewriteQueryTokens(pair.Key, pair.Value, out var rewrittenKey, out var rewrittenValue))
                 {
-                    var template = BuildTemplate(pair.Key, pair.Value);
+                    templateKey = rewrittenKey;
+                    templateValue = rewrittenValue;
+                }
+                if (PlaceholderPattern.IsMatch(templateKey))
+                {
+                    var template = BuildTemplate(templateKey, templateValue);
                     if (template != null)
                     {
                         map.Templates.Add(template);
@@ -492,6 +525,66 @@ namespace TravellingCN
             return c == '(' || c == '（' || c == '[' || c == '【';
         }
 
+        // 把源/目标串里的 [q=...] 查询令牌改写成模板占位符：同一令牌（按原文
+        // 逐字）在两侧取同一合成序号，从两侧既有 {n} 序号之后续起避免冲突。
+        // 目标侧出现源侧没有的令牌、或源侧两个令牌严格相邻（无字面锚点，捕获
+        // 切分有歧义）时返回 false——该对保持纯精确条目，不模板化。捕获组走
+        // 与 {n} 相同的递归交换：解析值若是映射词（如 [q=Pain]→苦痛）会顺带
+        // 换语言，若是未映射的别名（Herr Hobson）则原样保留。
+        private static bool TryRewriteQueryTokens(
+            string source, string target, out string rewrittenSource, out string rewrittenTarget)
+        {
+            rewrittenSource = null;
+            rewrittenTarget = null;
+            if (target == null || !QueryTokenPattern.IsMatch(source) ||
+                AdjacentQueryTokensPattern.IsMatch(source))
+            {
+                return false;
+            }
+            var sourceTokens = new HashSet<string>(StringComparer.Ordinal);
+            foreach (Match match in QueryTokenPattern.Matches(source))
+            {
+                sourceTokens.Add(match.Value);
+            }
+            foreach (Match match in QueryTokenPattern.Matches(target))
+            {
+                if (!sourceTokens.Contains(match.Value))
+                {
+                    return false;
+                }
+            }
+            var usedIndices = new HashSet<int>();
+            foreach (Match match in PlaceholderPattern.Matches(source))
+            {
+                usedIndices.Add(int.Parse(match.Groups[1].Value));
+            }
+            foreach (Match match in PlaceholderPattern.Matches(target))
+            {
+                usedIndices.Add(int.Parse(match.Groups[1].Value));
+            }
+            var tokenIds = new Dictionary<string, int>(StringComparer.Ordinal);
+            var nextIndex = 0;
+            int SyntheticId(Match tokenMatch)
+            {
+                if (!tokenIds.TryGetValue(tokenMatch.Value, out var id))
+                {
+                    while (usedIndices.Contains(nextIndex))
+                    {
+                        nextIndex++;
+                    }
+                    id = nextIndex++;
+                    usedIndices.Add(id);
+                    tokenIds[tokenMatch.Value] = id;
+                }
+                return id;
+            }
+            rewrittenSource = QueryTokenPattern.Replace(
+                source, match => "{" + SyntheticId(match).ToString() + "}");
+            rewrittenTarget = QueryTokenPattern.Replace(
+                target, match => "{" + SyntheticId(match).ToString() + "}");
+            return true;
+        }
+
         private static TemplateEntry BuildTemplate(string sourceTemplate, string targetTemplate)
         {
             try
@@ -566,6 +659,8 @@ namespace TravellingCN
                     Pattern = new Regex(pattern.ToString(), RegexOptions.Compiled),
                     SubstringPattern = new Regex(substringPattern.ToString(), RegexOptions.Compiled),
                     FirstLiteral = firstLiteral ?? string.Empty,
+                    StartsWithPlaceholder = placeholders.Count > 0 && placeholders[0].Index == 0,
+                    RequiresExactGroups = ExactGroupTemplates.Contains(sourceTemplate),
                     GroupPlaceholders = groupPlaceholders.ToArray(),
                     Target = targetSegments.ToArray(),
                     LiteralLength = literalLength,
@@ -586,6 +681,19 @@ namespace TravellingCN
                 return;
             }
             _englishMode = !_englishMode;
+            RunSwapPass(_englishMode ? _zh2en : _en2zh, _englishMode ? "调试切为英文" : "调试切为中文");
+        }
+
+        // 与 DebugToggleNow 相同但幂等：目标模式与当前相同时不切换。探针单元
+        // 验证用——交换语义敏感的检查不应依赖进入时的模式（v2.6.4 实测：巡测
+        // 协程交错把游戏停在英文态，假定中文进入的剥除继承检查必然误报）。
+        internal static void DebugSetEnglishMode(bool english)
+        {
+            if (!_enabled.Value || !_mapsLoaded || _englishMode == english)
+            {
+                return;
+            }
+            _englishMode = english;
             RunSwapPass(_englishMode ? _zh2en : _en2zh, _englishMode ? "调试切为英文" : "调试切为中文");
         }
 
@@ -1065,8 +1173,13 @@ namespace TravellingCN
         // 正文+结尾标签：名字整串精确交换（单字名"我"够不到子串两字阈值），
         // 正文单独走完整流水线（折叠精确因此能命中整条目录译文，含 [[链接]]），
         // 包装标签原样保留——行级颜色因此存活。仅在 accumulatedText 路径使用。
+        // 历史缓冲行首的"名字 — 正文"切分：名字段允许空格（"The elder
+        // Janvier"），懒匹配到第一个 " — "；长度上限防失控。正文换不动时
+        // 调用方退回整行通用流水线兜底（v2.6.3 实测：旧模式禁止空格，带空格
+        // 的英文名永远切不开，整行掉进模板/子串级，被 "Not {0}" 这类模板
+        // 吞成 "非 'kept'…"）。
         private static readonly Regex SpeakerPrefixLinePattern = new Regex(
-            @"^([^ —\n<>]{1,24})( — )", RegexOptions.Compiled);
+            @"^([^—\n<>]{1,40}?)( — )", RegexOptions.Compiled);
         private static readonly Regex LeadingTagsPattern = new Regex(
             @"^((?:<color=[^>]+>|<b>|<i>|<sprite=\d+>)+)", RegexOptions.Compiled);
         private static readonly Regex TrailingTagsPattern = new Regex(
@@ -1092,27 +1205,26 @@ namespace TravellingCN
                 var trail = TrailingTagsPattern.Match(line).Groups[1].Value;
                 var core = line.Substring(lead.Length, line.Length - lead.Length - trail.Length);
 
-                string swappedCore;
+                string swappedCore = null;
                 var match = SpeakerPrefixLinePattern.Match(core);
                 if (match.Success)
                 {
                     // "名字 — 正文"：名字段单独精确交换，避免它与正文纠缠进流水线。
+                    // 名字不是独立映射键就原样保留；正文换不动时整行退回通用
+                    // 流水线——" — "本属正文、整行恰是完整键的情况靠这层兜底。
                     var name = match.Groups[1].Value;
-                    var namePart = name;
-                    if (map.Exact.TryGetValue(name, out var swappedName))
-                    {
-                        namePart = swappedName;
-                    }
+                    var namePart = map.Exact.TryGetValue(name, out var swappedName) ? swappedName : name;
                     var rest = core.Substring(match.Length);
-                    var swappedRest = rest;
-                    if (!string.IsNullOrEmpty(rest) &&
-                        TrySwapDisplayText(map, rest, counters, 1, out var pipelineRest))
+                    if (string.IsNullOrEmpty(rest))
                     {
-                        swappedRest = pipelineRest;
+                        swappedCore = namePart + match.Groups[2].Value;
                     }
-                    swappedCore = namePart + match.Groups[2].Value + swappedRest;
+                    else if (TrySwapDisplayText(map, rest, counters, 1, out var pipelineRest))
+                    {
+                        swappedCore = namePart + match.Groups[2].Value + pipelineRest;
+                    }
                 }
-                else
+                if (swappedCore == null)
                 {
                     swappedCore = core;
                     if (TrySwapDisplayText(map, core, counters, 1, out var pipelineCore))
@@ -1470,7 +1582,7 @@ namespace TravellingCN
             {
                 foreach (var template in map.Templates)
                 {
-                    if (template.FirstLiteral.Length > 0 &&
+                    if (!template.StartsWithPlaceholder && template.FirstLiteral.Length > 0 &&
                         !text.StartsWith(template.FirstLiteral, StringComparison.Ordinal))
                     {
                         continue;
@@ -1485,6 +1597,10 @@ namespace TravellingCN
                         continue;
                     }
                     if (!match.Success)
+                    {
+                        continue;
+                    }
+                    if (template.RequiresExactGroups && !TemplateGroupsAllExact(map, match))
                     {
                         continue;
                     }
@@ -1550,6 +1666,24 @@ namespace TravellingCN
             return false;
         }
 
+        // RequiresExactGroups 模板的捕获组校验：每个组（剥标签后）都必须是
+        // 本方向的独立映射键，否则该匹配是"恰好长得像模板"的普通文本。
+        // Tier 2（整串）与 Tier 3.5（子串）共用。
+        private static bool TemplateGroupsAllExact(DirectionMap map, Match match)
+        {
+            for (var group = 1; group < match.Groups.Count; group++)
+            {
+                var captured = match.Groups[group].Value;
+                var plainCaptured = StripTags(captured);
+                if (!map.Exact.ContainsKey(captured) &&
+                    !map.Exact.ContainsKey(plainCaptured))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         // 模板命中后的组装：每个捕获组递归走完整流水线（组内常是技能名列表，
         // 会落到 Tier 3 把技能名逐个换掉），再按目标模板切片手工拼接。
         // Tier 2（整串 fullmatch）与 Tier 3.5（纯文本子串匹配）共用。
@@ -1561,7 +1695,14 @@ namespace TravellingCN
             {
                 var placeholder = template.GroupPlaceholders[group - 1];
                 var captured = match.Groups[group].Value;
-                if (TrySwapDisplayText(map, captured, counters, depth + 1, out var swappedGroup))
+                // 性相池恢复行的占位组是“1 启, 1 灯”。单字 CJK 术语为防
+                // 子串误伤不进 Tier 3，因此在有数量边界的列表中按完整 label
+                // 查 Exact，才能在 EN 态恢复 Knock/Lantern。
+                if (TrySwapCountedLabelList(map, captured, out var countedGroup))
+                {
+                    swappedGroups[placeholder] = countedGroup;
+                }
+                else if (TrySwapDisplayText(map, captured, counters, depth + 1, out var swappedGroup))
                 {
                     swappedGroups[placeholder] = swappedGroup;
                 }
@@ -1584,6 +1725,47 @@ namespace TravellingCN
                 // 目标模板引用了源模板没有的占位符序号：丢弃该段。
             }
             return builder.ToString();
+        }
+
+        private static bool TrySwapCountedLabelList(
+            DirectionMap map, string text, out string swapped)
+        {
+            swapped = null;
+            if (string.IsNullOrEmpty(text))
+            {
+                return false;
+            }
+            var builder = new StringBuilder(text.Length + 16);
+            var start = 0;
+            var replacements = 0;
+            while (start < text.Length)
+            {
+                var separator = text.IndexOfAny(new[] { ',', '，' }, start);
+                var end = separator >= 0 ? separator : text.Length;
+                var part = text.Substring(start, end - start);
+                var match = Regex.Match(part, @"^(\s*\d+\s+)(.+?)(\s*)$");
+                if (!match.Success ||
+                    !map.Exact.TryGetValue(match.Groups[2].Value, out var mappedLabel))
+                {
+                    return false;
+                }
+                builder.Append(match.Groups[1].Value);
+                builder.Append(SettleLinks(mappedLabel, match.Groups[2].Value));
+                builder.Append(match.Groups[3].Value);
+                replacements++;
+                if (separator < 0)
+                {
+                    break;
+                }
+                builder.Append(text[separator]);
+                start = separator + 1;
+            }
+            if (replacements == 0)
+            {
+                return false;
+            }
+            swapped = builder.ToString();
+            return true;
         }
 
         // Tier 2.5：把文本按 <...> 标签切成 标签/文本 交替段，文本段整段查映射。
@@ -1701,6 +1883,21 @@ namespace TravellingCN
                     foreach (Match match in matches)
                     {
                         if (!match.Success || match.Length == 0)
+                        {
+                            continue;
+                        }
+                        // 前置占位符模板在子串级只允许贴行首（纯文本坐标 0）的
+                        // 匹配："{0} in a {1}" 这类模板去锚扫描会把普通句子当作
+                        // 模板实例重排（v2.6.2 双角斧选项实测）；但 "{0} 赞同
+                        // （+{1}）" 这类系统行带 ✧/精灵前缀，Tier 2 整串永远
+                        // 失配，全靠行首子串匹配整行交换（v2.6.3 赞同行半换
+                        // 实测）。RequiresExactGroups 在子串级同样生效——
+                        // "Not {0}" 不能把任何以 Not 开头的长段吞成 "非 …"。
+                        if (template.StartsWithPlaceholder && match.Index != 0)
+                        {
+                            continue;
+                        }
+                        if (template.RequiresExactGroups && !TemplateGroupsAllExact(map, match))
                         {
                             continue;
                         }
