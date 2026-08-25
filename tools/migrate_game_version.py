@@ -172,6 +172,15 @@ def main() -> int:
     else:
         print(f"复用已有合并：{merged}")
 
+    # 4.5 先更新 extracted_current 快照：烘焙器为 runtime_supplement 查位点时读的是
+    # 这份快照。若在烘焙后才更新（旧顺序），跨版本 path_id 漂移会让补充串全部落到
+    # 旧版位点上——l.8 迁移时因此产生 102 处假漂移（navigate failed/value drift）。
+    current = WORKSPACE / "build" / "extracted_current"
+    if current.exists():
+        shutil.rmtree(current)
+    shutil.copytree(extracted, current)
+    print(f"extracted_current 已更新 -> {extracted.name}")
+
     # 5. 烘焙（游戏目录即 vanilla 源）
     run(py("bake_translations.py") + [str(game_root), str(merged / "review_catalog.jsonl"), str(WORKSPACE / "build" / "baked_assets")])
 
@@ -182,12 +191,7 @@ def main() -> int:
     run(py("build_lang_swap_map.py") + [str(merged / "review_catalog.jsonl"), str(WORKSPACE / "glossary" / "runtime_supplement.csv"), str(WORKSPACE / "build" / "baked_assets" / "lang_swap.json")])
     run(py("build_label_fidelity.py") + [str(extracted / "all_string_fields.jsonl"), str(merged / "review_catalog.jsonl"), str(WORKSPACE / "build" / "baked_assets" / "label_fidelity.json")])
 
-    # 8. 更新 extracted_current 快照（烘焙器 supplement 位点查询依赖）
-    current = WORKSPACE / "build" / "extracted_current"
-    if current.exists():
-        shutil.rmtree(current)
-    shutil.copytree(extracted, current)
-    print(f"extracted_current 已更新 -> {extracted.name}")
+    # 8. extracted_current 快照已在烘焙前更新（见 4.5）。
 
     # 9. slim 静态检查 + 打包
     run(py("test_slim_plugin.py"))

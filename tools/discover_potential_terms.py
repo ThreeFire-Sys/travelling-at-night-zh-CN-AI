@@ -86,12 +86,17 @@ def load_baseline_notes(directory: Path, git_ref: str | None) -> dict[str, str]:
     notes = {}
     for path in sorted(directory.glob("chunk_*.jsonl")):
         relative = path.resolve().relative_to(ROOT.resolve()).as_posix()
-        result = subprocess.run(
-            ["git", "show", f"{git_ref}:{relative}"],
-            cwd=ROOT,
-            check=True,
-            capture_output=True,
-        )
+        try:
+            result = subprocess.run(
+                ["git", "show", f"{git_ref}:{relative}"],
+                cwd=ROOT,
+                check=True,
+                capture_output=True,
+            )
+        except subprocess.CalledProcessError:
+            # 该文件在基线引用中尚不存在（游戏版本迁移后译文目录换新）：
+            # 视为无基线 notes，回退为当前 notes（见 main 中的 .get 缺省）。
+            continue
         for raw in result.stdout.decode("utf-8-sig").splitlines():
             if raw:
                 row = json.loads(raw)

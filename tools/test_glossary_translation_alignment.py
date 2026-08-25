@@ -51,8 +51,10 @@ LEGACY_BY_SOURCE = {
 LEGACY_EXEMPTIONS = {
     # This patch-note TextAsset also uses ordinary “揭幕” for revealing a
     # painting, independently of its later reference to the Unveil aspect.
+    # （补丁说明每次前置新章节都会换新内容哈希 ID，豁免需随版本顺延。）
     ("TAN-028DAD9F67D6", "Unveil", "揭幕"),
     ("TAN-560B3D164FC3", "Unveil", "揭幕"),
+    ("TAN-C7B87AB7C781", "Unveil", "揭幕"),
 }
 
 

@@ -40,7 +40,7 @@ namespace TravellingCN
     {
         public const string PluginGuid = "cn.nyctodromy.travelling.zhcn";
         public const string PluginName = "夜游漫记简体中文补丁";
-        public const string PluginVersion = "2.6.4";
+        public const string PluginVersion = "2.7.0";
 
         private static ManualLogSource Log;
         private static TMP_FontAsset ChineseFont;

@@ -123,10 +123,12 @@ def main() -> int:
                 )
             if not re.search(r"[\u3400-\u9fff]", target_body):
                 errors.append(f"{source_version}: translated section has no CJK text")
-        if not row.get("translation", "").startswith(
-            "## 2026.8.k.98 — “我思先生去看望一个死去的朋友”"
+        # 最新章节必须以解析器支持的「## 版本 — “中文标题”」开头（版本号随源文动态取，
+        # 不再写死 k.98——l.8 迁移时旧断言把最新章节钉死在历史上）。
+        if source_versions and not row.get("translation", "").startswith(
+            f"## {source_versions[0]} — “"
         ):
-            errors.append("latest k.98 Chinese News heading is missing")
+            errors.append(f"latest {source_versions[0]} Chinese News heading is missing")
         if args.baked_asset is not None:
             context = next(
                 context

@@ -1080,3 +1080,35 @@
   同日删除 v2.6.2 Release——仓库保持"只有最新版一个 Release"的约定。
 - 发版前实机验证：场景探针（antibes/janvierShop）与缓冲往返探针（4 条用户现场
   夹具）全绿；autoswap/newgame/soak 三套全绿。
+
+## 103. 2026-08-25 v2.7.0：游戏更新 k.97→l.8 迁移（管线自身三处版本写死修复）
+
+- **游戏更新**：Steam 更到 2026.8.l.8（l.5 起：地图观感、提示泡延迟减半、对话选项防误选、
+  制作界面记场所、consumed/exhausted 厘清、镜头教程弹窗、日志 Uncertain 标签等）。
+  迁移：提取 118013 候选 → worklist 6702（净增 8）→ rebase 复用 6682 + 增补 20
+  （tools/build_l8_supplement.py 构建；补丁说明前置 l.5 节、旅行物品提示、具名者/蠕虫
+  两新脚注、镜头教程、Uncertain 等；Worms 两条是旧译逐字复用+首处补 [[ ]]）。
+- **管线 bug（l.8 暴露，均已修）**：
+  1. migrate_game_version.py 旧顺序在烘焙后才更新 extracted_current，烘焙器为
+     runtime_supplement 查位点读到 k.97 旧快照 → 102 处假漂移。现提取后即更新（4.5 步）。
+  2. test_news_patch_notes.py 写死"k.98 最新中文标题"断言 → 改为按源文最新章节动态断言。
+  3. build_current_test_install.ps1 给"我的过往"检查传的是写死的 extracted_k97 →
+     改传 extracted_current（l.8 脚注 path_id 已移位）。
+- **术语台账跨版本**：open_term 审计链三处适配——discover_potential_terms 的
+  notes 基线在"目录不存在于基线引用"时跳过该文件；test_open_term_audit 自动定位最新
+  merged_* 目录传给发现器（原来静默用 merged_k97 导致候选池漂移）；provisional_row_audit
+  支持 successor_id 接任登记（TAN-B71DA24DCC7F→TAN-FC3DCDDCE71C，仅多链接括号）。
+  候选台账按 l.8 池更新：退役 141 个 v2.6.0 时代 notes 派生候选，新裁决 8 个
+  （Uncertain/Unmet/Not Me 记 one_off_label，l.5 标题词与 Precision 记语境排除）；
+  reviewed_at 由写死日期改为日期格式校验。glossary 豁免表按新补丁说明 ID 顺延。
+- **事故插曲**：第九跑前发现游戏目录清单被删、资产被还原、插件 DLL 被删而 font 目录
+  残留——是用户在 22:44–22:48 间手动跑了卸载器。当前状态（vanilla 资产+无清单）恰合
+  管线前置，直接重跑全新安装成功。**教训：迁移管线跑完安装后若需重跑，先确认游戏目录
+  状态；assert_vanilla_assets 拒绝时说明资产非 vanilla，先卸载而非强跑。**
+- **版本号纪律**：PluginVersion 常量（Plugin.cs:43）本轮差点漏同步（打包的 ps1 会
+  重编 DLL，但常量不改则 DLL 报旧版本）。已改 2.7.0 并重装，装机核验 44 文件 0 异常。
+- **链路**：烘焙 0 漂移 → 回读 9038/9038 → lang_swap 7445 对 → slim 119 → News/回忆前缀/
+  术语审计全 QA 绿 → 安装 44/44 → 实机四探针（bufferfix/autoswap/soak/newgame）全绿
+  （存档已先快照、探针后还原）。translations_l8 已提升为现役审校线（=rebased+增补原件）。
+- localization/patch-notes.zh-CN.md 自 k.51 后未再更新（k.83/k.98/l.5 均缺），
+  游戏内补丁说明以 translations 块为准；该文档留作历史参考，未补。

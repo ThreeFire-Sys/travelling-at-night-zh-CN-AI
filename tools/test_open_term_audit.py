@@ -42,10 +42,28 @@ def baseline_provisional_ids() -> set[str]:
     return ids
 
 
+def latest_catalog() -> Path:
+    """当前合并目录：build/merged_* 中取最新（游戏版本迁移后自动跟随）。"""
+    import glob
+    import os
+    candidates = sorted(
+        glob.glob(str(ROOT / "build" / "merged_*")), key=os.path.getmtime
+    )
+    if not candidates:
+        raise SystemExit("未找到 build/merged_* 合并目录")
+    return Path(candidates[-1]) / "review_catalog.jsonl"
+
+
+def strip_links(value: str) -> str:
+    return value.replace("[[", "").replace("]]", "")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--translations", type=Path, default=ROOT / "translations_k97")
+    parser.add_argument("--catalog", type=Path, default=None)
     args = parser.parse_args()
+    catalog_path = args.catalog or latest_catalog()
     errors = []
 
     current_rows = {}
@@ -64,6 +82,8 @@ def main() -> int:
             str(ROOT / "tools/discover_potential_terms.py"),
             "--translations",
             str(args.translations),
+            "--catalog",
+            str(catalog_path),
             "--notes-baseline-ref",
             BASELINE_REF,
             "--output",
@@ -93,7 +113,7 @@ def main() -> int:
     for row in potential:
         if row.get("decision") == "pending" or not row.get("decision"):
             errors.append(f"{row.get('candidate')}: pending potential-term decision")
-        if row.get("reviewed_at") != "2026-08-22":
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(row.get("reviewed_at") or "")):
             errors.append(f"{row.get('candidate')}: missing review date")
         if len(str(row.get("audit_note", ""))) < 20:
             errors.append(f"{row.get('candidate')}: audit note too short")
@@ -111,9 +131,17 @@ def main() -> int:
     for row in provisional:
         current = current_rows.get(row["id"])
         if current is None:
-            errors.append(f"{row['id']}: audited provisional row absent from current translations")
-            continue
-        if current["translation"] != row.get("translation_final"):
+            # 游戏版本更新可能让源文修订、换新内容哈希 ID（如 l.8 给 Worms 补链接）。
+            # 台账行保留历史 ID 以维持基线覆盖，接任行用 successor_id 登记；
+            # 接任译文允许只多链接括号（[[ ]]），其余逐字等于定稿译文。
+            successor_id = row.get("successor_id")
+            successor = current_rows.get(successor_id) if successor_id else None
+            if successor is None:
+                errors.append(f"{row['id']}: audited provisional row absent from current translations")
+                continue
+            if strip_links(successor["translation"]) != strip_links(row.get("translation_final", "")):
+                errors.append(f"{row['id']}: provisional successor translation drift")
+        elif current["translation"] != row.get("translation_final"):
             errors.append(f"{row['id']}: provisional final translation drift")
         if row.get("decision") not in {"change", "retain_after_review"}:
             errors.append(f"{row['id']}: invalid provisional decision")

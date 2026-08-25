@@ -2,9 +2,9 @@
     [string]$PatchVersion = '2.6.3',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = '',
-    [string]$WorklistRoot = 'build\worklist_k97\worklist.jsonl',
-    [string]$TranslationsRoot = 'translations_k97',
-    [string]$MergedRoot = 'build\merged_k97',
+    [string]$WorklistRoot = 'build\worklist_l8\worklist.jsonl',
+    [string]$TranslationsRoot = 'translations_l8',
+    [string]$MergedRoot = 'build\merged_l8',
     [ValidateSet('runtime', 'baked')]
     [string]$PluginProfile = 'runtime'
 )
@@ -70,7 +70,7 @@ Invoke-Checked 'In-game News translation is stale or structurally incomplete.' {
 Invoke-Checked 'My Past concealed/revealed text prefixes have diverged.' {
     python -B (Join-Path $workspace 'tools\test_memory_reveal_prefixes.py') `
         --catalog (Join-Path $mergedRoot 'review_catalog.jsonl') `
-        --fields (Join-Path $workspace 'build\extracted_k97\all_string_fields.jsonl')
+        --fields (Join-Path $workspace 'build\extracted_current\all_string_fields.jsonl')
 }
 
 Invoke-Checked 'F9 composite-text regression contracts failed.' {
