@@ -1112,3 +1112,6 @@
   （存档已先快照、探针后还原）。translations_l8 已提升为现役审校线（=rebased+增补原件）。
 - localization/patch-notes.zh-CN.md 自 k.51 后未再更新（k.83/k.98/l.5 均缺），
   游戏内补丁说明以 translations 块为准；该文档留作历史参考，未补。
+- 提交 `f88a5b4` + tag `v2.7.0` 已推送；GitHub Release v2.7.0 已建
+  （zip 25,176,908 字节，SHA-256 `A5519ECFC8D34095E5E90E37CD775AAD674754D5F9A8757DDBC0701BF25010E7`，
+  附 .sha256 资产），同日删除 v2.6.4 Release——仓库保持"只有最新版一个 Release"的约定。
