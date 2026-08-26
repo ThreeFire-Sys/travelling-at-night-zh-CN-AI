@@ -55,15 +55,16 @@ def py(tool: str) -> list[str]:
 
 
 def latest_translations_dir() -> Path:
-    """工作区根的 translations_k* 目录取编号最大者（最近审校线）。"""
+    """工作区根的 translations_<系列><编号> 目录取最新者（按系列字母+编号，
+    k97 < l8——游戏版本号字母进位后数字会清零重来）。"""
     import re
     cands = []
     for d in WORKSPACE.iterdir():
-        m = re.fullmatch(r"translations_k(\d+)", d.name)
+        m = re.fullmatch(r"translations_([a-z]+)(\d+)", d.name)
         if m and d.is_dir():
-            cands.append((int(m.group(1)), d))
+            cands.append(((m.group(1), int(m.group(2))), d))
     if not cands:
-        raise SystemExit("未找到 translations_k* 审校目录")
+        raise SystemExit("未找到 translations_* 审校目录")
     return max(cands)[1]
 
 

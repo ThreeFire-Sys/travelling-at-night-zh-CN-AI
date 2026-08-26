@@ -413,7 +413,7 @@
 {"id":"TAN-812A366745F0","source":"You mean your employer? And mine? Nothing I'd care to air. [Vincent winks.]","translation":"你是说你的雇主？也是我的雇主？没什么是我愿意拿出来说的。[文森特眨眨眼。]","status":"translated","notes":""}
 {"id":"TAN-814388A971BC","source":"Well... we do have something. If you're desperate. But I will be honest. It is sock juice.","translation":"嗯……倒是还有点东西。你要实在走投无路的话。不过我得说实话：那就是洗袜水。","status":"translated","notes":"sock juice 为贬损劣质咖啡的俚语，译“洗袜水”保留冷幽默。"}
 {"id":"TAN-8149444A57F2","source":"That's what I said. Is it new?","translation":"我就是这么说的。这是新曲子吗？","status":"translated","notes":"根据 Reinhardt/club 语境补明“曲子”。"}
-{"id":"TAN-8160D1CFC7B4","source":"That comes to [q=chezfelix.bill:words] francisques.","translation":"一共是 [q=chezfelix.bill:words] 弗朗西斯克。","status":"translated","notes":"保留金额变量；francisque 依其他批次开放终审采用“弗朗西斯克”。"}
+{"id":"TAN-8160D1CFC7B4","source":"That comes to [q=chezfelix.bill:words] francisques.","translation":"一共是[q=chezfelix.bill:words]弗朗西斯克。","status":"translated","notes":"保留金额变量；francisque 依其他批次开放终审采用“弗朗西斯克”。 v2.7.1：[q=:words] 已经插件本地化为中文数字词，去掉围绕空位。"}
 {"id":"TAN-817230C5AA41","source":"Until next time.","translation":"下次再会。","status":"translated","notes":""}
 {"id":"TAN-8189F6D059E3","source":"Nothing so crude, M. Hobson. However...","translation":"不至于如此粗俗，霍布森先生。不过……","status":"translated","notes":""}
 {"id":"TAN-81B3FD3A4C6E","source":"[Retrieve the contents.]","translation":"[取出里面的东西。]","status":"translated","notes":""}

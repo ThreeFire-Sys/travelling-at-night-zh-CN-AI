@@ -62,6 +62,9 @@ LEAF_FIELDS = {
     "_introLabel",
     "_mapLabel",
     "emptinessPassionsLabel",
+    # l.8 补漏：可计数物品的复数标签，用于需求/数量注解（"[5 Francisques]"）。
+    # 此前从未入单——k.98 起的需求文案与 l.x 的价格注解才开始消费 _plural。
+    "_plural",
 }
 
 EXCLUDED_PATH_PARTS = {

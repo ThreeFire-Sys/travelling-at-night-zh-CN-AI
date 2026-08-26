@@ -1115,3 +1115,37 @@
 - 提交 `f88a5b4` + tag `v2.7.0` 已推送；GitHub Release v2.7.0 已建
   （zip 25,176,908 字节，SHA-256 `A5519ECFC8D34095E5E90E37CD775AAD674754D5F9A8757DDBC0701BF25010E7`，
   附 .sha256 资产），同日删除 v2.6.4 Release——仓库保持"只有最新版一个 Release"的约定。
+
+## 104. 2026-08-27 v2.7.1：l.8 选项 F9 回归根治 + 复数标签补漏 + 数字词本地化
+
+- **选项切不回英文（用户三连截图实锤，l.8 回归）**：新增选项转储探针（首个响应菜单
+  逐字节转储 pcResponses 与按钮 TMP 三态）取证：选项文本是运行时拼装串
+  （"[需求摘要] [检定%] 正文"），整串永不命中映射键；显示级流水线子串级替换
+  实测把 "考虑点些什么。" 损伤成 "Consideration点些什么."（术语子串误伤）、
+  标点全角变半角、自动编号标签丢失。k97 时代同类问题（HANDOFF §72 已知选项
+  前缀残留）被 l.x 的注解前缀放大成"整条不换"。
+- **根治（LanguageSwap.RebuildActiveResponseMenu）**：F9 交换末尾先把
+  pcResponses 的 formattedText 按"拼装件逐件精确交换"（前导 sprite 标签串
+  原样；"[...]" 组：END/百分比原样、"数字+复数标签"拆数换名、多原子摘要
+  按分隔符逐原子精确；任何一件换不动整串放弃，绝不部分替换），再让可见
+  响应按钮 SetFormattedText 重排——文本/编号/颜色/检定图标样式全由游戏
+  重算。场景探针新增选项双向永久断言（EN 态 0 CJK、CN 往返逐字还原）。
+- **_plural 补漏**：可计数物品复数标签 93 个从未入单（prepare_worklist 的
+  LEAF_FIELDS 无此字段）——k.98 起需求文案与 l.x 价格注解开始消费它
+  （"[5 Francisques]"）。prepare_worklist 补 "_plural"；93 条全部补译
+  （中文无复数词形变化，92 条沿用同对象 _label 定译，Leathy 由同文行
+  自动带位点，3 条手工：扑克牌/阿冈柜包裹/达弗晶粒）；7 条与既有行同文
+  折入。术语台账相应新增 27 个复数词形裁决（covered_existing）。
+- **[q=:words] 数字词**：TravellingUtility.NumberToWords 只产英文，中文态
+  混排进译文（"一共是 forty 弗朗西斯克。"）。Harmony 补丁 NumberToWordsPatch
+  中文态产中文数词（零一二三四五六七八九十百千万亿，Python 等价实现
+  20/20 边界验证）；LanguageSwap.TrySwapNumberWords 让模板捕获组里已渲染
+  的裸数词中英互转（英式 "one hundred and five" 逐字节复刻游戏格式，
+  28 值双向闭环）；账单行译文去围绕空位。缓冲夹具新增 4 条现场行
+  （我 —/赞同（+1）/原为现为/账单数字词）+ 11 组数字词断言。
+- **版本号链**：l.8 系列补丁号 v2.7.1（PluginVersion 同步）。构建教训两条：
+  ①探针 DLL 拷进游戏后卸载器会因哈希不符拒卸——须先把包内对应 DLL 拷回
+  再卸载（绝不删清单强装）；②release 构建以 translations_l8 为源，复数
+  增补须先折叠回审校目录 chunks（rebase 输出回拷），否则 Missing: 86。
+- 探针电池（实机五套）：scenario 选项断言绿 / bufferfix 全绿 / autoswap /
+  soak / newgame 全绿；存档探前快照、探后还原；诊断开关全关。

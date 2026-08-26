@@ -40,7 +40,7 @@ namespace TravellingCN
     {
         public const string PluginGuid = "cn.nyctodromy.travelling.zhcn";
         public const string PluginName = "夜游漫记简体中文补丁";
-        public const string PluginVersion = "2.7.0";
+        public const string PluginVersion = "2.7.1";
 
         private static ManualLogSource Log;
         private static TMP_FontAsset ChineseFont;
@@ -116,6 +116,18 @@ namespace TravellingCN
             catch (Exception exception)
             {
                 Log.LogError($"安装 SearchResultLabelProbePatch 失败：{exception}");
+            }
+            try
+            {
+                var patched = _harmony.CreateClassProcessor(typeof(NumberToWordsPatch)).Patch();
+                if (patched == null || patched.Count == 0)
+                {
+                    Log.LogError("NumberToWordsPatch 未解析到目标方法。");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogError($"安装 NumberToWordsPatch 失败：{exception}");
             }
 
             RefreshFonts("awake");
@@ -906,24 +918,81 @@ namespace TravellingCN
             }
             // 自动推进（与 newgame 会话巡测同一套路）：有响应选第一项，否则按继续。
             var steps = 0;
+            var optionsDumped = false;
             for (var step = 0; step < 40; step++)
             {
                 yield return new WaitForSecondsRealtime(2f);
+                object firstResponse = null;
+                Component dialogueUI = null;
+                var conversationOver = false;
                 try
                 {
-                    var dialogueUI = FindObjectByTypeName("TravellingDialogueUI");
+                    dialogueUI = (Component)FindObjectByTypeName("TravellingDialogueUI");
                     var state = PixelCrushers.DialogueSystem.DialogueManager.instance
                         ?.currentConversationState;
                     if (dialogueUI == null || state == null)
                     {
                         Log.LogInfo($"[scenario] 会话结束（共 {steps} 步）");
-                        break;
+                        conversationOver = true;
                     }
-                    var responses = state.pcResponses;
-                    if (responses != null && responses.Length > 0)
+                    else
+                    {
+                        var responses = state.pcResponses;
+                        if (responses != null && responses.Length > 0)
+                        {
+                            firstResponse = responses[0];
+                        }
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Log.LogWarning($"[scenario] 步{step} 状态读取失败：{exception.Message}");
+                }
+                if (conversationOver)
+                {
+                    break;
+                }
+                if (dialogueUI == null)
+                {
+                    continue;
+                }
+                if (firstResponse != null && !optionsDumped)
+                {
+                    // 选项 F9 断言（l.8 选项切不回英文回归的永久防线，v2.7.1）：
+                    // 首个响应菜单先转储 CN→EN→CN 三态原文；EN 态任何 CJK 即失败，
+                    // 切回 CN 必须与切换前逐字一致。
+                    optionsDumped = true;
+                    var cnBefore = DumpRawOptions("CN态");
+                    LanguageSwap.DebugSetEnglishMode(true);
+                    yield return new WaitForSecondsRealtime(2.5f);
+                    var enOptions = DumpRawOptions("EN态");
+                    var enCjk = enOptions.Count(HasCjk);
+                    ProbeAssert(enCjk == 0,
+                        $"scenario 选项 EN 态无 CJK（{enCjk}/{enOptions.Count} 条残留）");
+                    LanguageSwap.DebugSetEnglishMode(false);
+                    yield return new WaitForSecondsRealtime(2.5f);
+                    var cnAfter = DumpRawOptions("CN态（切回）");
+                    var roundTripOk = cnBefore.Count == cnAfter.Count &&
+                                      !cnBefore.Where((text, index) => text != cnAfter[index]).Any();
+                    if (!roundTripOk)
+                    {
+                        for (var i = 0; i < cnBefore.Count && i < cnAfter.Count; i++)
+                        {
+                            if (cnBefore[i] != cnAfter[i])
+                            {
+                                Log.LogWarning(
+                                    $"[scenario] 选项往返差异[{i}]：{EscapeForLog(cnBefore[i])} ≠ {EscapeForLog(cnAfter[i])}");
+                            }
+                        }
+                    }
+                    ProbeAssert(roundTripOk, "scenario 选项 CN 往返逐字还原");
+                }
+                try
+                {
+                    if (firstResponse != null)
                     {
                         dialogueUI.GetType().GetMethod("OnClick")
-                            ?.Invoke(dialogueUI, new object[] { responses[0] });
+                            ?.Invoke(dialogueUI, new object[] { firstResponse });
                     }
                     else
                     {
@@ -982,6 +1051,24 @@ namespace TravellingCN
             (
                 "动用了 摇篮之纬（活化）",
                 "Used Cradle-Weft (Quicken)"
+            ),
+            // v2.7.1（l.8 用户现场，菲利克斯之家）：说话人"我"未换回 Me、
+            // 短式赞同行与原为/现为模板行半换、[q=:words] 账单行数词残留。
+            (
+                "我 — [考虑点些什么。]",
+                "Me — [Consider ordering something.]"
+            ),
+            (
+                "莉努 赞同（+1）",
+                "Linou approves (+1)"
+            ),
+            (
+                "菲利克斯之家：账单 原为 0，现为 40",
+                "Chez Felix: Bill was 0, is 40"
+            ),
+            (
+                "莉努 — 一共是四十弗朗西斯克。",
+                "Linou — That comes to forty francisques."
             ),
         };
 
@@ -1086,6 +1173,37 @@ namespace TravellingCN
                     $"bufferfix CN 精确还原：{Truncate(fixture.Cn, 40)}");
             }
             SetBuffer(original);
+            // [q=:words] 数字词本地化回归断言（v2.7.1）：中文态出中文数字词，
+            // 英文态保持原方法输出。
+            try
+            {
+                var numberToWords = typeof(Travelling.Utility.TravellingUtility)
+                    .GetMethod("NumberToWords", BindingFlags.Public | BindingFlags.Static);
+                ProbeAssert(numberToWords != null, "bufferfix NumberToWords 方法可定位");
+                if (numberToWords != null)
+                {
+                    foreach (var (value, expected) in new[]
+                    {
+                        (0, "零"), (1, "一"), (10, "十"), (15, "十五"), (40, "四十"),
+                        (100, "一百"), (105, "一百零五"), (110, "一百一十"),
+                        (1000, "一千"), (1234, "一千二百三十四"), (10000, "一万"),
+                    })
+                    {
+                        var actual = numberToWords.Invoke(null, new object[] { value }) as string;
+                        ProbeAssert(actual == expected,
+                            $"bufferfix 数字词 CN[{value}]：{actual ?? "<null>"} ≠ {expected}");
+                    }
+                    LanguageSwap.DebugSetEnglishMode(true);
+                    var english = numberToWords.Invoke(null, new object[] { 40 }) as string;
+                    ProbeAssert(english == "forty",
+                        $"bufferfix 数字词 EN[40]：{english ?? "<null>"} ≠ forty");
+                    LanguageSwap.DebugSetEnglishMode(false);
+                }
+            }
+            catch (Exception exception)
+            {
+                ProbeAssert(false, $"bufferfix 数字词断言异常：{exception.Message}");
+            }
             DumpRegressionSummary("bufferfix", failureBaseline);
             Log.LogInfo("[bufferfix] 完成");
         }
@@ -1138,6 +1256,83 @@ namespace TravellingCN
             ProbeAssert(offenders == 0, $"scenario {phase} 对话区逐行残留（{offenders} 条）");
             Log.LogInfo($"[scenario] {phase}：逐行残留 {offenders} 条");
             return offenders;
+        }
+
+        // 选项原文取证（l.8 选项 F9 回归排障）：原样转储 pcResponses 与响应面板
+        // TMP 文本；非 ASCII 全部转 \uXXXX，标点与标签在日志里无歧义。
+        // 返回响应面板可见选项文本的确定性有序列表，供断言比对。
+        private List<string> DumpRawOptions(string phase)
+        {
+            var collected = new List<string>();
+            try
+            {
+                var state = PixelCrushers.DialogueSystem.DialogueManager.instance
+                    ?.currentConversationState;
+                var responses = state?.pcResponses;
+                if (responses != null)
+                {
+                    for (var i = 0; i < responses.Length; i++)
+                    {
+                        Log.LogInfo(
+                            $"[optdump] {phase} pcResponse[{i}]：{EscapeForLog(responses[i].formattedText?.text)}");
+                    }
+                }
+                var surfaces = new List<TMP_Text>();
+                foreach (var text in Resources.FindObjectsOfTypeAll<TMP_Text>())
+                {
+                    if (text == null || !text.isActiveAndEnabled ||
+                        !text.gameObject.activeInHierarchy || string.IsNullOrEmpty(text.text))
+                    {
+                        continue;
+                    }
+                    var inResponse = false;
+                    for (var current = text.transform; current != null; current = current.parent)
+                    {
+                        if (current.gameObject.name.IndexOf("Response", StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            inResponse = true;
+                            break;
+                        }
+                    }
+                    if (inResponse)
+                    {
+                        surfaces.Add(text);
+                    }
+                }
+                foreach (var text in surfaces.OrderBy(t => t.transform.GetSiblingIndex())
+                         .ThenBy(t => t.gameObject.name, StringComparer.Ordinal))
+                {
+                    Log.LogInfo(
+                        $"[optdump] {phase} TMP[{text.gameObject.name}]：{EscapeForLog(text.text)}");
+                    collected.Add(text.text);
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[optdump] {phase} 转储失败：{exception.Message}");
+            }
+            return collected;
+        }
+
+        private static string EscapeForLog(string value)
+        {
+            if (value == null)
+            {
+                return "<null>";
+            }
+            var builder = new System.Text.StringBuilder(value.Length);
+            foreach (var c in value)
+            {
+                if (c < 32 || c > 126)
+                {
+                    builder.Append("\\u").Append(((int)c).ToString("x4"));
+                }
+                else
+                {
+                    builder.Append(c);
+                }
+            }
+            return builder.ToString();
         }
 
         private static bool IsConversationSurface(Transform transform)
@@ -2414,6 +2609,26 @@ namespace TravellingCN
                 {
                     __result = english;
                 }
+            }
+        }
+
+        // [q=<id>:words] 数字词（TravellingUtility.NumberToWords）只产英文
+        // （"forty"），中文态会混排进译文行（"一共是 forty 弗朗西斯克。"）。
+        // 中文态改产中文数字词；英文态走原方法。ilspy 核实调用点只有 :words
+        // 格式化器与自身递归——纯显示用途，无解析回读，替换安全。
+        [HarmonyPatch(
+            typeof(Travelling.Utility.TravellingUtility),
+            "NumberToWords")]
+        private static class NumberToWordsPatch
+        {
+            private static bool Prefix(int n, ref string __result)
+            {
+                if (LanguageSwap.IsEnglishMode)
+                {
+                    return true;
+                }
+                __result = LanguageSwap.ChineseNumberWords.ToWords(n);
+                return false;
             }
         }
 

@@ -1152,6 +1152,9 @@ namespace TravellingCN
             // 可见场景浮签（WorldPopup）重排：纸条底按行重建，必须让游戏自己
             // 重 Compose + 断行，不能靠扫描链路换裸文本（v2.2.6 修复）。
             RefreshVisibleWorldPopups();
+            // 响应菜单整备（v2.7.1，l.8 选项 F9 回归根治）：选项文本是运行时
+            // 拼装串，先把 formattedText 逐件换好，再让按钮自己重排——详见方法注释。
+            RebuildActiveResponseMenu(map);
             // 交换可能改写了脚注 alternativeLabels 的内容；中文态下复注入英文别名
             // （手写 <link="英文"> 的解析通道，v2.2.16）。
             Plugin.RequestAlternativeLabelsInjection();
@@ -1705,6 +1708,10 @@ namespace TravellingCN
                 else if (TrySwapDisplayText(map, captured, counters, depth + 1, out var swappedGroup))
                 {
                     swappedGroups[placeholder] = swappedGroup;
+                }
+                else if (TrySwapNumberWords(captured, out var numberWords))
+                {
+                    swappedGroups[placeholder] = numberWords;
                 }
                 else
                 {
@@ -3185,6 +3192,574 @@ namespace TravellingCN
                 }
             }
             return 0;
+        }
+
+        // 响应菜单整备（v2.7.1，l.8 选项 F9 回归根治）：
+        // 选项文本是运行时拼装串（"[需求摘要] [检定] 正文"、"sprite 前缀 +
+        // [100%] [标签] 正文"等），整串永不命中映射键；显示级分级流水线只能
+        // 子串级部分替换，l.8 实测把 "考虑点些什么。" 损伤成
+        // "Consideration点些什么."、把正文整句留在中文。这里分两步根治：
+        // 先把 pcResponses 的 formattedText 按"拼装件逐件精确交换"换好
+        // （括号摘要内的原子词全是独立映射键；任何一件换不动就整串放弃，
+        // 绝不部分替换），再让可见响应按钮按新 formattedText 重新
+        // SetFormattedText——文本、自动编号、颜色与检定图标样式都由游戏
+        // 自己的 RebuildText/SetBaseLabelColorAndMarkup 重算。
+        private static void RebuildActiveResponseMenu(DirectionMap map)
+        {
+            try
+            {
+                var manager = PixelCrushers.DialogueSystem.DialogueManager.instance;
+                var state = manager != null ? manager.currentConversationState : null;
+                var responses = state != null ? state.pcResponses : null;
+                if (responses == null || responses.Length == 0)
+                {
+                    return;
+                }
+                foreach (var response in responses)
+                {
+                    var formatted = response?.formattedText;
+                    var text = formatted?.text;
+                    if (string.IsNullOrEmpty(text))
+                    {
+                        continue;
+                    }
+                    var swapped = SwapCompositeOptionText(map, text);
+                    if (swapped != null && !string.Equals(swapped, text, StringComparison.Ordinal))
+                    {
+                        formatted.text = swapped;
+                    }
+                }
+                var rebuiltButtons = 0;
+                foreach (var panel in Resources.FindObjectsOfTypeAll<Travelling.UI.Dialogue.TravellingResponseMenuPanel>())
+                {
+                    if (panel == null || !panel.gameObject.activeInHierarchy)
+                    {
+                        continue;
+                    }
+                    var buttons = new List<Travelling.UI.Dialogue.TravellingResponseButton>();
+                    if (panel.buttons != null)
+                    {
+                        buttons.AddRange(panel.buttons);
+                    }
+                    if (panel.instantiatedButtons != null)
+                    {
+                        foreach (var go in panel.instantiatedButtons)
+                        {
+                            var component = go != null
+                                ? go.GetComponent<Travelling.UI.Dialogue.TravellingResponseButton>()
+                                : null;
+                            if (component != null && !buttons.Contains(component))
+                            {
+                                buttons.Add(component);
+                            }
+                        }
+                    }
+                    foreach (var button in buttons)
+                    {
+                        try
+                        {
+                            if (button != null && button.gameObject.activeInHierarchy &&
+                                button.response?.formattedText != null)
+                            {
+                                button.SetFormattedText(button.response.formattedText);
+                                rebuiltButtons++;
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            // 单个按钮重排失败不影响整体。
+                        }
+                    }
+                }
+                if (rebuiltButtons > 0)
+                {
+                    Log.LogInfo($"[LanguageSwap] 响应菜单已按当前语言重建（{rebuiltButtons} 个按钮）。");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[LanguageSwap] 响应菜单重建失败：{exception.Message}");
+            }
+        }
+
+        // 拼装选项文本逐件交换：前导 sprite/space 标签串原样保留；随后先试整串
+        // 精确（含 [[ ]] 数据形态键），不中再剥一组 "[...]"（END 与百分比原样、
+        // "数字+物品名"换物品名、多原子摘要按分隔符逐原子精确交换），递归处理
+        // 剩余部分。任何一层换不动返回 null——调用方整串放弃，绝不部分替换。
+        private static string SwapCompositeOptionText(DirectionMap map, string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return null;
+            }
+            var output = new StringBuilder(text.Length + 16);
+            var tagRun = OptionLeadingTagRun.Match(text);
+            var rest = text;
+            if (tagRun.Success)
+            {
+                output.Append(tagRun.Value);
+                rest = text.Substring(tagRun.Length);
+            }
+            // 标签串后常跟空格（"<sprite…> [100%] …"）：前导空白原样保留。
+            var leadSpace = 0;
+            while (leadSpace < rest.Length && (rest[leadSpace] == ' ' || rest[leadSpace] == '\t'))
+            {
+                output.Append(rest[leadSpace]);
+                leadSpace++;
+            }
+            rest = rest.Substring(leadSpace);
+            return SwapCompositeOptionRest(map, rest, output, 0) ? output.ToString() : null;
+        }
+
+        private static bool SwapCompositeOptionRest(
+            DirectionMap map, string rest, StringBuilder output, int depth)
+        {
+            if (rest.Length == 0)
+            {
+                return true;
+            }
+            if (map.Exact.TryGetValue(rest, out var exact))
+            {
+                output.Append(exact);
+                return true;
+            }
+            if (depth >= 5 || !rest.StartsWith("[", StringComparison.Ordinal))
+            {
+                return false;
+            }
+            var close = rest.IndexOf(']');
+            if (close <= 1)
+            {
+                return false;
+            }
+            var inner = rest.Substring(1, close - 1);
+            string swappedGroup;
+            if (inner == "END" || OptionPercentPattern.IsMatch(inner))
+            {
+                swappedGroup = "[" + inner + "]";
+            }
+            else if (TrySwapBracketInner(map, inner, out var swappedInner))
+            {
+                swappedGroup = "[" + swappedInner + "]";
+            }
+            else
+            {
+                return false;
+            }
+            output.Append(swappedGroup);
+            var next = close + 1;
+            while (next < rest.Length && (rest[next] == ' ' || rest[next] == '\n' || rest[next] == '\t'))
+            {
+                output.Append(rest[next]);
+                next++;
+            }
+            return SwapCompositeOptionRest(map, rest.Substring(next), output, depth + 1);
+        }
+
+        private static bool TrySwapBracketInner(DirectionMap map, string inner, out string swapped)
+        {
+            swapped = null;
+            // 摘要括号可含多原子（"; " 分隔）：分隔符与各原子首尾空白原样保留，
+            // 原子逐个精确交换；"15 Francisques" 这类"数字+复数标签"拆数换名。
+            var parts = Regex.Split(inner, @"([;；]\s*)");
+            var builder = new StringBuilder(inner.Length + 8);
+            for (var i = 0; i < parts.Length; i++)
+            {
+                var piece = parts[i];
+                if (i % 2 == 1 || piece.Trim().Length == 0)
+                {
+                    builder.Append(piece);
+                    continue;
+                }
+                var leadLength = piece.Length - piece.TrimStart().Length;
+                var trailLength = piece.Length - piece.TrimEnd().Length;
+                var atom = piece.Substring(leadLength, piece.Length - leadLength - trailLength);
+                var quantity = QuantityPrefixPattern.Match(atom);
+                string swappedAtom = null;
+                if (quantity.Success &&
+                    map.Exact.TryGetValue(quantity.Groups[2].Value, out var countedLabel))
+                {
+                    swappedAtom = quantity.Groups[1].Value + countedLabel;
+                }
+                else if (map.Exact.TryGetValue(atom, out var exactAtom))
+                {
+                    swappedAtom = exactAtom;
+                }
+                if (swappedAtom == null)
+                {
+                    return false;
+                }
+                builder.Append(piece.Substring(0, leadLength));
+                builder.Append(swappedAtom);
+                builder.Append(piece.Substring(piece.Length - trailLength));
+            }
+            swapped = builder.ToString();
+            return true;
+        }
+
+        private static readonly Regex OptionLeadingTagRun = new Regex(
+            @"^(?:<sprite=[^>]+>|<space=[^>]+>)+", RegexOptions.Compiled);
+        private static readonly Regex OptionPercentPattern = new Regex(
+            @"^[+-]?\d+(?:\.\d+)?%$", RegexOptions.Compiled);
+        private static readonly Regex QuantityPrefixPattern = new Regex(
+            @"^(\d+\s+)(.+)$", RegexOptions.Compiled);
+
+        // [q=<id>:words] 数字词的模板捕获转换（v2.7.1）：游戏渲染时按当前语言
+        // 产数字词（中文态经 NumberToWordsPatch 产中文数词），缓冲里已渲染的
+        // 行做模板交换时捕获组只是裸数词、不是映射键——在此按数词互转，
+        // 如 "一共是四十弗朗西斯克。" ↔ "That comes to forty francisques."。
+        // 只对整组都是数词的捕获生效，普通文本不受影响。
+        private static bool TrySwapNumberWords(string captured, out string swapped)
+        {
+            swapped = null;
+            if (string.IsNullOrWhiteSpace(captured) || captured.Length > 40)
+            {
+                return false;
+            }
+            var trimmed = captured.Trim();
+            if (ChineseNumberWords.TryParse(trimmed, out var cnValue))
+            {
+                swapped = EnglishNumberWords.Format(cnValue);
+                return true;
+            }
+            if (EnglishNumberWords.TryParse(trimmed, out var enValue))
+            {
+                swapped = ChineseNumberWords.ToWords(enValue);
+                return true;
+            }
+            return false;
+        }
+
+        // 中文数字词：零/一…九、十百千万节级；覆盖账单等实际数值范围。
+        internal static class ChineseNumberWords
+        {
+            private static readonly char[] Digits = { '零', '一', '二', '三', '四', '五', '六', '七', '八', '九' };
+
+            internal static string ToWords(int n)
+            {
+                if (n == 0)
+                {
+                    return "零";
+                }
+                if (n < 0)
+                {
+                    return "负" + ToWordsPositive(-(long)n);
+                }
+                return ToWordsPositive(n);
+            }
+
+            private static string ToWordsPositive(long n)
+            {
+                // 四位一节（万/亿），从高到低拼：高节存在时，低节为 0 跳过但记零待补，
+                // 低节非 0 且（前面跳过节或本节小于 1000）则补一个零。
+                var chunks = new System.Collections.Generic.List<int>();
+                for (var temp = n; temp > 0; temp /= 10000)
+                {
+                    chunks.Add((int)(temp % 10000));
+                }
+                var builder = new StringBuilder();
+                var zeroPending = false;
+                for (var i = chunks.Count - 1; i >= 0; i--)
+                {
+                    var chunk = chunks[i];
+                    if (chunk == 0)
+                    {
+                        if (builder.Length > 0)
+                        {
+                            zeroPending = true;
+                        }
+                        continue;
+                    }
+                    if (builder.Length > 0 && (zeroPending || chunk < 1000))
+                    {
+                        builder.Append('零');
+                    }
+                    zeroPending = false;
+                    builder.Append(SectionToWords(chunk));
+                    builder.Append(i == 1 ? "万" : i == 2 ? "亿" : "");
+                }
+                return builder.ToString();
+            }
+
+            private static string SectionToWords(int chunk)
+            {
+                var builder = new StringBuilder();
+                var zeroPending = false;
+                for (var divisor = 1000; divisor > 0; divisor /= 10)
+                {
+                    var digit = chunk / divisor % 10;
+                    if (digit == 0)
+                    {
+                        if (builder.Length > 0)
+                        {
+                            zeroPending = true;
+                        }
+                        continue;
+                    }
+                    if (zeroPending)
+                    {
+                        builder.Append('零');
+                        zeroPending = false;
+                    }
+                    builder.Append(Digits[digit]);
+                    if (divisor == 1000)
+                    {
+                        builder.Append('千');
+                    }
+                    else if (divisor == 100)
+                    {
+                        builder.Append('百');
+                    }
+                    else if (divisor == 10)
+                    {
+                        builder.Append('十');
+                    }
+                }
+                var result = builder.ToString();
+                // 口语惯例：一十→十（"十五"而非"一十五"）。
+                if (result.StartsWith("一十", StringComparison.Ordinal))
+                {
+                    result = result.Substring(1);
+                }
+                return result;
+            }
+
+            internal static bool TryParse(string text, out int value)
+            {
+                value = 0;
+                if (string.IsNullOrEmpty(text))
+                {
+                    return false;
+                }
+                var rest = text;
+                var negative = false;
+                if (rest.StartsWith("负", StringComparison.Ordinal))
+                {
+                    negative = true;
+                    rest = rest.Substring(1);
+                }
+                long total = 0;
+                long section = 0;
+                var number = 0;
+                var consumed = 0;
+                foreach (var c in rest)
+                {
+                    var digit = Array.IndexOf(Digits, c);
+                    if (digit >= 0)
+                    {
+                        number = digit;
+                        consumed++;
+                        continue;
+                    }
+                    int sectionUnit;
+                    switch (c)
+                    {
+                        case '十': sectionUnit = 10; break;
+                        case '百': sectionUnit = 100; break;
+                        case '千': sectionUnit = 1000; break;
+                        default: sectionUnit = 0; break;
+                    }
+                    if (sectionUnit > 0)
+                    {
+                        section += (number == 0 ? 1 : number) * sectionUnit;
+                        number = 0;
+                        consumed++;
+                        continue;
+                    }
+                    if (c == '万' || c == '亿')
+                    {
+                        var bigUnit = c == '万' ? 10000 : 100000000;
+                        section = (section + number) * bigUnit;
+                        total += section;
+                        section = 0;
+                        number = 0;
+                        consumed++;
+                        continue;
+                    }
+                    return false;
+                }
+                if (consumed == 0)
+                {
+                    return false;
+                }
+                var parsed = total + section + number;
+                if (parsed > int.MaxValue)
+                {
+                    return false;
+                }
+                value = (int)(negative ? -parsed : parsed);
+                return true;
+            }
+        }
+
+        // 英文数字词：与 TravellingUtility.NumberToWords 的格式逐字节一致
+        // （"one hundred and five"、"twenty-one"、"minus"），供捕获组互换。
+        internal static class EnglishNumberWords
+        {
+            private static readonly string[] UnitsAndTeens =
+            {
+                "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+                "seventeen", "eighteen", "nineteen"
+            };
+            private static readonly string[] Tens =
+                { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+
+            internal static string Format(int n)
+            {
+                if (n == 0)
+                {
+                    return "zero";
+                }
+                if (n < 0)
+                {
+                    return "minus " + FormatPositive(-(long)n);
+                }
+                return FormatPositive(n);
+            }
+
+            private static string FormatPositive(long n)
+            {
+                if (n == 0L)
+                {
+                    return "";
+                }
+                var builder = new StringBuilder();
+                AppendGroup(builder, n / 1000000000, "billion");
+                AppendGroup(builder, n / 1000000 % 1000, "million");
+                AppendGroup(builder, n / 1000 % 1000, "thousand");
+                var remainder = n % 1000;
+                if (remainder > 0)
+                {
+                    if (builder.Length > 0)
+                    {
+                        builder.Append(remainder < 100 ? " and " : " ");
+                    }
+                    builder.Append(SpellUnderThousand(remainder));
+                }
+                return builder.ToString();
+            }
+
+            private static void AppendGroup(StringBuilder builder, long groupValue, string suffix)
+            {
+                if (groupValue == 0L)
+                {
+                    return;
+                }
+                if (builder.Length > 0)
+                {
+                    builder.Append(' ');
+                }
+                builder.Append(SpellUnderThousand(groupValue));
+                builder.Append(' ').Append(suffix);
+            }
+
+            private static string SpellUnderThousand(long n)
+            {
+                var builder = new StringBuilder();
+                var hundreds = n / 100;
+                var remainder = n % 100;
+                if (hundreds > 0)
+                {
+                    builder.Append(UnitsAndTeens[hundreds]).Append(" hundred");
+                    if (remainder > 0)
+                    {
+                        builder.Append(" and ");
+                    }
+                }
+                if (remainder > 0)
+                {
+                    if (remainder < 20)
+                    {
+                        builder.Append(UnitsAndTeens[remainder]);
+                    }
+                    else
+                    {
+                        builder.Append(Tens[remainder / 10]);
+                        if (remainder % 10 > 0)
+                        {
+                            builder.Append('-').Append(UnitsAndTeens[remainder % 10]);
+                        }
+                    }
+                }
+                return builder.ToString();
+            }
+
+            internal static bool TryParse(string text, out int value)
+            {
+                value = 0;
+                if (string.IsNullOrEmpty(text) ||
+                    !System.Text.RegularExpressions.Regex.IsMatch(text, @"^[A-Za-z\- ]+$"))
+                {
+                    return false;
+                }
+                var tokens = text.ToLowerInvariant()
+                    .Replace('-', ' ')
+                    .Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+                var negative = false;
+                long total = 0;
+                long current = 0;
+                var recognized = 0;
+                foreach (var token in tokens)
+                {
+                    if (token == "and")
+                    {
+                        continue;
+                    }
+                    if (token == "minus")
+                    {
+                        negative = true;
+                        recognized++;
+                        continue;
+                    }
+                    var unitIndex = Array.IndexOf(UnitsAndTeens, token);
+                    if (unitIndex >= 0)
+                    {
+                        current += unitIndex;
+                        recognized++;
+                        continue;
+                    }
+                    var tensIndex = Array.IndexOf(Tens, token);
+                    if (tensIndex > 1)
+                    {
+                        current += tensIndex * 10;
+                        recognized++;
+                        continue;
+                    }
+                    if (token == "hundred" && current > 0)
+                    {
+                        current *= 100;
+                        recognized++;
+                        continue;
+                    }
+                    long multiplier = token switch
+                    {
+                        "thousand" => 1000L,
+                        "million" => 1000000L,
+                        "billion" => 1000000000L,
+                        _ => 0L,
+                    };
+                    if (multiplier > 0 && current > 0)
+                    {
+                        total += current * multiplier;
+                        current = 0;
+                        recognized++;
+                        continue;
+                    }
+                    return false;
+                }
+                if (recognized == 0)
+                {
+                    return false;
+                }
+                var parsed = total + current;
+                if (parsed > int.MaxValue)
+                {
+                    return false;
+                }
+                value = (int)(negative ? -parsed : parsed);
+                return true;
+            }
         }
     }
 }
