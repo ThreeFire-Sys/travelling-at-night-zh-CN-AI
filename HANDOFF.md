@@ -1149,3 +1149,6 @@
   增补须先折叠回审校目录 chunks（rebase 输出回拷），否则 Missing: 86。
 - 探针电池（实机五套）：scenario 选项断言绿 / bufferfix 全绿 / autoswap /
   soak / newgame 全绿；存档探前快照、探后还原；诊断开关全关。
+- 提交 `1a2e78b` + tag `v2.7.1` 已推送；GitHub Release v2.7.1 已建
+  （zip 25,186,933 字节，SHA-256 `4097B7332E92905475F89BDB40294048CEB4203E87174B9141940B60D011A322`，
+  附 .sha256 资产），同日删除 v2.7.0 Release。
