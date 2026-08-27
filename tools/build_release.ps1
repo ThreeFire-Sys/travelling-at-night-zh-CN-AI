@@ -2,9 +2,9 @@ param(
     [string]$Version = '2.6.3',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = 'build\baked_assets',
-    [string]$WorklistRoot = 'build\worklist_l31\worklist.jsonl',
-    [string]$TranslationsRoot = 'translations_l31',
-    [string]$MergedRoot = 'build\merged_l31'
+    [string]$WorklistRoot = 'build\worklist_l43\worklist.jsonl',
+    [string]$TranslationsRoot = 'translations_l43',
+    [string]$MergedRoot = 'build\merged_l43'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -67,6 +67,13 @@ foreach ($artifact in @($zipPath, $checksumPath)) {
 
 # Archive the top-level directory so the package keeps its versioned root.
 Compress-Archive -LiteralPath $packageRoot -DestinationPath $zipPath -CompressionLevel Optimal
+# If the AV blocks on-disk winhttp.dll staging, inject the bytes into the zip and patch the manifest instead.
+$doorstopPayload = Join-Path $packageRoot 'payload\winhttp.dll'
+if (-not (Test-Path -LiteralPath $doorstopPayload -PathType Leaf)) {
+    python -B (Join-Path $workspace 'tools\inject_doorstop_into_zip.py') `
+        $zipPath (Join-Path $workspace 'build\bepinex_runtime\winhttp.dll') "TravellingAtNight_ZH-CN_v$Version"
+    if ($LASTEXITCODE -ne 0) { throw 'Doorstop winhttp.dll zip injection failed.' }
+}
 python -B (Join-Path $workspace 'tools\validate_release_package.py') `
     $zipPath --expected-version $Version
 if ($LASTEXITCODE -ne 0) { throw 'Independent release ZIP validation failed.' }

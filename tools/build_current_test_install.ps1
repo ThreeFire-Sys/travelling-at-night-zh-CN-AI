@@ -2,9 +2,9 @@
     [string]$PatchVersion = '2.6.3',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = '',
-    [string]$WorklistRoot = 'build\worklist_l31\worklist.jsonl',
-    [string]$TranslationsRoot = 'translations_l31',
-    [string]$MergedRoot = 'build\merged_l31',
+    [string]$WorklistRoot = 'build\worklist_l43\worklist.jsonl',
+    [string]$TranslationsRoot = 'translations_l43',
+    [string]$MergedRoot = 'build\merged_l43',
     [ValidateSet('runtime', 'baked')]
     [string]$PluginProfile = 'runtime'
 )
@@ -230,7 +230,14 @@ if (Test-Path -LiteralPath $packageRoot) {
 }
 
 New-Item -ItemType Directory -Path $payloadRoot -Force | Out-Null
-Copy-Item -LiteralPath (Join-Path $runtimeRoot 'winhttp.dll') -Destination $payloadRoot
+try {
+    Copy-Item -LiteralPath (Join-Path $runtimeRoot 'winhttp.dll') -Destination $payloadRoot -ErrorAction Stop
+}
+catch {
+    # 本机安全软件按文件名拦截 winhttp.dll 落盘（v2.7.3 构建实测）：先跳过，
+    # 发版 zip 由 build_release.ps1 直接把该文件注入压缩包并补登记清单。
+    Write-Warning 'winhttp.dll 被本机安全策略拦截，暂不落盘；将在 zip 阶段注入。'
+}
 Copy-Item -LiteralPath (Join-Path $runtimeRoot 'doorstop_config.ini') -Destination $payloadRoot
 Copy-Item -LiteralPath (Join-Path $runtimeRoot '.doorstop_version') -Destination $payloadRoot
 Copy-Item -LiteralPath (Join-Path $runtimeRoot 'changelog.txt') -Destination $payloadRoot

@@ -40,7 +40,7 @@ namespace TravellingCN
     {
         public const string PluginGuid = "cn.nyctodromy.travelling.zhcn";
         public const string PluginName = "夜游漫记简体中文补丁";
-        public const string PluginVersion = "2.7.2";
+        public const string PluginVersion = "2.7.3";
 
         private static ManualLogSource Log;
         private static TMP_FontAsset ChineseFont;
@@ -128,6 +128,30 @@ namespace TravellingCN
             catch (Exception exception)
             {
                 Log.LogError($"安装 NumberToWordsPatch 失败：{exception}");
+            }
+            try
+            {
+                var patched = _harmony.CreateClassProcessor(typeof(SubtitleSetContentPatch)).Patch();
+                if (patched == null || patched.Count == 0)
+                {
+                    Log.LogError("SubtitleSetContentPatch 未解析到目标方法。");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogError($"安装 SubtitleSetContentPatch 失败：{exception}");
+            }
+            try
+            {
+                var patched = _harmony.CreateClassProcessor(typeof(QuoteSceneToggleKeyPatch)).Patch();
+                if (patched == null || patched.Count == 0)
+                {
+                    Log.LogError("QuoteSceneToggleKeyPatch 未解析到目标方法。");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogError($"安装 QuoteSceneToggleKeyPatch 失败：{exception}");
             }
 
             RefreshFonts("awake");
@@ -1009,12 +1033,16 @@ namespace TravellingCN
             ProbeAssert(steps >= 3, $"scenario 会话推进步数（{steps}）");
             yield return new WaitForSecondsRealtime(2f);
             // 末尾 F9 往返：交换损坏会留在历史缓冲里，逐行断言全部抓得到。
+            // 同步转储缓冲原文（包装标签原样、\u 转义），供半换根因取证（v2.7.3）。
+            DumpRawBuffer("CN态（切换前）");
             DumpScenarioResidue("CN态（切换前）");
             LanguageSwap.DebugSetEnglishMode(true);
             yield return new WaitForSecondsRealtime(2.5f);
+            DumpRawBuffer("EN态");
             DumpScenarioResidue("EN态");
             LanguageSwap.DebugSetEnglishMode(false);
             yield return new WaitForSecondsRealtime(2.5f);
+            DumpRawBuffer("CN态（切回）");
             DumpScenarioResidue("CN态（切回）");
             try
             {
@@ -1069,6 +1097,20 @@ namespace TravellingCN
             (
                 "莉努 — 一共是四十弗朗西斯克。",
                 "Linou — That comes to forty francisques."
+            ),
+            // v2.7.3（l.31 用户现场）：真实包装形态的缓冲行——<font>/<b>/<i>/命名
+            // sprite 包装曾使逐行交换整行失效、掉进子串级被术语误伤。
+            (
+                "<font=\"georgia\"><b><i><sprite=0>弗雷泽·斯特拉思科因 — 一只人眼追随着我的动作。另三只眼睛闪闪发亮。</color>",
+                "<font=\"georgia\"><b><i><sprite=0>Fraser Strathcoyne — One human eye tracks my movements. Three other eyes glitter.</color>"
+            ),
+            (
+                "<font=\"georgia\"><b><i><sprite=1>我</i></b></font> — <color=#231a17cc>请原谅我的轻率，斯特拉思科因先生。</color>",
+                "<font=\"georgia\"><b><i><sprite=1>Me</i></b></font> — <color=#231a17cc>I apologise for my flippancy, Mr Strathcoyne.</color>"
+            ),
+            (
+                "<color=#231a17cc><i><sprite=\"inline\" name=\"star\"> 弗雷泽·斯特拉思科因 赞同（+1）</i></color>",
+                "<color=#231a17cc><i><sprite=\"inline\" name=\"star\"> Fraser Strathcoyne approves (+1)</i></color>"
             ),
         };
 
@@ -1160,6 +1202,18 @@ namespace TravellingCN
             var englishBuffer = GetBuffer() ?? string.Empty;
             foreach (var fixture in BufferFixtures)
             {
+                if (!englishBuffer.Contains(fixture.En))
+                {
+                    // 失败时逐行打出实际缓冲（\u 转义），差异一眼可见（v2.7.3）。
+                    Log.LogWarning($"[bufferfix] EN 期望：{EscapeForLog(fixture.En)}");
+                    foreach (var rawLine in englishBuffer.Split('\n'))
+                    {
+                        if (!string.IsNullOrWhiteSpace(rawLine))
+                        {
+                            Log.LogWarning($"[bufferfix] EN 实有行：{EscapeForLog(rawLine)}");
+                        }
+                    }
+                }
                 ProbeAssert(englishBuffer.Contains(fixture.En),
                     $"bufferfix EN 精确命中：{Truncate(fixture.En, 40)}");
             }
@@ -1169,6 +1223,17 @@ namespace TravellingCN
             var chineseBuffer = GetBuffer() ?? string.Empty;
             foreach (var fixture in BufferFixtures)
             {
+                if (!chineseBuffer.Contains(fixture.Cn))
+                {
+                    Log.LogWarning($"[bufferfix] CN 期望：{EscapeForLog(fixture.Cn)}");
+                    foreach (var rawLine in chineseBuffer.Split('\n'))
+                    {
+                        if (!string.IsNullOrWhiteSpace(rawLine))
+                        {
+                            Log.LogWarning($"[bufferfix] CN 实有行：{EscapeForLog(rawLine)}");
+                        }
+                    }
+                }
                 ProbeAssert(chineseBuffer.Contains(fixture.Cn),
                     $"bufferfix CN 精确还原：{Truncate(fixture.Cn, 40)}");
             }
@@ -1210,6 +1275,58 @@ namespace TravellingCN
 
         // 对话区逐行残留检查：只扫对话 UI（父链名字含 Dialogue/Subtitle/
         // Response）的可见 TMP，逐行按当前语言模式判定残留并对总数断言。
+        // 字幕历史缓冲原文转储（v2.7.3 半换取证）：逐行 \u 转义输出，
+        // 包装标签/标点/空格全部可见，与 SwapBufferByLines 的真实输入对照。
+        private void DumpRawBuffer(string phase)
+        {
+            try
+            {
+                var panel = FindObjectByTypeName("TravellingSubtitlePanel");
+                if (panel == null)
+                {
+                    Log.LogWarning($"[bufdump] {phase}：找不到字幕面板");
+                    return;
+                }
+                const BindingFlags memberFlags = BindingFlags.Instance | BindingFlags.Public |
+                                                 BindingFlags.NonPublic;
+                string buffer = null;
+                for (var type = panel.GetType(); type != null && buffer == null; type = type.BaseType)
+                {
+                    var field = type.GetField("m_accumulatedText", memberFlags) ??
+                                type.GetField("accumulatedText", memberFlags);
+                    if (field != null)
+                    {
+                        buffer = field.GetValue(panel) as string;
+                    }
+                    else
+                    {
+                        var property = type.GetProperty("accumulatedText", memberFlags);
+                        if (property != null && property.CanRead)
+                        {
+                            buffer = property.GetValue(panel) as string;
+                        }
+                    }
+                }
+                if (buffer == null)
+                {
+                    Log.LogWarning($"[bufdump] {phase}：缓冲字段不可读");
+                    return;
+                }
+                var lines = buffer.Split('\n');
+                for (var i = 0; i < lines.Length; i++)
+                {
+                    if (!string.IsNullOrWhiteSpace(lines[i]))
+                    {
+                        Log.LogInfo($"[bufdump] {phase} L{i}：{EscapeForLog(lines[i])}");
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[bufdump] {phase} 转储失败：{exception.Message}");
+            }
+        }
+
         private int DumpScenarioResidue(string phase)
         {
             var offenders = 0;
@@ -2629,6 +2746,34 @@ namespace TravellingCN
                 }
                 __result = LanguageSwap.ChineseNumberWords.ToWords(n);
                 return false;
+            }
+        }
+
+        // 迟到系统行自愈（v2.7.3）：交换前已生成、交换后才被游戏追加进缓冲的
+        // 系统行保持旧语言（0.25s 防误选延迟所致）。SetContent 每次追加后让
+        // LanguageSwap 按当前方向过一遍逐行交换——详见 SwapLateSubtitleAppend。
+        [HarmonyPatch(
+            typeof(Travelling.UI.Dialogue.TravellingSubtitlePanel),
+            "SetContent")]
+        private static class SubtitleSetContentPatch
+        {
+            private static void Postfix(Travelling.UI.Dialogue.TravellingSubtitlePanel __instance)
+            {
+                LanguageSwap.SwapLateSubtitleAppend(__instance);
+            }
+        }
+
+        // 开场语界面把 F9 当"任意键继续"吞掉，玩家想看英文原文按 F9 就直接
+        // 进了主菜单（v2.7.3 用户实测）。本帧按下的是语言切换键时跳过原
+        // Update（不 Advance）；语言切换由 LanguageSwap.Tick 照常发生。
+        [HarmonyPatch(
+            typeof(Travelling.Infrastructure.QuoteSceneController),
+            "Update")]
+        private static class QuoteSceneToggleKeyPatch
+        {
+            private static bool Prefix()
+            {
+                return !LanguageSwap.ToggleKeyPressedThisFrame();
             }
         }
 

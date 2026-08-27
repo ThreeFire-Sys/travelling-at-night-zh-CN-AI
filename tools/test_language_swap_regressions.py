@@ -156,15 +156,17 @@ def main() -> int:
         and '"非 {0}"' in SOURCE,
     )
     assemble = SOURCE[SOURCE.index("private static string AssembleTemplateSwap") :]
-    counted_index = assemble.find("TrySwapCountedLabelList(map, captured")
-    recursive_index = assemble.find("TrySwapDisplayText(map, captured")
+    counted_index = assemble.find("TrySwapCountedLabelList(map, coreCapture")
+    recursive_index = assemble.find("TrySwapDisplayText(map, coreCapture")
     require(
         "counted one-character labels are handled before generic recursion",
         counted_index >= 0 and recursive_index > counted_index,
     )
     require(
         "speaker prefix allows spaced names with lazy match",
-        "[^—\\n<>]{1,40}?" in SOURCE,
+        "FindSpeakerSeparator" in SOURCE
+        and "plainName.Length > 40" in SOURCE
+        and "plainName.Contains('—')" in SOURCE,
     )
     require(
         "query token rewrite declared and wired into direction map build",

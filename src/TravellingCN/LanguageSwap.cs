@@ -697,6 +697,13 @@ namespace TravellingCN
             RunSwapPass(_englishMode ? _zh2en : _en2zh, _englishMode ? "调试切为英文" : "调试切为中文");
         }
 
+        // 供 QuoteSceneToggleKeyPatch 查询：本帧按下的是否正是语言切换键
+        // （v2.7.3 开场语界面 F9 被"任意键继续"吞掉的修复配套）。
+        internal static bool ToggleKeyPressedThisFrame()
+        {
+            return _mapsLoaded && _toggleKey.Value.IsDown();
+        }
+
         internal static void Tick()
         {
             if (!_enabled.Value || !_mapsLoaded)
@@ -1110,6 +1117,21 @@ namespace TravellingCN
                         // 逐表面对齐"已读链接剥除"（字幕面板读配置；DetailableDisplay
                         // 系看各自 _respectFootnoteSubtlety；其余表面不剥除）。
                         _hideVisitedForCurrentSwap = ResolveHideVisitedForSurface(tmpText);
+                        // 字幕面板显示 TMP 的内容 = 历史缓冲+当前行的逐行拼装
+                        // （v2.7.3：通用流水线只能子串级损伤它——实测当前行被换成
+                        // "movements。 三" 式混排）。与 accumulatedText 同走逐行交换。
+                        if (IsSubtitlePanelSurface(tmpText))
+                        {
+                            var swappedLines = SwapBufferByLines(tmpText.text, map, counters);
+                            if (!string.Equals(swappedLines, tmpText.text, StringComparison.Ordinal))
+                            {
+                                tmpText.text = swappedLines;
+                                tmpText.maxVisibleCharacters = 99999;
+                                tmpText.firstVisibleCharacter = 0;
+                                RewrapIfOverflow(tmpText);
+                            }
+                            continue;
+                        }
                         SwapDisplayText(map, tmpText.text, value =>
                         {
                             tmpText.text = value;
@@ -1155,6 +1177,9 @@ namespace TravellingCN
             // 响应菜单整备（v2.7.1，l.8 选项 F9 回归根治）：选项文本是运行时
             // 拼装串，先把 formattedText 逐件换好，再让按钮自己重排——详见方法注释。
             RebuildActiveResponseMenu(map);
+            // 日志详情窗刷新（v2.7.3）：详情第三段是 "<uppercase>状态标签</uppercase>
+            // -- 状态描述" 拼装串，扫描链路换不全；直接让日志按当前语言重 DisplayDetailFor。
+            RefreshOpenJournalDetail();
             // 交换可能改写了脚注 alternativeLabels 的内容；中文态下复注入英文别名
             // （手写 <link="英文"> 的解析通道，v2.2.16）。
             Plugin.RequestAlternativeLabelsInjection();
@@ -1170,23 +1195,41 @@ namespace TravellingCN
             }
         }
 
-        // 历史缓冲逐行交换。缓冲每行的真实形态是带包装标签的：
-        // "<color=#..><sprite=N><b><i>名字 — 正文</i></b></color>"（建议/叙述同理，
-        // 颜色各异——v2.2.18 实测交换后颜色统一化）。逐行拆成 前导标签+名字前缀+
-        // 正文+结尾标签：名字整串精确交换（单字名"我"够不到子串两字阈值），
-        // 正文单独走完整流水线（折叠精确因此能命中整条目录译文，含 [[链接]]），
-        // 包装标签原样保留——行级颜色因此存活。仅在 accumulatedText 路径使用。
-        // 历史缓冲行首的"名字 — 正文"切分：名字段允许空格（"The elder
-        // Janvier"），懒匹配到第一个 " — "；长度上限防失控。正文换不动时
-        // 调用方退回整行通用流水线兜底（v2.6.3 实测：旧模式禁止空格，带空格
-        // 的英文名永远切不开，整行掉进模板/子串级，被 "Not {0}" 这类模板
-        // 吞成 "非 'kept'…"）。
-        private static readonly Regex SpeakerPrefixLinePattern = new Regex(
-            @"^([^—\n<>]{1,40}?)( — )", RegexOptions.Compiled);
+        // 历史缓冲逐行交换。缓冲行的真实包装形态（v2.7.3 按 l.31 用户现场
+        // 取证重写——旧枚举式前导标签正则不认 <font=..> 与 <sprite="inline"
+        // name="star"> 这类命名/双属性标签，整行因此掉进子串级，被术语误伤成
+        // "你可真Interesting.Perhaps该Consideration…"）：
+        //   A 短对话行：<font=..><b><i><sprite=N>名字 — 正文</color>
+        //   B 长对话行：<font=..><b><i><sprite=N>名字</i></b></font> — <color=..>正文</color>
+        //   C 系统行：<color=..><i><sprite="inline" name="star"> 模板文本</i></color>
+        // 逐行拆成 前导开标签段+说话人前缀+正文+结尾闭标签段：名字整串精确交换
+        // （单字名"我"够不到子串两字阈值），正文单独走完整流水线（折叠精确因此
+        // 能命中整条目录译文，含 [[链接]]），包装标签原样保留——行级颜色存活。
+        // 名字段允许空格（"The elder Janvier"）与夹缝闭标签（B 形）；长度上限
+        // 防失控。正文换不动时整行退回通用流水线兜底。
         private static readonly Regex LeadingTagsPattern = new Regex(
-            @"^((?:<color=[^>]+>|<b>|<i>|<sprite=\d+>)+)", RegexOptions.Compiled);
+            @"^((?:<[a-zA-Z][^>]*>)+)", RegexOptions.Compiled);
         private static readonly Regex TrailingTagsPattern = new Regex(
-            @"((?:</color>|</b>|</i>|</u>|</link>)+)$", RegexOptions.Compiled);
+            @"((?:</[a-zA-Z]+>)+)$", RegexOptions.Compiled);
+        private static readonly Regex AnyTagPattern = new Regex(
+            @"<[^>]+>", RegexOptions.Compiled);
+
+        // 在 core 里找说话人分隔符 " — "：取第一个出现位置，要求其前的纯文本
+        // （剥标签）长度 1..40 且不含 '—'。找不到/超长返回 -1（调用方整行处理）。
+        private static int FindSpeakerSeparator(string core)
+        {
+            var index = core.IndexOf(" — ", StringComparison.Ordinal);
+            if (index <= 0)
+            {
+                return -1;
+            }
+            var plainName = AnyTagPattern.Replace(core.Substring(0, index), string.Empty);
+            if (plainName.Length == 0 || plainName.Length > 40 || plainName.Contains('—'))
+            {
+                return -1;
+            }
+            return index;
+        }
 
         private static string SwapBufferByLines(string value, DirectionMap map, SwapCounters counters)
         {
@@ -1203,28 +1246,38 @@ namespace TravellingCN
                 {
                     continue;
                 }
-                // 拆包装标签：前导开标签与结尾闭标签原样保留，不参与交换。
+                // 拆包装标签：前导开标签段与结尾闭标签段原样保留，不参与交换。
                 var lead = LeadingTagsPattern.Match(line).Groups[1].Value;
                 var trail = TrailingTagsPattern.Match(line).Groups[1].Value;
                 var core = line.Substring(lead.Length, line.Length - lead.Length - trail.Length);
 
                 string swappedCore = null;
-                var match = SpeakerPrefixLinePattern.Match(core);
-                if (match.Success)
+                var separator = FindSpeakerSeparator(core);
+                if (separator > 0)
                 {
-                    // "名字 — 正文"：名字段单独精确交换，避免它与正文纠缠进流水线。
-                    // 名字不是独立映射键就原样保留；正文换不动时整行退回通用
-                    // 流水线——" — "本属正文、整行恰是完整键的情况靠这层兜底。
-                    var name = match.Groups[1].Value;
-                    var namePart = map.Exact.TryGetValue(name, out var swappedName) ? swappedName : name;
-                    var rest = core.Substring(match.Length);
-                    if (string.IsNullOrEmpty(rest))
+                    // "名字 — 正文"：名字段单独精确交换（段内夹缝标签原样），
+                    // 避免它与正文纠缠进流水线。名字不是独立映射键就原样保留；
+                    // 正文换不动时整行退回通用流水线兜底。
+                    var nameRegion = core.Substring(0, separator);
+                    var namePlain = AnyTagPattern.Replace(nameRegion, string.Empty);
+                    var nameSwapped = nameRegion;
+                    if (map.Exact.TryGetValue(namePlain, out var swappedName))
                     {
-                        swappedCore = namePart + match.Groups[2].Value;
+                        nameSwapped = nameRegion.Replace(namePlain, swappedName);
                     }
-                    else if (TrySwapDisplayText(map, rest, counters, 1, out var pipelineRest))
+                    var rest = core.Substring(separator + 3);
+                    // 正文段自身的前导开标签（<color=..> 等）同样原位保留——
+                    // Tier 1.5 去标签精确只回裸值，不剥会丢行级颜色（v2.7.3
+                    // 夹具实测：" — <color=..>正文" 换完 color 开标签没了）。
+                    var restLead = LeadingTagsPattern.Match(rest).Groups[1].Value;
+                    var restCore = rest.Substring(restLead.Length);
+                    if (string.IsNullOrEmpty(restCore))
                     {
-                        swappedCore = namePart + match.Groups[2].Value + pipelineRest;
+                        swappedCore = nameSwapped + " — " + restLead;
+                    }
+                    else if (TrySwapDisplayText(map, restCore, counters, 1, out var pipelineRest))
+                    {
+                        swappedCore = nameSwapped + " — " + restLead + pipelineRest;
                     }
                 }
                 if (swappedCore == null)
@@ -1698,25 +1751,48 @@ namespace TravellingCN
             {
                 var placeholder = template.GroupPlaceholders[group - 1];
                 var captured = match.Groups[group].Value;
+                // 捕获组边界空白原样保留、不参与递归交换（v2.7.3：行首空格被
+                // {0} 捕获后随递归丢失——"✧ 弗雷泽…" 换完空格没了）。
+                var leadWs = 0;
+                while (leadWs < captured.Length && char.IsWhiteSpace(captured[leadWs]))
+                {
+                    leadWs++;
+                }
+                var trailWs = 0;
+                while (trailWs < captured.Length - leadWs &&
+                       char.IsWhiteSpace(captured[captured.Length - 1 - trailWs]))
+                {
+                    trailWs++;
+                }
+                var coreCapture = captured.Substring(leadWs, captured.Length - leadWs - trailWs);
+                if (coreCapture.Length == 0)
+                {
+                    swappedGroups[placeholder] = captured;
+                    continue;
+                }
+                string swappedCore;
                 // 性相池恢复行的占位组是“1 启, 1 灯”。单字 CJK 术语为防
                 // 子串误伤不进 Tier 3，因此在有数量边界的列表中按完整 label
                 // 查 Exact，才能在 EN 态恢复 Knock/Lantern。
-                if (TrySwapCountedLabelList(map, captured, out var countedGroup))
+                if (TrySwapCountedLabelList(map, coreCapture, out var countedGroup))
                 {
-                    swappedGroups[placeholder] = countedGroup;
+                    swappedCore = countedGroup;
                 }
-                else if (TrySwapDisplayText(map, captured, counters, depth + 1, out var swappedGroup))
+                else if (TrySwapDisplayText(map, coreCapture, counters, depth + 1, out var swappedGroup))
                 {
-                    swappedGroups[placeholder] = swappedGroup;
+                    swappedCore = swappedGroup;
                 }
-                else if (TrySwapNumberWords(captured, out var numberWords))
+                else if (TrySwapNumberWords(coreCapture, out var numberWords))
                 {
-                    swappedGroups[placeholder] = numberWords;
+                    swappedCore = numberWords;
                 }
                 else
                 {
-                    swappedGroups[placeholder] = captured;
+                    swappedCore = coreCapture;
                 }
+                swappedGroups[placeholder] =
+                    captured.Substring(0, leadWs) + swappedCore +
+                    captured.Substring(captured.Length - trailWs);
             }
             var builder = new StringBuilder(match.Length);
             foreach (var segment in template.Target)
@@ -3192,6 +3268,118 @@ namespace TravellingCN
                 }
             }
             return 0;
+        }
+
+        // 迟到系统行自愈（v2.7.3，l.31 实测）：游戏新增 0.25s 防误选延迟后，
+        // 交换前已生成、交换后才追加进缓冲的系统行（"赞同（+1）"等）保持旧语言
+        // ——交换扫描跑在追加之前，永远抓不到它。TravellingSubtitlePanel.
+        // SetContent 每次追加后由 Harmony 后缀调用本方法：英文模式下把缓冲与
+        // 当前显示按 zh2en 过一遍逐行交换——已是英文的行无 CJK 片段、幂等
+        // 不动，迟到的中文行当场换回。中文模式直接早退（此时追加的行本就是
+        // 中文，且避免 en2zh 子串级误伤中文行里的拉丁专名）。
+        internal static void SwapLateSubtitleAppend(
+            Travelling.UI.Dialogue.TravellingSubtitlePanel panel)
+        {
+            if (!_englishMode || !_mapsLoaded || panel == null)
+            {
+                return;
+            }
+            try
+            {
+                var counters = new SwapCounters();
+                var buffer = panel.accumulatedText;
+                if (!string.IsNullOrEmpty(buffer))
+                {
+                    var swapped = SwapBufferByLines(buffer, _zh2en, counters);
+                    if (!string.Equals(swapped, buffer, StringComparison.Ordinal))
+                    {
+                        panel.accumulatedText = swapped;
+                    }
+                }
+                var tmp = panel.subtitleText?.textMeshProUGUI;
+                if (tmp != null && !string.IsNullOrEmpty(tmp.text))
+                {
+                    var swappedVisible = SwapBufferByLines(tmp.text, _zh2en, counters);
+                    if (!string.Equals(swappedVisible, tmp.text, StringComparison.Ordinal))
+                    {
+                        tmp.text = swappedVisible;
+                        tmp.maxVisibleCharacters = 99999;
+                        tmp.firstVisibleCharacter = 0;
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[LanguageSwap] 迟到系统行自愈失败：{exception.Message}");
+            }
+        }
+
+        // 字幕面板表面判定（v2.7.3）：TMP 自身挂 TravellingTypewriter（字幕文本
+        // 与打字机同对象），或父链上有 TravellingSubtitlePanel。与
+        // ResolveHideVisitedForSurface 的检测口径一致。
+        private static bool IsSubtitlePanelSurface(TMP_Text tmpText)
+        {
+            try
+            {
+                foreach (var own in tmpText.gameObject.GetComponents<Component>())
+                {
+                    if (own != null && own.GetType().Name == "TravellingTypewriter")
+                    {
+                        return true;
+                    }
+                }
+                for (var t = tmpText.transform; t != null; t = t.parent)
+                {
+                    foreach (var component in t.GetComponents<Component>())
+                    {
+                        if (component != null &&
+                            component.GetType().Name == "TravellingSubtitlePanel")
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // 探测失败按非字幕表面处理（走通用流水线）。
+            }
+            return false;
+        }
+
+        // 日志详情窗刷新（v2.7.3，用户实测：日志页 F9 后详情段不换/混排，
+        // 须切走再切回才刷新）。第三段是游戏拼装的 "<uppercase>标签</uppercase>
+        // -- 描述" 复合串，数据字段（StateSO._description 等）阶段一已换好；
+        // 让 Journal 按当前数据重跑 DisplayDetailFor，三个详情窗格与奖励面板
+        // 一并按当前语言重算，链接颜色走游戏原生解析。Journal 在 travelling.hud
+        // （插件未引用该程序集），用反射调用。
+        private static void RefreshOpenJournalDetail()
+        {
+            try
+            {
+                foreach (var obj in Resources.FindObjectsOfTypeAll<MonoBehaviour>())
+                {
+                    if (obj == null || obj.GetType().FullName != "Travelling.HUD.Journal" ||
+                        !obj.gameObject.activeInHierarchy)
+                    {
+                        continue;
+                    }
+                    var lastQuality = obj.GetType()
+                        .GetField("_lastDisplayedDetailQuality",
+                            BindingFlags.Instance | BindingFlags.NonPublic)
+                        ?.GetValue(obj);
+                    if (lastQuality == null)
+                    {
+                        continue;
+                    }
+                    obj.GetType().GetMethod("DisplayDetailFor")?.Invoke(obj, new[] { lastQuality });
+                    Log.LogInfo("[LanguageSwap] 日志详情窗已按当前语言重排。");
+                }
+            }
+            catch (Exception exception)
+            {
+                Log.LogWarning($"[LanguageSwap] 日志详情窗刷新失败：{exception.Message}");
+            }
         }
 
         // 响应菜单整备（v2.7.1，l.8 选项 F9 回归根治）：

@@ -104,6 +104,11 @@ def main() -> int:
             for legacy in legacy_targets:
                 if (row["id"], source_term, legacy) in LEGACY_EXEMPTIONS:
                     continue
+                # 补丁说明文本每次前置新章节都换新内容哈希 ID，豁免按 ID 顺延
+                # 会变成逐版本手工登记；补丁说明行按内容形态识别（含版本章节
+                # 标题）统一豁免——其正文用普通词义，与术语词形无关（v2.7.3）。
+                if row["source"].startswith("## 20") and " - " in row["source"][:80]:
+                    continue
                 if legacy in row["translation"]:
                     errors.append(
                         f"{row['id']} {source_term!r}: translation retains legacy form {legacy!r}"
