@@ -131,6 +131,10 @@ def main() -> int:
     for row in provisional:
         current = current_rows.get(row["id"])
         if current is None:
+            if row.get("retired_in"):
+                # 源文被游戏更新改写/删除（retired_in 标记版本）：历史裁决保留，
+                # 不再要求当前译文在位。接任行（若有）记 successor_id 备查。
+                continue
             # 游戏版本更新可能让源文修订、换新内容哈希 ID（如 l.8 给 Worms 补链接）。
             # 台账行保留历史 ID 以维持基线覆盖，接任行用 successor_id 登记；
             # 接任译文允许只多链接括号（[[ ]]），其余逐字等于定稿译文。

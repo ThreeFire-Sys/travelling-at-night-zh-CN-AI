@@ -1,0 +1,450 @@
+{"id":"TAN-0FD281C4B305","source":"Uploading screenshot...","translation":"正在上传截图……","status":"translated","notes":""}
+{"id":"TAN-10680A57AABD","source":"Reward chosen:","translation":"已选奖励：","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-108286B9EA93","source":"The first time Spencer was dismissed from the Suppression Bureau, it was wretched. The second time was worse.","translation":"斯宾塞第一次被防剿局开除时，糟透了。第二次更糟。","status":"translated","notes":""}
+{"id":"TAN-110F08D058AC","source":"Spent {0} Experiences","translation":"花费了 {0} 份经历","status":"translated","notes":"l.31 新增；保留 {0}；“份”沿用经历计数量词。"}
+{"id":"TAN-1120AE8A38C3","source":"Transaction too trivial!","translation":"交易金额太小！","status":"translated","notes":""}
+{"id":"TAN-11997590030A","source":"Choose an item","translation":"选择一件物品","status":"translated","notes":""}
+{"id":"TAN-11AAF4CEFABE","source":"Henry IX Bridge","translation":"亨利九世桥","status":"translated","notes":""}
+{"id":"TAN-120D96D882A8","source":"View a recipe anywhere; craft where venue and recipe match skill","translation":"配方可随时查看；场所、配方与技艺相符时方可制作","status":"translated","notes":""}
+{"id":"TAN-123CF5BDDACA","source":"Fridge","translation":"冰箱","status":"translated","notes":""}
+{"id":"TAN-12B8E9AC343F","source":"Drag this to one of your Active Items slots.","translation":"将它拖到任一活动物品槽位。","status":"translated","notes":"Active Items 统一译“活动物品”；压缩 UI 句式。"}
+{"id":"TAN-1307B71D903B","source":"A proud declaration of the State's struggle against immortality and corruption. Chez Feliz is the latest corrupt establishment to face the axe's edge.","translation":"邦国傲然宣示着对永生与腐败的斗争。费利克斯餐馆，便是最新一个倒在斧刃下的腐败场所。","status":"translated","notes":""}
+{"id":"TAN-138248A69776","source":"Ice\nCrowns","translation":"冰封\n王冠","status":"translated","notes":""}
+{"id":"TAN-13C0C74AE9F0","source":"Create a forge influence","translation":"创造一项铸之影响","status":"translated","notes":""}
+{"id":"TAN-13DF155776B7","source":"Sturdy, nutritious literature lairs gloweringly beneath a light topping of brightly coloured novels about people falling in things, falling off things, or inventing cocktail-mixing pianos.","translation":"结实、营养丰富的文学作品阴沉地潜伏在下方；上面薄薄铺着色彩鲜艳的小说，写的都是人们掉进什么、从什么上掉下来，或发明能调鸡尾酒的钢琴。","status":"translated","notes":""}
+{"id":"TAN-13F9E4759DD9","source":"The Persistence","translation":"留存之道","status":"translated","notes":"此处为配套说明“将影响保存为记忆”的加载提示标题，并非九艺中的 Preservation。"}
+{"id":"TAN-1405A63E8A78","source":"Character","translation":"角色","status":"translated","notes":""}
+{"id":"TAN-149C5363336C","source":"Choose your reward:","translation":"选择你的奖励：","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-14A9119ACED9","source":"You are skilled enough for this recipe… but only with {0}","translation":"你具备制作此配方所需的技艺……但只能借助 {0}","status":"translated","notes":""}
+{"id":"TAN-1509F561F241","source":"Save","translation":"保存","status":"translated","notes":""}
+{"id":"TAN-155F816C0407","source":"Submit","translation":"提交","status":"translated","notes":""}
+{"id":"TAN-159E9D7703C9","source":"Xerdemain +22","translation":"Xerdemain +22","status":"translated","notes":"疑似开发测试词，按原文保留。"}
+{"id":"TAN-15F19CA3D068","source":"Rreservation +22","translation":"Rreservation +22","status":"translated","notes":"疑似开发测试词，按原文保留。"}
+{"id":"TAN-16005CA0A220","source":"Unused alternatives:","translation":"未使用的替代项：","status":"translated","notes":""}
+{"id":"TAN-16603F2A2DDA","source":"Likes ","translation":"喜欢 ","status":"translated","notes":""}
+{"id":"TAN-16ABA5393AD7","source":"Lorem ipsum dolor sit amet","translation":"Lorem ipsum dolor sit amet","status":"translated","notes":"开发占位文本，按原文保留。"}
+{"id":"TAN-16D3E5A0ADE7","source":"Can't pay: {1} {0}{2} {3}","translation":"无法支付：{1} {0}{2} {3}","status":"translated","notes":""}
+{"id":"TAN-16E0CE6B1F2F","source":"Load save file","translation":"载入存档","status":"translated","notes":""}
+{"id":"TAN-171BE7C90D30","source":"Eloquence","translation":"口才","status":"translated","notes":""}
+{"id":"TAN-17B6AE2849BA","source":"Reports of \"Daffer\"","translation":"“达弗”的报告","status":"translated","notes":""}
+{"id":"TAN-17D62B143179","source":"Extremely dangerous quadruped, known for snortling, truffle- snouting and a billious dislike of cheese.","translation":"极危险的四足兽，以哼哼、拱松露，以及一提奶酪便暴跳如雷著称。","status":"translated","notes":""}
+{"id":"TAN-18CFFD695854","source":"rose-lantern-winter-forge","translation":"rose-lantern-winter-forge","status":"translated","notes":"内部性相组合标识，按原文保留。"}
+{"id":"TAN-18E872BE2359","source":"Total:","translation":"总计：","status":"translated","notes":""}
+{"id":"TAN-18ECA3824B87","source":"Load selected save?","translation":"载入所选存档？","status":"translated","notes":""}
+{"id":"TAN-190874443B13","source":"Hive\nCluster","translation":"蜂巢\n集群","status":"translated","notes":""}
+{"id":"TAN-19734A1B58CA","source":"Window","translation":"窗口","status":"translated","notes":""}
+{"id":"TAN-1973F263AAD3","source":", OR ","translation":"，或 ","status":"translated","notes":""}
+{"id":"TAN-19766ED6CCB2","source":"Cancel","translation":"取消","status":"translated","notes":""}
+{"id":"TAN-19D13D7CDB45","source":"Schloss Nagelsburg","translation":"纳格尔斯堡宫","status":"translated","notes":"Schloss Nagelsburg 开放终审采用“纳格尔斯堡宫”，已完成开放终审。"}
+{"id":"TAN-1A27EEDBC636","source":"Sold out","translation":"售罄","status":"translated","notes":""}
+{"id":"TAN-1A3A074B8A84","source":"Elegant ladies preen, elegant gentlemen cavort. More elegant ladies, some pulp Westerns, further elegant ladies, blood-drenched tales of Parisian crime, and one more particularly splendid lady with particularly splendid hair.","translation":"优雅的女士们顾影自怜，优雅的绅士们嬉戏作乐。更多优雅女士，几本通俗西部小说，又有更多优雅女士，鲜血淋漓的巴黎罪案故事，以及最后一位格外华美、头发也格外华美的女士。","status":"translated","notes":""}
+{"id":"TAN-1ABD5FCD04D9","source":"Merchant can't afford this!","translation":"商人买不起！","status":"translated","notes":""}
+{"id":"TAN-1AF00B874FF3","source":"Albania","translation":"阿尔巴尼亚","status":"translated","notes":""}
+{"id":"TAN-1AFF942097C1","source":"SkillName","translation":"技艺名称","status":"translated","notes":""}
+{"id":"TAN-1B2C08A8733D","source":"Quality","translation":"品质","status":"translated","notes":""}
+{"id":"TAN-1B2D5C8E42D0","source":"Gained a Passion! ({0})","translation":"获得一项心念！（{0}）","status":"translated","notes":""}
+{"id":"TAN-1BD231EE4FED","source":"PLACEHOLDER-AK: sales are paid in {0}","translation":"销售收入以 {0} 支付","status":"translated","notes":"移除可能泄露给玩家的开发占位前缀，保留格式参数。"}
+{"id":"TAN-1C6066F81B63","source":"Tooltip delay","translation":"提示延迟","status":"translated","notes":""}
+{"id":"TAN-1C794C72FE55","source":"Very Hostile","translation":"极度敌对","status":"translated","notes":""}
+{"id":"TAN-1CC9CB14C417","source":"Recipe fits venue; but venue needs Skills {0}","translation":"配方与场所相符；但场所需要技艺 {0}","status":"translated","notes":""}
+{"id":"TAN-1CCB44E43FA9","source":"Spencer is here","translation":"斯宾塞在这里","status":"translated","notes":""}
+{"id":"TAN-1D779AD34C25","source":"Wear This Outfit","translation":"穿上这套装束","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
+{"id":"TAN-1DD10F244A62","source":"Animation","translation":"动画","status":"translated","notes":""}
+{"id":"TAN-1E19DB94C238","source":"Atlantic Ocean","translation":"大西洋","status":"translated","notes":""}
+{"id":"TAN-1E5456791797","source":"- Detective-Ostiary, Suppression Bureau (dismissed)","translation":"- 防剿局侦探司阍（已革职）","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-1F3D48861F9E","source":"Fresh scents, well kept.","translation":"气息清新，收拾得体。","status":"translated","notes":""}
+{"id":"TAN-2005A4CF1CE7","source":"Yugoslavia","translation":"南斯拉夫","status":"translated","notes":""}
+{"id":"TAN-200C9BA2A0DF","source":"Stagecraft","translation":"舞台技艺","status":"translated","notes":""}
+{"id":"TAN-201E1657C8A6","source":"mimata/servata","translation":"mimata/servata","status":"translated","notes":"内部路线/状态标识，按原文保留。"}
+{"id":"TAN-203F7027D264","source":"Unavailable Route","translation":"路线不可用","status":"translated","notes":""}
+{"id":"TAN-20A41AD29F14","source":"Unlock with {0}","translation":"以{0}解锁","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-20A69420A364","source":"Color\n","translation":"颜色\n","status":"translated","notes":""}
+{"id":"TAN-20BCAEC4E263","source":"Current Traces:","translation":"当前痕迹：","status":"translated","notes":""}
+{"id":"TAN-2147EC2E763F","source":"MenuClose","translation":"MenuClose","status":"translated","notes":"内部菜单命令，按原文保留。"}
+{"id":"TAN-2159D4406D7B","source":"{0} in a {1}","translation":"{1} 中的 {0}","status":"translated","notes":""}
+{"id":"TAN-219A4FB14DB8","source":"{0} provides Assistance - {1}","translation":"{0} 提供协助——{1}","status":"translated","notes":""}
+{"id":"TAN-21FFCBED8C80","source":"Use which item?","translation":"使用哪件物品？","status":"translated","notes":""}
+{"id":"TAN-2275583196D7","source":"Switzerland","translation":"瑞士","status":"translated","notes":""}
+{"id":"TAN-22CCA687C806","source":"Zouche","translation":"祖什","status":"translated","notes":"Zouche 作为专名音译，已完成开放终审。"}
+{"id":"TAN-233259128DB1","source":"Quest","translation":"任务","status":"translated","notes":""}
+{"id":"TAN-23794D91C53A","source":"NO","translation":"否","status":"translated","notes":""}
+{"id":"TAN-23AB3B1CA0FC","source":"Unlocked Outfit: {0}","translation":"已解锁装束：{0}","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
+{"id":"TAN-23F24E1C70EE","source":"A chilly stream of clear water competes against the rain. It's losing.","translation":"一股清冽的溪流同雨水较着劲。眼下败象已露。","status":"translated","notes":""}
+{"id":"TAN-246821722B10","source":"The hands quiver desperately, as if trying to break free of this moment. Twelve division-marks watch hungrily. The Wars were hard on clocks.","translation":"指针绝望地颤抖，仿佛想挣脱此刻。十二道刻度如饥似渴地注视着。诸战让时钟吃尽了苦头。","status":"translated","notes":""}
+{"id":"TAN-24A4F1927EEE","source":"Antibes Light","translation":"昂蒂布·明","status":"translated","notes":"播放器曲名；与 Antibes Dark 成对。"}
+{"id":"TAN-25075C483D25","source":"As Yes, plus you don't mind us linking it to bug reports","translation":"除“是”的内容外，你也同意我们把这些数据关联到错误报告","status":"translated","notes":""}
+{"id":"TAN-2568E21749B0","source":"Transatlantic Rambler","translation":"跨大西洋漫游者","status":"translated","notes":""}
+{"id":"TAN-25A77C859363","source":"Hive Cluster","translation":"蜂巢集群","status":"translated","notes":""}
+{"id":"TAN-25B74FE22247","source":"AK-COPY: Open website","translation":"打开网站","status":"translated","notes":"移除玩家可见的开发占位前缀。"}
+{"id":"TAN-25F801A86ABE","source":"Ozymandias","translation":"奥兹曼迪亚斯","status":"translated","notes":"播放器曲名；采用雪莱诗题通行译名。"}
+{"id":"TAN-263E52DA1BDD","source":"Significant event","translation":"重大事件","status":"translated","notes":""}
+{"id":"TAN-26FAE4BBA713","source":"Provides these Aspects in the Pool, to help you force successes.","translation":"为性相池提供下列性相，助你强行通过检定。","status":"translated","notes":""}
+{"id":"TAN-27153C713E33","source":"Alexis Kennedy","translation":"亚历克西斯·肯尼迪","status":"translated","notes":""}
+{"id":"TAN-275D1930CF75","source":"Xhe travels with a carnival named 'Rosa Mundi'. They were due to perform in Mimata, among the mountains and gorges of Lozere. I've informally discharged myself from the Sanitarium Aujourd'hui, and I'm on my way there now.","translation":"她跟着一支名叫“罗莎·蒙迪”的巡回马戏团。他们原定在洛泽尔的群山峡谷间、米马塔演出。我没等获准，便自行离开了“今日”疗养院；现在正在去那里的路上。","status":"translated","notes":"原文开头疑有录入错误，依据同场景重复文本确认主语为 Nina。"}
+{"id":"TAN-27B718D88F8A","source":"Piggerazzi","translation":"猪仔队","status":"translated","notes":"Piggerazzi 糅合 pig 与 paparazzi，开放终审采用“猪仔队”。"}
+{"id":"TAN-281447797764","source":"Acting in character is the best way to refresh your Aspect Pool.","translation":"以角色身份行事，是恢复性相池的最佳方式。","status":"translated","notes":""}
+{"id":"TAN-286062E381DB","source":"Ending Title","translation":"结局标题","status":"translated","notes":""}
+{"id":"TAN-28DD5A762BBD","source":"Example introduction to a great new thing that we have introduced go us. Latest version includes:\n\n- Stuff\n- More stuff\n- Bippity bip bip stuff alert\n- New hats","translation":"介绍我们为自己推出的绝佳新事物的示例。最新版本包括：\n\n- 东西\n- 更多东西\n- 哔哔啵啵东西警报\n- 新帽子","status":"translated","notes":""}
+{"id":"TAN-28E644BE844F","source":"Adopt {0} ({1})","translation":"采用 {0}（{1}）","status":"translated","notes":""}
+{"id":"TAN-28F9044138A5","source":"New Game","translation":"新游戏","status":"translated","notes":""}
+{"id":"TAN-294C59497F15","source":"Birdsong","translation":"鸟鸣学","status":"translated","notes":""}
+{"id":"TAN-29E89D360DCC","source":"Spencer's Passion provides Aspects, increasing the chance of success with Skills that use those Aspects. Final choice of Skills also determines a Sign which gives a small additional bonus. Current Skills which match this final Aspect Pool: <b>{0}</b>.","translation":"斯宾塞的心念会提供性相，让采用这些性相的技艺更易成功。最后选定的技艺还会决定一项征象，带来少量额外加成。与最终性相池相符的现有技艺：<b>{0}</b>。","status":"translated","notes":""}
+{"id":"TAN-2A03CEE3DEB0","source":"mimata/mamerta","translation":"mimata/mamerta","status":"translated","notes":"内部路线/状态标识，按原文保留。"}
+{"id":"TAN-2A6B24AD2872","source":"Credits","translation":"制作人员名单","status":"translated","notes":""}
+{"id":"TAN-2A78025DE6AA","source":"Select","translation":"选择","status":"translated","notes":""}
+{"id":"TAN-2A97516C354B","source":"demo","translation":"演示曲","status":"translated","notes":"播放器显示字段；按音乐语境翻译。"}
+{"id":"TAN-2AA950C80071","source":"Usually brief description that sometimes goes to  multiple lines","translation":"通常很短的说明，有时会变成多行","status":"translated","notes":""}
+{"id":"TAN-2BC58FCC412B","source":"Major","translation":"重大","status":"translated","notes":""}
+{"id":"TAN-2C66E46E8FC6","source":"Reset tutorial messages","translation":"重置教程消息","status":"translated","notes":""}
+{"id":"TAN-2D616DFCF853","source":"Normandy","translation":"诺曼底","status":"translated","notes":"播放器曲名；地名通行译名。"}
+{"id":"TAN-2D8AD0D607E8","source":"FAILED BY","translation":"失败差值","status":"translated","notes":""}
+{"id":"TAN-2E178E6C65F9","source":"Caution","translation":"警告","status":"translated","notes":""}
+{"id":"TAN-2E49D85F3381","source":"Undress","translation":"脱下","status":"translated","notes":""}
+{"id":"TAN-2EA80F73C575","source":"Succeed","translation":"成功","status":"translated","notes":""}
+{"id":"TAN-2EB0ED016060","source":"Increase with Grail","translation":"以杯提升","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-2FCC4BA34E70","source":"Right-click to read (once only).","translation":"右键点击阅读（仅限一次）。","status":"translated","notes":""}
+{"id":"TAN-2FE2725E2575","source":"Spencer can travel here.","translation":"斯宾塞可以前往这里。","status":"translated","notes":""}
+{"id":"TAN-2FECA9812E9C","source":"Using this item to help with a successful skill check will exhaust it! (A failed skill check won't exhaust it.)","translation":"用这件物品辅助一次成功的技艺检定，会让它耗尽！（技艺检定失败则不会耗尽它。）","status":"translated","notes":"l.5 起物品 exhaust 统一“耗尽”，与 crafting 燃料 consume“消耗”区分；skill check 沿用“技艺检定”。"}
+{"id":"TAN-30FA61C770F5","source":"Search for an unlocked Footnote...","translation":"搜索已解锁的脚注……","status":"translated","notes":""}
+{"id":"TAN-3149AE0B5B5D","source":"Friends and Others","translation":"朋友与他人","status":"translated","notes":""}
+{"id":"TAN-31E392D1C037","source":"Apply","translation":"应用","status":"translated","notes":""}
+{"id":"TAN-31FBEF162594","source":"Continue","translation":"继续","status":"translated","notes":""}
+{"id":"TAN-3215AFD27AF1","source":"\r“What kind of polyglot genius could ever hope to crack your impenetrable code?”","translation":"\r“天底下哪位语言天才，才破得了你这无懈可击的密码？”","status":"translated","notes":""}
+{"id":"TAN-32AFAA784333","source":"Split","translation":"拆分","status":"translated","notes":""}
+{"id":"TAN-334026D86341","source":"Locked Slot","translation":"锁定槽位","status":"translated","notes":""}
+{"id":"TAN-33EBC611BA95","source":"{0} provides no assistance with Skills.","translation":"{0} 无法为技艺提供协助。","status":"translated","notes":""}
+{"id":"TAN-346C90BADB00","source":"MERCHANT BUYS...","translation":"商人购买……","status":"translated","notes":""}
+{"id":"TAN-34F21FECBDDE","source":"Spencer's Passion provides Aspects, increasing the chance of success with Skills that use those Aspects - currently, <b>{0}</b>.","translation":"斯宾塞的心念提供性相，提高使用这些性相的技艺成功率——目前为 <b>{0}</b>。","status":"translated","notes":""}
+{"id":"TAN-3521F1FF7168","source":"Improve with {0} {1} Experiences","translation":"使用 {0} 份{1}之经历提升","status":"translated","notes":""}
+{"id":"TAN-353380ADBEC3","source":"{0} was {1}, is {2}","translation":"{0} 原为 {1}，现为 {2}","status":"translated","notes":""}
+{"id":"TAN-353F4E219917","source":"Unlock...","translation":"解锁……","status":"translated","notes":"l.31 新增界面按钮。"}
+{"id":"TAN-355AD91AF45E","source":"Ranks:","translation":"等级：","status":"translated","notes":""}
+{"id":"TAN-35BA5FF47709","source":"This is a generous overpayment! {0}{1} for {0}{2}. Sure?","translation":"这份溢价很慷慨！用 {0}{1} 购买 {0}{2}。确定吗？","status":"translated","notes":""}
+{"id":"TAN-35BBB9EAAAEE","source":"An Aaron Douglas woodcut of O'Neill's 'Emperor Jones'. I remember the play. The rebels killed Jones with a silver bullet; but he'd been a rebel too, in the beginning.","translation":"亚伦·道格拉斯为奥尼尔《琼斯皇》创作的木刻。我记得这出戏。叛军用银弹杀死了琼斯；但最初，他也曾是叛军。","status":"translated","notes":""}
+{"id":"TAN-35F0712C7987","source":"Rosa Mundi attenuated","translation":"罗莎·蒙迪（弱化版）","status":"translated","notes":"Rosa Mundi 沿项目专名，attenuated 标明曲目变体。"}
+{"id":"TAN-36DCFAE7F89B","source":"Analytics consent","translation":"分析数据许可","status":"translated","notes":""}
+{"id":"TAN-36ECB4F86691","source":"Input","translation":"输入","status":"translated","notes":""}
+{"id":"TAN-37BA30F5C43D","source":"Read (Consumes)","translation":"阅读（消耗）","status":"translated","notes":""}
+{"id":"TAN-37DBCAD4E441","source":"Ambient Volume","translation":"环境音量","status":"translated","notes":""}
+{"id":"TAN-37DFCC3DE92B","source":"Sophistication","translation":"修养","status":"translated","notes":""}
+{"id":"TAN-3824E149F67D","source":"Many Natures","translation":"多重本性","status":"translated","notes":""}
+{"id":"TAN-383BAC21E843","source":"Dignity","translation":"尊严","status":"translated","notes":""}
+{"id":"TAN-38A984C8DCC1","source":"Add an ingredient with Aspects {0} - the recipe will consume it","translation":"添加一份具备性相 {0} 的材料——配方会将其消耗","status":"translated","notes":""}
+{"id":"TAN-397423500C32","source":"Friendly","translation":"友好","status":"translated","notes":""}
+{"id":"TAN-399F13BB9EBE","source":"An empty room - Nina's old room -\nmine, now. I'm getting closer.","translation":"一间空房——宁娜原先的房间——\n现在归我了。我越来越近。","status":"translated","notes":""}
+{"id":"TAN-3A0CFFE1CBC1","source":"Spencer could travel here from an adjacent station","translation":"斯宾塞可以从相邻车站前往这里","status":"translated","notes":""}
+{"id":"TAN-3A308D4961DF","source":"Set Aside","translation":"搁置","status":"translated","notes":""}
+{"id":"TAN-3A39B169FF64","source":"Add an ingredient with Aspects {0} - the recipe will not consume it","translation":"添加一份具备性相 {0} 的材料——配方不会将其消耗","status":"translated","notes":""}
+{"id":"TAN-3A4858921C89","source":"Only first time","translation":"仅首次","status":"translated","notes":"l.31 新增设置选项。"}
+{"id":"TAN-3A7241301EE1","source":"Certain Standards","translation":"某些标准","status":"translated","notes":""}
+{"id":"TAN-3A8AF7FA6A37","source":"Exhausted on use: {0}","translation":"使用时耗尽：{0}","status":"translated","notes":"l.8 新增；保留 {0} 占位符；exhausted on use 沿用“耗尽”。"}
+{"id":"TAN-3B3B53C2A6BD","source":"wibble","translation":"wibble","status":"translated","notes":"开发测试词，按原文保留。"}
+{"id":"TAN-3B7F830D1BE5","source":"None: Pan as you prefer","translation":"无：按喜好平移镜头","status":"translated","notes":""}
+{"id":"TAN-3BB87D9496FF","source":"Zophistication +10 / 15, Xegerdemain +15 / 90","translation":"Zophistication +10 / 15, Xegerdemain +15 / 90","status":"translated","notes":"开发测试数值，按原文保留。"}
+{"id":"TAN-3C400275DFBD","source":"Rescued success!","translation":"挽救成功！","status":"translated","notes":""}
+{"id":"TAN-3C4559CDB929","source":"companions/chaima","translation":"companions/chaima","status":"translated","notes":"内部角色路径标识，按原文保留。"}
+{"id":"TAN-3D11DFFCA65A","source":"Your Signs and Passions feed the Aspect Pool. Spend pips to force success on matching Skill tests. Regain them by acting with Passions.\n","translation":"征象和心念会为性相池补充点数。花费点数，即可强行通过性相相符的技艺检定；依心念行事，便能恢复点数。\n","status":"translated","notes":""}
+{"id":"TAN-3D609A27C833","source":"Visuals","translation":"画面","status":"translated","notes":""}
+{"id":"TAN-3DC2F6090D2F","source":"It rained blood outside Cagnes-sur-Mer, but we've mostly wiped the windows clean now.","translation":"滨海卡涅城外下过血雨，不过我们已经把窗户擦得差不多了。","status":"translated","notes":""}
+{"id":"TAN-3EADECFBD533","source":"Subtle","translation":"含蓄","status":"translated","notes":""}
+{"id":"TAN-3F09151DD8C9","source":"or T for Choices","translation":"或按 T 选择","status":"translated","notes":"2026.8.j.46 增量：对照真实对话图、旧译与版本差异人工复核。"}
+{"id":"TAN-3F8C211DDC1E","source":"Footnote Links","translation":"脚注链接","status":"translated","notes":"l.31 新增设置标签。"}
+{"id":"TAN-402B6D41BF80","source":"Louis Blum","translation":"路易·布鲁姆","status":"translated","notes":""}
+{"id":"TAN-40758F88C2E5","source":"{0} disapproves (-{1})","translation":"{0} 不赞同（-{1}）","status":"translated","notes":""}
+{"id":"TAN-408220BA7DC3","source":"It was the worst of times; it was the worst of times. Remind myself of that.","translation":"那是最坏的时代；那是最坏的时代。我要提醒自己这一点。","status":"translated","notes":"保留 myself 的内心自语人称。"}
+{"id":"TAN-40B3694B3395","source":"Definitely overwrite save?","translation":"确定覆盖存档？","status":"translated","notes":""}
+{"id":"TAN-4107E1D86419","source":"Travel Map","translation":"旅行地图","status":"translated","notes":""}
+{"id":"TAN-411E779F04B4","source":"Frozen\nForests","translation":"冰封\n森林","status":"translated","notes":""}
+{"id":"TAN-42D5C76A982C","source":"Sergei Rachmaninoff","translation":"谢尔盖·拉赫玛尼诺夫","status":"translated","notes":"作曲家通行译名。"}
+{"id":"TAN-43B7C75D56F0","source":"Journal","translation":"日志","status":"translated","notes":""}
+{"id":"TAN-43BC0F5FC035","source":"Override","translation":"覆盖","status":"translated","notes":""}
+{"id":"TAN-43EB75861BA8","source":"<i>Lorem ipsum dolor sit amet foo bar lipseum oftem nah.</i>\n\nHollywood bin get anoda interesting year: Deadpool face off wit Wolverine, Blake Lively and Justin Baldoni sue each oda, Inside Out 2 conquer di box office and Joker sequel no even come close.","translation":"<i>Lorem ipsum dolor sit amet foo bar lipseum oftem nah.</i>\n\n好莱坞今年又有一出好戏：死侍对上金刚狼；布莱克·莱弗利与贾斯汀·巴尔多尼互相起诉；《头脑特工队2》征服票房，《小丑》续集却连边都沾不上。","status":"translated","notes":"首段为开发占位文本，按原文保留。"}
+{"id":"TAN-43F4A9B88F0F","source":"Sardinia","translation":"撒丁岛","status":"translated","notes":""}
+{"id":"TAN-44B9718F5A83","source":"Sophistication +1","translation":"修养 +1","status":"translated","notes":""}
+{"id":"TAN-44F393BDEC8B","source":"You are skilled enough for this recipe… but only with Hushery in a <sprite=\"VenueImages\" name=\"quietplace\"> Quiet Place or <sprite=\"VenueImages\" name=\"shadowedplace\"> Shadowed Place","translation":"你具备制作此配方所需的技艺……但只有在 <sprite=\"VenueImages\" name=\"quietplace\"> 静谧之地或 <sprite=\"VenueImages\" name=\"shadowedplace\"> 暗影之地施展静默术方可制作","status":"translated","notes":"保留所有 sprite 富文本标签。"}
+{"id":"TAN-451042927E99","source":"Right on the border between... autumn and spring? It must be exhausting, to be a flower in this world now.","translation":"刚好处在……秋天与春天的边界？如今这世道，做一朵花一定很累。","status":"translated","notes":""}
+{"id":"TAN-45658DF30A0C","source":"Thank you to everyone who helped us get here! Whether you wishlisted the game or left a nice comment somewhere or told a friend about <i>Travelling</i>, thank you. Super thank you to everyone who's helping us test the game and sending us feedback, too.","translation":"感谢每一位陪我们走到这里的人！无论你把游戏加入了愿望单，在什么地方留过一句好话，还是向朋友推荐了<i>《夜游漫记》</i>，都谢谢你。也要特别特别感谢所有协助测试、发来反馈的朋友。","status":"translated","notes":""}
+{"id":"TAN-459BD97D7FB0","source":"Increase Skills, or buy new ones, with Experiences that match Skill Aspects.","translation":"使用与技艺性相相符的经历提升技艺，或购买新技艺。","status":"translated","notes":""}
+{"id":"TAN-45C892DE4963","source":"Main menu","translation":"主菜单","status":"translated","notes":""}
+{"id":"TAN-464E1D466885","source":"Grand","translation":"宏大","status":"translated","notes":""}
+{"id":"TAN-47CB4F62C4EC","source":"Golliwoggs Cake-Walk","translation":"木偶的步态舞","status":"translated","notes":"德彪西《儿童园地》第六曲的通行中文曲名。"}
+{"id":"TAN-47D05A6A39E6","source":"Neatly made, but patched with undisturbed lichen. It must have been weeks at least since anyone slept in these sheets.","translation":"床铺收拾得利落，原封未动的地衣却在上头打着补丁。这床单至少有好几个星期没人睡过。","status":"translated","notes":""}
+{"id":"TAN-47D2A515EF2F","source":"Loading...","translation":"加载中……","status":"translated","notes":""}
+{"id":"TAN-48A662CB5AF0","source":"CRISP","translation":"干脆","status":"translated","notes":"l.31 对话速度档（无打字机）；与 CALM“舒缓”/QUICK“快速”成组。"}
+{"id":"TAN-48E45F05ED2B","source":"Dislikes ","translation":"不喜欢 ","status":"translated","notes":""}
+{"id":"TAN-49690454E285","source":"Donned Outfit: {0}","translation":"已穿上装束：{0}","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
+{"id":"TAN-4A50F2D6B102","source":"\tWhen I came back to Europe after the war, my heart told me I should seek out Nina Lagasse: actress, artist, witch. She'll know where I can find the things I need to fill my emptiness again.\n\n\tNina is notoriously elusive, but I've followed her trail from Alexandria - where they brought me back - to Antibes - where I now arrive -","translation":"\t战后重返欧洲，我的心告诉我：去找宁娜·拉格斯。演员，艺术家，女巫。她会知道该去哪里，才能重新填满我体内的空缺。\n\n\t宁娜向来难觅踪影，但我循着她的行迹，从亚历山大港——他们令我重返世间之处——一路追到昂蒂布——我此刻抵达之地——","status":"translated","notes":"；v2.3.3 术语统一（亚历山大港/关系人，审计新登记术语检出）"}
+{"id":"TAN-4AA339B8452F","source":"Collect All","translation":"全部收取","status":"translated","notes":""}
+{"id":"TAN-4B103C3A220F","source":"Quicksaving...","translation":"快速保存中……","status":"translated","notes":""}
+{"id":"TAN-4BB690B0099D","source":"Art, animation, marketing","translation":"美术、动画、营销","status":"translated","notes":""}
+{"id":"TAN-4C7DE2C3DA6D","source":"Portugal","translation":"葡萄牙","status":"translated","notes":""}
+{"id":"TAN-4CD5FCA1D8C5","source":"Email address (REQUIRED)","translation":"电子邮件地址（必填）","status":"translated","notes":""}
+{"id":"TAN-4D13A7A38706","source":"LibuŠe\nInstallation","translation":"莉布舍\n装置","status":"translated","notes":"Libuše 为专名，开放终审按捷克语读音译写。"}
+{"id":"TAN-4E313210BF91","source":"Uncertain","translation":"不确定","status":"translated","notes":"l.5 起日志好感标签：见过面但无看法时显示；与 Unmet“未结识”并列的短标签。"}
+{"id":"TAN-4EC0ABCB6263","source":"AK-COPY: Enter it within ~1 hour.","translation":"请在约 1 小时内输入。","status":"translated","notes":"移除玩家可见的开发占位前缀。"}
+{"id":"TAN-4F90B7DBF8F4","source":"Your items","translation":"你的物品","status":"translated","notes":""}
+{"id":"TAN-4F928FC02036","source":"Plague of Leaves","translation":"叶疫","status":"translated","notes":""}
+{"id":"TAN-4FA23A2E7831","source":"<b>Journal - {0}</b> - {1}","translation":"<b>日志——{0}</b>——{1}","status":"translated","notes":""}
+{"id":"TAN-4FC8C8645E25","source":"Luxem-bourg","translation":"卢森堡","status":"translated","notes":""}
+{"id":"TAN-501C26B2571A","source":"FR","translation":"FR","status":"translated","notes":"内部双字母代码，按原文保留。"}
+{"id":"TAN-516DA822D9C6","source":"This item is assigned as Active - it's modifying your Skill checks, and will be exhausted after use.","translation":"此物品已设为活动物品——它会影响你的技艺检定，并在使用后耗尽。","status":"translated","notes":"Active Items 统一译“活动物品”；去除“正在修正”的机翻腔。"}
+{"id":"TAN-52186A6C948C","source":"BUGS & FEEDBACK","translation":"错误与反馈","status":"translated","notes":""}
+{"id":"TAN-52C524EBDDE8","source":"Conviction","translation":"信念","status":"translated","notes":""}
+{"id":"TAN-52F878EDB34F","source":"Esc","translation":"Esc","status":"translated","notes":""}
+{"id":"TAN-5311517C17F7","source":"Bright water in the Riviera sun. There's plashery afoot.","translation":"蔚蓝海岸的阳光下，水色明亮。有人正在大兴泼溅之术。","status":"translated","notes":"Plashery 为戏谑造词，译作“泼溅之术”以保留伪技艺名语感。"}
+{"id":"TAN-54108DAFAAC5","source":"Enum","translation":"Enum","status":"translated","notes":"开发测试文本，按原文保留。"}
+{"id":"TAN-543B755623D1","source":"\"There are common sentiments in every thunderclap. Let us acknowledge them.\" — A Thunderous Secret","translation":"“每道雷声中都有共同的情感。让我们承认它们。”——《雷霆秘闻》","status":"translated","notes":""}
+{"id":"TAN-5455EDD952E2","source":"The Ministries","translation":"部委","status":"translated","notes":""}
+{"id":"TAN-54B3013A168C","source":"Blockade","translation":"封锁","status":"translated","notes":""}
+{"id":"TAN-54D04C61B297","source":"Spent {0} {1} Experiences","translation":"已花费 {0} 份{1}经历","status":"translated","notes":""}
+{"id":"TAN-552A279733A3","source":"This will permanently delete this saved game, and cannot be undone!","translation":"这将永久删除此存档，且无法撤销！","status":"translated","notes":""}
+{"id":"TAN-55393EB37BE2","source":"\"There is never only one History.\"","translation":"“历史从来不止一条。”","status":"translated","notes":""}
+{"id":"TAN-554CA78F48D7","source":"Roman Loskutov","translation":"罗曼·洛斯库托夫","status":"translated","notes":""}
+{"id":"TAN-55761F178D64","source":"A Little Help","translation":"小小协助","status":"translated","notes":""}
+{"id":"TAN-55CDAAAD4DDB","source":"AK-COPY: Get code","translation":"获取代码","status":"translated","notes":"移除玩家可见的开发占位前缀。"}
+{"id":"TAN-55EAF78B2BFC","source":"Hushery","translation":"静默术","status":"translated","notes":""}
+{"id":"TAN-5646F965EC61","source":"<i>'Our company it was that shattered it,' Ghirbi says suddenly. He begins again to weep his molten tears...</i>\n -- Conversations at the Stag Door","translation":"<i>“是我们这一伙把它打碎的。”吉尔比突然说道。他又开始流下熔融的泪……</i>\n ——《牡鹿之门前的谈话》","status":"translated","notes":""}
+{"id":"TAN-56FBDC9F302A","source":"{0}{1} at par · {0}{2} exchange cost (<i>agio</i>)","translation":"{0}{1} 平价 · {0}{2} 兑换成本（<i>贴水</i>）","status":"translated","notes":""}
+{"id":"TAN-5717C39B819D","source":"Minor","translation":"轻微","status":"translated","notes":""}
+{"id":"TAN-57473FEC3F65","source":"The Rue Racine is deserted. The rain? A curfew? Or some nastier reason?","translation":"拉辛街空无一人。因为下雨？宵禁？还是更糟的原因？","status":"translated","notes":""}
+{"id":"TAN-5756F2373E91","source":"Zophistication -22","translation":"Zophistication -22","status":"translated","notes":"开发测试数值，按原文保留。"}
+{"id":"TAN-5884300AEEAF","source":"Smok","translation":"斯莫克","status":"translated","notes":"与 TAN-31FB41158829 的既定专名音译统一。"}
+{"id":"TAN-58ADD6F2D9A6","source":"Troubles","translation":"麻烦","status":"translated","notes":""}
+{"id":"TAN-58C9825B2CAA","source":"Total Skills","translation":"技艺总数","status":"translated","notes":""}
+{"id":"TAN-58CACD3FC5D1","source":"Couldn't save - check permissions on {0}","translation":"无法保存——请检查 {0} 的权限","status":"translated","notes":"l.8 新增存档权限报错；保留 {0} 占位符。"}
+{"id":"TAN-58EFE70541D2","source":"Right-click to use.","translation":"右键点击使用。","status":"translated","notes":""}
+{"id":"TAN-5964E6A88520","source":"Gained +5 Forge experiences","translation":"获得 +5 份铸之经历","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-596F565875C4","source":"Amount to sell","translation":"出售数量","status":"translated","notes":""}
+{"id":"TAN-59F99D2108D8","source":"Amount to buy","translation":"购买数量","status":"translated","notes":""}
+{"id":"TAN-5A1288EC3658","source":"Increase with {0}","translation":"以{0}提升","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-5A43BBE284B0","source":"Outfits","translation":"装束","status":"translated","notes":"开放终审：Outfit／Outfits 作为衣柜机制统一译“装束”。"}
+{"id":"TAN-5A5321AC681C","source":"I saw Bronek in this carriage, and also in the rear carriage. 'Dappled,'  he said when I asked.","translation":"我在这节车厢见过布罗内克，在后面一节也见过。我问起来，他只说：“斑驳。”","status":"translated","notes":""}
+{"id":"TAN-5A6B45398640","source":"Receptive","translation":"接纳","status":"translated","notes":""}
+{"id":"TAN-5A913C8BAA24","source":"UNLOCKED AT 7","translation":"7 级解锁","status":"translated","notes":""}
+{"id":"TAN-5AA428D48AFA","source":"Loyal","translation":"忠诚","status":"translated","notes":""}
+{"id":"TAN-5AFE8AAC5E10","source":"Smoking in post-Wars Europe is common; but not everyone enjoys the smell of tobacco.","translation":"诸战之后的欧洲，吸烟很常见；但并非人人都喜欢烟草味。","status":"translated","notes":""}
+{"id":"TAN-5B307F1FFE19","source":"MUNUMUNUM","translation":"MUNUMUNUM","status":"translated","notes":"开发测试词，按原文保留。"}
+{"id":"TAN-5B40B0308457","source":"Vector4\n","translation":"Vector4\n","status":"translated","notes":"技术类型名，按原文保留。"}
+{"id":"TAN-5B5388473942","source":"Saw this in '37, the year before I went away. The Worms gave me what you might call an afternoon off, and I sat in the cinema, watching our heroes cross the border into Switzerland... that's when I started to plan my own escape.","translation":"1937年看过这部片，那是我离开前一年。蠕虫给了我一个堪称“下午放假”的空当，我便坐在电影院里，看着我们的英雄越过边境进入瑞士……我正是从那时开始筹划自己的逃脱。","status":"translated","notes":""}
+{"id":"TAN-5B7610D20B8F","source":"Sound Effects Volume","translation":"音效音量","status":"translated","notes":""}
+{"id":"TAN-5C528477DCB9","source":"The circus train can't or won't travel here.","translation":"马戏团列车不能或不愿前往这里。","status":"translated","notes":""}
+{"id":"TAN-5C91D827B003","source":"- Médecin-lieutenant, Légion du Seuil (libéré)","translation":"- 门槛军团军医中尉（退役）","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-5CC157AFA6CF","source":"Bosk +22","translation":"丛林学 +22","status":"translated","notes":""}
+{"id":"TAN-5E02DADAA7E4","source":"Manchester","translation":"曼彻斯特","status":"translated","notes":""}
+{"id":"TAN-5ED5A48AE3CD","source":"Louis Bellon.\nSunset-red roofs\nabove grape-bowed vines.","translation":"路易·贝隆。\n夕阳染红屋瓦\n葡萄压低藤枝。","status":"translated","notes":""}
+{"id":"TAN-5EE0D766CB1F","source":"TOTAL: {1} {0}{2} {3}","translation":"总计：{1} {0}{2} {3}","status":"translated","notes":""}
+{"id":"TAN-5F1554E2DCB1","source":"Right-click to use (exhausts this item).","translation":"右键单击使用（会耗尽这件物品）。","status":"translated","notes":"l.8 新增；“右键单击”沿用既有 UI 译法；exhaust 统一“耗尽”。"}
+{"id":"TAN-5F44AB615B3A","source":"Westergren, the Lantern-long that at the Bureau we used to call the Diarist. As I recall, we were hunting Westergren back in the Twenties - but someone else got to him first.","translation":"韦斯特格伦，那位灯之长生者；在防剿局时，我们管他叫“日记家”。我记得我们在二十年代追捕过韦斯特格伦——但有人抢先找到了他。","status":"translated","notes":""}
+{"id":"TAN-5F654771F7F4","source":"The Hobgoblin of Little Minds","translation":"小心胸的魔怪","status":"translated","notes":"呼应爱默生名句“A foolish consistency is the hobgoblin of little minds”，保留标题式讥诮。"}
+{"id":"TAN-5FD88F38B53E","source":"Breakfast in the Ruins","translation":"废墟中的早餐","status":"translated","notes":"播放器曲名。"}
+{"id":"TAN-6081FEA7D148","source":"Entry requirements: at least one of...","translation":"进入要求：至少满足一项……","status":"translated","notes":""}
+{"id":"TAN-6089A44ED8EF","source":"Game Complete","translation":"游戏完成","status":"translated","notes":""}
+{"id":"TAN-609C7E8B07B1","source":"Gain {0} experiences","translation":"获得 {0} 份经历","status":"translated","notes":"k.52 迁移：新增内容人工新译"}
+{"id":"TAN-617D58C6C9EC","source":"AK-COPY: Get a code, then enter it on the website within ~1 hour.","translation":"获取代码，然后在约 1 小时内到网站上输入。","status":"translated","notes":"移除玩家可见的开发占位前缀。"}
+{"id":"TAN-627DB4BC5F69","source":"The\nMinistries","translation":"部委","status":"translated","notes":""}
+{"id":"TAN-62C3A921A5C1","source":"SKILL CHECK: {0}","translation":"技艺检定：{0}","status":"translated","notes":""}
+{"id":"TAN-62DFD037FA07","source":"We won't collect any data about story choices","translation":"我们不会收集任何有关剧情选择的数据","status":"translated","notes":""}
+{"id":"TAN-63118E4D0280","source":"\tAntibes, Alpes-Maritimes. November 1948; at least as far as anyone can tell any more.\n\n\tTwelve years ago, in Cracow, the Worms hollowed me out. For the next three years they steered me all round Europe, until at last I got away to a place where there was a kind of help... the Worms are gone now, but I've only begun to fill up the spaces they left.\n\n\tI was back with the Bureau again when the Worms took me. But I still think of myself, above all, as...","translation":"\t昂蒂布，滨海阿尔卑斯省。1948年11月——至少，如今还有人能判断出年月的话。\n\n\t十二年前，在克拉科夫，蠕虫掏空了我。此后三年，它们驱使我辗转欧洲，直到我终于逃往某个勉强能得到帮助的地方……蠕虫已经离去，可它们留下的空处，我才刚刚开始填补。\n\n\t被蠕虫夺走时，我已经重返防剿局。但在心底，我首先仍是……","status":"translated","notes":""}
+{"id":"TAN-636AFB4E1989","source":"Le Cygne (The Swan)","translation":"天鹅","status":"translated","notes":"圣-桑作品通行译名；音乐浮层统一不加书名号。"}
+{"id":"TAN-63B509371FD0","source":"Screen mode","translation":"屏幕模式","status":"translated","notes":""}
+{"id":"TAN-63F27EE955F6","source":"'The black market is a CRIME'","translation":"“黑市是犯罪”","status":"translated","notes":""}
+{"id":"TAN-649BC6B7E95F","source":"Unworldly Skills - the Nine Arts - can create single-use tools which unlock otherwise impossible conversation options.","translation":"异世技艺——九艺——可以制作一次性工具，解锁原本不可能出现的对话选项。","status":"translated","notes":""}
+{"id":"TAN-64AFEDC44DE8","source":"Randomness","translation":"随机性","status":"translated","notes":""}
+{"id":"TAN-64B851D9BD9E","source":"Steep and Sunny","translation":"陡峭而向阳","status":"translated","notes":""}
+{"id":"TAN-64FC378ADD2C","source":"Significant Event (Hoverover for Details)","translation":"重大事件（悬停查看详情）","status":"translated","notes":""}
+{"id":"TAN-657DB3B70A5E","source":"<id>","translation":"<id>","status":"translated","notes":"富文本占位标签，按原文保留。"}
+{"id":"TAN-65C3147DA95E","source":"Rejected Passion: {0}","translation":"已拒绝的心念：{0}","status":"translated","notes":""}
+{"id":"TAN-66B86BF0F045","source":"Bulgaria","translation":"保加利亚","status":"translated","notes":""}
+{"id":"TAN-66D0F523A379","source":"Skills","translation":"技艺","status":"translated","notes":""}
+{"id":"TAN-66F53FA0ADE5","source":"DAMN IT ALL - a crash! Please help us fix this, with a bug report - ","translation":"真见鬼——崩溃了！请提交错误报告，帮助我们修好它—— ","status":"translated","notes":""}
+{"id":"TAN-670C757471E8","source":"support@weatherfactory.biz","translation":"support@weatherfactory.biz","status":"translated","notes":"错误报告联系邮箱，按原文保留。"}
+{"id":"TAN-67F4054B071C","source":"French\nRepublic","translation":"法兰西\n共和国","status":"translated","notes":""}
+{"id":"TAN-6834ADC144CF","source":"Henry Ix\nBridge","translation":"亨利九世\n桥","status":"translated","notes":""}
+{"id":"TAN-6891ED15EF15","source":"Hold to Enter","translation":"按住进入","status":"translated","notes":""}
+{"id":"TAN-693189F10C7C","source":"Confirm + save","translation":"确认并保存","status":"translated","notes":""}
+{"id":"TAN-696320FB22DA","source":"Concede","translation":"认输","status":"translated","notes":""}
+{"id":"TAN-69752F2313B2","source":"News","translation":"新闻","status":"translated","notes":""}
+{"id":"TAN-69DC67D0B756","source":"Sarajevo","translation":"萨拉热窝","status":"translated","notes":""}
+{"id":"TAN-6A3AEA19761A","source":"DM","translation":"DM","status":"translated","notes":"内部双字母代码，按原文保留。"}
+{"id":"TAN-6A56E02C6487","source":"Bergs of Amber","translation":"琥珀冰山群","status":"translated","notes":""}
+{"id":"TAN-6A85E0E615E2","source":"Xs my heart's explained to me: I must find Nina Lagasse.","translation":"我的心已经说得明白：我必须找到宁娜·拉格斯。","status":"translated","notes":"原文开头疑有录入错误；按同场景目标文案顺译。"}
+{"id":"TAN-6ACC7DD13A2A","source":"You've reached the maximum number of saves! (Congratulations?) Delete or overwrite an existing save.","translation":"存档数量已达上限！（恭喜？）请删除或覆盖现有存档。","status":"translated","notes":""}
+{"id":"TAN-6AEC6D32F785","source":"0.8s","translation":"0.8s","status":"translated","notes":"时长参数，按原文保留。"}
+{"id":"TAN-6B1387976D97","source":"Ithastry","translation":"盗火术","status":"translated","notes":""}
+{"id":"TAN-6BA6152B8601","source":"<cspace=1.8px>CONTINUE</cspace>","translation":"<cspace=1.8px>继续</cspace>","status":"translated","notes":""}
+{"id":"TAN-6BC547496B81","source":"Gained {0} ({1})","translation":"获得 {0}（{1}）","status":"translated","notes":""}
+{"id":"TAN-6BF7180D0781","source":"Report a bug: sending...","translation":"正在发送错误报告……","status":"translated","notes":""}
+{"id":"TAN-6C04C6E84D73","source":"Thessaloniki","translation":"塞萨洛尼基","status":"translated","notes":""}
+{"id":"TAN-6C15426478A5","source":"The game looks best in 16:9 resolutions, but we'll letterbox for widescreen.","translation":"游戏在 16:9 分辨率下显示效果最佳；宽屏显示器会添加黑边。","status":"translated","notes":""}
+{"id":"TAN-6C6A0964D69B","source":"Not yet! Travel to {0} first.","translation":"还不行！先前往 {0}。","status":"translated","notes":""}
+{"id":"TAN-6D11BE838DAD","source":"In every history, Spencer was priest, conjurer, writer, investigator, physician, legionnaire... but you choose which one of those he felt most comfortable as.","translation":"无论在哪段历史里，斯宾塞都当过神父、术士、作家、调查员、医生、军团兵……至于哪一种身份最令他自在，由你决定。","status":"translated","notes":""}
+{"id":"TAN-6D8FD963F0DF","source":"Spencer's Passion provides Aspects, increasing the chance of success with Skills that use those Aspects. ","translation":"斯宾塞的心念提供性相，提高使用这些性相的技艺成功率。 ","status":"translated","notes":""}
+{"id":"TAN-6DFF83BE4F0D","source":"Current Outfit","translation":"当前装束","status":"translated","notes":"开放终审：按完整词形族与当前句法统一。"}
+{"id":"TAN-6E1302E652A4","source":"Reject {0}","translation":"拒绝 {0}","status":"translated","notes":""}
+{"id":"TAN-6E1CC0307028","source":"<i><b>Current Alias:</b></i> Mr Spencer Hobson\n","translation":"<i><b>当前化名：</b></i> 斯宾塞·霍布森先生\n","status":"translated","notes":""}
+{"id":"TAN-6E477C217AA9","source":"A NO PARKING sign directly between two parked cars. Darlan's grip is not irresistible.","translation":"两辆停着的车中间，正立着一块“禁止停车”。看来达尔朗也并非说一不二。","status":"translated","notes":""}
+{"id":"TAN-6E6073531581","source":"An unfamiliar model of Peugeot. Scrupulously clean, and empty as a showroom model.","translation":"一辆陌生型号的标致。干净得一丝不苟，空得像陈列室里的样车。","status":"translated","notes":""}
+{"id":"TAN-6EB00B4B2614","source":"Music","translation":"音乐","status":"translated","notes":""}
+{"id":"TAN-6EC4874989D5","source":"Spencer upset a lot of people before he went away. Some of them are still alive. Don't stay in one place too long.","translation":"斯宾塞离开前得罪过许多人。其中一些还活着。不要在同一个地方停留太久。","status":"translated","notes":""}
+{"id":"TAN-6EF3BC2A9FE1","source":"Jacob Lawrence.\nChoking on they went\nto iron future radiant","translation":"雅各布·劳伦斯。\n他们一路窒息而去\n奔向铁铸的灿烂未来","status":"translated","notes":""}
+{"id":"TAN-702249F7075C","source":"rosamundi/bronek","translation":"rosamundi/bronek","status":"translated","notes":"内部角色路径标识，按原文保留。"}
+{"id":"TAN-707EAB0C23EC","source":"Button","translation":"按钮","status":"translated","notes":""}
+{"id":"TAN-70AF65C90D56","source":"Istanbul","translation":"伊斯坦布尔","status":"translated","notes":""}
+{"id":"TAN-710B3D5F9B0A","source":"Person of Interest","translation":"重点关注对象","status":"translated","notes":""}
+{"id":"TAN-712B48568C12","source":"{0} -Success","translation":"{0}——成功","status":"translated","notes":""}
+{"id":"TAN-71FED53AE043","source":"Collect\n","translation":"收取\n","status":"translated","notes":""}
+{"id":"TAN-723A5C584FF7","source":"Spencer is a hollow man. His Passions aren't deeply rooted yet. If your idea of him changes, you can sometimes evolve your Passions to different ones.","translation":"斯宾塞是个空心人，心念尚未扎根。若你对他的看法变了，有时也能让心念随之演化。","status":"translated","notes":""}
+{"id":"TAN-724AE1269335","source":"Spencer can travel here without crossing a border.","translation":"斯宾塞无需跨越国境即可前往这里。","status":"translated","notes":""}
+{"id":"TAN-72B340082297","source":"Really exit to main menu?","translation":"确定退回主菜单？","status":"translated","notes":""}
+{"id":"TAN-73FD79FD7B54","source":"Couldn't load!","translation":"无法载入！","status":"translated","notes":""}
+{"id":"TAN-74065AAD6A2A","source":"{0} - Failure","translation":"{0}——失败","status":"translated","notes":""}
+{"id":"TAN-7440AF5F8366","source":"Increase...","translation":"提升……","status":"translated","notes":"l.31 新增按钮。"}
+{"id":"TAN-7469366C7236","source":"OM","translation":"OM","status":"translated","notes":"内部双字母代码，按原文保留。"}
+{"id":"TAN-7482E374B5BD","source":"Legend","translation":"图例","status":"translated","notes":""}
+{"id":"TAN-74ECD8DF01FA","source":"This will permanently overwrite this saved game, and cannot be undone!","translation":"这将永久覆盖此存档，且无法撤销！","status":"translated","notes":""}
+{"id":"TAN-758F487FE8E9","source":"Inventory","translation":"物品栏","status":"translated","notes":""}
+{"id":"TAN-75DF3579C730","source":"Art","translation":"美术","status":"translated","notes":""}
+{"id":"TAN-75F9F368FFCE","source":"xvry time","translation":"每次","status":"translated","notes":"l.31 混淆调试变体，按可读版本 Every time 同译。"}
+{"id":"TAN-760BBC85D0DD","source":"Cancel\n","translation":"取消\n","status":"translated","notes":""}
+{"id":"TAN-76900F1BFD16","source":"Back","translation":"返回","status":"translated","notes":""}
+{"id":"TAN-76D08067CD2F","source":"Enter track id...","translation":"输入音轨 ID……","status":"translated","notes":""}
+{"id":"TAN-77C5F5564037","source":"Hans Kindler - Rosario Bourdon","translation":"汉斯·金德勒、罗萨里奥·布尔东","status":"translated","notes":"历史录音的两位演奏者；Bourdon 按法语姓氏通行音译，两个人名以顿号并列。"}
+{"id":"TAN-77C8D99DA1F5","source":"The Sea","translation":"海","status":"translated","notes":"播放器曲名。"}
+{"id":"TAN-77E05DCA90C6","source":"UNLOCKED AT 15","translation":"15 级解锁","status":"translated","notes":""}
+{"id":"TAN-78000142B954","source":"Weather Factory","translation":"Weather Factory","status":"translated","notes":"品牌名按原文保留。"}
+{"id":"TAN-7804F7A79A9E","source":"Finished","translation":"完成","status":"translated","notes":""}
+{"id":"TAN-782808BF268D","source":"The Eye of the Ministries","translation":"部委之眼","status":"translated","notes":""}
+{"id":"TAN-784C8CBF24B0","source":"Horomachistry","translation":"司辰学","status":"translated","notes":""}
+{"id":"TAN-78CE94E32B4C","source":"One item from this stack will disappear when you travel to another city.","translation":"前往另一座城市时，这叠物品中会有一件消失。","status":"translated","notes":"l.8 新增旅行物品提示；stack 译“这叠物品”。"}
+{"id":"TAN-799C26913574","source":"Controls","translation":"操作","status":"translated","notes":""}
+{"id":"TAN-7A1CA4EF7515","source":"France","translation":"法国","status":"translated","notes":""}
+{"id":"TAN-7A6366BA94C6","source":"<b>A Circumstance has changed</b> {0}: {1}","translation":"<b>境况已改变</b> {0}：{1}","status":"translated","notes":""}
+{"id":"TAN-7B41B6AACCE2","source":"Pure (random, streaks possible)","translation":"纯随机（可能连续出现相同结果）","status":"translated","notes":""}
+{"id":"TAN-7B4AE1458D2A","source":"Only highlight first appearance","translation":"仅高亮首次出现","status":"translated","notes":""}
+{"id":"TAN-7B50347C175F","source":"Tailor","translation":"裁缝","status":"translated","notes":""}
+{"id":"TAN-7B5751AA455E","source":"Successfully uploaded!","translation":"上传成功！","status":"translated","notes":""}
+{"id":"TAN-7BBFE2B5C697","source":"Experiences","translation":"经历","status":"translated","notes":""}
+{"id":"TAN-7BD89AAC862B","source":"Illumination","translation":"照明术","status":"translated","notes":""}
+{"id":"TAN-7BE0C2490C86","source":"Main Titles","translation":"主题曲","status":"translated","notes":"播放器曲名；避免软件字段式的“主标题”。"}
+{"id":"TAN-7C11BDFDA0F1","source":"The hands rotate lazily, like circling dragonflies. Since the Wars, clocks have grown unhelpful.","translation":"指针懒洋洋地旋转，像盘旋的蜻蜓。诸战以来，时钟越来越靠不住。","status":"translated","notes":""}
+{"id":"TAN-7C6090EC6167","source":"French\nState","translation":"法兰西\n邦国","status":"translated","notes":""}
+{"id":"TAN-7D3C74BB4F28","source":"Career:","translation":"职涯：","status":"translated","notes":""}
+{"id":"TAN-7D6C5123F13F","source":"Another Sign\n","translation":"另一项征象\n","status":"translated","notes":""}
+{"id":"TAN-7D9EB7ACB13E","source":"Close","translation":"关闭","status":"translated","notes":""}
+{"id":"TAN-7DF8665BBCF5","source":"Right-click to refresh {0} {1} in your Aspect Pool (exhausts this item).","translation":"右键单击，在你的性相池中恢复 {0} 点{1}（会耗尽这件物品）。","status":"translated","notes":"l.8 新增；Aspect Pool 沿用终审“性相池”，refresh（点数）沿用“恢复”；保留 {0} {1} 两个占位符。"}
+{"id":"TAN-7E530728393A","source":"https://histories-web.weatherfactory.deno.net","translation":"https://histories-web.weatherfactory.deno.net","status":"translated","notes":"链接地址按原文保留。"}
+{"id":"TAN-7F117D2F0566","source":"Failing a Skill challenge gives you Troubles, but also additional Experiences.","translation":"技艺挑战失败会带来麻烦，也会给予额外经历。","status":"translated","notes":""}
+{"id":"TAN-7F1285D83D65","source":"Selling:","translation":"出售：","status":"translated","notes":""}
+{"id":"TAN-7F6251FF868E","source":"The rain's only half-erased the chalk. The bookshop owner must have re-lettered it just this morning. A determined soul.","translation":"雨水只冲掉了一半粉笔字。书店老板准是今早才重写的。真有毅力。","status":"translated","notes":""}
+{"id":"TAN-8019556DC308","source":"Unmet","translation":"未结识","status":"translated","notes":""}
+{"id":"TAN-80DB4CCDCA10","source":"Germany","translation":"德国","status":"translated","notes":""}
+{"id":"TAN-80DC3FA19442","source":"Europe is probably dying. But it's going out in style.","translation":"欧洲多半正在死去。不过，它退场时倒是很有派头。","status":"translated","notes":""}
+{"id":"TAN-8143383B02A6","source":"Buys {0}","translation":"购买 {0}","status":"translated","notes":""}
+{"id":"TAN-82170F2BC274","source":"I think sometimes that I will never look upon the sea without that memory surfacing like a shark - that memory of the knives of Ys.","translation":"我有时觉得，此生每逢望见大海，那段伊斯之刃的记忆都会像鲨鱼一样浮上来。","status":"translated","notes":"Ys 按既有设定译为“伊斯”；调整语序以保留鲨鱼出水的意象。"}
+{"id":"TAN-8380C7A9267D","source":"Wary","translation":"戒备","status":"translated","notes":""}
+{"id":"TAN-83B9FDBCEC66","source":"Funiculi-Funicula","translation":"登山缆车","status":"translated","notes":"路易吉·登扎名曲的通行中文名；源资产将曲名放在 ArtistName 字段，本地化层不交换字段。"}
+{"id":"TAN-83D70E7C7B86","source":"Gave","translation":"已给予","status":"translated","notes":"UI 状态短标签。"}
+{"id":"TAN-844821F10E8E","source":"Woman bites man. Man dies. Man faked death. Snake bites woman. Woman dies. Man resurrects woman. \nA love story.","translation":"女人咬男人。男人死了。男人诈死。蛇咬女人。女人死了。男人令女人复生。\n一则爱情故事。","status":"translated","notes":"保留荒诞梗概的电报式短句节奏与单次换行。"}
+{"id":"TAN-8508A8209D79","source":"BitField\n","translation":"位域\n","status":"translated","notes":"技术标签；保留末尾换行。"}
+{"id":"TAN-854DA6A4FE8D","source":"Passing this way again so soon will accrue {0} <sprite=\"QualityIcons\" name=\"trace\">.","translation":"这么快再次经过此处，将累积 {0} <sprite=\"QualityIcons\" name=\"trace\">。","status":"translated","notes":"保留数值占位符与精灵标签。"}
+{"id":"TAN-8574172279D2","source":"Surprise Memory","translation":"惊奇记忆","status":"translated","notes":"配方与物品共用标题。"}
+{"id":"TAN-859E89A729C2","source":"AUDIO","translation":"音频","status":"translated","notes":"UI 分类标签。"}
+{"id":"TAN-8667AD6AD41B","source":"Delete save file","translation":"删除存档","status":"translated","notes":"UI 操作。"}
+{"id":"TAN-8723D4E833A8","source":"This is the worst photograph ever taken by a human being. It could be a boat. It could be a pig. It could be the inside of a pig. It could be the inside of a pig inside a boat. It could, in fact, be a photograph taken not by a human at all, but by a pig, perhaps from inside another pig.","translation":"这是人类从未拍过的最糟照片。可能是船。可能是猪。可能是猪肚子里。也可能是船里那头猪的肚子里。说到底，这照片没准根本不是人拍的，而是猪拍的——没准还是在另一头猪肚子里拍的。","status":"translated","notes":"k.52 迁移：复用既有译文并随源文微调（详见 polish changelog）"}
+{"id":"TAN-87429D7CB011","source":"Louis Bellon.\nGolden hills watchful\nthrough slow-sighing cypress.","translation":"路易·贝隆。\n金色山丘静静守望\n隔着低叹的柏树。","status":"translated","notes":"保留三行诗体与守望、叹息的拟人意象。"}
+{"id":"TAN-8834544A2087","source":"Alb-ania","translation":"阿尔巴尼亚","status":"translated","notes":"英文地图排版断词；中文地名不保留词内连字符。"}
+{"id":"TAN-88F4BEE41EE1","source":"Passions","translation":"心念","status":"translated","notes":"系统术语。"}
+{"id":"TAN-88F9B0843483","source":"Acted with Passion: {0}","translation":"动用了心念：{0}","status":"translated","notes":"保留占位符。"}
+{"id":"TAN-8931298E9277","source":"use item","translation":"使用物品","status":"translated","notes":"UI 操作。"}
+{"id":"TAN-894C58EA5463","source":"Lost Outfit: {0}","translation":"失去装束：{0}","status":"translated","notes":"Outfit 统一译“套装”；保留占位符。；开放终审：按完整词形族与当前句法统一。"}
+{"id":"TAN-89713B9C9C1B","source":"Accept","translation":"接受","status":"translated","notes":"UI 按钮。"}
+{"id":"TAN-8A2CC0673B1C","source":"Demo","translation":"试玩版","status":"translated","notes":"水印/UI 标签。"}
+{"id":"TAN-8A6BDB6B18DA","source":"Load","translation":"载入","status":"translated","notes":"存档 UI 按钮。"}
+{"id":"TAN-8A7DB45BDB27","source":"<sprite=\"currency\" name=\"currency dollar\">","translation":"<sprite=\"currency\" name=\"currency dollar\">","status":"translated","notes":"纯精灵标签，原样保留。"}
+{"id":"TAN-8B63A79D8945","source":"The Green","translation":"青绿","status":"translated","notes":"播放器曲名；沿项目性相/色彩语境。"}
+{"id":"TAN-8B71EBF47EAC","source":"Long Rattling Road","translation":"漫长颠簸之路","status":"translated","notes":"地点/章节标题。"}
+{"id":"TAN-8B7309629CE6","source":"— FOO","translation":"— FOO","status":"translated","notes":"开发占位文本，原样保留。"}
+{"id":"TAN-8B97B1ABEB27","source":"Travelling homa.","translation":"踏上归途。","status":"translated","notes":"homa 是 home 的开发期拼写错误；依界面语境按“回家”义译，避免向玩家暴露乱码式占位词。"}
+{"id":"TAN-8BD3A3D677FA","source":"Shadowed Place","translation":"暗影之地","status":"translated","notes":"依相邻批次环境术语。"}
+{"id":"TAN-8C1C66A7CCFE","source":"Seville","translation":"塞维利亚","status":"translated","notes":"地点名。"}
+{"id":"TAN-8C1C7C5D0CEF","source":"{0} - Forced Success","translation":"{0}——强制成功","status":"translated","notes":"保留占位符。"}
+{"id":"TAN-8C40FC42FFB5","source":"Aloquence +22","translation":"口才 +22","status":"translated","notes":"Aloquence 疑为 Eloquence 的开发拼写，按属性含义译“口才”。"}
+{"id":"TAN-8C87548A79FB","source":"rosamundi/arun","translation":"rosamundi/arun","status":"translated","notes":"内部路径/临时铭牌，原样保留。"}
+{"id":"TAN-8CB799F35EE1","source":"Nuclear Starfish","translation":"核星鱼","status":"translated","notes":"无上下文测试/专名，开放终审采用直译。"}
+{"id":"TAN-8DCD926A0202","source":"Reports of 'Daffer'","translation":"“达弗”报告","status":"translated","notes":"Daffer 沿批次 008 音译“达弗”；标题压缩。"}
+{"id":"TAN-8E2F579F0B73","source":"Hold the Highlight key (Z by default) to find things more easily.","translation":"按住高亮键（默认为 Z），可以更轻松地找到物品。","status":"translated","notes":"教程提示，保留默认键位。"}
+{"id":"TAN-8E3DFB30B279","source":"<i><b>Serial No.</b></i> - 036777\n<i><b>Date of Issue.</i></b> - 02/11/1948","translation":"<i><b>序列号</b></i> - 036777\n<i><b>签发日期</i></b> - 02/11/1948","status":"translated","notes":"严格保留标签嵌套顺序、编号、日期与换行；源文第二组闭合顺序异常，未改动。"}
+{"id":"TAN-8E588CD18774","source":"Medium","translation":"中等","status":"translated","notes":"难度/UI 选项。"}
+{"id":"TAN-8F0E962F29D8","source":"Hard Lessons","translation":"惨痛教训","status":"translated","notes":"提示标题。"}
+{"id":"TAN-90974B6C8E50","source":"Thanks for taking the time to send this! Every bug report is helpful. You've lit another candle, or planted another flower.\n\nIf you'd like to follow up with more information, you can reach us at  <b>support@weatherfactory.biz</b> - quote the ref above.","translation":"感谢你抽空提交报告！每一份错误报告都有帮助。你又点亮了一支蜡烛，或种下了一朵花。\n\n如果还想补充更多信息，可以发送邮件至  <b>support@weatherfactory.biz</b>，并注明上方的参考编号。","status":"translated","notes":"保留双换行、邮箱、富文本及邮箱前双空格。"}
+{"id":"TAN-90F71CFA0472","source":"Very Wary","translation":"非常警惕","status":"translated","notes":"关系/状态标签。"}
+{"id":"TAN-9115851A89A7","source":"A Matisse? Yes; it's signed. The subject is clearly someone he desired; or at least loved. Perhaps only someone he had to follow?","translation":"马蒂斯的画？没错；有签名。画中人分明是他渴望过的人；至少，是他爱过的人。又或许，只是他不得不追随的人？","status":"translated","notes":"用分号保留 desire／at least loved 的退让关系，避免破折号误成并列追加。"}
+{"id":"TAN-9183F59A406A","source":"We rate limit bug reports - wait a bit, or email us at support@weatherfactory.biz","translation":"错误报告提交过于频繁——请稍等片刻，或发送邮件至 support@weatherfactory.biz","status":"translated","notes":"保留支持邮箱。"}
+{"id":"TAN-91B097D7D4C6","source":"TOOL","translation":"工具","status":"translated","notes":"UI 分类标签。"}
+{"id":"TAN-91DC5325FF25","source":"Daffer","translation":"达弗","status":"translated","notes":"沿批次 008 开放终审采用音译。"}
+{"id":"TAN-91E2F34D79EA","source":"{0} completed! Gather Experiences on the Journal page.","translation":"{0} 已完成！请在日志页面收集经历。","status":"translated","notes":"保留占位符；Experiences 依系统用语译“经历”。"}
+{"id":"TAN-91F926D7452B","source":"{0}, again.","translation":"{0}，再来一次。","status":"translated","notes":"保留占位符。"}
+{"id":"TAN-92340695899B","source":"Active","translation":"生效中","status":"translated","notes":"UI 状态标签。"}
+{"id":"TAN-92F799C06C3F","source":"Poise. The other face of elegance.","translation":"从容。优雅的另一面。","status":"translated","notes":"短句文案。"}
+{"id":"TAN-93158477E968","source":"I've only seen these roses since the Wars. 'Magpie roses', I hear them called. 'The skewbald rose'. Or 'dappled'.","translation":"这种玫瑰，我只在诸战以后见过。听说有人叫它“喜鹊玫瑰”，也叫“花斑玫瑰”。或者，干脆叫“斑驳”。","status":"translated","notes":"保留三种俗名层次；dappled 与同批文案统一译“斑驳”。"}
+{"id":"TAN-9396A37A0280","source":"Vastness","translation":"无垠","status":"translated","notes":"播放器曲名。"}
+{"id":"TAN-93D57362AABC","source":"This is a good message. Spencer can enter the country because he is a nice boy.","translation":"这是一条好消息。斯宾塞可以入境，因为他是个好孩子。","status":"translated","notes":"开发/测试文案，保留戏谑。"}
+{"id":"TAN-93DF20F41FC1","source":"{0} to {1} skill checks","translation":"{0} 至 {1} 技艺检定","status":"translated","notes":"Skill 统一译“技艺”；保留两个占位符。"}
+{"id":"TAN-93E5DF419D3B","source":"<sprite=\"SmolSkillImages\" name=\"Skolekosophy\"><space=-1.5em><sprite=\"SmolSkillImages\" name=\"outline\" color=#D24B00FF> Skolekosophy <color=#808080>[68%] → </color>[88%]","translation":"<sprite=\"SmolSkillImages\" name=\"Skolekosophy\"><space=-1.5em><sprite=\"SmolSkillImages\" name=\"outline\" color=#D24B00FF> 蠕虫学 <color=#808080>[68%] → </color>[88%]","status":"translated","notes":"Skolekosophy 依设定定译“蠕虫学”；严格保留精灵、间距、颜色标签和百分比。"}
+{"id":"TAN-942A7A3C6B95","source":"<sprite=\"currency\" name=\"currency silver spintria\">","translation":"<sprite=\"currency\" name=\"currency silver spintria\">","status":"translated","notes":"纯精灵标签，原样保留。"}
+{"id":"TAN-94D5097A7969","source":"Uploading log...","translation":"正在上传日志……","status":"translated","notes":"UI 状态。"}
+{"id":"TAN-94EE059335E5","source":"TEST","translation":"测试","status":"translated","notes":"开发文本。"}
+{"id":"TAN-951DA6E60713","source":"Gives","translation":"提供","status":"translated","notes":"UI 字段标签。"}
+{"id":"TAN-95A942FCDE69","source":"100<size=250%><sprite=\"currency\" name=\"currency dollar\"></size>","translation":"100<size=250%><sprite=\"currency\" name=\"currency dollar\"></size>","status":"translated","notes":"纯数值与显示标签，原样保留。"}
+{"id":"TAN-9646D5344695","source":"Hateful to the Nose, Harmful to the Brain","translation":"气味可憎，伤及头脑","status":"translated","notes":"提示标题，保留原文并列节奏。"}
+{"id":"TAN-966581B33AF6","source":"Balanced (reset on reload)","translation":"平衡（重新载入时重置）","status":"translated","notes":"开发/UI 状态。"}
+{"id":"TAN-9666CBB97FB2","source":"Naples","translation":"那不勒斯","status":"translated","notes":"地点名。"}
+{"id":"TAN-96ECC1567AFA","source":"Significant","translation":"显著","status":"translated","notes":"程度/UI 标签。"}
+{"id":"TAN-97D14FF6A64E","source":"Autosave","translation":"自动存档","status":"translated","notes":"存档分类。"}
+{"id":"TAN-982EE79A0A6A","source":"Relevant","translation":"相关","status":"translated","notes":"UI 标签。"}
+{"id":"TAN-98DF30986AEF","source":"Or T to Focus","translation":"或按 T 聚焦","status":"translated","notes":"保留键位。"}
+{"id":"TAN-9918005F9AFE","source":"At runtime we insert Crs for wrap","translation":"运行时插入 CR 以实现换行","status":"translated","notes":"开发文本；Crs 指回车符，保留技术缩写 CR。"}
+{"id":"TAN-99D68A082092","source":"Who lights a fire in weather like this? Does Strathcoyne need warmth since his changes began? Or has someone been disposing of evidence?","translation":"谁会挑这种天气生火？斯特拉思科因开始变化以后，竟还需要取暖？要不，就是有人在烧掉证据。","status":"translated","notes":"保留三段递进猜测，并拆除英语状语链。"}
+{"id":"TAN-9B424176ACB7","source":"Very Suspicious","translation":"非常可疑","status":"translated","notes":"关系/状态标签。"}
+{"id":"TAN-9B9A8D05A7EC","source":"Read","translation":"阅读","status":"translated","notes":"UI 操作。"}
+{"id":"TAN-9BD994C10A21","source":"Resolution\n","translation":"分辨率\n","status":"translated","notes":"设置项；保留末尾换行。"}
+{"id":"TAN-9C93AD439373","source":"Greece","translation":"希腊","status":"translated","notes":"地点名。"}
+{"id":"TAN-9CA6FA0D8440","source":"Preservation","translation":"保存术","status":"translated","notes":"按补充术语统一为‘保存术’。"}
+{"id":"TAN-9CB5654B5540","source":"Signs","translation":"征象","status":"translated","notes":"系统标题。"}
+{"id":"TAN-9D3CAB2B5EFE","source":"Focus","translation":"聚焦","status":"translated","notes":"UI 操作。"}
+{"id":"TAN-9DDD89CCC230","source":"To travel, visit a station.","translation":"要旅行，请前往车站。","status":"translated","notes":"复用既有同句译法（k.97 无句点版“要旅行，请前往车站”），按新源文补句点。"}
+{"id":"TAN-9E6151ACB057","source":"Uses","translation":"用途","status":"translated","notes":"UI 字段标题。"}
+{"id":"TAN-9E8E92392FFF","source":"Tirana","translation":"地拉那","status":"translated","notes":"地点名。"}
+{"id":"TAN-9E9FA6897B9C","source":"The Carapace Cross","translation":"介壳种","status":"translated","notes":"沿前作及本项目既定秘史实体译名。"}
+{"id":"TAN-9EBCBAEF3640","source":"Yes, LInk","translation":"是，链接","status":"translated","notes":"开发测试文本；LInk 异常大小写按含义译出。"}
+{"id":"TAN-9EE032EB5E1D","source":"Definitely use ESCAPE! to get Spencer unstuck? Don't use it unless he's properly stuck! It's not good for him!","translation":"确定要用“脱困！”让斯宾塞摆脱卡死吗？除非他真的动弹不得，否则别用！这对他不好！","status":"translated","notes":"与按钮及寻路卡死教程统一功能名“脱困！”。"}
+{"id":"TAN-9F0964E42A2C","source":"Tamarack","translation":"美洲落叶松","status":"translated","notes":"植物名/选项标签。"}
+{"id":"TAN-9FB7CDF6FFD5","source":"Refreshments","translation":"茶点","status":"translated","notes":"互动选项。"}
+{"id":"TAN-9FE4A8F4E4EC","source":"Xnly first time","translation":"仅首次","status":"translated","notes":"l.31 混淆调试变体，按可读版本 Only first time 同译。"}
+{"id":"TAN-A09C75101D29","source":"Wounded Place","translation":"受创之地","status":"translated","notes":"环境/技艺标签；与 Wound“伤口”区分。"}
+{"id":"TAN-A0E031AFDD60","source":"Failure!","translation":"失败！","status":"translated","notes":"UI 结果。"}
+{"id":"TAN-A0F1F56284A5","source":"Vengeful","translation":"复仇心切","status":"translated","notes":"关系/性格状态。"}
+{"id":"TAN-A15A451A3878","source":"Quick load","translation":"快速载入","status":"translated","notes":"存档 UI 操作。"}
+{"id":"TAN-A17BFDE3804F","source":"Ending","translation":"终曲","status":"translated","notes":"播放器曲名；采用音乐语境译法。"}
+{"id":"TAN-A17F61D1F9D5","source":"'Frida Kahlo'. I hadn't heard of her. Is this a self-portrait? That face painted on her brow. Does he rule her? Or has she captured him?","translation":"“弗里达·卡罗。”我没听过这个名字。是自画像吗？她额上画着的那张脸——是他支配着她，还是她囚住了他？","status":"translated","notes":"保留额上人脸引出的权力关系疑问。"}
+{"id":"TAN-A18B4BE8E318","source":"Coding","translation":"编程","status":"translated","notes":"开发/UI 标签。"}
+{"id":"TAN-A1BDB5E5A410","source":"CIG","translation":"香烟","status":"translated","notes":"货币/物品缩写显示，结合相邻 cigarette 精灵译“香烟”。"}
+{"id":"TAN-A1D120685D7A","source":"<sprite=\"currency\" name=\"cigarette\">","translation":"<sprite=\"currency\" name=\"cigarette\">","status":"translated","notes":"纯精灵标签，原样保留。"}
+{"id":"TAN-A1EF7BF9B909","source":"Roland","translation":"罗兰","status":"translated","notes":"专名。"}
+{"id":"TAN-A1FC24F74EBC","source":"A brilliant spray of vivid red.","translation":"一蓬灿亮夺目的鲜红。","status":"translated","notes":"短篇意象文案。"}
+{"id":"TAN-A22B63BBD81D","source":"Pyrrhus","translation":"皮洛士","status":"translated","notes":"专名。"}
+{"id":"TAN-A2829BE87409","source":"Who Are You,\n\t  Hollow Man?","translation":"空心人，你是谁？","status":"translated","notes":"中文长度足以单行显示；移除英文为视觉构图加入的换行与缩进，避免第二行压住人物背景正文。"}
+{"id":"TAN-A296AD18BB42","source":"Fill every slot","translation":"填满每个槽位","status":"translated","notes":"UI 提示；slot 统一译“槽位”。"}
+{"id":"TAN-A2CC01F2E418","source":"This will become something else when you travel to another city.","translation":"前往另一座城市时，它会变成别的东西。","status":"translated","notes":"l.8 新增旅行物品提示。"}
+{"id":"TAN-A3A90DCFA0AB","source":"Cork","translation":"科克","status":"translated","notes":"地点名。"}
+{"id":"TAN-A3BD42AB64A5","source":"Panel Title","translation":"面板标题","status":"translated","notes":"开发/UI 占位文本。"}
+{"id":"TAN-A3F85B10FF06","source":"Really exit to desktop?","translation":"确定要退出至桌面吗？","status":"translated","notes":"确认提示。"}
+{"id":"TAN-A4E6EFAD5123","source":"<sprite=\"currency\" name=\"currency swiss franc\">","translation":"<sprite=\"currency\" name=\"currency swiss franc\">","status":"translated","notes":"纯精灵标签，原样保留。"}
+{"id":"TAN-A4E7656CB137","source":"Innumination +22","translation":"照明术 +22","status":"translated","notes":"按 Illumination 既有术语译‘照明术’；源文 Innumination 疑为测试性拼写错误。"}
+{"id":"TAN-A4FEF9223C59","source":"Select a recipe...","translation":"选择配方……","status":"translated","notes":"UI 提示。"}
+{"id":"TAN-A52ACE420F21","source":"All","translation":"全部","status":"translated","notes":"筛选/UI 选项。"}
+{"id":"TAN-A53D202A8DFA","source":"Hold to Travel","translation":"按住以旅行","status":"translated","notes":"UI 操作提示。"}
+{"id":"TAN-A683178436F9","source":"CardTitle","translation":"卡牌标题","status":"translated","notes":"开发/UI 占位文本。"}
+{"id":"TAN-A7964E701D11","source":"PurchaseComplete","translation":"购买完成","status":"translated","notes":"内部式 UI 名称，按显示含义译出。"}
+{"id":"TAN-A796A7782D7E","source":"0 in a Skill halves the possible Chance bonus.","translation":"技艺为 0 时，可获得的成功率加成减半。","status":"translated","notes":"Skill 统一译“技艺”；Chance bonus 译“成功率加成”。"}
+{"id":"TAN-A7A1F1923252","source":"In Merchant's Till: ","translation":"商人钱箱中： ","status":"translated","notes":"保留末尾空格。"}

@@ -55,6 +55,7 @@ LEGACY_EXEMPTIONS = {
     ("TAN-028DAD9F67D6", "Unveil", "揭幕"),
     ("TAN-560B3D164FC3", "Unveil", "揭幕"),
     ("TAN-C7B87AB7C781", "Unveil", "揭幕"),
+    ("TAN-B83AF5B3A0AE", "Unveil", "揭幕"),
 }
 
 

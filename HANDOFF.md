@@ -1152,3 +1152,26 @@
 - 提交 `1a2e78b` + tag `v2.7.1` 已推送；GitHub Release v2.7.1 已建
   （zip 25,186,933 字节，SHA-256 `4097B7332E92905475F89BDB40294048CEB4203E87174B9141940B60D011A322`，
   附 .sha256 资产），同日删除 v2.7.0 Release。
+
+## 105. 2026-08-27 v2.7.2：游戏更新 l.8→l.31 迁移 + Release 约定改为逐游戏版本留存
+
+- **游戏更新**：Steam 更到 2026.8.l.31（对话速度三档 CALM/QUICK/CRISP+打字机卡顿修复、
+  经历混用提升、技艺提升花费减半、非 QWERTY 布局、LeftAlt 高亮、性相池/结算画面美化等）。
+  迁移：提取 118189 候选 → worklist 6802 → rebase 复用 translations_l8 全线 + 增补 37
+  （tools/build_l31_supplement.py：14 条角色一句话描述、4 条机制脚注、13 个设置标签、
+  莉努戏法差分、高亮教程、补丁说明 l.31 节、结算文本 \t 缩进同步）。
+- **管线再修两处系列暗桩**：①write_missing_diffs 的 merged 目录 glob 写死 merged_k*，
+  l 系列下补丁说明旧译错取 k.97 版（丢 l.5 章节）——注意 mtime 最新目录可能是当前
+  迁移自己的产物，旧译必须取自**上一游戏版本**的 merged（本轮手工从 merged_l8 回拼）。
+  ②Unveil 豁免表按新补丁说明 ID 顺延（TAN-B83AF5B3A0AE）。
+- **台账工具进化**：provisional_row_audit 新增 retired_in 退役路径——游戏整句改写
+  （安德蕾角色描述、性相池补救脚注）时历史裁决保留但不再要求当前译文在位；
+  接任行用 successor_id 备查。候选台账：退役 2（arts unregarded/bloom），
+  新增 16（速度档标签 one_off_label；补丁说明散文语境排除）。
+- **Release 约定变更（用户定）**：不再"只留最新一个"——每个游戏版本保留其对应
+  最新补丁的 Release（与 CHANGELOG 分节一致）。已恢复 v2.6.4（k.97）上架。
+- translations_l31 已提升为现役审校线（6802 行+增补原件）；两个打包 ps1 默认值
+  已指向 l31。release 构建又踩"增补未折叠回审校目录"（本轮表现为 My Past 检查
+  读到跨版本目录）——提升先行即可。
+- 探针电池（实机五套）：bufferfix/scenario（选项断言）/autoswap/soak/newgame 全绿；
+  存档探前快照、探后还原；诊断开关全关。装机核验 44/44。

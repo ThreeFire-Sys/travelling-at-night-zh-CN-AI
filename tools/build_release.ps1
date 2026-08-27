@@ -2,9 +2,9 @@ param(
     [string]$Version = '2.6.3',
     [string]$SupportedGameVersion = '2026.8.k.97',
     [string]$BakedAssetsDir = 'build\baked_assets',
-    [string]$WorklistRoot = 'build\worklist_l8\worklist.jsonl',
-    [string]$TranslationsRoot = 'translations_l8',
-    [string]$MergedRoot = 'build\merged_l8'
+    [string]$WorklistRoot = 'build\worklist_l31\worklist.jsonl',
+    [string]$TranslationsRoot = 'translations_l31',
+    [string]$MergedRoot = 'build\merged_l31'
 )
 
 $ErrorActionPreference = 'Stop'

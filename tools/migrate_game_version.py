@@ -261,7 +261,7 @@ def write_missing_diffs(worklist: Path, translations: Path, out_path: Path) -> N
     old_by_id = {}
     # 前身位点取自旧版 merged 目录（含 contexts）；旧译取自 translations 目录
     import glob
-    merged_dirs = sorted(glob.glob(str(WORKSPACE / "build" / "merged_k*")), key=os.path.getmtime)
+    merged_dirs = sorted(glob.glob(str(WORKSPACE / "build" / "merged_*")), key=os.path.getmtime)
     if merged_dirs:
         for line in open(Path(merged_dirs[-1]) / "review_catalog.jsonl", encoding="utf-8"):
             if line.strip():
