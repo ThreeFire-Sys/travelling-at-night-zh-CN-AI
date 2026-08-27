@@ -1175,3 +1175,6 @@
   读到跨版本目录）——提升先行即可。
 - 探针电池（实机五套）：bufferfix/scenario（选项断言）/autoswap/soak/newgame 全绿；
   存档探前快照、探后还原；诊断开关全关。装机核验 44/44。
+- 提交 `b19a467` + tag `v2.7.2` 已推送；GitHub Release v2.7.2 已建
+  （zip 25,288,175 字节，SHA-256 `63C65E577EE63CF4CA69E4DD324AC67DAC67FDE0505456E7ABAADF5EB8BF7821`）。
+  新约定下 Releases 现有 v2.6.4（k.97）/ v2.7.1（l.8）/ v2.7.2（l.31）各一个。
