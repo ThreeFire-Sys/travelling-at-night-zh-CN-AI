@@ -1226,3 +1226,6 @@
 - **开场语 F9 吞键**：QuoteSceneController.Update 把 F9 当"任意键继续"。
   新增 QuoteSceneToggleKeyPatch：本帧按下的是语言切换键则跳过原 Update
   （不 Advance），切换照常由 LanguageSwap.Tick 发生。待装机后验证。
+- 360 安全卫士卸载后拦截解除；v2.7.3 正式装入游戏目录（44 文件 0 异常，
+  winhttp.dll 正常落盘），六套探针在 l.43 上全绿。release zip 以正常流程重建
+  （SHA-256 `C7FFDFD534B4E4B0F4700CEDCCD430039F31A4AC5CFB52224C5C1FB257D3F108`）。

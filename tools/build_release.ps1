@@ -1,6 +1,6 @@
 param(
     [string]$Version = '2.6.3',
-    [string]$SupportedGameVersion = '2026.8.k.97',
+    [string]$SupportedGameVersion = '2026.8.l.43',
     [string]$BakedAssetsDir = 'build\baked_assets',
     [string]$WorklistRoot = 'build\worklist_l43\worklist.jsonl',
     [string]$TranslationsRoot = 'translations_l43',
